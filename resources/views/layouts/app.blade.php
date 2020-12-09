@@ -20,7 +20,7 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
 
 
@@ -75,6 +75,10 @@
 
 
 
+    </script>
+
+
+
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
@@ -87,15 +91,12 @@
     <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization
-        new WOW().init();
+        //new WOW().init();
 
         $(document).ready(function () {
 
         @yield('java_script')
     });
-
     </script>
-
-
 </body>
 </html>
