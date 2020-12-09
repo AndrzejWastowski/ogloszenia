@@ -11,10 +11,8 @@
       <div class="col-md-4 mx-auto">
 
         <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur
-          adipisicing elit.</p>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Ogłoszenia KCI</h5>
+        <p>Lokalny portal ogłoszeniowy Kutna i okolic</p>
 
       </div>
       <!-- Grid column -->
@@ -110,10 +108,14 @@
   @guest
 
   <li class="list-inline-item">
-      <h5 class="mb-1">Zarejestruj się żeby  w pełni korzystać z portalu  <a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a> lub zaloguj, jeśli masz konto:  <a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a> </h5>
+      <h5 class="mb-1">Zarejestruj się żeby  w pełni korzystać z portalu  </h5>
+          <a href="{{ route('register') }}" class="btn btn-primary btn-rounded">{{ __('Rejestracja') }}</a>
+       
     </li>
     <li class="list-inline-item">
-      <a href="#!" class="btn btn-danger btn-rounded">Zarejestruj</a>
+    <h5 class="mb-1">lub zaloguj, jeśli masz konto: </h5>
+        <a href="{{ route('login') }}" class="btn btn-primary btn-rounded">{{ __('Logowanie') }}</a>
+      
     </li>
 
     @else

@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('/start', [App\Http\Controllers\HomeController::class, 'index'])->name('start');
 Route::get('/home/tablica', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

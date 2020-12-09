@@ -4,11 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
     <div class="col-md-3">
-         @include('user.sidebar')
+        @include('user.sidebar')
     </div>
-       
-
-       
 
         <div class="col-md-8">
             <div class="card">
@@ -20,7 +17,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
- 
                     {{ __('Cześć  użytkowniku:') }} <strong> {{ Auth::user()->name }}</strong>
                 </div>
             </div>
@@ -29,15 +25,8 @@
 </div>
 @endsection
 
-
 @section ('java_script')
+<script type="text/javascript">
 
-
-$('#sidebarCollapse').on('click', function () {
-    $('#sidebar').toggleClass('active');
-});
-
-
-
-
+</script>
 @endsection

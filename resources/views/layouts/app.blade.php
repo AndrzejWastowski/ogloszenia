@@ -18,60 +18,27 @@
     <!-- Your custom styles (optional) -->
     <link href="{{ asset('css/style.min.css"') }} rel="stylesheet">
 
-
-    <!-- Scripts -->
-
-
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+ 
     <link href="{{ asset('css/addons.css') }}" rel="stylesheet">
 
-    <style type="text/css">
-    html,
-    body,
-    header,
-    .carousel {
-      height: 60vh;
-    }
-
-    @media (max-width: 740px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-
-    @media (min-width: 800px) and (max-width: 850px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-
-  </style>
 </head>
 <body>
     <div id="app">
-            @include('layouts.menu_top')
+        @include('layouts.menu_top')
 
         <main class="py-4">
+        <div class="container-fluid">
             @yield('content')
+        </div>
         </main>
     </div>
 
-    @include('layouts.footer')
+        @include('layouts.footer')
 
 
 
@@ -91,12 +58,13 @@
     <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization
-        //new WOW().init();
+        new WOW().init();
 
         $(document).ready(function () {
+        //js code... 
 
-        @yield('java_script')
     });
     </script>
+@yield('java_script')
 </body>
 </html>

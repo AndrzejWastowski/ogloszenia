@@ -1,65 +1,55 @@
-  <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
-
-      <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://ogloszenia.kutno.net.pl" target="_blank">
+<!--Navbar-->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar  bg-dark">
+<div class="container">
+  <!-- Navbar brand -->
+  <a class="navbar-brand waves-effect" href="{{ route('start') }}" target="_blank">
       {{ config('app.name', 'Ogłoszenia KCI') }}
       </a>
 
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+  <form class="form-inline my-2 my-lg-0 ml-auto">
+    <input class="form-control" type="search" placeholder="szukaj" aria-label="szukaj">
+    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Szukaj</button>
+  </form>
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
 
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Drobne
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link waves-effect" href="#">Nieruchomości
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link waves-effect" href="#">Motoryzacja
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link waves-effect" href="#">Drobne
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="/szukaj" target="_blank">Szukaj</a>
-          </li>
-          
-        </ul>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
 
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-         
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-twitter"></i> Kontakt
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-              target="_blank">
-              <i class="fab fa-github mr-2"></i>Pomoc
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
+    </ul>
+    <!-- Links -->
+
+    
+ 
+
+    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -98,9 +88,8 @@
                             </li>
                         @endguest
                     </ul>
-
-      </div>
-
-    </div>
-  </nav>
-  <!-- Navbar -->
+  </div>
+  <!-- Collapsible content -->
+</div>
+</nav>
+<!--/.Navbar-->
