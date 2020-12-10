@@ -2,7 +2,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar  bg-dark">
 <div class="container">
   <!-- Navbar brand -->
-  <a class="navbar-brand waves-effect" href="{{ route('start') }}" target="_blank">
+  <a class="navbar-brand waves-effect" href="{{ route('start') }}" >
       {{ config('app.name', 'Ogłoszenia KCI') }}
       </a>
 
