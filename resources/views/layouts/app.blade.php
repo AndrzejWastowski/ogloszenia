@@ -66,5 +66,30 @@
     });
     </script>
 @yield('java_script')
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDj3PZf6zYfUBIpzUCmrbN-nLHUtt469KE",
+    authDomain: "ogloszeniapp.firebaseapp.com",
+    databaseURL: "https://ogloszeniapp.firebaseio.com",
+    projectId: "ogloszeniapp",
+    storageBucket: "ogloszeniapp.appspot.com",
+    messagingSenderId: "117418882172",
+    appId: "1:117418882172:web:b2a3a8d2151e79896105f9",
+    measurementId: "G-3M130618GB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 </html>

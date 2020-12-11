@@ -22,6 +22,20 @@ Route::get('/start', [App\Http\Controllers\StartController::class, 'index'])->na
 Auth::routes();
 Route::get('/home/tablica', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/select', [App\Http\Controllers\HomeController::class, 'select'])->name('select');
+
+Route::get('/home/add/small', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/small');
+Route::get('/home/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
+Route::get('/home/add/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/estates');
+Route::get('/home/add/jobs', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/jobs');
+
+
+
+Route::get('/home/list/small', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/small');
+Route::get('/home/list/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/automotive');
+Route::get('/home/list/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/estates');
+
+
 
 
 Route::group(['namespace' => 'App\Http\Controllers'], function(){

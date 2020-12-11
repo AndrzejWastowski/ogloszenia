@@ -7,7 +7,7 @@
         <ul class="list-unstyled components">
       
             <li class="active">
-                <a href="/home/dodaj/">Dodaj ogłoszenie</a>
+                <a href="{{ route('select') }}">Dodaj ogłoszenie</a>
             </li>
 
             
@@ -15,13 +15,13 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Twoje Ogłoszenia</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="#">Ogłoszenia drobne</a>
+                        <a href="{{ route('home/list/small') }}">Ogłoszenia drobne</a>
                     </li>
                     <li>
-                        <a href="#">Nieruchomości</a>
+                        <a href="{{ route('home/list/estates') }}">Nieruchomości</a>
                     </li>
                     <li>
-                        <a href="#">Motoryzacja</a>
+                        <a href="{{ route('home/list/automotive') }}">Motoryzacja</a>
                     </li>
                 </ul>
             </li>

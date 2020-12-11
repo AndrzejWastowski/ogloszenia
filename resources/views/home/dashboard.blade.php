@@ -18,6 +18,8 @@
                         </div>
                     @endif
                     {{ __('Cześć  użytkowniku:') }} <strong> {{ Auth::user()->name }}</strong>
+
+                    
                 </div>
             </div>
         </div>
