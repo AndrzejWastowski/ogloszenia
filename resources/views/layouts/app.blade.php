@@ -31,7 +31,7 @@
     <div id="app">
         @include('layouts.menu_top')
 
-        <main class="py-4">
+        <main class="py-4 mt-7">
         <div class="container-fluid">
             @yield('content')
         </div>

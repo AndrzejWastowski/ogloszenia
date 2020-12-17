@@ -33,12 +33,13 @@
                         </li>
                     </ul>
                 
-                    <form action="{{ route('small_ads_content_post') }}"  class="border border-light p-5" method="POST" role="form" >
+                    <form action="{{ route('small_ads_content_post') }}"  method="POST" role="form" >
                
                        <input type="hidden" name="id" value=0>   
                        <input type="hidden" name="adressId" value=0>
                        <input type="hidden" name="portalId" value=0>                      
                        <input type="hidden" name="recomended" value="#ffffff">
+                       
                        @csrf
 
                         @if ($errors->any())
