@@ -7,10 +7,22 @@
         <ul class="list-unstyled components">
       
             <li class="active">
-                <a href="{{ route('select') }}">Dodaj ogłoszenie</a>
+            <a href="#AddSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dodaj Ogłoszenie</a>
             </li>
 
             
+
+            <ul class="collapse list-unstyled" id="AddSubmenu">
+                    <li><a href="{{ route('small_ads_content') }}">Ogłoszenia drobne</a></li>
+                    <li><a href="{{ route('small_ads_content') }}">Usługi</a></li>
+                    <li><a href="{{ route('home/add/estates') }}">Nieruchomości</a></li>
+                    <li><a href="{{ route('home/add/automotive') }}">Motoryzacja</a></li>
+                    <li><a href="{{ route('home/add/jobs') }}">Praca</a></li>
+                    <li><a href="{{ route('small_ads_content') }}">Towarzyskie</a></li>
+                    <li><a href="{{ route('small_ads_content') }}">Zgubione/znalezione</a></li>
+                </ul>
+
+
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Twoje Ogłoszenia</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">

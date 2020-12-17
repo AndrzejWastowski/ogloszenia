@@ -24,7 +24,9 @@ Route::get('/home/tablica', [App\Http\Controllers\HomeController::class, 'index'
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/select', [App\Http\Controllers\HomeController::class, 'select'])->name('select');
 
-Route::get('/home/add/small', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/small');
+Route::get('/home/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content'])->name('small_ads_content');
+Route::post('/home/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content_post'])->name('small_ads_content_post');
+
 Route::get('/home/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
 Route::get('/home/add/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/estates');
 Route::get('/home/add/jobs', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/jobs');

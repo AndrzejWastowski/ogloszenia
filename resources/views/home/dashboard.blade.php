@@ -17,8 +17,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('Cześć  użytkowniku:') }} <strong> {{ Auth::user()->name }}</strong>
-
+                 
+                    @yield('step')
                     
                 </div>
             </div>

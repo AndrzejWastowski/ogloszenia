@@ -51,13 +51,13 @@
                     </li>
                 </ul>
                 <ul>
-                    <li><a href="{{ route('home/add/small') }}">Ogłoszenia drobne</a></li>
-                    <li><a href="{{ route('home/add/small') }}">Usługi</a></li>
+                    <li><a href="{{ route('home/add/small_ads') }}">Ogłoszenia drobne</a></li>
+                    <li><a href="{{ route('home/add/small_ads') }}">Usługi</a></li>
                     <li><a href="{{ route('home/add/estates') }}">Nieruchomości</a></li>
                     <li><a href="{{ route('home/add/automotive') }}">Motoryzacja</a></li>
                     <li><a href="{{ route('home/add/jobs') }}">Praca</a></li>
-                    <li><a href="{{ route('home/add/small') }}">Towarzyskie</a></li>
-                    <li><a href="{{ route('home/add/small') }}">Zgubione/znalezione</a></li>
+                    <li><a href="{{ route('home/add/small_ads') }}">Towarzyskie</a></li>
+                    <li><a href="{{ route('home/add/small_ads') }}">Zgubione/znalezione</a></li>
                 </ul>
             </div>
         </div>
