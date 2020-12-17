@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdsContentsTable extends Migration
+class CreateSmallContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAdsContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ads_contents', function (Blueprint $table) {
+        Schema::create('small_ads_contents', function (Blueprint $table) {
             $table->increments('id')->comment('unikatowy identyfikator');
-            $table->integer('ads_categories_id')->unsigned()->comment('kategoria towaru');
-            $table->integer('ads_sub_categories_id')->unsigned()->comment('podkategoria towaru połączona z kategorią');
-            //$table->integer('ads_user_group_id')->unsigned()->comment('wewnętrzna grupa użytkownika (opcjonalnie) jeśli sprzedaje kilka przedmiotów tego typu');
-            $table->enum('ads_classified_enum', ['sprzedam','kupię','zamienię','oddam','wypożyczę'])->comment('typ ogłoszenia, sprzedak kupie zamienie itd..');
+            $table->integer('small_ads_categories_id')->unsigned()->comment('kategoria towaru');
+            $table->integer('small_ads_sub_categories_id')->unsigned()->comment('podkategoria towaru połączona z kategorią');
+            //$table->integer('small_ads_user_group_id')->unsigned()->comment('wewnętrzna grupa użytkownika (opcjonalnie) jeśli sprzedaje kilka przedmiotów tego typu');
+            $table->enum('small_ads_classified_enum', ['sprzedam','kupię','zamienię','oddam','wypożyczę'])->comment('typ ogłoszenia, sprzedak kupie zamienie itd..');
             $table->integer('users_id')->unsigned()->comment('id użytkownika który dodał ogłoszenie');
             $table->string('name', 250)->comment('nazwa sprzedawanego towaru');
             $table->text('lead')->comment('krótki opis sprzedawanego towaru, max 512 znaków')->collation('utf8_polish_ci');
@@ -54,6 +54,6 @@ class CreateAdsContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ads_contents');
+        Schema::dropIfExists('small_ads_contents');
     }
 }

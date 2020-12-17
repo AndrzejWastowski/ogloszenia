@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdsPhotosTable extends Migration
+class CreateSmallAdsPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAdsPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ads_photos', function (Blueprint $table) {
+        Schema::create('small_ads_photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ads_contents_id')->comment('zawartosc do której jest dodane zdjęcie');
+            $table->integer('small_ads_contents_id')->comment('zawartosc do której jest dodane zdjęcie');
             ;
             $table->integer('sort')->comment('ustalanie kolejności w grupie  zdejeć do danego ogłoszenia');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -30,6 +30,6 @@ class CreateAdsPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ads_photos');
+        Schema::dropIfExists('small_ads_photos');
     }
 }
