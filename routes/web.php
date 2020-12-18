@@ -37,6 +37,8 @@ Route::get('/home/list/small', [App\Http\Controllers\HomeController::class, 'ind
 Route::get('/home/list/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/automotive');
 Route::get('/home/list/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/estates');
 
+Route::get('/pomoc', [App\Http\Controllers\InfoController::class, 'help'])->name('help');
+
 
 
 

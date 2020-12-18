@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Home\Add;
+namespace App\Http\Controllers\Home\Lists;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
