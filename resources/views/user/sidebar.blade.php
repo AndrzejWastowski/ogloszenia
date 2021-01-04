@@ -27,13 +27,13 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Twoje Ogłoszenia</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="{{ route('home/list/small') }}">Ogłoszenia drobne</a>
+                        <a href="{{ route('home/lists/small') }}">Ogłoszenia drobne</a>
                     </li>
                     <li>
-                        <a href="{{ route('home/list/estates') }}">Nieruchomości</a>
+                        <a href="{{ route('home/lists/estates') }}">Nieruchomości</a>
                     </li>
                     <li>
-                        <a href="{{ route('home/list/automotive') }}">Motoryzacja</a>
+                        <a href="{{ route('home/lists/automotive') }}">Motoryzacja</a>
                     </li>
                 </ul>
             </li>

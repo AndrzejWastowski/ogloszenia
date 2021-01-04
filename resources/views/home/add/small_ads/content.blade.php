@@ -97,28 +97,31 @@
                             <div class="row">                                
                                     <div class="col-6">
                                     <label for="category"><strong>Kategoria</strong></label>
-                                        <select class="browser-default custom-select mb-4 title" name="adsCategoriesId" id="adsCategoriesId" required>
+                                        <select class="browser-default custom-select mb-4 title" name="smallAdsCategoriesId" id="smallAdsCategoriesId" required>
                                                 <option value="" diabled selected="">Wybierz kategorię</option>  
+                                                @foreach($categories as $category)
+                                                <option value="{{$category->id}}" >{{$category->name}}</option>
+                                            @endforeach
                                             
                                         </select>
                                     </div>
                                     <div class="col-6">
                                         <label for="select">Podkategoria</label>
-                                        <select class="browser-default custom-select mb-4" name="adsSubCategoriesId" id="adsSubCategoriesId" required>
-                                            <option value="" diabled selected="">Wybierz Najpierw kategorię</option>                                
+                                        <select class="browser-default custom-select mb-4" name="smallAdsSubCategoriesId" id="smallAdsSubCategoriesId" required>
+                                            <option value="" diabled selected="">Wybierz najpierw kategorię</option>                                
                                         </select>
                                     </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <label for="select">Start ogłoszenia</label>                                                                               
-                                        <input placeholder="Data publikacji" type="text" id="dateStart" name="dateStart" class="form-control datepicker" required>
+                                        <input placeholder="Data publikacji" type="text" id="dateStart" name="dateStart" class="form-control datepicker" data-provide="datepicker" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="select">Na ile czasu</label>
                                     <select class="browser-default custom-select mb-4" id="dateEnd" name="dateEnd" >
                                         <option value="7" selected="">Tydzien</option>
-                                        <option value="14">Dwa tygonie</option>
+                                        <option value="14">Dwa tygodnie</option>
                                         <option value="30">Miesiąc</option>                                        
                                     </select>
                                 </div>
@@ -149,7 +152,7 @@
                                     <div class="col-4">
                                         <div class="md-form">                                                  
                                                 <select class="browser-default custom-select mb-4" name="invoice" id="invoice" required>
-                                                    <option value="0" diabled selected="">wybierz rodzaj rachunku</option>
+                                                    <option value="0" diabled selected="">Wybierz rodzaj rachunku</option>
                                                     <option value="Nie wystawiam faktury" >Nie wystawiam faktury</option>
                                                     <option value="Faktura VAT">Faktura z VAT</option>
                                                     <option value="Faktura Vat-marża">Faktura Vat-marża</option>
@@ -199,35 +202,21 @@
 
 @endsection
 
-@section('scripts')
+@section('java_script')
 
 <script type="text/javascript">
 
 $( document ).ready(function() {
-
-    var today = new Date();
-
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    today = yyyy + "-" + mm + '-' + dd;
-    
-    $('.stepper').mdbStepper();
-
-    $("#price").on('change', function(e) {
-        value = formatCurrency(e.target.value) 
-        $("#price").val(value);
-        //console.log(value);
-    });
+    const date = new Date();
 
     $( "#dateStart" ).datepicker({
       
       dayNamesShort: [ "Pn", "Wt", "Śr", "Czw", "Pt", "So", "Nd" ],
-      dateFormat: 'yy-mm-dd'
-}
-).val(today);
- 
+      dateFormat: 'yy-mm-dd',
+      
+      setDate: date
+      
+    });
 
     $(document).on('change', '#price', function (e) {    
         
@@ -243,12 +232,12 @@ $( document ).ready(function() {
     });  
 
    
-    $(document).on('change', '#adsCategoriesId', function (e) {    
+    $(document).on('change', '#smallAdsCategoriesId', function (e) {    
         //  console.log(e);    
         var cat_id = e.target.value;
-        $.get('/internal-api/ads_subcat/' + cat_id,function(data){
-            $('#adsSubCategoriesId').empty();
-            $.each(data,function(index,subCatObj){ $('#adsSubCategoriesId').append('<option value="'+subCatObj.id+'">'+subCatObj.name+'</option>'); }); 
+        $.get('/internal-api/add/subcat/' + cat_id,function(data){
+            $('#smallAdsSubCategoriesId').empty();
+            $.each(data,function(index,subCatObj){ $('#smallAdsSubCategoriesId').append('<option value="'+subCatObj.id+'">'+subCatObj.name+'</option>'); }); 
         });
     });     
 });

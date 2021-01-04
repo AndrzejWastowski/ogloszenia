@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,22 +21,39 @@ Route::get('/', function () {
 
 Route::get('/start', [App\Http\Controllers\StartController::class, 'index'])->name('start');
 Auth::routes();
-Route::get('/home/tablica', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home/select', [App\Http\Controllers\HomeController::class, 'select'])->name('select');
 
-Route::get('/home/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content'])->name('small_ads_content');
-Route::post('/home/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content_post'])->name('small_ads_content_post');
+#group route to task of adding services
+Route::group(['prefix' => 'home'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/tablica', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
-Route::get('/home/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
-Route::get('/home/add/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/estates');
-Route::get('/home/add/jobs', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/jobs');
+    Route::get('/select', [App\Http\Controllers\HomeController::class, 'select'])->name('select');
+
+    Route::get('/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content'])->name('small_ads_content');
+    Route::post('/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content_post'])->name('small_ads_content_post');
+
+    Route::get('/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
+    Route::get('/add/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/estates');
+    Route::get('/add/jobs', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/jobs');
+    
+
+
+    Route::get('/lists/small', [App\Http\Controllers\Home\Lists\SmallAdsController::class, 'lists'])->name('home/lists/small');
+    Route::get('/lists/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/lists/automotive');
+    Route::get('/lists/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/lists/estates');
+});
 
 
 
-Route::get('/home/list/small', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/small');
-Route::get('/home/list/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/automotive');
-Route::get('/home/list/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/list/estates');
+
+
+    #dodatki do dodawania ogłoszen - ajax
+    Route::group(['prefix' => 'internal-api'], function () {
+    
+        //Route::get('/add/subcat/{categoriesId}', ['categoriesId'=>'0','uses'=>'Ads\SubCategoriesController@getJson']);        
+        Route::get('/add/subcat/{categoriesId}', ['categoriesId'=>'0', App\Http\Controllers\Home\Add\SmallAdsSubcategoriesController::class, 'getJson']);
+        
+    }); 
 
 Route::get('/pomoc', [App\Http\Controllers\InfoController::class, 'help'])->name('help');
 

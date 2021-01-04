@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace  App\Repositories;
+namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsContent;
+use App\Models\SmallAdsSubCategorie;
 use App\Repositories\Eloquent\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-class AdRepository extends BaseRepository
+class SmallAdsRepository extends BaseRepository
 {
 
     /**
@@ -36,7 +37,7 @@ class AdRepository extends BaseRepository
         return $this->model->where($params)->first();
     }
 
-  /*  public function removeAdImage(int $adId): bool
+/*  public function removeAdImage(int $adId): bool
     {
         $ad = $this->get($adId);
         return $ad->getAllImages()->delete();

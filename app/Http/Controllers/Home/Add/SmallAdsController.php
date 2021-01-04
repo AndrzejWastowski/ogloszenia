@@ -6,12 +6,41 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Repositories\Eloquent\SmallAdsRepository;
+use App\Repositories\Eloquent\SmallAdsCategoriesRepository;
+use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
 //use App\Repositories\AdPhotosRepository;
-//use App\Repositories\AdCategoriesRepository;
-//use App\Repositories\AdSubCategoriesRepository;
 
-class SmallAdsController extends Controller
+
+final class SmallAdsController extends Controller
 {   
+
+    private $smallAdsRepository;
+    private $smallAdsCategoriesRepository;
+    private $smallAdsSubCategoriesRepository;
+
+    public function __construct(
+    
+        SmallAdsRepository $smallAdsRepository,
+        SmallAdsCategoriesRepository $smallAdsCategoriesRepository,
+        SmallAdsSubCategoriesRepository $smallAdsSubCategoriesRepository
+
+        /*AdPhotosRepository $photoRepository,         
+        PaymentsRepository $paymentsRepository,
+        Session $session, 
+        Carbon $carbon, 
+        Storage $storage
+        */
+
+        )
+        {
+
+            $this->middleware('auth');
+            $this->smallAdsRepository = $smallAdsRepository;
+            $this->smallAdsCategoriesRepository = $smallAdsCategoriesRepository;
+        }
+
+
+
     public function index(Request $request)
     {
         $request->session()->forget('small_ads');
@@ -25,14 +54,14 @@ class SmallAdsController extends Controller
     {
         $request->session()->forget('small_ads');
 
-      //  $products = \App\Register::all();
-
-        $content['id'] = 0;
-        $content['name'] = 'Lorem ipsum';
+        $content = $this->smallAdsRepository->get(0);
+        
+        $categories = $this->smallAdsCategoriesRepository->getAllCategories();  
+       
 
         return view('home.add.small_ads.content',[
             'content' => $content,
-            'content->id' => $content['id']
+            'categories' => $categories
             
         ]);
 
