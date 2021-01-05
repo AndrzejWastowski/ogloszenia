@@ -7,13 +7,13 @@
         <h3><strong>Ogłoszenia Drobne - Dodaj Treść</strong></h3>
                
                 <ul class="stepper stepper-horizontal">
-                        <li class="active">
+                        <li >
                             <a class="p-1 m-1" href="#">
                                 <span class="circle">1</span> 
                                 Treść
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a class="p-1 m-1" href="#">
                                 <span class="circle">2</span> 
                                     Zdjęcia
@@ -33,12 +33,9 @@
                         </li>
                     </ul>
                 
-                    <form action="{{ route('small_ads_content_post') }}"  method="POST" role="form" >
+                    <form action="{{ route('small_ads_photo_post') }}"  method="POST" role="form" >
 
-                        <input type="hidden" name="id" value=0>   
-                        <input type="hidden" name="adressId" value=0>
-                        <input type="hidden" name="portalId" value=0>                      
-                        <input type="hidden" name="recomended" value="#ffffff">
+                        
 
                         @csrf
 

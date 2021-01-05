@@ -52,12 +52,10 @@ final class SmallAdsController extends Controller
 
     public function content(Request $request)
     {
-        $request->session()->forget('small_ads');
+        $request->session()->forget('small_ads_contents');
 
-        $content = $this->smallAdsRepository->get(0);
-        
+        $content = $this->smallAdsRepository->get(0);     
         $categories = $this->smallAdsCategoriesRepository->getAllCategories();  
-       
 
         return view('home.add.small_ads.content',[
             'content' => $content,
@@ -67,6 +65,45 @@ final class SmallAdsController extends Controller
 
     }
 
+
+    public function content_post(Request $request)
+    {
+        
+
+       // dd($request->dateStart);
+
+        $validatedData = $request->validate([
+            //'id' => ['required', 'integer', 'min:0' 'max:255'],
+            'adressId' => ['required', 'min:0', 'max:255'],
+            'portalId' => ['required', 'min:0','max:255'],
+            'recomended' => ['required', 'max:255'],
+            'adsClassifiedEnum' => ['required',  'max:255'],
+            'smallAdsCategoriesId' => ['required',  'max:255'],
+            'smallAdsSubCategoriesId'  => ['required',  'max:255'],
+            'dateStart' => ['required','date_format:Y-m-d'],
+            'name' => ['required'],
+            'lead' => ['required'],
+            'dateEnd' => ['required','min:0'],
+            'description' => ['required'],
+            'price' => ['required'],
+            'items' => ['required'],
+            'invoice' => ['required'],
+            'condition' => ['required']
+        ]);
+
+        if(empty($request->session()->get('small_ads_contents'))){
+            $small_ads_contents = new \App\Models\SmallAdsContent();
+            $small_ads_contents->fill($validatedData);
+            $request->session()->put('small_ads_contents', $small_ads_contents);
+        }else{
+            $small_ads_contents = $request->session()->get('small_ads_contents');
+            $small_ads_contents->fill($validatedData);
+            $request->session()->put('small_ads_contents', $small_ads_contents);
+        }
+
+        return view('home.add.small_ads.photo',[compact('small_ads_contents')]);
+
+    }
     public function createStep1(Request $request)
     {
         $register = $request->session()->get('register');
