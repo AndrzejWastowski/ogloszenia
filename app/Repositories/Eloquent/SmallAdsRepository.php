@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsContent;
+use App\Models\SmallAdsPhoto;
+use App\Models\small_ads_photos;
+
+use App\Models\SmallAdsCategorie;
 use App\Models\SmallAdsSubCategorie;
 use App\Repositories\Eloquent\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
+
+
 
 class SmallAdsRepository extends BaseRepository
 {
@@ -22,15 +28,22 @@ class SmallAdsRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function get(int $adId): ?SmallAdsContent
+    public function get(int $id): ?SmallAdsContent
     {
-        return $this->model->find($adId);
+        return $this->model->find($id);
     }
 
     public function save(SmallAdsContent $ad):bool
     {
         return $ad->save();
     }
+
+
+    public function update(SmallAdsContent $ad):bool
+    {
+        return   $ad->update();
+    }
+
 
     public function getSingleSmallAds(array $params): ?SmallAdsContent
     {
@@ -101,9 +114,7 @@ class SmallAdsRepository extends BaseRepository
     {
         $result = $this->model
         ->limit(1)
-        ->with('user')
-        ->with('photos')
-        ->with('small_adsCategories')
+        ->with('user')        
         ->where('small_ads_contents.status', 'unfinished')
         ->where('small_ads_contents.users_id', $userId)
         ->orderBy('small_ads_contents.id', 'desc')
@@ -118,7 +129,7 @@ class SmallAdsRepository extends BaseRepository
         $result = $this->model
          ->with('user')
          ->with('photos')
-         ->with('small_adsCategories')
+         ->with('small_ads_categories')
          ->where('small_ads_contents.status', 'enabled')
          ->get();
 
@@ -302,11 +313,9 @@ class SmallAdsRepository extends BaseRepository
             ->join('users', 'users.id', '=', 'small_ads_contents.users_id')
 
         ->where('small_ads_contents.id', '=', $id)
-        ->with('photos')
-        ->with('small_adsSubCategories')
         ->first();
         
-        //dd($results);
+       //dd($results);
         return $results;
     }
 
@@ -340,11 +349,10 @@ class SmallAdsRepository extends BaseRepository
         ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
         ->join('small_ads_sub_categories', 'small_ads_contents.small_ads_sub_categories_id', '=', 'small_ads_sub_categories.id')        
         ->join('small_ads_photos', 'small_ads_contents.id', '=', 'small_ads_photos.small_ads_contents_id')
-   
         ->where('small_ads_contents.status', 'active')        
         ->limit($howMutch)     
         ->get();
-         
+
         //dd($results);
         return  $results;
     }

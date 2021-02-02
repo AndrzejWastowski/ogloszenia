@@ -4,7 +4,7 @@
 
    <div class="row justify-content-center">
         <div class="col-md-12">
-        <h3><strong>Ogłoszenia Drobne - Dodaj Treść</strong></h3>
+        <h3><strong>Ogłoszenia Drobne - Dodaj Zdjęcia</strong></h3>
                
                 <ul class="stepper stepper-horizontal">
                         <li >
@@ -33,9 +33,7 @@
                         </li>
                     </ul>
                 
-                    <form action="{{ route('small_ads_photo_post') }}"  method="POST" role="form" >
-
-                        
+                    <form action="{{ route('small_ads_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >                        
 
                         @csrf
 
@@ -49,138 +47,58 @@
                             Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
                         @endif
                             
+                        <div class="row">
+                    @foreach ($photos as $photo)     
+                    <div class="col-lg-4 col-md-12 mb-4">                    
+                    <!--Modal: Name-->
+                        <div class="modal fade" id="modal{{ $photo->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">                  
+                            <!--Content-->
+                            <div class="modal-content">  
+                            <!--Body-->
+                                <div class="modal-body mb-0 p-0">  
+                                <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                    <iframe class="embed-responsive-item" src="{{ $storage->url('drobne/'.$photo->id.'.jpg') }}" allowfullscreen></iframe>
+                                </div>  
+                                </div>  
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <span class="mr-4">{{ $request->name }}</span>
+                                <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Zamknij podgląd</button>
+                            </div>
+                            </div>
+                            <!--/.Content-->                  
+                        </div>
+                        </div>
+                        <!--Modal: Name-->                  
+                        <a><img class="img-fluid z-depth-1" src="{{ $storage->url('drobne/thumb/'.$photo->id.'.jpg') }}" alt="images" data-toggle="modal" data-target="#modal{{ $photo->id }}"></a>
+                    </div>
+                    <!-- Grid column -->       
+                    @endforeach 
+                    </div>       
+
+                        <form action="{{ route('small_ads_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >   
+                        csrf
+
+                        @if ($errors->any())
+                            <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
+                            <ul class="alert alert-danger">                                
+                                @foreach ($errors->all() as $error)
+                                    <li> {!! $error !!} </li>
+                                @endforeach
+                            </ul>                            
+                            Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
+                        @endif
+
+                        <input type="file" multiple name="photos[]" accept="image/jpeg,image/gif,image/png">
                             <strong>{{ session('komunikat') }}</strong> 
                             <div class="row">                                     
-                                <div class="col-12">
-                                    <label class="category"><strong>Rodzaj ogłoszenia:</strong></label>
-                                </div> 
+                              
+                            <button type="submit" class="btn btn-success">Wgraj zdjęcia na serwer</button>
+                              
                             </div>
-                            <div class="row">  
-                                                    
-                                <div class="col-2">
-                                    <div class="form-check">                    
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="form-check-input" id="sprzedam" name="adsClassifiedEnum" value="sprzedam" checked>
-                                            <label class="form-check-label" for="sprzedam">Sprzedam</label>
-                                        </div>
-                                    </div>                                            
-                                </div> 
-                                <div class="col-2"> 
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="kupie" name="adsClassifiedEnum" value="kupię" >
-                                        <label class="form-check-label" for="kupie">Kupię</label>
-                                    </div>
-                                </div>
-                                <div class="col-2"> 
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="oddam" name="adsClassifiedEnum" value="oddam" >
-                                        <label class="form-check-label" for="oddam">Oddam</label>
-                                    </div>
-                                </div>
-                                <div class="col-2"> 
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="zamienie" name="adsClassifiedEnum" value="zamienie" >
-                                        <label class="form-check-label" for="zamienie">Zamienię</label>
-                                    </div>
-                                </div>
-                                <div class="col-2"> 
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="wypozycze" name="adsClassifiedEnum" value="wypozycze" >
-                                        <label class="form-check-label" for="wypozycze">Wypożyczę</label>
-                                    </div>
-                                </div>
-                            </div>  
-                            
-                            <div class="row">                                
-                                    <div class="col-6">
-                                    <label for="category"><strong>Kategoria</strong></label>
-                                        <select class="browser-default custom-select mb-4 title" name="smallAdsCategoriesId" id="smallAdsCategoriesId" required>
-                                                <option value="" diabled selected="">Wybierz kategorię</option>  
-                                                @foreach($categories as $category)
-                                                <option value="{{$category->id}}" >{{$category->name}}</option>
-                                            @endforeach
-                                            
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="select">Podkategoria</label>
-                                        <select class="browser-default custom-select mb-4" name="smallAdsSubCategoriesId" id="smallAdsSubCategoriesId" required>
-                                            <option value="" diabled selected="">Wybierz najpierw kategorię</option>                                
-                                        </select>
-                                    </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="select">Start ogłoszenia</label>                                                                               
-                                        <input placeholder="Data publikacji" type="text" id="dateStart" name="dateStart" class="form-control datepicker" data-provide="datepicker" required>
-                                </div>
-                                <div class="col-6">
-                                    <label for="select">Na ile czasu</label>
-                                    <select class="browser-default custom-select mb-4" id="dateEnd" name="dateEnd" >
-                                        <option value="7" selected="">Tydzien</option>
-                                        <option value="14">Dwa tygodnie</option>
-                                        <option value="30">Miesiąc</option>                                        
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="md-form">
-                            <input type="text" id="name" name="name" class="form-control rounded mb-4" placeholder="Nazwa towaru / produktu" value="{{ session()->get('small_ads.name') }}" required >
-                            </div>
-
-                            <div class="md-form">
-                                <textarea class="form-control rounded-0 p-2" id="lead" name="lead" rows="2" placeholder="Opis skrócony (do 250znaków)" required>{{ session()->get('small_ads.lead') }}</textarea>
-                            </div>
-
-                            <div class="md-form">
-                                <textarea class="form-control rounded-0 p-2" id="description" name="description" rows="5" placeholder="Treść ogłoszenia" required>{{ $content->description ?? ''}}</textarea>
-                            </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <div class="md-form">
-                                            <input type="text" id="price" name="price" class="form-control mb-4" placeholder="Cena" value="{{ $content->price ?? ''}}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                            <div class="md-form">
-                                                <input type="text" id="items" name="items" class="form-control mb-4" placeholder="sztuk" value="{{ $content->items ?? '' }}" required>
-                                            </div>
-                                    </div>   
-                                    <div class="col-4">
-                                        <div class="md-form">                                                  
-                                                <select class="browser-default custom-select mb-4" name="invoice" id="invoice" required>
-                                                    <option value="0" diabled selected="">Wybierz rodzaj rachunku</option>
-                                                    <option value="Nie wystawiam faktury" >Nie wystawiam faktury</option>
-                                                    <option value="Faktura VAT">Faktura z VAT</option>
-                                                    <option value="Faktura Vat-marża">Faktura Vat-marża</option>
-                                                    <option value="Faktura bez VAT">Faktura bez VAT</option>                                              
-                                                </select>                                                 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">                       
-                                    <div class="col-2">
-                                        <div class="form-check">                                                   
-                                            <label class="">Rodzaj oferty:</label>                                                    
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="form-check">                    
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="form-check-input" id="conditionNew" name="condition" value="nowe" checked>
-                                                <label class="form-check-label" for="condition_new">Produkt nowy</label>
-                                            </div>
-                                        </div>                                            
-                                    </div> 
-                                    <div class="col-3"> 
-                                        <div class="md-form">  
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" id="conditionUsed" name="condition" value="używane" >
-                                                <label class="form-check-label" for="conditionUsed">Produkt używany</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                                
+                        </form>
+                            <div class="row"> 
                                 <div class="row">  
                                     <div class="col-9"></div>
                                     <div class="col-3">                                       

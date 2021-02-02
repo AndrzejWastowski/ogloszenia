@@ -21,7 +21,9 @@ class SmallAdsSubCategoriesRepository extends BaseRepository
 
     public function getSubcategoriesByCategoriesId($id)
     {
-        return $this->model->where('small_ads_categories_id', $id)->orderBy('name', 'asc')->get();
+        $data = $this->model->where('small_ads_categories_id', $id)->orderBy('name', 'asc')->get();
+       // dd($data);
+         return $data;
     }
 
     /*

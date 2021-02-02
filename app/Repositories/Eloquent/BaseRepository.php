@@ -2,7 +2,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\EloquentRepositoryInterface; 
-use Illuminate\Database\Eloquent\Model;   
+use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements EloquentRepositoryInterface 
 {     
@@ -26,11 +26,17 @@ class BaseRepository implements EloquentRepositoryInterface
     *
     * @return Model
     */
-    public function create(array $attributes): Model
+    public function create(array $data): Model
     {
-        return $this->model->create($attributes);
+        return $this->model->create($data);
     }
- 
+
+    /*
+    public function update(array $data, $id):bool
+    {
+        return $this->model->where('id', '=', $id)->update($data);
+    } 
+    */   
     /**
     * @param $id
     * @return Model
@@ -39,4 +45,21 @@ class BaseRepository implements EloquentRepositoryInterface
     {
         return $this->model->find($id);
     }
+
+
+    public function getAll($columns = array('*'))
+    {
+        return $this->model->get($columns);
+    }
+
+    /**
+    * @param $id
+    * @return Boolean
+    */   
+    public function delete($id): bool
+    {
+        return $this->model->destroy($id);
+    }
+
+
 }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\
+use Illuminate\Support\Facades\DB;
 
 
 class CreateSmallAdsContentsTable extends Migration
@@ -26,10 +26,8 @@ class CreateSmallAdsContentsTable extends Migration
             $table->text('lead')->comment('krótki opis sprzedawanego towaru, max 512 znaków')->collation('utf8_polish_ci');
             $table->text('description')->comment('opis sprzedawanego towaru')->collation('utf8_polish_ci');
             $table->decimal('price', 10, 2)->comment('cena');
-            $table->integer('items')->unsigned()->comment('ilosc sztuk');
-            $table->integer('adress_id')->unsigned()->default(0)->comment('adres pobierany z osobnej tabeli');
-            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');
-            $table->tinyInteger('portal_id')->unsigned()->default(0)->comment('id portalu z którego uzytkownik dodawał ogłoszenie');
+            $table->integer('items')->unsigned()->comment('ilosc sztuk');            
+            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');            
             $table->dateTime('date_start')->comment('data pojawienia się ogłoszenia na portalu (można zrobić opóźnienie)');
             $table->dateTime('date_end')->comment('data_waznosci ogłoszenia');
             $table->enum('condition', ['nowe','używane'])->comment('rodzaj sprzedawanego produktu - nowy czy uzywany');
@@ -40,6 +38,12 @@ class CreateSmallAdsContentsTable extends Migration
             $table->tinyInteger('bestseller')->default(0)->comment('czy ogłoszenie jest bestsellerem');
             $table->tinyInteger('sale')->default(0)->comment('czy ogłoszenie jest wyprzedażowe');            
             
+            $table->ipAddress('adress_ip')->default(0)->comment('adres IP użytkownika do logów ');
+            $table->string('host')->nullable()->comment('Host - wpis pobrany z serwera');
+            $table->string('browser')->nullable()->comment('Host - wpis pobrany z serwera');
+            $table->tinyInteger('portal_id')->unsigned()->default(0)->comment('id portalu z którego uzytkownik dodawał ogłoszenie');
+
+
             $table->enum('highlighted', ['#ffffff','#c8cdff','#ffc8dd','#c8ffdf','#eac8ff','#fff7c8'])->default('#ffffff')->comment('czy ogłoszenie jest wyróżnione (kolor)');            
             $table->enum('recomended',['none','Promocja!','Wyprzedaż','Przecena','Bestseller'])->default('none')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
             $table->enum('status',['unfinished','active','disabled','removed','blocked'])->default('unfinished')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
