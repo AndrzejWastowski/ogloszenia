@@ -33,21 +33,7 @@
                         </li>
                     </ul>
                 
-                    <form action="{{ route('small_ads_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >                        
-
-                        @csrf
-
-                        @if ($errors->any())
-                            <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
-                            <ul class="alert alert-danger">                                
-                                @foreach ($errors->all() as $error)
-                                    <li> {!! $error !!} </li>
-                                @endforeach
-                            </ul>                            
-                            Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
-                        @endif
-                            
-                        <div class="row">
+                <div class="row">
                     @foreach ($photos as $photo)     
                     <div class="col-lg-4 col-md-12 mb-4">                    
                     <!--Modal: Name-->
@@ -58,7 +44,7 @@
                             <!--Body-->
                                 <div class="modal-body mb-0 p-0">  
                                 <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                                    <iframe class="embed-responsive-item" src="{{ $storage->url('drobne/'.$photo->id.'.jpg') }}" allowfullscreen></iframe>
+                                    <iframe class="embed-responsive-item"  class="image-fluid" src="{{ $storage->url('public/small_ads/'.$photo->name.'_d.jpg') }}" allowfullscreen></iframe>
                                 </div>  
                                 </div>  
                             <!--Footer-->
@@ -71,45 +57,50 @@
                         </div>
                         </div>
                         <!--Modal: Name-->                  
-                        <a><img class="img-fluid z-depth-1" src="{{ $storage->url('drobne/thumb/'.$photo->id.'.jpg') }}" alt="images" data-toggle="modal" data-target="#modal{{ $photo->id }}"></a>
+                        <a><img class="img-fluid z-depth-1" src="{{ $storage->url('public/small_ads/'.$photo->name.'_kw.jpg') }}" alt="images" data-toggle="modal" data-target="#modal{{ $photo->id }}"></a>
                     </div>
                     <!-- Grid column -->       
                     @endforeach 
-                    </div>       
+                </div>       
 
-                        <form action="{{ route('small_ads_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >   
-                        csrf
-
-                        @if ($errors->any())
+                <form action="{{ route('small_ads_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >                           
+              
+                    @if ($errors->any())
                             <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
                             <ul class="alert alert-danger">                                
                                 @foreach ($errors->all() as $error)
                                     <li> {!! $error !!} </li>
                                 @endforeach
                             </ul>                            
-                            Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
-                        @endif
+                        Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
+                    @endif
 
-                        <input type="file" multiple name="photos[]" accept="image/jpeg,image/gif,image/png">
-                            <strong>{{ session('komunikat') }}</strong> 
-                            <div class="row">                                     
-                              
-                            <button type="submit" class="btn btn-success">Wgraj zdjęcia na serwer</button>
-                              
+                    <input type="file" multiple name="photos[]" accept="image/jpeg,image/gif,image/png">                        
+                    
+                    <button type="submit" class="btn btn-success">Wgraj zdjęcia na serwer</button>                            
+                    
+                    </form>
+
+                    <form action="{{ route('small_ads_promotion') }}"  method="POST" enctype="multipart/form-data" role="form" >
+                    @csrf
+
+                    @if ($errors->any())
+                        <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
+                        <ul class="alert alert-danger">                                
+                            @foreach ($errors->all() as $error)
+                                <li> {!! $error !!} </li>
+                            @endforeach
+                        </ul>                            
+                        Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
+                    @endif
+                            <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4"><button class="btn btn-info btn-block my-4 text-white" type="submit">
+                                <strong>Dalej</strong></button>
+                            </div>
                             </div>
                         </form>
-                            <div class="row"> 
-                                <div class="row">  
-                                    <div class="col-9"></div>
-                                    <div class="col-3">                                       
-                                        <div class="form-check">
-
-                                            <button class="btn btn-info btn-block my-4 text-white" type="submit"><strong>Dalej</strong></button>
-                                        </div>
-                                    </div>                                   
-                                </div>                         
-                        </form>
-            </div>
+            
     </div>
 
 @endsection

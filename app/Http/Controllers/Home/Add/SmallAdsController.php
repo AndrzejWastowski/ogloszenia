@@ -13,7 +13,7 @@ use App\Repositories\Eloquent\SmallAdsPhotosRepository;
 
 
 use App\Http\Requests\CreateUpdateSmallAdsRequest;
-
+use App\Http\Requests\CreateSmallAdsPhotoRequest;
 
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
@@ -112,6 +112,7 @@ final class SmallAdsController extends Controller
 
         $data = $request->validated();        
 
+         //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
             
             //aktualizacja wczesniej dodawanego ogłoszenia
@@ -129,26 +130,17 @@ final class SmallAdsController extends Controller
                 // trzeba jeszcze zapisać dane do logów... 
                 Auth::logout();
             }
-                        
-           
         }
         else
         {
-              //dodanie całkiem nowego ogłoszenia
-              $small_ads_contents = new \App\Models\SmallAdsContent();
-              
-      
+            //dodanie całkiem nowego ogłoszenia
+            $small_ads_contents = new \App\Models\SmallAdsContent();
         }
 
         
+        //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
+        
         $small_ads_contents->users_id = Auth::id();
-    
-       // $small_ads_contents->setTable('small_ads_contents');
-      //  $small_ads_contents->setConnection('mysql');
-
-        //dd($small_ads_contents);
-        //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
-
         $small_ads_contents->set_name($data['name']);
         $small_ads_contents->set_lead($data['lead']);
         $small_ads_contents->set_description($data['description']);
@@ -164,105 +156,100 @@ final class SmallAdsController extends Controller
         $small_ads_contents->set_small_ads_sub_categories_id($data['small_ads_sub_categories_id']);
         $small_ads_contents->set_small_ads_classified_enum($data['small_ads_classified_enum']);
         $small_ads_contents->set_users_id(Auth::id());
-        
-        //$small_ads_contents->fill($data);  
 
         $small_ads_contents->set_portal_id((int)(env('PORTAL_ID')));
-      
-        $small_ads_contents->save();
-        
-        // $this->smallAdsRepository->GETlAS
 
-        //return view('home.add.small_ads.photo',[compact('small_ads_contents')]);
+        $small_ads_contents->save();
+        $request->session()->put('small_ads_contents', $small_ads_contents);
+        
+
         return redirect('home/add/small_ads/photo');
     }
 
-
-
-
     public function photo(Request $request)
     {
+        $small_ads_contents = $request->session()->get('small_ads_contents'); 
+        $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($small_ads_contents->get_id());   
 
-       // $small_ads_contents = $request->session()->get('small_ads_contents');       
-       // dd('dodawanie zdjec controller photo'); 
-        $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($request->id);    
-        
+        $contents = Storage::url('public/small_ads/601aaab35cbdb_kw.jpg');
 
-
-        //$photos = $this->smallAdsPhotoRepository->getAllPhotosByUser();  
-
+       // dd($contents);
 
         return view('home.add.small_ads.photo', [
             'request'=>$request,
             'photos' => $photos,        
             'storage' => $this->storage
         ]);
-
     }
 
 
-    public function photo_post(Request $request)
+    public function photo_post(CreateSmallAdsPhotoRequest $request)
     {
-        $validatedData = $request->validate(['file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
-
-        if (empty($request->session()->get('small_ads_contents'))) {
-            $small_ads_contents = new \App\Models\SmallAdsContent();
-            $small_ads_contents->fill($validatedData);
-            $request->session()->put('small_ads_contents', $small_ads_contents);
-        } else {
-            $small_ads_contents = $request->session()->get('small_ads_contents');
-            $small_ads_contents->fill($validatedData);
-            $request->session()->put('small_ads_contents', $small_ads_contents);
-        }
-
-
+        //$validatedData = $request->validate(['photos[]' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']);
         // create an image manager instance with favored driver
-        $manager = new ImageManager(array('driver' => 'imagick'));
+       // dd($request);
+       // $data = $request->validate();
 
-        // to finally create image instances
-       // $img = Image::make($request->file('photo')->getRealPath());
-        $pom = 0;
+        $small_ads_contents = $request->session()->get('small_ads_contents');
+
+      //  dd($small_ads_contents);
+
         if ($request->hasFile('photos')) 
         {
-            $images = $request->file('photos');
-        
-            
-            foreach ($images as $image) {
-                // rozmiar miniaturki oraz nazwa pliku
-                $width = 300;
-                $height = 250;
+
+            $sort = 0;
 
 
-                $output =  'public/small_ads/'.$image->getClientOriginalName();
+            foreach ($request->file('photos') as $image) {
 
-                
-
+                $name = uniqid();                
 
                 $small_ads_photo = new \App\Models\SmallAdsPhoto();
 
-                $this->smallAdsPhotosRepository->save($small_ads_photo);
-
+                $small_ads_photo->set_name($name);
+                $small_ads_photo->set_small_ads_contents_id($small_ads_contents->get_id());
+                $small_ads_photo->set_sort($sort);
                 
+                $small_ads_photo->save();
 
+                // generujemy miniaturke
+                $width = 300;
+                $height = 250;
+                $output =  'public/small_ads/'.$name.'_m.jpg';
 
-                if (create_mini_image($width, $height, $image, $output)) {
+                create_image($width, $height, $image, $output);
 
-                    
-                    //dodanie do bazy danych
-                }
-            }
+                // generujemy srednie foto
+                $width = 1920;
+                $height = 1080;
+                $output =  'public/small_ads/'.$name.'_d.jpg';
+
+                create_image($width, $height, $image, $output);
+
+                // generujemy kw foto
+                $width = 350;                
+                $output =  'public/small_ads/'.$name.'_kw.jpg';
+
+                create_square_image($width, $image, $output);
+
+                $sort++;
+                }       
     }
     else 
     {
         dd('brak zdjec');
-    }
-
-        
+    }       
         return redirect('/home/add/small_ads/photo');
         //return view('home.add.small_ads.photo',[compact('small_ads_contents')]);
 
     }
 
+    public function promotion(Request $request)
+    {
+        return view('home.add.small_ads.promotion', [
+            'request'=>$request
+        ]);
+    }
 
     public function createStep1(Request $request)
     {

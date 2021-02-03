@@ -33,6 +33,7 @@ Route::group(['prefix' => 'home'], function () {
     Route::post('/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content_post'])->name('small_ads_content_post');
     Route::get('/add/small_ads/photo', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'photo'])->name('small_ads_photo');
     Route::post('/add/small_ads/photo', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'photo_post'])->name('small_ads_photo_post');
+    Route::post('/add/small_ads/promotion', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'promotion'])->name('small_ads_promotion');
 
     Route::get('/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
     Route::get('/add/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/estates');
