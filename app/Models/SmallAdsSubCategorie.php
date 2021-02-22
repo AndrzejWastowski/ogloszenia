@@ -14,6 +14,8 @@ class SmallAdsSubCategorie extends Model
      * @var array
      */
     protected $fillable = ['id', 'small_ads_categories_id', 'name', 'description'];
+    
+    protected $table = 'small_ads_sub_categories';
 
     /*
     * The attributes that are mass assignable.

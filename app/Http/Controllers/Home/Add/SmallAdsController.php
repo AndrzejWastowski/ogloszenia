@@ -10,15 +10,18 @@ use App\Repositories\Eloquent\SmallAdsRepository;
 use App\Repositories\Eloquent\SmallAdsCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsPhotosRepository;
+use Stevebauman\Location\Facades\Location;
 
-
-use App\Http\Requests\CreateUpdateSmallAdsRequest;
-use App\Http\Requests\CreateSmallAdsPhotoRequest;
+use App\Http\Requests\SmallAdsCreateUpdateRequest;
+use App\Http\Requests\SmallAdsCreatePhotoRequest;
+use App\Http\Requests\SmallAdsPromotionRequest;
 
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 //use App\Repositories\AdPhotosRepository;
 
 
@@ -30,9 +33,11 @@ final class SmallAdsController extends Controller
     private $smallAdsSubCategoriesRepository;
     private $smallAdsPhotosRepository;
     private $storage;
+  
 
     public function __construct(
     
+       
         SmallAdsRepository $smallAdsRepository,
         SmallAdsCategoriesRepository $smallAdsCategoriesRepository,
         SmallAdsSubCategoriesRepository $smallAdsSubCategoriesRepository,
@@ -45,11 +50,11 @@ final class SmallAdsController extends Controller
         Carbon $carbon, 
         Storage $storage
         */
-      
         )
         {
 
             $this->middleware('auth');
+            
             $this->smallAdsRepository = $smallAdsRepository;
             $this->smallAdsCategoriesRepository = $smallAdsCategoriesRepository;
             $this->smallAdsSubCategoriesRepository = $smallAdsSubCategoriesRepository;
@@ -62,16 +67,34 @@ final class SmallAdsController extends Controller
     public function index(Request $request)
     {
      //   $request->session()->forget('small_ads');
-
      //   $products = \App\Register::all();
-
       //  return view('home.add.small_ads.step1');
     }
 
     public function content(Request $request)
     {
+    
+        $user['browser'] = Arr::get($_SERVER,'SERVER_SOFTWARE');
+        $user['ip'] = Arr::get($_SERVER,'REMOTE_ADDR');
+        $user['port'] = Arr::get($_SERVER,'REMOTE_PORT');
 
-//        $request->session()->forget('small_ads_contents');
+        $ip = '91.228.136.201';
+        $location = Location::get($ip);
+
+      if ($location!=null)
+      {
+        $user['countryCode'] = $location->countryName;        
+        $user['regionCode'] = $location->countryName;
+        $user['regionName'] = $location->regionName;
+        $user['zipCode'] = $location->zipCode;
+        $user['cityName'] = $location->cityName;
+        $user['latitude'] = $location->latitude;
+        $user['longitude'] = $location->longitude;
+
+     //   dd($user);
+      }
+
+        //$request->session()->forget('small_ads_contents');
 
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         //$content = $this->smallAdsRepository->getNonUnfinishedSmallAds(55);  
@@ -96,21 +119,27 @@ final class SmallAdsController extends Controller
         $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($content['small_ads_categories_id'] );  
        // dd($subcategories);
 
+       
+       $user = Auth::user();
+       // dd($user);
+
 
         return view('home.add.small_ads.content',[
             'content' => $content,
             'categories' => $categories,
             'subcategories' => $subcategories,
+            'user' => $user
         
         ]);
 
     }
 
 
-    public function content_post(CreateUpdateSmallAdsRequest $request)
+    public function content_post(SmallAdsCreateUpdateRequest $request)
     {
 
-        $data = $request->validated();        
+        $data = $request->validated();  
+        
 
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
@@ -183,7 +212,7 @@ final class SmallAdsController extends Controller
     }
 
 
-    public function photo_post(CreateSmallAdsPhotoRequest $request)
+    public function photo_post(SmallAdsCreatePhotoRequest $request)
     {
         //$validatedData = $request->validate(['photos[]' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']);
         // create an image manager instance with favored driver
@@ -250,6 +279,103 @@ final class SmallAdsController extends Controller
             'request'=>$request
         ]);
     }
+
+
+    public function promotion_post(SmallAdsPromotionRequest $request)
+    {
+        // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
+
+
+
+        
+        //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
+        
+        $data = $request->validated(); 
+
+        if (isset($data['promoted']))
+        {
+            $data['promoted'] = true;
+        }
+        else 
+        {
+            $data['promoted'] = false;
+        }
+
+        if (isset($data['topp']))
+        {
+            $top = true;
+        }
+        else 
+        {
+            $top = false;
+        }
+
+        
+        if (isset($data['master_portal']))
+        {
+            $master_portal = true;
+        }
+        else 
+        {
+            $master_portal = false;
+        }
+
+        
+
+        $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
+        $small_ads_contents->set_highlighted($data['highlighted']);        
+        $small_ads_contents->set_promoted($data['promoted']);
+        $small_ads_contents->set_recomended($data['recomended']);
+        $small_ads_contents->set_master_portal($master_portal);
+        $small_ads_contents->set_top($top);
+        $small_ads_contents->save();
+
+        return redirect('/home/add/small_ads/summary');
+
+    }
+
+    public function summary(Request $request)
+    {
+
+        $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
+        $data = strtotime($content['date_start']);
+        $teraz = strtotime(now());
+
+        if (($data - $teraz)<0)
+        { 
+            $content['date_start'] = date('Y-m-d'); 
+        }
+        else
+        {
+            $content['date_start'] = date('Y-m-d',$data);
+        }
+//       dd($content);
+        $categories = $this->smallAdsCategoriesRepository->getCategoriesById($content['small_ads_categories_id']);  
+
+       // dd($categories);
+        $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($content['small_ads_categories_id'] );  
+       // dd($subcategories);
+       $payments = ' 0.00 ';
+
+       $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($content->get_id());   
+
+       $user = Auth::user();
+        return view('home.add.small_ads.summary',[
+
+            'content' => $content,            
+            'categories' => $categories,
+            'subcategories' => $subcategories,
+            'photos' => $photos,
+            'storage' => $this->storage,
+            'payments' => $payments,
+            'section' => 'small_ads'
+        
+        ]);
+
+
+;
+    }
+
 
     public function createStep1(Request $request)
     {

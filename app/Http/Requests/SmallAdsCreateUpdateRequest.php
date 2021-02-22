@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUpdateSmallAdsRequest extends FormRequest
+class SmallAdsCreateUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,20 @@ class CreateUpdateSmallAdsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'integer', 'min:0'],
+            'id' => 'required|integer|min:0',
             'name' => 'required|min:10|max:255',
             'lead' => 'required|min:30|max:255',
             'description' => 'required|min:30|max:2500',
-            'small_ads_categories_id' => 'required|integer|min:1',
-            'small_ads_sub_categories_id' => 'required|integer|min:1',
+            'items' => 'required|numeric|min:0|max:99999999',
+            'price' => 'required|numeric|min:0|max:99999999',
             'date_start' => 'required|date|date_format:Y-m-d|after:yesterday',
             'date_end' => 'required|integer|min:1|digits_between: 1,30',
-            'price' => 'required|numeric|min:0|max:99999999',
-            'items' => 'required|numeric|min:0|max:99999999',
-            'invoice' => 'required|in:Nie wystawiam faktury,Faktura VAT,Faktura Vat-marża,Faktura bez VAT',
-            'small_ads_classified_enum' => 'required|in:sprzedam,kupię,zamienię,oddam,wypożyczę',
+            'small_ads_categories_id' => 'required|integer|min:1',
+            'small_ads_sub_categories_id' => 'required|integer|min:1',
+            'small_ads_classified_enum' => 'required|in:sprzedam,kupię,zamienię,oddam,wypożyczę',            
+            'contact_email' => 'email:rfc,dns',
+            'contact_phone' => '',
+            'invoice' => 'required|in:Nie wystawiam faktury,Faktura VAT,Faktura Vat-marża,Faktura bez VAT',                        
             'condition' => 'required|in:nowe,używane',
             
         ];

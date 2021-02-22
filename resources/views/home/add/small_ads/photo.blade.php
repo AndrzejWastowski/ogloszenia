@@ -8,7 +8,7 @@
                
                 <ul class="stepper stepper-horizontal">
                         <li >
-                            <a class="p-1 m-1" href="#">
+                            <a class="p-1 m-1" href="{{ route('small_ads_content') }}">
                                 <span class="circle">1</span> 
                                 Treść
                             </a>
@@ -64,7 +64,7 @@
                 </div>       
 
                 <form action="{{ route('small_ads_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >                           
-              
+                @csrf
                     @if ($errors->any())
                             <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
                             <ul class="alert alert-danger">                                
@@ -81,26 +81,16 @@
                     
                     </form>
 
-                    <form action="{{ route('small_ads_promotion') }}"  method="POST" enctype="multipart/form-data" role="form" >
-                    @csrf
-
-                    @if ($errors->any())
-                        <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
-                        <ul class="alert alert-danger">                                
-                            @foreach ($errors->all() as $error)
-                                <li> {!! $error !!} </li>
-                            @endforeach
-                        </ul>                            
-                        Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
-                    @endif
-                            <div class="row">
-                            <div class="col-8"></div>
-                            <div class="col-4"><button class="btn btn-info btn-block my-4 text-white" type="submit">
-                                <strong>Dalej</strong></button>
+                    
+                
+                    <div class="row">  
+                        <div class="col-9"></div>
+                        <div class="col-3">                                       
+                            <div class="form-check">
+                                <a href="{{ route('small_ads_promotion') }}"><button class="btn btn-info btn-block my-4 text-white" type="submit"><strong>Dalej</strong></button></a>
                             </div>
-                            </div>
-                        </form>
-            
+                        </div>                                   
+                    </div>
     </div>
 
 @endsection

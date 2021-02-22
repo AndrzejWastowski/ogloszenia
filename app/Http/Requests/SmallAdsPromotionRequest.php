@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSmallAdsPhotoRequest extends FormRequest
+class SmallAdsPromotionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +23,14 @@ class CreateSmallAdsPhotoRequest extends FormRequest
      */
     public function rules()
     {
-        return ['photos' => 'required',
-            'photos.*' => 'mimes:jpeg,png,jpg,gif|max:2048'
+        return [
+
+            'recomended' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',
+           
+            'highlighted' => 'required|in:#ffffff,#c8cdff,#ffc8dd,#c8ffdf,#eac8ff,#fff7c8',
+           
+
+
             
         ];
     }
@@ -36,8 +43,9 @@ class CreateSmallAdsPhotoRequest extends FormRequest
     public function messages()
     {
         return [
-            'photos.required' => 'wysłanie zdjęcia jest jest wymagane!<br>',
-           
+            'recomended.required' => 'pole <b>nazwa</b> jest wymagane!<br>',            
+            'highlighted.required' => 'pole <b>nazwa</b> jest wymagane!<br>',
+
         ];
     }
 
