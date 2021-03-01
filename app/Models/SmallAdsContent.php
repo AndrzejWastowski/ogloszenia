@@ -30,7 +30,7 @@ class SmallAdsContent extends Model
     'small_ads_classified_enum',
     'views',
     'contact_phone',
-    'contact_mail',
+    'contact_email',
     'adresses_id',
     'master_portal',
     'promoted',
@@ -43,8 +43,7 @@ class SmallAdsContent extends Model
     'portal_id', 
     'status',
     'invoice', 
-    
-   ];
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -52,8 +51,8 @@ class SmallAdsContent extends Model
      * @var array
      */
     protected $hidden = [
-   'created_at', 'updated_at',
-   ];
+    'created_at', 'updated_at',
+    ];
 /*
     public function small_ads_categories_id()
     {
@@ -181,9 +180,9 @@ class SmallAdsContent extends Model
         return $this->contact_phone;
     }
 
-    public function contact_mail(): string
+    public function contact_email(): string
     {
-        return $this->contact_mail;
+        return $this->contact_email;
     }
 
     public function adresses_id(): int
@@ -210,8 +209,7 @@ class SmallAdsContent extends Model
     {
         return $this->master_portal;
     }
-    
-    
+
     public function get_highlighted(): string
     {
         return $this->highlighted;
@@ -231,7 +229,7 @@ class SmallAdsContent extends Model
     {
         return $this->host;
     }
-    
+
     public function get_port(): int
     {
         return $this->get_port;
@@ -339,9 +337,9 @@ class SmallAdsContent extends Model
     {
         $this->contact_phone = $value;
     }
-    public function set_contact_mail(?string $value): void
+    public function set_contact_email(?string $value): void
     {
-        $this->contact_mail = $value;
+        $this->contact_email = $value;
     }
 
     public function set_adradresses_idess_id(?int $value): void

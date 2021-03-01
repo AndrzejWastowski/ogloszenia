@@ -34,7 +34,7 @@ class CreateSmallAdsContentsTable extends Migration
             $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');            
             
             $table->string('contact_phone',100)->nullable()->comment('kontakt tel do sprzedawcy');  
-            $table->string('contact_mail',200)->nullable()->comment('kontakt mail do sprzedawcy');  
+            $table->string('contact_email',200)->nullable()->comment('kontakt e-mail do sprzedawcy');  
             $table->integer('adresses_id')->nullable()->unsigned()->comment('polaczenie do kontaktu adresowego');  
 
             //zmiana znacznikow, na wiecej możliwości

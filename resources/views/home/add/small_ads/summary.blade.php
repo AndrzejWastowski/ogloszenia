@@ -40,13 +40,18 @@
         </ol>
     </nav>  
     <div class="card m-1">
-        <div class="card-body" style="background-color:{{   $content->highlighted  }}">    
-            <p class="text-right mb-0 pb-0"> <small>wystawiono: <strong>{{  $content->date_start  }}</strong></small>
-            dodał: {{ $user->author }}</p>
-            kontakt: {{ $content->phone }}</p>
-            kontakt: {{ $content->mail }}</p>
-            <h5 class="card-title"> <strong>{{ $content->name }} </strong></h5>            
-            
+    
+        <div class="card-body p-3" style="background-color:{{ $content->highlighted }}">  
+            <div class="row mb-0 pb-0">
+                <div class="col-xl-8"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div> 
+                <div class="col-xl-4 text-right">
+                    <ul class="list-unstyled">
+                            <li><small>nr ogł.<strong> D/{{ $content->id }}</strong></small></li>            
+                            <li><small>dodano: <strong>{{  $content->date_start  }}</strong></small></li>            
+                            <li><small>autor: <strong>{{  $content->User->name }} </strong></small></li>            
+                    </ul>          
+                </div>
+            </div>
             <div class="card-text black-text">                
                 <div class="row">
                     <div class="col-3">
@@ -102,51 +107,55 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-    <div class="row mt-2">
-        <div class="col-12">
-            <label ><strong>PODSUMOWANIE</strong></label>
-            <p>Sprzedawca: <a><strong>{{ $content->User->name }} </strong></a>,
-            <p> Wystawiono od: <strong>{{  $content->date_start  }}</strong> do <strong>{{  $content->date_end  }}</strong></p>
 
-            <label ><strong>OPCJE PROMOWANE</strong></label>
-            <ul class="list-unstyled"> 
-                <li>Napis przy ogłoszeniu: <strong>{{ $content->recomended }}</strong></li>
-                <li>Podświetlenie: <div class="color-block" style="background-color: {{ $content->highlighted }}"> TŁO</div></li>
-                <li>Ogłoszenie będzie wyświetlane od: <strong>{{ $content->date_start }}</strong> do <strong>{{ $content->date_end }}</strong></li>
-                <li>kwota do zapłaty: <strong>{{ $payments }}</strong> pln</li>
-            </ul>
         </div>
     </div>
+    
+    <div class="container">
+        <div class="row mt-2 p-2">
+            <div class="col-12">
+                <label ><strong>PODSUMOWANIE</strong></label>
+                <p>Sprzedawca: <a><strong>{{ $content->User->name }} </strong></a>,
+                <p> Wystawiono od: <strong>{{  $content->date_start  }}</strong> do <strong>{{  $content->date_end  }}</strong></p>
+
+                <label ><strong>OPCJE PROMOWANE</strong></label>
+                <ul class="list-unstyled"> 
+                    <li>Napis przy ogłoszeniu: <strong>{{ $content->recomended }}</strong></li>
+                    <li>Tło ogłoszenia: <span class="color-block" style="background-color: {{ $content->highlighted }}"> text ogłoszenia</span></li>
+                    <li>Ogłoszenie będzie wyświetlane od: <strong>{{ $content->date_start }}</strong> do <strong>{{ $content->date_end }}</strong></li>
+                    <li>Kwota do zapłaty: <strong>{{ $payments }}</strong> pln</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
 
                 @if ($payments > 0)
-                <form action="{{  route('AddPayments') }}"  class="border border-light p-5" method="POST" role="form" >
+                <form action="{{  route('AddPayments') }}"  class="p-5" method="POST" role="form" >
                     @csrf                    
                     <input type="hidden" name="section" value="{{ $section }}">
                     <input type="hidden" name="payment_id" value="{{ $payments->id }}">
                     <div class="row">  
-                            <div class="col-9"></div>
-                            <div class="col-3">                                       
+                            <div class="col-12 col-lg-9">Przejdź do płatności</div>
+                            <div class="col-12 col-lg-3">                                       
                                 <div class="form-check">
-                                    <button class="btn btn-info btn-block my-4 text-white" type="submit"><strong>Dalej</strong></button>
+                                    <button class="btn btn-info btn-block my-4 text-white" type="submit"><strong>do płatności</strong></button>
                                 </div>
                             </div>                                      
                                                     </div>   
                 </form>
                 @else
 
-                <form action="{{ route('small_ads_success_post') }}"  class="border border-light p-5" method="POST" role="form" >
+                <form action="{{ route('small_ads_success_post') }}"  class="p-5" method="POST" role="form" >
                     @csrf
                     
                     <input type="hidden" name="payment_id" value="{{ $payments }}">
                     <input type="hidden" name="section" value="{{ $section }}">
                     <div class="row">  
-                                <div class="col-12 col-lg-3"></div>
+                                <div class="col-12 col-lg-9"></div>
                                 <div class="col-12 col-lg-3">                                       
                                     
-                                    <button class="btn btn-info btn-block text-white" type="submit"><strong>Dalej</strong></button>
+                                    <button class="btn btn-info btn-block text-white" type="submit"><strong>Dodaj</strong></button>
                                     
                                 </div>                                   
                             </div>  
@@ -155,12 +164,10 @@
                 @endif
             </div>
     </div>
-   </div>
+</div>
 
-
-     
 @endsection    
 
 @section('scripts')
-   
+
 @endsection

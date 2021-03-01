@@ -10,11 +10,16 @@ use App\Repositories\Eloquent\SmallAdsRepository;
 use App\Repositories\Eloquent\SmallAdsCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsPhotosRepository;
+use App\Repositories\Eloquent\PriceRepository;
+use App\Repositories\Eloquent\PaymentRepository;
+
+
 use Stevebauman\Location\Facades\Location;
 
 use App\Http\Requests\SmallAdsCreateUpdateRequest;
 use App\Http\Requests\SmallAdsCreatePhotoRequest;
 use App\Http\Requests\SmallAdsPromotionRequest;
+use App\Http\Requests\SmallAdsPaymentRequest;
 
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
@@ -32,16 +37,16 @@ final class SmallAdsController extends Controller
     private $smallAdsCategoriesRepository;
     private $smallAdsSubCategoriesRepository;
     private $smallAdsPhotosRepository;
+    private $priceRepository;
     private $storage;
-  
 
     public function __construct(
     
-       
         SmallAdsRepository $smallAdsRepository,
         SmallAdsCategoriesRepository $smallAdsCategoriesRepository,
         SmallAdsSubCategoriesRepository $smallAdsSubCategoriesRepository,
         SmallAdsPhotosRepository $smallAdsPhotosRepository,
+        PriceRepository $priceRepository,
         Storage $storage
 
         /*AdPhotosRepository $photoRepository,         
@@ -59,6 +64,7 @@ final class SmallAdsController extends Controller
             $this->smallAdsCategoriesRepository = $smallAdsCategoriesRepository;
             $this->smallAdsSubCategoriesRepository = $smallAdsSubCategoriesRepository;
             $this->smallAdsPhotosRepository = $smallAdsPhotosRepository;
+            $this->priceRepository = $priceRepository;
             $this->storage = $storage::disk('local');
         }
 
@@ -73,27 +79,7 @@ final class SmallAdsController extends Controller
 
     public function content(Request $request)
     {
-    
-        $user['browser'] = Arr::get($_SERVER,'SERVER_SOFTWARE');
-        $user['ip'] = Arr::get($_SERVER,'REMOTE_ADDR');
-        $user['port'] = Arr::get($_SERVER,'REMOTE_PORT');
-
-        $ip = '91.228.136.201';
-        $location = Location::get($ip);
-
-      if ($location!=null)
-      {
-        $user['countryCode'] = $location->countryName;        
-        $user['regionCode'] = $location->countryName;
-        $user['regionName'] = $location->regionName;
-        $user['zipCode'] = $location->zipCode;
-        $user['cityName'] = $location->cityName;
-        $user['latitude'] = $location->latitude;
-        $user['longitude'] = $location->longitude;
-
-     //   dd($user);
-      }
-
+ 
         //$request->session()->forget('small_ads_contents');
 
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
@@ -114,14 +100,13 @@ final class SmallAdsController extends Controller
             $content['date_start'] = date('Y-m-d',$data);
         }
 
-    //   dd($content);
+        // dd($content);
         $categories = $this->smallAdsCategoriesRepository->getAllCategories();  
         $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($content['small_ads_categories_id'] );  
-       // dd($subcategories);
+        // dd($subcategories);
 
-       
-       $user = Auth::user();
-       // dd($user);
+        $user = Auth::user();
+        // dd($user);
 
 
         return view('home.add.small_ads.content',[
@@ -184,13 +169,41 @@ final class SmallAdsController extends Controller
         $small_ads_contents->set_small_ads_categories_id($data['small_ads_categories_id']);
         $small_ads_contents->set_small_ads_sub_categories_id($data['small_ads_sub_categories_id']);
         $small_ads_contents->set_small_ads_classified_enum($data['small_ads_classified_enum']);
+        $small_ads_contents->set_contact_email($data['contact_email']);
+        $small_ads_contents->set_contact_phone($data['contact_phone']);
         $small_ads_contents->set_users_id(Auth::id());
 
         $small_ads_contents->set_portal_id((int)(env('PORTAL_ID')));
 
+        //logi przy ogloszeniu
+
+        $user['browser'] = Arr::get($_SERVER,'SERVER_SOFTWARE');
+        $user['ip'] = Arr::get($_SERVER,'REMOTE_ADDR');
+        $user['port'] = Arr::get($_SERVER,'REMOTE_PORT');
+        $user['host'] = Arr::get($_SERVER,'REMOTE_HOST');
+
+        $ip = '91.228.136.201';
+        $location = Location::get($ip);
+
+        if ($location!=null)
+        {
+            $user['countryCode'] = $location->countryName;        
+            $user['regionCode'] = $location->regionCode;
+            $user['regionName'] = $location->regionName;
+            $user['zipCode'] = $location->zipCode;
+            $user['cityName'] = $location->cityName;
+            $user['latitude'] = $location->latitude;
+            $user['longitude'] = $location->longitude;        
+        }
+
+
+        $small_ads_contents->set_adress_ip($user['ip']);
+        $small_ads_contents->set_host($user['host']);
+        $small_ads_contents->set_port($user['port']);
+        $small_ads_contents->set_browser($user['browser']);
+
         $small_ads_contents->save();
-        $request->session()->put('small_ads_contents', $small_ads_contents);
-        
+        $request->session()->put('small_ads_contents', $small_ads_contents);        
 
         return redirect('home/add/small_ads/photo');
     }
@@ -336,10 +349,13 @@ final class SmallAdsController extends Controller
 
     public function summary(Request $request)
     {
-
+        
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $data = strtotime($content['date_start']);
         $teraz = strtotime(now());
+
+       // dd($content);
+        $price = $this->priceRepository->getAll();  
 
         if (($data - $teraz)<0)
         { 
@@ -349,17 +365,44 @@ final class SmallAdsController extends Controller
         {
             $content['date_start'] = date('Y-m-d',$data);
         }
-//       dd($content);
+      // dd($content);
         $categories = $this->smallAdsCategoriesRepository->getCategoriesById($content['small_ads_categories_id']);  
 
        // dd($categories);
         $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($content['small_ads_categories_id'] );  
        // dd($subcategories);
-       $payments = ' 0.00 ';
 
-       $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($content->get_id());   
+       //zliczanie płatności po stronie serwera
 
-       $user = Auth::user();
+        $promoted_price = 0;
+        $top_price = 0;
+        $highlighted_price = 0;
+        $recomended_price = 0;
+
+        if ($content['date_end_promotion']>0) {
+
+            
+            if ($content['promoted']!=0) {
+                $promoted_price = $price['promoted_'.$content['date_end_promotion']];
+            }
+            if ($content['master_portal']!=0) {
+                $top_price = $price['master_portal_'.$content['date_end_promotion']];
+            }
+            if ($content['highlighted']!='#ffffff') {
+                $highlighted_price = $price['highlighted_'.$content['date_end_promotion']];
+            }
+            if ($content['recomended']!='none') {
+                $recomended_price = $price['recomended_'.$content['date_end_promotion']];
+            }
+        }
+
+        $payments = $promoted_price + $highlighted_price + $top_price + $recomended_price;
+
+//        dd($payments);
+
+        $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($content->get_id());   
+
+        $user = Auth::user();
         return view('home.add.small_ads.summary',[
 
             'content' => $content,            
@@ -368,14 +411,18 @@ final class SmallAdsController extends Controller
             'photos' => $photos,
             'storage' => $this->storage,
             'payments' => $payments,
-            'section' => 'small_ads'
+            'section' => 'small_ads',
+            'user' => $user
         
         ]);
-
-
-;
     }
 
+
+
+    public function summary_post(Request $request)
+    {
+        return view('/home/add/small_ads/payments');
+    }
 
     public function createStep1(Request $request)
     {
@@ -486,3 +533,4 @@ if(empty($request->session()->get('small_ads_contents'))){
     $request->session()->put('small_ads_contents', $small_ads_contents);
 }
 */
+

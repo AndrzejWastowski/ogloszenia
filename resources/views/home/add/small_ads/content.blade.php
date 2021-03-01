@@ -34,9 +34,8 @@
                     </ul>
                 
                     <form action="{{ route('small_ads_content_post') }}"  method="POST" role="form" >
-                    $subcategory->id == $content->small_ads_sub_categories_id ? 'selected' : ''
+
                         <input type="hidden" name="id" value="{{ $content->id==null ? 0  : $content->id  }}">   
-             
 
                         @csrf
 

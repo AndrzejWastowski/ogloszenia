@@ -76,8 +76,8 @@
                             <div class="row">                            
                                 <div class="col-3  p-0">                                       
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="topp" id="topp" value="true">
-                                        <label class="form-check-label" for="topp">w ogłoszeniach promowanych</label>
+                                        <input type="checkbox" class="form-check-input" name="promotion" id="promotion" value="true">
+                                        <label class="form-check-label" for="promotion">w ogłoszeniach promowanych</label>
                                     </div>
                                 </div>
                                 <div class="col-9">                                       
@@ -184,7 +184,7 @@
 
 var highligted="#ffffff";
 var master_portal = false;
-var topp = false;
+var promotion = false;
 
 $( document ).ready(function() {
     
@@ -207,40 +207,38 @@ function summary()
     else 
         highlighted = true;
 
-
-    top_price = 0;    
+    promotion_price = 0;    
     recomended_price = 0;
     master_portal_price = 0;    
     highlighted_price = 0;
-  
 
     switch (date_end_promotion)
     {
         
         case '7':
-            if (master_portal)    master_portal_price = 9;
-            if (topp)    top_price = 18;
-            if (highlighted) highlighted_price = 8;
-            if (recomended)  recomended_price = 4;
+            if (master_portal)  master_portal_price = 9;
+            if (promotion)      promotion_price = 18;
+            if (highlighted)    highlighted_price = 8;
+            if (recomended)     recomended_price = 4;
         break;
         case '14':
-            if (master_portal)    master_portal_price = 17;
-            if (topp)    top_price = 34;            
-            if (highlighted) highlighted_price = 14;
-            if (recomended)  recomended_price = 7;            
+            if (master_portal)  master_portal_price = 17;
+            if (promotion)      promotion_price = 34;            
+            if (highlighted)    highlighted_price = 14;
+            if (recomended)     recomended_price = 7;            
         break;
         case '30':
-            if (master_portal)    master_portal_price = 32;
-            if (topp)    top_price = 49;            
-            if (highlighted) highlighted_price = 26;
-            if (recomended)  recomended_price = 12;            
+            if (master_portal)  master_portal_price = 32;
+            if (promotion)      promotion_price = 49;            
+            if (highlighted)    highlighted_price = 26;
+            if (recomended)     recomended_price = 12;            
             
         break;
     }
 
-    var summary = recomended_price+master_portal_price+highlighted_price+top_price;
-    console.log('znaczniki - recomended: '+ recomended + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', top '+ topp + ' :suma ' + summary + ' + na ile czasu: '+date_end_promotion);
-    console.log('ceny - recomended: '+ recomended_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', top '+ top_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promotion);
+    var summary = recomended_price+master_portal_price+highlighted_price+promotion_price;
+    console.log('znaczniki - recomended: '+ recomended + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', promotion '+ promotion + ' :suma ' + summary + ' + na ile czasu: '+date_end_promotion);
+    console.log('ceny - recomended: '+ recomended_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', promotion '+ promotion_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promotion);
 
     document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary + '</strong> pln'
 }
@@ -268,15 +266,15 @@ function summary()
         summary();
     });     
 
-    $(document).on('change', '#topp', function (e) {    
+    $(document).on('change', '#promotion', function (e) {    
         
         if($(this).prop("checked") == true){
-                console.log(" topp is checked.");
-                topp = true;
+                console.log(" promotion is checked.");
+                promotion = true;
             }
             else if($(this).prop("checked") == false){
-                console.log(" top pis unchecked.");
-                topp = false;
+                console.log(" promotion pis unchecked.");
+                promotion = false;
             }
         summary();
     });     
@@ -296,7 +294,7 @@ function summary()
         });
 
 }
-var top_object = document.formPromotion.top;
+var promotion_object = document.formPromotion.promotion;
     var master_portal_object = document.formPromotion.master_portal;
   
 });

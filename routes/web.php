@@ -37,7 +37,10 @@ Route::group(['prefix' => 'home'], function () {
     Route::post('/add/small_ads/promotion', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'promotion_post'])->name('small_ads_promotion_post');
     Route::get('/add/small_ads/summary', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'summary'])->name('small_ads_summary');
     Route::post('/add/small_ads/summary', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'summary_post'])->name('small_ads_summary_post');
+    Route::get('/add/small_ads/success', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'summary_post'])->name('small_ads_success');
     Route::post('/add/small_ads/success', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'summary_post'])->name('small_ads_success_post');
+    Route::post('/add/small_ads/payments', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'payments'])->name('small_ads_payments');
+    Route::post('/add/small_ads/payments', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'payments'])->name('small_ads_payments_post');
 
     
 
