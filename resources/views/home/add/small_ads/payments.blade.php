@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row mt-2 p-2">
             <div class="col-12">
-               
+
             </div>
         </div>
     </div>

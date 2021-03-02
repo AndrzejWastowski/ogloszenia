@@ -19,7 +19,7 @@
                 <div class="card-header">{{ __('Ogłoszenia - strona głowna') }}</div>
 
                 <div class="card-body">
-                
+               
                 </div>
             </div>
         </div>

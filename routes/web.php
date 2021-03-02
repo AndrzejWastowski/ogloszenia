@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/start', [App\Http\Controllers\StartController::class, 'index'])->name('start');
+Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->name('start');
 Auth::routes();
 
 #group route to task of adding services

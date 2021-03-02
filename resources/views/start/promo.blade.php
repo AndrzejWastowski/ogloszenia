@@ -40,7 +40,7 @@
 
                                 <!--Card image-->
                                 <div class="view overlay">
-                                    <img src="{{ $storage->url('resources/drobne/'.$adsContent->ads_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
+                                    <img src="{{ $storage->url('/small_ads/'.$adsContent->ads_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>

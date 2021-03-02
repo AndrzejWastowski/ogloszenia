@@ -74,7 +74,7 @@
             <div class="view zoom z-depth-1">
                   
 
-                <img src="{{ $storage->url('resources/reklama/product1.jpg') }}" class="img-fluid" alt="sample image">
+                <img src="{{ $storage->url('reklama/product1.jpg') }}" class="img-fluid" alt="sample image">
                 <div class="mask rgba-white-light">
                     <div class="dark-grey-text  pt-4 ml-3 pl-3">
                         <div>
