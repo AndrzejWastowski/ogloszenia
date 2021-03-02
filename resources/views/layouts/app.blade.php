@@ -28,7 +28,8 @@
     <link href="{{ asset('css/addons.css') }}" rel="stylesheet">
 
 </head>
-<body>
+
+<body class="m-lg-5">
     <div id="app">
         @include('layouts.menu_top')
 
