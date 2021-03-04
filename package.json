@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "firebase-admin": "^9.4.2"
+        "firebase-admin": "^9.4.2",
+        "react-slideshow-image": "^3.4.3"
     }
 }

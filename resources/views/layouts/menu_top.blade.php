@@ -1,57 +1,36 @@
-<!--Navbar-->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar  bg-dark">
-<div class="container">
-  <!-- Navbar brand -->
-  <a class="navbar-brand waves-effect" href="{{ route('start') }}" >
-      {{ config('app.name', 'Ogłoszenia KCI') }}
-      </a>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">  
+    <div class="container">
+      <a class="navbar-brand" href="/start">{{ config('app.name', 'Ogłoszenia KCI') }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar_top" aria-controls="navbar_top" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <!-- Collapse button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <div class="navbar-collapse offcanvas-collapse" id="navbar_top">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="http://www.kutno.net.pl">kutno.net.pl</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown04">            
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Szukaj">
+        <button class="btn btn-outline-success" type="submit">Szukaj</button>
+      </form>
 
-  <!-- Collapsible content -->
-  <div class="collapse navbar-collapse" id="basicExampleNav">
-  <form class="form-inline my-2 my-lg-0 ml-auto">
-    <input class="form-control" type="search" placeholder="szukaj" aria-label="szukaj">
-    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Szukaj</button>
-  </form>
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
+        <ul class="navbar-nav  mb-2 mb-md-0 right-align">
 
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-
-    </ul>
-    <!-- Links -->
-
-    
- 
-
-    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
+        @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a>
@@ -64,11 +43,9 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">    {{ Auth::user()->name }}</a>
+                                
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('dashboard') }}">
                                         
@@ -87,9 +64,9 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
-  </div>
-  <!-- Collapsible content -->
-</div>
-</nav>
-<!--/.Navbar-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  

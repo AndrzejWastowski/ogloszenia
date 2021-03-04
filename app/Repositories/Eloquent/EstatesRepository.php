@@ -234,7 +234,7 @@ class EstatesRepository extends BaseRepository
             'estates_categories.link as estates_categories_link',
             'estates_groups.name as estates_groups_name',
             'estates_groups.description as estates_groups_description',
-            'estates_photos.id as estates_photos_id'
+            'estates_photos.name as estates_photos_name'
         )
         ->join('estates_categories', 'estates_contents.estates_categories_id', '=', 'estates_categories.id')        
         ->join('estates_groups', 'estates_contents.estates_groups_id', '=', 'estates_groups.id')        
@@ -252,3 +252,4 @@ class EstatesRepository extends BaseRepository
     }
 
 }
+

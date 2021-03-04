@@ -87,8 +87,9 @@
                     <!-- Grid row -->
                     <div class="row ">
 
+
                         @foreach ($adsNewOffer as $adsContent)   
-                       
+                       {{ $adsContent }}
                         <!--Grid column-->
                         <div class="col-lg-3 col-md-12 ">
 
@@ -97,7 +98,7 @@
 
                                 <!--Card image-->
                                 <div class="view overlay">
-                                    <img src="{{ $storage->url('resources/drobne/'.$adsContent->ads_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
+                                    <img src="{{ $storage->url('small_ads/'.$adsContent->ads_photos_name.'_kw.jpg') }}" class="card-img-top" alt="sample photo">
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -155,7 +156,7 @@
 
                                 <!--Card image-->
                                 <div class="view overlay">
-                                    <img src="{{ $storage->url('resources/drobne/'.$adsContent->ads_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
+                                    <img src="{{ $storage->url('resources/drobne/'.$adsContent->ads_photos_name.'_kw.jpg') }}" class="card-img-top" alt="sample photo">
                                     <a>
                                         <div class="mask rgba-white-slight"></div>
                                     </a>

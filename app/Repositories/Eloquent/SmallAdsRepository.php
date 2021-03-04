@@ -6,7 +6,6 @@ namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsContent;
 use App\Models\SmallAdsPhoto;
-use App\Models\small_ads_photos;
 
 use App\Models\SmallAdsCategorie;
 use App\Models\SmallAdsSubCategorie;
@@ -91,12 +90,12 @@ class SmallAdsRepository extends BaseRepository
             'small_ads_sub_categories.id as small_ads_sub_categories_id',
             'small_ads_sub_categories.name as small_ads_sub_categories_name',
             'small_ads_sub_categories.link as small_ads_sub_categories_link',
-            'small_ads_photos.id as small_ads_photos_id'
+            'small_ads_photos.name as small_ads_photos_name'
         )
         ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
         ->join('small_ads_sub_categories', 'small_ads_contents.small_ads_sub_categories_id', '=', 'small_ads_sub_categories.id')
         ->join('users', 'users.id', '=', 'small_ads_contents.users_id')
-        ->join('small_ads_photos', 'small_ads_contents.id', '=', 'small_ads_photos.small_ads_contents_id')
+        ->join('small_ads_photos', 'small_ads_contents.id', '=', 'small_ads_photos.small_ads_contents_id')        
         ->where('small_ads_contents.promoted', 1)
         ->where('small_ads_photos.sort', 1)
         ->where('small_ads_contents.status', 'active')
@@ -343,7 +342,8 @@ class SmallAdsRepository extends BaseRepository
             'small_ads_sub_categories.id as small_ads_sub_categories_id',
             'small_ads_sub_categories.name as small_ads_sub_categories_name',
             'small_ads_sub_categories.link as small_ads_sub_categories_link',
-            'small_ads_photos.id as small_ads_photos_id'
+            'small_ads_photos.id as small_ads_photos_id',
+            'small_ads_photos.name as small_ads_photos_name'
         )
         ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
         ->join('small_ads_sub_categories', 'small_ads_contents.small_ads_sub_categories_id', '=', 'small_ads_sub_categories.id')        

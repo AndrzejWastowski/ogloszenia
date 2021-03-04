@@ -26,14 +26,14 @@
     
       <div class="carousel-item active">
         <div class="col-md-3 mb-2">
-      
+     
       @foreach ($estatesContents as $estatesContent) 
     
           <!-- Card -->
           <div class="card card-cascade narrower card-ecommerce">
             <!-- Card image -->
             <div class="view view-cascade overlay">
-              <img src="{{ $storage->url('resources/drobne/'.$estatesContent->estates_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
+              <img src="{{ $storage->url('nieruchomosci/'.$estatesContent->estates_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
               <a><div class="mask rgba-white-slight"></div></a>
             </div>
             <!-- Card image -->
@@ -50,7 +50,6 @@
               <div class="card-footer px-1">
                 <span class="float-left">{{ $estatesContent->estates_contents_price }}PLN </span>
                 <span class="float-right">
-                 
                   <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dodaj do obserwowanych">
                     <i class="fas fa-eye ml-3"></i>
                   </a>
@@ -63,16 +62,12 @@
         </div>  
     
       @php 
-        
-       
         if (($i % 4)==0) {
-          
           echo ' </div>
           <div class="carousel-item">';
         }
         $i++;
         @endphp
-               
         <div class="col-md-3 mb-2 clearfix d-none d-md-block">
       @endforeach
       </div>

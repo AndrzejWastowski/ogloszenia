@@ -53,7 +53,7 @@ final class StartController extends Controller
         $estatesContents = $this->estatesRepository->getPromoted(12,0);
  
  
-        // dd($adsLastChanse);
+       // dd($smallAdsNewOffer);
 
          return View('start', [
             'storage' => $storage,            

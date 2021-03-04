@@ -1,102 +1,137 @@
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4">
+<footer class="footer mt-auto pt-5 pb-4 bg-dark text-white">
 
   <!-- Footer Links -->
   <div class="container text-center text-md-left">
 
     <!-- Grid row -->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-4 mx-auto">
-
-        <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Ogłoszenia KCI</h5>
-        <p>Lokalny portal ogłoszeniowy Kutna i okolic</p>
-
+    <div class="row text-center text-md-left" >
+      
+      <div class="col-md-3 col-lg-3 mx-auto mt-3">        
+        <h5 class="text-uppercase font-weight-bold  text-warning">Ogłoszenia KCI</h5>
+        <p>Lokalny portal ogłoszeniowy Kutna, Gostynina Żychlina i Łęczycy </p>
       </div>
       <!-- Grid column -->
 
       <hr class="clearfix w-100 d-md-none">
 
       <!-- Grid column -->
-      <div class="col-md-2 mx-auto">
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Links</h5>
 
+   
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <a href="#!" style="text-decoration: none;">Link 1</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="#!" style="text-decoration: none;">Link 2</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+            <a href="#!" style="text-decoration: none;">Link 3</a>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+            <a href="#!" style="text-decoration: none;">Link 4</a>
           </li>
         </ul>
 
       </div>
       <!-- Grid column -->
 
-      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+        
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Links</h5>
+
+ 
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" style="text-decoration: none;">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" style="text-decoration: none;">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" style="text-decoration: none;">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" style="text-decoration: none;">Link 4</a>
+          </li>
+        </ul>
+
+    </div>
 
       <!-- Grid column -->
-      <div class="col-md-2 mx-auto">
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Kontakt</h5>
+
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+            <i class="fas fa-home mr-3"></i><a href="#!" style="text-decoration: none;"> 99-300 Kutno</a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+          <i class="fas fa-envelope mr-3"></i><a href="#!" style="text-decoration: none;"> ogloszenia@kutno.net.pl</a>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+          <i class="fas fa-phone mr-3"></i><a href="#!" style="text-decoration: none;"> +48 501 753 973</a>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+          <i class="fas fa-print mr-3"></i><a href="#!" style="text-decoration: none;" >+24 123 123 123 </a>
           </li>
         </ul>
 
       </div>
       <!-- Grid column -->
 
-      <hr class="clearfix w-100 d-md-none">
-
-      <!-- Grid column -->
-      <div class="col-md-2 mx-auto">
-
-        <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
 
     </div>
     <!-- Grid row -->
+  <hr class="mb-4">
+  <div class="row align-items-center">
+      <div class="col-md-7 col-lg-8">
+        <p> Copyright @2020 All right resserverd by <a href="#" style="text-decoration:none;">
+          <strong class="text-warning">Code Core</strong></a></p>
+      </div>
+      <div class="col-md-5 col-lg-4">
+     
+  <!-- Social buttons -->
+  <ul class="list-unstyled list-inline text-center">
+    <li class="list-inline-item">
+      <a class="btn-floating btn-fb mx-1">
+        <i class="fab fa-facebook-f"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-tw mx-1">
+        <i class="fab fa-twitter"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-gplus mx-1">
+        <i class="fab fa-google-plus-g"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-li mx-1">
+        <i class="fab fa-linkedin-in"> </i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-dribbble mx-1">
+        <i class="fab fa-dribbble"> </i>
+      </a>
+    </li>
+  </ul>
+  <!-- Social buttons -->
+
+
+
+  </div>
+  
 
   </div>
   <!-- Footer Links -->
@@ -135,41 +170,6 @@
 
   <hr>
 
-  <!-- Social buttons -->
-  <ul class="list-unstyled list-inline text-center">
-    <li class="list-inline-item">
-      <a class="btn-floating btn-fb mx-1">
-        <i class="fab fa-facebook-f"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-tw mx-1">
-        <i class="fab fa-twitter"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-gplus mx-1">
-        <i class="fab fa-google-plus-g"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-li mx-1">
-        <i class="fab fa-linkedin-in"> </i>
-      </a>
-    </li>
-    <li class="list-inline-item">
-      <a class="btn-floating btn-dribbble mx-1">
-        <i class="fab fa-dribbble"> </i>
-      </a>
-    </li>
-  </ul>
-  <!-- Social buttons -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://codecore.pl/"> Code Core</a>
-  </div>
-  <!-- Copyright -->
 
 </footer>
 <!-- Footer -->

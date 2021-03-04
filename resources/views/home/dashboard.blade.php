@@ -17,7 +17,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                 
+
                     @yield('step')
                     
                 </div>

@@ -1,6 +1,6 @@
 <!-- Section: Products v.5 -->
 <section class="text-center">
-
+<h1>ads slider</h1>
   <!-- Carousel Wrapper -->
   <div id="ads-slider" class="carousel slide carousel-multi-item" data-ride="carousel">
     @php 
@@ -24,19 +24,20 @@
       
       @foreach ($adsContents as $adsContent) 
     
+    
           <!-- Card -->
           <div class="card card-cascade narrower card-ecommerce">
             <!-- Card image -->
             <div class="view view-cascade overlay">
-              <img src="{{ $storage->url('drobne/'.$adsContent->ads_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
+              <img src="{{ $storage->url('small_ads/'.$adsContent->ads_photos_name.'_kw.jpg') }}" class="card-img-top" alt="sample photo">
               <a><div class="mask rgba-white-slight"></div></a>
             </div>
             <!-- Card image -->
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
               <!-- Category & Title -->
-              <div class="text-muted max-two-line"><h6><a href="drobne/{{ $adsContent->ads_categories_link }}/">{{ $adsContent->ads_categories_name }}</a> / <a href="drobne/{{ $adsContent->ads_categories_link }}/{{ $adsContent->ads_sub_categories_link }}/">{{ $adsContent->ads_sub_categories_name }} </a></h6></div>
-              <h4 class="card-title my-2 max-one-line"><strong><a href="drobne/{{ $adsContent->ads_categories_link }}/{{ $adsContent->ads_sub_categories_link }}/{{ $adsContent->ads_contents_id }}">{{ $adsContent->ads_contents_name }} </a></strong></h4>
+              <div class="text-muted max-two-line"><h6><a href="small_ads/{{ $adsContent->ads_categories_link }}/">{{ $adsContent->ads_categories_name }}</a> / <a href="drobne/{{ $adsContent->ads_categories_link }}/{{ $adsContent->ads_sub_categories_link }}/">{{ $adsContent->ads_sub_categories_name }} </a></h6></div>
+              <h4 class="card-title my-2 max-one-line"><strong><a href="small_ads/{{ $adsContent->ads_categories_link }}/{{ $adsContent->ads_sub_categories_link }}/{{ $adsContent->ads_contents_id }}">{{ $adsContent->ads_contents_name }} </a></strong></h4>
               <!-- Description -->
               <p class="card-text max-two-line">{{ $adsContent->ads_contents_lead}} </p>
               <!-- Card footer -->
@@ -65,7 +66,7 @@
         }
         $i++;
         @endphp
-               
+
         <div class="col-md-3 mb-2 clearfix d-none d-md-block">
       @endforeach
       </div>
