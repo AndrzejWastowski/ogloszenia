@@ -16,6 +16,7 @@
     <link rel="stylesheet"  href="/css/add.css">
     <link rel="stylesheet"  href="/css/animate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
 
@@ -34,6 +35,7 @@
 
     <script src="/assets/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="/assets/dist/js/jquery-3.4.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script src="/assets/dist/js/wow.min.js"></script>
     
     

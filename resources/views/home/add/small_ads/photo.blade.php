@@ -2,37 +2,42 @@
 @section('step')
 
 
-   <div class="row justify-content-center">
-        <div class="col-md-12">
-        <h3><strong>Ogłoszenia Drobne - Dodaj Zdjęcia</strong></h3>
-               
-                <ul class="stepper stepper-horizontal">
-                        <li >
-                            <a class="p-1 m-1" href="{{ route('small_ads_content') }}">
-                                <span class="circle">1</span> 
-                                Treść
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="p-1 m-1" href="#">
-                                <span class="circle">2</span> 
-                                    Zdjęcia
-                            </a>
-                        </li>
-                        <li>                        
-                            <a class="p-1 m-1" href="#">
-                                <span class="circle">3</span> 
-                                    Promowanie
-                            </a>
-                        </li>
-                        <li>                        
-                            <a class="p-1 m-1" href="#">
-                                <span class="circle">4</span>
-                                Podsumowanie
-                            </a>
-                        </li>
-                    </ul>
-                
+<div class="row justify-content-center">
+    
+    <h3><strong>Ogłoszenia Drobne - Dodaj Treść</strong></h3>
+
+    <div class="bs-stepper">
+        <div class="bs-stepper-header" role="tablist">
+        <!-- your steps here -->
+            <div class="step active" data-target="#tresc-part">
+                <button type="button" class="step-trigger" role="tab" aria-controls="tresc-part" id="tresc-part-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label active"> Treść</span>
+                </button>
+            </div>
+            <div class="line "></div>
+            <div class="step active" data-target="#foto-part">
+                <button type="button" class="step-trigger" role="tab" aria-controls="foto-part" id="foto-part-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label active">Zdjęcia</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#promocja-part">
+                <button type="button" class="step-trigger" role="tab" aria-controls="promocja-part" id="promocja-part-trigger">
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label">Promowanie</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#podsumowanie-part">
+                <button type="button" class="step-trigger" role="tab" aria-controls="podsumowanie-part" id="podsumowanie-part-trigger">
+                    <span class="bs-stepper-circle">4</span>
+                    <span class="bs-stepper-label">Podsumowanie</span>
+                </button>
+            </div>
+        </div>
+    </div>
                 <div class="row">
                     @foreach ($photos as $photo)     
                     <div class="col-lg-4 col-md-12 mb-4">                    
@@ -81,17 +86,16 @@
                     
                     </form>
 
-                    
-                
-                    <div class="row">  
-                        <div class="col-9"></div>
-                        <div class="col-3">                                       
-                            <div class="form-check">
-                                <a href="{{ route('small_ads_promotion') }}"><button class="btn btn-info btn-block my-4 text-white" type="submit"><strong>Dalej</strong></button></a>
-                            </div>
-                        </div>                                   
+                    <div class="row mb-3">      
+                        <div class="offset-lg-8 offset-sm-4">
+                            <a href="{{ route('small_ads_promotion') }}">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Dalej') }}
+                                </button>
+                            </a>
+                        </div>
                     </div>
-    </div>
+</div>
 
 @endsection
 
