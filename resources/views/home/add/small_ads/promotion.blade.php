@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
     
-    <h3><strong>Ogłoszenia Drobne - Dodaj Treść</strong></h3>
+    <h3><strong>Ogłoszenia Drobne - Promocja</strong></h3>
 
     <div class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">

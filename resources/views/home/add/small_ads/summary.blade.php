@@ -1,37 +1,41 @@
 @extends('home.dashboard')
 @section('step')
 
-
 <div class="row justify-content-center">
-    <div class="col-md-12">
-        <h3><strong>Ogłoszenia Drobne - Promowanie</strong></h3>
-            <ul class="stepper stepper-horizontal">
-                <li >
-                    <a class="p-1 m-1" href="{{ route('small_ads_content') }}">
-                        <span class="circle">1</span> 
-                            Treść
-                    </a>
-                </li>
-                <li>
-                    <a class="p-1 m-1" href="{{ route('small_ads_photo') }} ">
-                        <span class="circle">2</span> 
-                            Zdjęcia
-                    </a>
-                </li>
-                <li >                        
-                    <a class="p-1 m-1" href="{{ route('small_ads_promotion') }} ">
-                        <span class="circle">3</span> 
-                            Promowanie
-                    </a>
-                </li>
-                <li class="active">                         
-                    <a class="p-1 m-1" href="#">
-                        <span class="circle">4</span>
-                            Podsumowanie
-                    </a>
-                </li>
-            </ul>
+<h3><strong>Ogłoszenia Drobne - Promocja</strong></h3>
+
+<div class="bs-stepper">
+    <div class="bs-stepper-header" role="tablist">
+    <!-- your steps here -->
+        <div class="step active" data-target="#tresc-part">
+            <button type="button" class="step-trigger" role="tab" aria-controls="tresc-part" id="tresc-part-trigger">
+                <span class="bs-stepper-circle">1</span>
+                <span class="bs-stepper-label active"> Treść</span>
+            </button>
+        </div>
+        <div class="line "></div>
+        <div class="step active" data-target="#foto-part">
+            <button type="button" class="step-trigger" role="tab" aria-controls="foto-part" id="foto-part-trigger">
+                <span class="bs-stepper-circle">2</span>
+                <span class="bs-stepper-label active">Zdjęcia</span>
+            </button>
+        </div>
+        <div class="line"></div>
+        <div class="step active" data-target="#promocja-part">
+            <button type="button" class="step-trigger" role="tab" aria-controls="promocja-part" id="promocja-part-trigger">
+                <span class="bs-stepper-circle">3</span>
+                <span class="bs-stepper-label active">Promowanie</span>
+            </button>
+        </div>
+        <div class="line"></div>
+        <div class="step active" data-target="#podsumowanie-part">
+            <button type="button" class="step-trigger" role="tab" aria-controls="podsumowanie-part" id="podsumowanie-part-trigger">
+                <span class="bs-stepper-circle">4</span>
+                <span class="bs-stepper-label">Podsumowanie</span>
+            </button>
+        </div>
     </div>
+</div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">{{ $categories['0']->name }}</li>
@@ -40,8 +44,8 @@
         </ol>
     </nav>  
     <div class="card m-1">
-    
-        <div class="card-body p-3" style="background-color:{{ $content->highlighted }}">  
+
+        <div class="card-body p-3" style="background-color: {{ $content->highlighted }};">  
             <div class="row mb-0 pb-0">
                 <div class="col-xl-8"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div> 
                 <div class="col-xl-4 text-right">
@@ -117,7 +121,7 @@
                 <label ><strong>PODSUMOWANIE</strong></label>
                 <p>Sprzedawca: <a><strong>{{ $content->User->name }} </strong></a>,
                 <p> Wystawiono od: <strong>{{  $content->date_start  }}</strong> do <strong>{{  $content->date_end  }}</strong></p>
-
+                
                 <label ><strong>OPCJE PROMOWANE</strong></label>
                 <ul class="list-unstyled"> 
                     <li>Napis przy ogłoszeniu: <strong>{{ $content->recomended }}</strong></li>
@@ -151,14 +155,13 @@
                     
                     <input type="hidden" name="payment_id" value="{{ $payments }}">
                     <input type="hidden" name="section" value="{{ $section }}">
-                    <div class="row">  
-                                <div class="col-12 col-lg-9"></div>
-                                <div class="col-12 col-lg-3">                                       
-                                    
-                                    <button class="btn btn-info btn-block text-white" type="submit"><strong>Dodaj</strong></button>
-                                    
-                                </div>                                   
-                            </div>  
+                    <div class="mb-3">
+                                <div class="offset-lg-9 offset-sm-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Dalej') }}
+                                    </button>
+                                </div>
+                            </div>
                 </form>
                     
                 @endif
