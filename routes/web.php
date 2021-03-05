@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->name('start');
 Auth::routes();
 
+Route::get('login/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
+
 #group route to task of adding services
 Route::group(['prefix' => 'home'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

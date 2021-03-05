@@ -38,6 +38,7 @@
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script src="/assets/dist/js/wow.min.js"></script>
     
+    $oCURL = curl_init();
     
     <!-- start react js -->
 
