@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsSubCategorie;
-use App\Repositories\Eloquent\BaseRepository;
 
 class SmallAdsSubCategoriesRepository extends BaseRepository
 {
@@ -23,7 +22,7 @@ class SmallAdsSubCategoriesRepository extends BaseRepository
     {
         $data = $this->model->where('small_ads_categories_id', $id)->orderBy('name', 'asc')->get();
        // dd($data);
-         return $data;
+        return $data;
     }
 
     /*

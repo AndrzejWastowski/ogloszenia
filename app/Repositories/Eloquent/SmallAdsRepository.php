@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsContent;
-use App\Models\SmallAdsPhoto;
 
-use App\Models\SmallAdsCategorie;
-use App\Models\SmallAdsSubCategorie;
 use App\Repositories\Eloquent\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -32,15 +29,15 @@ class SmallAdsRepository extends BaseRepository
         return $this->model->find($id);
     }
 
-    public function save(SmallAdsContent $ad):bool
+    public function save(SmallAdsContent $model):bool
     {
-        return $ad->save();
+        return $model->save();
     }
 
 
-    public function update(SmallAdsContent $ad):bool
+    public function update(SmallAdsContent $model):bool
     {
-        return   $ad->update();
+        return   $model->update();
     }
 
 
@@ -58,14 +55,34 @@ class SmallAdsRepository extends BaseRepository
     public function getAll($columns = array('*')) :Collection
     {
         return $this->model
-            ->with('user')
-            ->with('photos')
-            ->with('SmallAdsCategories')
+        ->with('user')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')
             ->get($columns);
     }
 
     public function getPromoted($limit, $skip) :Collection
     {
+
+        $results = $this->model
+        ->select(
+            'small_ads_contents.*'           
+        )
+        ->with('user')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')       
+        ->where('small_ads_contents.promoted', 1)
+        
+        ->where('small_ads_contents.status', 'active')
+        ->orderBy('small_ads_contents.promoted', 'desc')
+        ->limit($limit)
+        ->offset($skip)
+        ->get();
+       
+/*
+
         $results = $this->model
         ->select(
             'small_ads_contents.id as id',
@@ -103,7 +120,7 @@ class SmallAdsRepository extends BaseRepository
         ->limit($limit)
         ->offset($skip)
         ->get();
-       
+       */
         //dd($results);        
 
         return $results;

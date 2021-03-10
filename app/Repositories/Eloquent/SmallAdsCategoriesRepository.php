@@ -16,7 +16,6 @@ class SmallAdsCategoriesRepository extends BaseRepository
     public function getAllCategories()
     {
         $data = $this->model->orderBy('name', 'asc')->get();
-       
         return $data;
     }
 

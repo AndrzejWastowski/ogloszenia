@@ -53,21 +53,29 @@ class SmallAdsContent extends Model
     protected $hidden = [
     'created_at', 'updated_at',
     ];
-/*
-    public function small_ads_categories_id()
+
+    public function SmallAdsCategories()
     {
         return $this->belongsTo(SmallAdsCategorie::class, 'small_ads_categories_id');
     }
 
-    public function small_ads_sub_categories_id()
+    public function SmallAdsSubCategories()
     {
         return $this->belongsTo(SmallAdsSubCategorie::class, 'small_ads_sub_categories_id');
     }
-*/
+
     public function photos()
     {
         return $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id');
     }
+
+
+    public function top_photos()
+    {
+        return $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id')->limit(1);
+    }
+
+
 
     /**
      * Display the first photo

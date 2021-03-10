@@ -13,18 +13,33 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('index');
 });
+*/
 
-
+Route::get('/', [App\Http\Controllers\StartController::class, 'start'])->name('start');
 Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->name('start');
-Auth::routes();
 
 Route::get('login/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
 
+
+
+
+
+Route::group(['prefix' => 'drobne'], function () {
+    Route::get('/', 'App\Http\Controllers\SmallAds\ListsController@index')->name('SmallAdsStart');    
+    Route::get('/{categories}/ ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
+    Route::get('/{categories}/{subcategories}/', ['categories'=>'all','subcategories'=>'all','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+    Route::get('/{categories}/{subcategories}/{id}/', ['categories'=>'wszystkie','subcategories'=>'all','id'=>'0','uses'=>'App\Http\Controllers\SmallAds\ContentController@index'])->where(['id' => '[0-9]+'])->name('AdsContentsById');
+
+
+});
+
+
+Auth::routes();
 #group route to task of adding services
 Route::group(['prefix' => 'home'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
