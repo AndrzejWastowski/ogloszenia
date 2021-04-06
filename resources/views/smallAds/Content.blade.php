@@ -3,33 +3,26 @@
 
 @section('content')
 <div class="container">
+<div class="row">
+    
 
-        @foreach($contents as $content)
-  
-        {{$content->SmallAdsCategories->name}} / {{$content->SmallAdsSubCategories->name}}
+    <div class="col-9">
+        @foreach($contents as $content)       
         <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">{{ $content->SmallAdsCategories->name }}</li>
-            <li class="breadcrumb-item ">{{ $content->SmallAdsSubCategories->name }}</li>
-            <li class="breadcrumb-item active">{{ $content->name }}</li>                   
-        </ol>
-    </nav>  
-    <div class="card m-1">
-
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">{{ $content->SmallAdsCategories->name }}</li>
+                <li class="breadcrumb-item ">{{ $content->SmallAdsSubCategories->name }}</li>
+                <li class="breadcrumb-item active">{{ $content->name }}</li>                   
+            </ol>
+        </nav>  
+        <div class="card m-1">
         <div class="card-body p-3" style="background-color: {{ $content->highlighted }};">  
             <div class="row mb-0 pb-0">
-                <div class="col-xl-8"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div> 
-                <div class="col-xl-4 text-right">
-                    <ul class="list-unstyled">
-                            <li><small>nr ogł.<strong> D/{{ $content->id }}</strong></small></li>            
-                            <li><small>dodano: <strong>{{  $content->date_start  }}</strong></small></li>            
-                            <li><small>autor: <strong>{{  $content->User->name }} </strong></small></li>            
-                    </ul>          
-                </div>
+                <div class="col-xl-8"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div>
             </div>
             <div class="card-text black-text">                
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-9">
                         <div id="carousel_{{ $content->id }}" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
 
@@ -56,12 +49,15 @@
                             </button>
                         </div>
                     </div>
-               <!--/.Carousel Wrapper--> 
-
+            <!--/.Carousel Wrapper--> 
                     <!--/.Slides-->
                     <!--Grid column-->
-                    <div class="col-9">
-                            <!--Excerpt-->                        
+                    <div class="col-3">
+                    <ul class="list-unstyled">
+                            <li class="text-right"><small>nr ogł.<strong> D/{{ $content->id }}</strong></small></li>            
+                            <li><small>dodano: <strong>{{  $content->date_start  }}</strong></small></li>            
+                            <li><small>autor: <strong>{{  $content->User->name }} </strong></small></li>            
+                    </ul>                        
                             <h4 class="text-right">Cena: <strong>{{ $content->price }} </strong> pln</h4>
                             <p class="lead"><strong>{{ $content->lead }}.</strong></p>                            
                     </div>
@@ -79,6 +75,13 @@
     
         @endforeach
         </div>
+        <div class="col-3">
+
+        @include('addons.2col')  
+        
+        </div>
+</div>
+</div>
 @endsection 
 
 

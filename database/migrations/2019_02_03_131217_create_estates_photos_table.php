@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateEstatesPhotosTable extends Migration
 {
@@ -16,7 +17,8 @@ class CreateEstatesPhotosTable extends Migration
         Schema::create('estates_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('estates_contents_id')->comment('powiązanie zdjecia z wpisem');
-            $table->integer('sort')->comment('sortowanie zdjęć 1 jako głowne');            
+            $table->integer('sort')->comment('sortowanie zdjęć 1 jako głowne');         
+            $table->string('name',10)->comment('hash name - wygenerowana');          
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

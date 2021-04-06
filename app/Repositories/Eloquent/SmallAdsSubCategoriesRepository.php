@@ -25,12 +25,14 @@ class SmallAdsSubCategoriesRepository extends BaseRepository
         return $data;
     }
 
-    /*
-        public function getSubcategoriesByCategoriesLink($link) {
+   
+    public function getSubCategoriesByLink($link) {
 
-            return $this->model->where('ads_categories_id',$link)->orderBy('name','asc')->get();
+       
+        return $this->model->where('link', '=', $link)->first();
+     
         }
-      */
+    
     public function getLastAds($how_mutch)
     {
         return $this->model->limit($how_mutch)->orderBy('date_end', 'desc')->get();

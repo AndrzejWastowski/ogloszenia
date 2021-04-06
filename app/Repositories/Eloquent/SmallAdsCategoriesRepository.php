@@ -33,4 +33,5 @@ class SmallAdsCategoriesRepository extends BaseRepository
     {
         return $this->model->where('link', '=', $link)->first();
     }
+
 }

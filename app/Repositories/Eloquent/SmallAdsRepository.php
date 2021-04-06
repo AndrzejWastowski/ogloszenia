@@ -41,9 +41,21 @@ class SmallAdsRepository extends BaseRepository
     }
 
 
-    public function getSingleSmallAds(array $params): ?SmallAdsContent
+    public function getSmallAdsById($id) :?Collection
     {
-        return $this->model->where($params)->first();
+        $results = $this->model
+        ->select(
+            'small_ads_contents.*'           
+        )
+        ->with('User')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')       
+        ->where('small_ads_contents.id', $id)
+        ->get();
+                
+       //dd($results);
+        return $results;
     }
 
 /*  public function removeAdImage(int $adId): bool
@@ -69,7 +81,7 @@ class SmallAdsRepository extends BaseRepository
         ->select(
             'small_ads_contents.*'           
         )
-        ->with('user')
+        ->with('User')
         ->with('photos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')       
@@ -80,48 +92,6 @@ class SmallAdsRepository extends BaseRepository
         ->limit($limit)
         ->offset($skip)
         ->get();
-       
-/*
-
-        $results = $this->model
-        ->select(
-            'small_ads_contents.id as id',
-            'small_ads_contents.id as small_ads_contents_id',
-            'small_ads_contents.name as small_ads_contents_name',
-            'small_ads_contents.lead as small_ads_contents_lead',
-            'small_ads_contents.price as small_ads_contents_price',
-            'small_ads_contents.date_start as small_ads_contents_date_start',
-            'small_ads_contents.date_end as small_ads_contents_date_end',
-            'small_ads_contents.recomended as small_ads_contents_recomended',
-            'small_ads_contents.highlighted as small_ads_contents_highlighted',
-            'small_ads_contents.promoted as small_ads_contents_promoted',
-            'small_ads_contents.invoice as small_ads_contents_invoice',
-            'small_ads_contents.date_end as small_ads_contents_date_end',
-            'small_ads_contents.condition as small_ads_contents_condition',
-            'small_ads_contents.small_ads_sub_categories_id as small_ads_contents_sub_categories_id',
-            'users.id as users_id',
-            'users.name as users_name',
-            'small_ads_categories.id as small_ads_categories_id',
-            'small_ads_categories.name as small_ads_categories_name',
-            'small_ads_categories.link as small_ads_categories_link',
-            'small_ads_sub_categories.id as small_ads_sub_categories_id',
-            'small_ads_sub_categories.name as small_ads_sub_categories_name',
-            'small_ads_sub_categories.link as small_ads_sub_categories_link',
-            'small_ads_photos.name as small_ads_photos_name'
-        )
-        ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
-        ->join('small_ads_sub_categories', 'small_ads_contents.small_ads_sub_categories_id', '=', 'small_ads_sub_categories.id')
-        ->join('users', 'users.id', '=', 'small_ads_contents.users_id')
-        ->join('small_ads_photos', 'small_ads_contents.id', '=', 'small_ads_photos.small_ads_contents_id')        
-        ->where('small_ads_contents.promoted', 1)
-        ->where('small_ads_photos.sort', 1)
-        ->where('small_ads_contents.status', 'active')
-        ->orderBy('small_ads_contents.promoted', 'desc')
-        ->limit($limit)
-        ->offset($skip)
-        ->get();
-       */
-        //dd($results);        
 
         return $results;
     }
@@ -143,53 +113,79 @@ class SmallAdsRepository extends BaseRepository
     public function getAllSmallAds($columns = array('*')) :?Collection
     {
         $result = $this->model
-         ->with('user')
-         ->with('photos')
-         ->with('small_ads_categories')
-         ->where('small_ads_contents.status', 'enabled')
-         ->get();
+            ->with('user')
+            ->with('photos')
+            ->with('small_ads_categories')
+            ->where('small_ads_contents.status', 'enabled')
+            ->get();
 
         return $result;
     }
 
-    public function getAllSmallAdsByCategories($categories, $limit = 10, $page = 0) :?Collection
+
+    
+
+    public function getAllSmallAdsByCategoriesId($categoriesId = 0, $limit = 10, $page = 0) :?Collection
     {
+        
         $results = $this->model
         ->select(
-            'small_ads_contents.id as id',
-            'small_ads_contents.id as small_ads_contents_id',
-            'small_ads_contents.name as small_ads_contents_name',
-            'small_ads_contents.lead as small_ads_contents_lead',
-            'small_ads_contents.price as small_ads_contents_price',
-            'small_ads_contents.date_start as small_ads_contents_date_start',
-            'small_ads_contents.date_end as small_ads_contents_date_end',
-            'small_ads_contents.recomended as small_ads_contents_recomended',
-            'small_ads_contents.highlighted as small_ads_contents_highlighted',
-            'small_ads_contents.promoted as small_ads_contents_promoted',
-            'small_ads_contents.invoice as small_ads_contents_invoice',
-            'small_ads_contents.date_end as small_ads_contents_date_end',
-            'small_ads_contents.condition as small_ads_contents_condition',
-            'small_ads_contents.small_ads_sub_categories_id as small_ads_contents_sub_categories_id',
-            'users.id as users_id',
-            'users.name as users_name',
-            'small_ads_categories.id as small_ads_categories_id',
-            'small_ads_categories.name as small_ads_categories_name',
-            'small_ads_categories.link as small_ads_categories_link',
-            'small_ads_sub_categories.id as small_ads_sub_categories_id',
-            'small_ads_sub_categories.name as small_ads_sub_categories_name',
-            'small_ads_sub_categories.link as small_ads_sub_categories_link',
-            'small_ads_photos.id as small_ads_photos_id'
+            'small_ads_contents.*'           
         )
-        ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
-        ->join('small_ads_sub_categories', 'small_ads_contents.small_ads_sub_categories_id', '=', 'small_ads_sub_categories.id')
-        ->join('users', 'users.id', '=', 'small_ads_contents.users_id')
-        ->join('small_ads_photos', 'small_ads_contents.id', '=', 'small_ads_photos.small_ads_contents_id')
-        ->where('small_ads_categories.link', '=', $categories)
-        ->where('small_ads_photos.sort', 1)
+        ->with('User')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')       
+        ->where('small_ads_contents.small_ads_categories_id', $categoriesId)        
+        ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')
         ->limit($limit)
+        ->offset($page)
         ->get();
-        //dd($results);
+        return $results;
+    }
+
+
+
+    public function getAllSmallAdsBySubCategoriesId($SmallAdsSubCategoriesId = 0, $limit = 10, $page = 0) :?Collection
+    {
+        
+        $results = $this->model
+        ->select(
+            'small_ads_contents.*'           
+        )
+        ->with('User')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')       
+        ->where('small_ads_contents.small_ads_sub_categories_id', $SmallAdsSubCategoriesId)        
+        ->where('small_ads_contents.status', 'active')
+        ->orderBy('small_ads_contents.promoted', 'desc')
+        ->limit($limit)
+        ->offset($page)
+        ->get();
+        return $results;
+    }
+
+
+
+    public function getAllSmallAdsByCategories($categories, $limit = 10, $page = 0) :?Collection
+    {
+        
+        $results = $this->model
+        ->select(
+            'small_ads_contents.*'           
+        )
+        ->with('User')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')       
+        ->where('small_ads_contents.promoted', 1)
+        ->where('small_ads_contents.status', 'active')
+        ->orderBy('small_ads_contents.promoted', 'desc')
+        ->limit($limit)
+        ->offset($page)
+        ->get();;
         return $results;
     }
 
@@ -296,43 +292,6 @@ class SmallAdsRepository extends BaseRepository
         return $results;
     }
 
-    public function getSmallAdsById($id) :?SmallAdsContent
-    {
-        $results = $this->model
-        ->select(
-            'small_ads_contents.id as id',
-            'small_ads_contents.id as small_ads_contents_id',
-            'small_ads_contents.name as small_ads_contents_name',
-            'small_ads_contents.lead as small_ads_contents_lead',
-            'small_ads_contents.description as small_ads_contents_description',
-            'small_ads_contents.price as small_ads_contents_price',
-            'small_ads_contents.date_start as small_ads_contents_date_start',
-            'small_ads_contents.date_end as small_ads_contents_date_end',
-            'small_ads_contents.recomended as small_ads_contents_recomended',
-            'small_ads_contents.highlighted as small_ads_contents_highlighted',
-            'small_ads_contents.promoted as small_ads_contents_promoted',
-            'small_ads_contents.invoice as small_ads_contents_invoice',            
-            'small_ads_contents.condition as small_ads_contents_condition',
-            'small_ads_contents.small_ads_sub_categories_id as small_ads_contents_sub_categories_id',
-            'users.id as users_id',
-            'users.name as users_name',
-            'small_ads_categories.id as small_ads_categories_id',
-            'small_ads_categories.name as small_ads_categories_name',
-            'small_ads_categories.link as small_ads_categories_link',
-            'small_ads_sub_categories.id as small_ads_sub_categories_id',
-            'small_ads_sub_categories.name as small_ads_sub_categories_name',
-            'small_ads_sub_categories.link as small_ads_sub_categories_link'
-            )
-            ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
-            ->join('small_ads_sub_categories', 'small_ads_contents.small_ads_sub_categories_id', '=', 'small_ads_sub_categories.id')
-            ->join('users', 'users.id', '=', 'small_ads_contents.users_id')
-
-        ->where('small_ads_contents.id', '=', $id)
-        ->first();
-        
-       //dd($results);
-        return $results;
-    }
 
     //get latest small_ads
     public function getNewOffer($howMutch)

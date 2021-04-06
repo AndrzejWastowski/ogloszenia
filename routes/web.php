@@ -20,20 +20,23 @@ Route::get('/', function () {
 */
 
 Route::get('/', [App\Http\Controllers\StartController::class, 'start'])->name('start');
-Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->name('start');
+Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->name('startx');
 
 Route::get('login/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
 
 
-
-
-
 Route::group(['prefix' => 'drobne'], function () {
-    Route::get('/', 'App\Http\Controllers\SmallAds\ListsController@index')->name('SmallAdsStart');    
-    Route::get('/{categories}/ ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
-    Route::get('/{categories}/{subcategories}/', ['categories'=>'all','subcategories'=>'all','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
-    Route::get('/{categories}/{subcategories}/{id}/', ['categories'=>'wszystkie','subcategories'=>'all','id'=>'0','uses'=>'App\Http\Controllers\SmallAds\ContentController@index'])->where(['id' => '[0-9]+'])->name('AdsContentsById');
+    Route::get('/', [App\Http\Controllers\SmallAds\ListsController::class,'lists'])->name('SmallAdsStart');               
+    //Route::get('{categories}', function ($categories) {return 'kategoria '.$categories;});    
+    Route::get('{categories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsByCategories'])->name('SmallAdsListsByCategories');
+    Route::get('{categories}/{subcategories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+
+    
+
+    //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
+    //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+    Route::get('/{category}/{subcategory}/{id}', [App\Http\Controllers\SmallAds\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('SmallAdsContentsById');
 
 
 });
