@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,27 @@ Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->na
 
 Route::get('login/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+
+    // OAuth 2.0 providers...
+    $token = $user->token;
+    $refreshToken = $user->refreshToken;
+    $expiresIn = $user->expiresIn;
+
+    // All providers...
+    $user->getId();
+    $user->getNickname();
+    $user->getName();
+    $user->getEmail();
+    $user->getAvatar();
+});
 
 
 Route::group(['prefix' => 'drobne'], function () {

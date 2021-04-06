@@ -7,7 +7,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\User;
+
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -58,13 +59,25 @@ public function redirectToProvider($provider)
 */
 public function handleProviderCallback($provider)
 {
-    $user = Socialite::driver($provider)->user();
-
-
-    //dd($user);
-
+  
     $socialiteUser = Socialite::driver($provider)->user();
 
+    // OAuth 2.0 providers...
+    $token = $socialiteUser->token;
+    $refreshToken = $socialiteUser->refreshToken;
+    $expiresIn = $socialiteUser->expiresIn;
+
+    // All providers...
+    $socialiteUser->getId();
+    $socialiteUser->getNickname();
+    $socialiteUser->getName();
+    $socialiteUser->getEmail();
+    $socialiteUser->getAvatar();
+
+
+   // dd($socialiteUser);
+
+  
     // Znajdź lub stwórz użytkownika na podstawie danych do dostawcy
     $user = $this->firstOrCreateUser($socialiteUser, $provider);
 
@@ -88,6 +101,9 @@ protected function firstOrCreateUser($socialiteUser, $provider)
 {
     // Jeśli istnieje użytkownik o podanym facebook_id
     // lub google_id, zwróć tego użytkownika
+    $pom = $socialiteUser->getId();
+
+
     if ($user = User::where("{$provider}_id", $socialiteUser->getId())->first()) {
         return $user;
     }
