@@ -55,33 +55,28 @@ class ListsController extends Controller
             ]);
     }
 
-    public function ListsByCategories(Request $request) 
+    public function ListsByCategories($category_link) 
     {
 
-        dd($request);
-        $categoriesId = 10;
-        $link = 'elektronika';
+        $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
 
-        $categories = $this->smallAdsCategoriesRepository->getAllCategories();
-        $subcategories = $this->smallAdsSubCategoriesRepository->getAll();
 
-        $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($link);
+        if (!is_null($category)) {
 
-        if ($$category==null) {
-            $content = $this->smallAdsRepository->getAll();
-          //  dd($content);
+            $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
+            $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id, 10, 0);
         }
         else
         {
-            
-            $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id,10,0);
+
+
         }
 
-        dd($content);        
+      //  dd($content);        
 
         return View('smallAds.ListByCategories', [
             'pageName' => 'Lista Ogłoszeń',
-            'categories' => $categories,
+            'category' => $category,
             'subcategories' => $subcategories,
             'contents' => $content,
             'storage' => $this->storage
@@ -91,46 +86,31 @@ class ListsController extends Controller
 
 
     //public function ListsBySubCategories($categories,$subcategories)  
-    public function ListsBySubCategories(Request $request,$category_link,$subcategory_link )  
+    public function ListsBySubCategories($category_link,$subcategory_link )  
     {
-       // dd($request->all());
+       $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
+       $subcategory = $this->smallAdsSubCategoriesRepository->getSubCategoriesByLink($subcategory_link);
 
 
-        $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
-        $subcategory = $this->smallAdsSubCategoriesRepository->getSubCategoriesByLink($subcategory_link);       
+      if (!is_null($category)) {
 
-        $error = false;
-        $error_message = '';
+     
+          $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
+          $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($subcategory->id, 10, 0);
+      }
+      else
+      {
 
-        if ($category==null) {
-            $error = true;
-            $error_message = 'nie ma takiej kategorii';
-        }
 
-        if ($subcategory==null) {
-            $error = true;
-            $error_message = 'nie ma takiej podkategorii';
-        }
-
-        $categories = $this->smallAdsCategoriesRepository->getAll();
-        $subcategories = $this->smallAdsSubCategoriesRepository->getAll();
+      }
  
         //dd($subcategory);
 
-        if ($subcategory==null) {
-            $content = $this->smallAdsRepository->getAll();
-            
-        }
-        else
-        {
-            
-            $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($subcategory->id,10,0);
-        }
-       // dd($subcategory);  
 
-        return View('smallAds.ListByCategories', [
+        return View('smallAds.ListBySubCategories', [
             'pageName' => 'Lista Ogłoszeń',
-            'categories' => $categories,
+            'category' => $category,
+            'subcategory' => $subcategory,         
             'subcategories' => $subcategories,
             'contents' => $content,
             'storage' => $this->storage

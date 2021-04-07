@@ -5,6 +5,7 @@
 
 
 <div class="container">
+ 
 <div class="row">
     <div class="col-3">
         <div class="accordion" id="menu_boczne">
@@ -13,15 +14,17 @@
                     <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#kategoria_{{ $category->id }}" aria-expanded="true" aria-controls="kategoria_{{ $category->id }}">
                         {{ $category->name }}
                     </button>
-                </h2>
+                </h2>  
+
 
                 <div id="kategoria_{{ $category->id }}" class="accordion-collapse  " aria-labelledby="naglowek_{{ $category->id }}" data-bs-parent="#menu_boczne">
                     <div class="accordion-body">
                         <ul class="">
-                            @foreach($subcategories as $subcategory)
-                                @if ($subcategory->small_ads_categories_id ==$category->id) 
-                                        
-                                            <li><a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}">{{ $subcategory->name }}</a></li>
+                            @foreach($subcategories as $subcategories)
+                                @if ($subcategories->id==$subcategory->id)                                         
+                                    <li><a href="/drobne/{{ $category->link }}/{{ $subcategories->link }}"><strong>{{ $subcategories->name }}</strong></a></li>
+                                @else
+                                    <li><a href="/drobne/{{ $category->link }}/{{ $subcategories->link }}">{{ $subcategories->name }}</a></li>
                                         
                                 @endif  
                             @endforeach    
@@ -36,15 +39,15 @@
 
 
     <div class="col-7">
-   
+
         <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"> <a href="/">Start</a></li> 
-                    <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li>  
-                    <li class="breadcrumb-item"> <a href="/drobne/{{$category->link}}">{{$category->name}}</a></li>                    
-                </ol>
-            </nav> 
-         
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"> <a href="/">Start</a></li> 
+                <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li> 
+                <li class="breadcrumb-item"> <a href="/drobne/{{$category->link}}">{{$category->name}}</a></li>
+                <li class="breadcrumb-item "><a href="/drobne/{{$category->link}}/{{$subcategory->link}}">{{$subcategory->name}}</li>
+            </ol>
+        </nav> 
         @foreach($contents as $content)
 
             
