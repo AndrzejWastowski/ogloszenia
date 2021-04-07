@@ -44,7 +44,7 @@ class ListsController extends Controller
     {
         $categories = $this->smallAdsCategoriesRepository->getAllCategories();
         $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();
-        
+    
 
         return View('smallAds.ListsAllCategories', [
             'pageName' => 'Lista Ogłoszeń Drobnych',
@@ -63,23 +63,25 @@ class ListsController extends Controller
         if (!is_null($category)) {
 
             $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
-            $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id,10);           
+            $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id,10);    
+            return View('smallAds.ListByCategories', [
+                'pageName' => 'Lista Ogłoszeń',
+                'category' => $category,
+                'subcategories' => $subcategories,
+                'contents' => $content,
+                'storage' => $this->storage,  
+    
+                ]);       
         }
         else
         {
-
+            $this->ListsAllCategories();
         }
+      
 
       //  dd($total_page);        
 
-        return View('smallAds.ListByCategories', [
-            'pageName' => 'Lista Ogłoszeń',
-            'category' => $category,
-            'subcategories' => $subcategories,
-            'contents' => $content,
-            'storage' => $this->storage,  
-
-            ]);
+     
     }
 
 

@@ -21,7 +21,7 @@
                             @foreach($subcategories as $subcategory)
                                 @if ($subcategory->small_ads_categories_id ==$category->id) 
                                         
-                                            <li><a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}">{{ $subcategory->name }}</a></li>
+                                            <li class="mb-2"><a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}">{{ $subcategory->name }}</a></li>
                                         
                                 @endif  
                             @endforeach    

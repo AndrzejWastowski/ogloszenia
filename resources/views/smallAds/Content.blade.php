@@ -10,9 +10,11 @@
         @foreach($contents as $content)       
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">{{ $content->SmallAdsCategories->name }}</li>
-                <li class="breadcrumb-item ">{{ $content->SmallAdsSubCategories->name }}</li>
-                <li class="breadcrumb-item active">{{ $content->name }}</li>                   
+                <li class="breadcrumb-item"><a href="/">Start</a></li>
+                <li class="breadcrumb-item"><a href="/drobne/">Drobne</a></li>
+                <li class="breadcrumb-item"><a href="/drobne/{{ $content->SmallAdsCategories->link }}">{{ $content->SmallAdsCategories->name }}</a></li>
+                <li class="breadcrumb-item"><a href="/drobne/{{ $content->SmallAdsCategories->link }}/{{ $content->SmallAdsSubCategories->link }}">{{ $content->SmallAdsSubCategories->name }}</a></li>
+                <li class="breadcrumb-item active"><a href="/drobne/{{ $content->SmallAdsCategories->link }}/{{ $content->SmallAdsSubCategories->link }}/{{ $content->id }}">{{ $content->name }}</a></li>
             </ol>
         </nav>  
         <div class="card m-1">
