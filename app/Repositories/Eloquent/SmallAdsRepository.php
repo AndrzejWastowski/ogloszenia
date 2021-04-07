@@ -74,6 +74,25 @@ class SmallAdsRepository extends BaseRepository
             ->get($columns);
     }
 
+    public function getLastSmallAds($number_row = 10)
+    {
+        $results = $this->model
+        ->select(
+            'small_ads_contents.*'           
+        )
+        ->with('User')
+        ->with('photos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')  
+        ->where('small_ads_contents.status', 'active')
+        ->orderBy('small_ads_contents.promoted', 'desc')   
+        ->paginate($number_row);
+
+       // dd($results);
+        return $results;
+
+    }
+
     public function getPromoted($limit, $skip) :Collection
     {
 
@@ -138,8 +157,7 @@ class SmallAdsRepository extends BaseRepository
         ->with('SmallAdsSubCategories')       
         ->where('small_ads_contents.small_ads_categories_id', $categoriesId)        
         ->where('small_ads_contents.status', 'active')
-        ->orderBy('small_ads_contents.promoted', 'desc')
-   
+        ->orderBy('small_ads_contents.promoted', 'desc')   
         ->paginate($number_row);
 
        // dd($results);
@@ -331,7 +349,7 @@ class SmallAdsRepository extends BaseRepository
     }
 
     //get oldest small_ads
-    public function getLastChanse($howMutch)
+    public function getLastChanse($ile=10)
     {
         $results =  $this->model
         ->select(
@@ -363,7 +381,6 @@ class SmallAdsRepository extends BaseRepository
    
         ->where('small_ads_contents.status', 'active')  
         ->orderBy('small_ads_contents_date_end', 'desc')
-        ->limit($howMutch)     
         ->get();
          
         //dd($results);

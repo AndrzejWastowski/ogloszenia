@@ -43,13 +43,17 @@ class ListsController extends Controller
     public function  ListsAllCategories()
     {
         $categories = $this->smallAdsCategoriesRepository->getAllCategories();
-        $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();
+        $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();        
+        $content = $this->smallAdsRepository->getLastSmallAds(10);  
+    
     
 
         return View('smallAds.ListsAllCategories', [
             'pageName' => 'Lista Ogłoszeń Drobnych',
+          
             'categories' => $categories,
-            'subcategories' => $subcategories,            
+            'subcategories' => $subcategories,   
+            'contents' => $content,         
             'storage' => $this->storage
             ]);
     }
