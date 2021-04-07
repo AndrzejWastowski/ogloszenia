@@ -24,32 +24,31 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'kolekcje, numizmatyka, fialatelistyka starocie'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'antyki',
-            'name' => 'antyki'
+            'name' => 'Antyki'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'malarstwo',
-            'name' => 'malarstwo'
+            'name' => 'Malarstwo'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'kolekcje',
-            'name' => 'kolekcje'
+            'name' => 'Kolekcje'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'militaria',
-            'name' => 'militaria'
+            'name' => 'Militaria'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'rekodzielo',
-            'name' => 'rękodzieło'
+            'name' => 'Rękodzieło'
         ]];
 
 
@@ -65,45 +64,42 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '0',
             'description'=> 'smycze, karmniki, zwierzęta'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'dla_psow',
-            'name' => 'dla psów'
+            'name' => 'Dla psów'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'dla_kotow',
-            'name' => 'dla kotów'
+            'name' => 'Dla kotów'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'gryzonie',
-            'name' => 'gryzonie'
+            'name' => 'Gryzonie'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'ptaki',
-            'name' => 'ptaki'
+            'name' => 'Ptaki'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'gady_plazy',
-            'name' => 'gady i płazy'
+            'name' => 'Gady i płazy'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'stawonogi',
-            'name' => 'pająki / skorpiony'
+            'name' => 'Pająki / skorpiony / stawonogi'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'pozostale_zwierzaki',
-            'name' => 'pozostałe zwierzaki'
+            'name' => 'Pozostałe zwierzaki'
         ]];
-
-     
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             // $this->command->info($key);
@@ -116,39 +112,36 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'niszczarki, art biurowe'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'maszyny_urzadzenia',
-            'name' => 'maszyny i urządzenia'
+            'name' => 'Maszyny i urządzenia'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'materialy_biurowe',
-            'name' => 'materiały i akcesoria'
+            'name' => 'Materiały i akcesoria'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'meble_biurowe',
-            'name' => 'meble biurowe'
+            'name' => 'Meble biurowe'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'sklep_magazyn',
-            'name' => 'sklep i magazyn'
+            'name' => 'Sklep i magazyn'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'reklamowe',
-            'name' => 'materiały reklamowe'
+            'name' => 'Materiały reklamowe'
         ]];
-
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-
         DB::table('small_ads_categories')->insert([
             'name'=> 'Biżuteria i zegarki',
             'link'=> 'bizuteria_zegarki',
@@ -156,29 +149,27 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '0',
             'description'=> ''
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'bizuteria',
-            'name' => 'biżuteria'
+            'name' => 'Biżuteria'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'zegarki_meskie',
-            'name' => 'zegarki męskie'
+            'name' => 'Zegarki męskie'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'zegarki_damskie',
-            'name' => 'zegarki damskie'
+            'name' => 'Zegarki damskie'
         ]];
 
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-      
         DB::table('small_ads_categories')->insert([
             'name'=> 'Dom i ogród',
             'link'=> 'dom_i_ogrod',
@@ -186,50 +177,46 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'Dom i ogród'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'meble',
-            'name' => 'meble'
+            'name' => 'Meble'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'wyposazenie_wnetrz',
-            'name' => 'wyposażenie wnętrz'
+            'name' => 'Wyposażenie wnętrz'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'budownictwo_akcesoria',
-            'name' => 'budownictwo i akcesoria'
+            'name' => 'Budownictwo i akcesoria'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'oswietlenie',
-            'name' => 'oświetlenie'
+            'name' => 'Oświetlenie'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'narzedzia_ogrodnicze',
-            'name' => 'narzędzia ogrodnicze'
+            'name' => 'Narzędzia ogrodnicze'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'rosliny',
-            'name' => 'rośliny'
+            'name' => 'Rośliny'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'nawadnianie',
-            'name' => 'nawadnianie ogrodu'
+            'name' => 'Nawadnianie ogrodu'
         ]];
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-
-
-        
         DB::table('small_ads_categories')->insert([
             'name'=> 'Artykuły budlowlane',
             'link'=> 'artykuly_budowlane',
@@ -237,23 +224,21 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '0',
             'description'=> ''
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'materialy_budowlane',
-            'name' => 'materiały budowlane'
+            'name' => 'Materiały budowlane'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'narzedzia_budowlane',
-            'name' => 'narzędzia budowlane'
+            'name' => 'Narzędzia budowlane'
         ]];
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-
         DB::table('small_ads_categories')->insert([
             'name'=> 'Dziecko',
             'link'=> 'dziecko',
@@ -261,17 +246,16 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> ''
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'zabawki',
-            'name' => 'zabawki i pojazdy'
+            'name' => 'Zabawki i pojazdy'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'wyprawka_niemowlaka',
-            'name' => 'wyprawka niemowlaka'
+            'name' => 'Wyprawka niemowlaka'
         ]];
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
@@ -285,7 +269,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'ochudzanie, oczyszczanie, higiena, urządzenia medyczne'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -309,7 +292,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'kosmetyki, olejki do masażu'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -344,7 +326,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> ''
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -354,7 +335,7 @@ class SmallAdsCategoriesSeeds extends Seeder
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'sprzet_audio',
-            'name' => 'aprzęt audio'
+            'name' => 'Sprzęt audio'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
@@ -396,12 +377,10 @@ class SmallAdsCategoriesSeeds extends Seeder
             'link'=> 'fotografia',
             'name' => 'Fotografia'
         ]];
-
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //    $this->command->info($key);
         }
-      
         DB::table('small_ads_categories')->insert([
             'name'=> 'Muzyka - Instrumenty',
             'link'=> 'muzyka_instrumenty',
@@ -409,24 +388,22 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '0',
             'description'=> 'instrumenty muzyczne'
         ]);
-               
         
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'strunowe',
-            'name' => 'strunowe'
+            'name' => 'Strunowe'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'dete',
-            'name' => 'dęte'
+            'name' => 'Dęte'
         ]];
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-
         DB::table('small_ads_categories')->insert([
             'name'=> 'Książka / Komiks',
             'link'=> 'ksiazka_komiks',
@@ -434,34 +411,32 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '0',
             'description'=> ''
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'ksiazki',
-            'name' => 'książki'
+            'name' => 'Książki'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'poradniki',
-            'name' => 'poradniki'
+            'name' => 'Poradniki'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'podręczniki',
-            'name' => 'podreczniki'
+            'name' => 'Podreczniki'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'mapy',
-            'name' => 'mapy'
+            'name' => 'Mapy'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'komiksy',
-            'name' => 'komiksy'
+            'name' => 'Komiksy'
         ]];
-
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
@@ -473,17 +448,16 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'wiertarki, tokarki'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'reczne',
-            'name' => 'ręczne'
+            'name' => 'Ręczne'
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'stacjonarne',
-            'name' => 'stacjonarne'
+            'name' => 'Stacjonarne'
         ]];
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
@@ -496,7 +470,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> ''
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -508,7 +481,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'link'=> 'rolnictwo',
             'name' => 'Legend'
         ]];
-
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
@@ -520,7 +492,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'ciężarki, sprężyny '
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -541,7 +512,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-       
         DB::table('small_ads_categories')->insert([
             'name'=> 'Turystyka',
             'link'=> 'turystyka',
@@ -549,7 +519,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'plecaki, namioty, plecaki, karimaty'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -576,12 +545,10 @@ class SmallAdsCategoriesSeeds extends Seeder
             'link'=> 'nocleg',
             'name' => 'Śpiwory, materace'
         ]];
-
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
         }
-
         DB::table('small_ads_categories')->insert([
             'name'=> 'Siłownia i fitnes',
             'link'=> 'fitnes',
@@ -589,7 +556,6 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'T'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
@@ -604,21 +570,19 @@ class SmallAdsCategoriesSeeds extends Seeder
             'popular'=> '1',
             'description'=> 'ubrania, czapki, okulary'
         ]);
-                   
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'small_ads_categories_id'=> $LAST_ID,
             'link'=> 'meska',
-            'name' => 'męska',
+            'name' => 'Moda Męska',
             'description'=> ''
         ],
         [
             'small_ads_categories_id'=> $LAST_ID,
-            'name' => 'Żeńska',
+            'name' => 'Moda Żeńska',
             'link'=> 'zenska',
             'description'=> ''
         ]];
-
         foreach ($data as $key => $d) {
             DB::table('small_ads_sub_categories')->insert($d);
             //  $this->command->info($key);
