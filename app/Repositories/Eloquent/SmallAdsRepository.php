@@ -125,7 +125,7 @@ class SmallAdsRepository extends BaseRepository
 
     
 
-    public function getAllSmallAdsByCategoriesId($categoriesId = 0, $limit = 10, $page = 0) :?Collection
+    public function getAllSmallAdsByCategoriesId($categoriesId = 0,$number_row = 10) 
     {
         
         $results = $this->model
@@ -139,15 +139,16 @@ class SmallAdsRepository extends BaseRepository
         ->where('small_ads_contents.small_ads_categories_id', $categoriesId)        
         ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')
-        ->limit($limit)
-        ->offset($page)
-        ->get();
+   
+        ->paginate($number_row);
+
+       // dd($results);
         return $results;
     }
 
 
 
-    public function getAllSmallAdsBySubCategoriesId($SmallAdsSubCategoriesId = 0, $limit = 10, $page = 0) :?Collection
+    public function getAllSmallAdsBySubCategoriesId($SmallAdsSubCategoriesId=0,$number_row = 10)
     {
         
         $results = $this->model
@@ -161,9 +162,7 @@ class SmallAdsRepository extends BaseRepository
         ->where('small_ads_contents.small_ads_sub_categories_id', $SmallAdsSubCategoriesId)        
         ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')
-        ->limit($limit)
-        ->offset($page)
-        ->get();
+        ->paginate($number_row);
         return $results;
     }
 
@@ -189,11 +188,10 @@ class SmallAdsRepository extends BaseRepository
         return $results;
     }
 
-    public function getCountSmallAdsByCategories($categories) :?int
+    public function getCountSmallAdsByCategoriesId($categories_id) :?int
     {
-        $results = $this->model
-        ->join('small_ads_categories', 'small_ads_contents.small_ads_categories_id', '=', 'small_ads_categories.id')
-        ->where('small_ads_categories.link', '=', $categories)
+        $results = $this->model        
+        ->where('small_ads_categories_id', '=', $categories_id)
         ->count();
 
         return $results;
@@ -411,7 +409,15 @@ class SmallAdsRepository extends BaseRepository
         //dd($results);
         return  $results;
     }
-
-
+/*
+    public function paginate($perPage = 0, $columns = array('*'))
+    {
+        $perPage = $perPage ?: Config::get('pagination.length');
+  
+        return $this->model
+            ->rankedWhere('answered', 1)
+            ->paginate($perPage, $columns);
+    }
+*/
 }
 

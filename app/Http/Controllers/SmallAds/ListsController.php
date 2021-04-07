@@ -39,47 +39,46 @@ class ListsController extends Controller
     }
 
 
-    public function lists()
+
+    public function  ListsAllCategories()
     {
         $categories = $this->smallAdsCategoriesRepository->getAllCategories();
-        $subcategories = $this->smallAdsSubCategoriesRepository->getAll();        
-        $content = $this->smallAdsRepository->getPromoted(8,1);
+        $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();
         
 
-        return View('smallAds.AdsListByCategories', [
-            'pageName' => 'Lista Ogłoszeń',
+        return View('smallAds.ListsAllCategories', [
+            'pageName' => 'Lista Ogłoszeń Drobnych',
             'categories' => $categories,
-            'subcategories' => $subcategories,
-            'contents' => $content,
+            'subcategories' => $subcategories,            
             'storage' => $this->storage
             ]);
     }
 
-    public function ListsByCategories($category_link) 
+
+    public function ListsByCategories($category_link,$content_page=0) 
     {
 
         $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
 
-
         if (!is_null($category)) {
 
             $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
-            $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id, 10, 0);
+            $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id,10);           
         }
         else
         {
 
-
         }
 
-      //  dd($content);        
+      //  dd($total_page);        
 
         return View('smallAds.ListByCategories', [
             'pageName' => 'Lista Ogłoszeń',
             'category' => $category,
             'subcategories' => $subcategories,
             'contents' => $content,
-            'storage' => $this->storage
+            'storage' => $this->storage,  
+
             ]);
     }
 
@@ -96,7 +95,7 @@ class ListsController extends Controller
 
      
           $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
-          $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($subcategory->id, 10, 0);
+          $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($subcategory->id,20);
       }
       else
       {

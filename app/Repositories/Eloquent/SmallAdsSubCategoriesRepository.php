@@ -15,7 +15,7 @@ class SmallAdsSubCategoriesRepository extends BaseRepository
 
     public function getAllSubCategories()
     {
-        return $this->model->orderBy('id', 'name', 'link', 'asc')->get();
+        return $this->model->orderBy('name','asc')->get();
     }
 
     public function getSubcategoriesByCategoriesId($id)
