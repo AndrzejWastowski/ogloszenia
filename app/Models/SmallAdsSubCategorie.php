@@ -13,6 +13,8 @@ class SmallAdsSubCategorie extends Model
      *
      * @var array
      */
+    protected $guarded = [];
+    
     protected $fillable = ['id', 'small_ads_categories_id', 'name', 'description'];
     
     protected $table = 'small_ads_sub_categories';

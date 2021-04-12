@@ -42,7 +42,7 @@ class ListsController extends Controller
 
     public function  ListsAllCategories()
     {
-        $categories = $this->smallAdsCategoriesRepository->getAllCategories();
+        $categories = $this->smallAdsCategoriesRepository->getAllCategoriesWithSubcategories();
         $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();        
         $content = $this->smallAdsRepository->getLastSmallAds(10);  
     

@@ -15,13 +15,10 @@ class SmallAdsPhoto extends Model
      * @var array
      */
     protected $guarded = [];
+
     public $timestamps = false;
-    protected $fillable = [
-    'id', 
-    'name', 
-    'small_ads_contents_id', 
-    'sort',
-   ];
+
+    protected $fillable = ['id', 'name', 'small_ads_contents_id', 'sort'];
 
     
 

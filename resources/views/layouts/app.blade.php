@@ -15,6 +15,8 @@
     <link rel="stylesheet"  href="/assets/dist/css/bootstrap.min.css">    
     <link rel="stylesheet"  href="/css/add.css">
     <link rel="stylesheet"  href="/css/animate.css">
+    <link rel="stylesheet"  href="/css/style.css">
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -25,7 +27,7 @@
     <!-- Styles -->
 </head>
 
-<body>  
+<body class="bg-light-grey">  
 
     @include('layouts.menu_top')
     @yield('content')

@@ -8,7 +8,7 @@
     
     <div class="row">
         <div class="col-3">
-            <div class="accordion" id="menu_boczne">
+            <div class="accordion  bg-white" id="menu_boczne">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="naglowek_{{ $category->id }}">
                         <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#kategoria_{{ $category->id }}" aria-expanded="true" aria-controls="kategoria_{{ $category->id }}">

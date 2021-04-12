@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsSubCategorie;
+use App\Repositories\Eloquent\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class SmallAdsSubCategoriesRepository extends BaseRepository
 {

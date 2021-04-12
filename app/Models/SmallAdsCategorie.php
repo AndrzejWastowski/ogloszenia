@@ -17,5 +17,10 @@ class SmallAdsCategorie extends Model
 
     protected $table = 'small_ads_categories';
 
+    public function SmallAdsSubCategories()
+    {
+        return $this->hasMany(SmallAdsSubCategorie::class, 'small_ads_categories_id');
+    }
+
 
 }

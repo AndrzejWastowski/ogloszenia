@@ -19,6 +19,17 @@ class SmallAdsCategoriesRepository extends BaseRepository
         return $data;
     }
 
+
+    public function getAllCategoriesWithSubCategories()
+    {
+        $data = $this->model
+        ->with('SmallAdsSubCategories')
+        ->orderBy('name', 'asc')->get();
+        return $data;
+    }
+
+
+
     public function getPopularCategories()
     {
         return $this->model->where('popular', 1)->orderBy('name', 'asc')->get();
