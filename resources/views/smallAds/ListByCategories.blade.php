@@ -5,52 +5,62 @@
 
 
 <div class="container">
-<div class="row">
-    <div class="col-3 ">
-        <div class="accordion  bg-white" id="menu_boczne">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="naglowek_{{ $category->id }}">
-                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#kategoria_{{ $category->id }}" aria-expanded="true" aria-controls="kategoria_{{ $category->id }}">
-                        {{ $category->name }}
-                    </button>
-                </h2>
-
-                <div id="kategoria_{{ $category->id }}" class="accordion-collapse  " aria-labelledby="naglowek_{{ $category->id }}" data-bs-parent="#menu_boczne">
-                    <div class="accordion-body">
-                        <ul class="">
-                            @foreach($subcategories as $subcategory)
-                                @if ($subcategory->small_ads_categories_id ==$category->id) 
-                                        
-                                            <li class="mb-2"><a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}">{{ $subcategory->name }}</a></li>
-                                        
-                                @endif  
-                            @endforeach    
-                        </ul>    
+    <nav class="card p-3 pb-0 mb-3 bg-white" aria-label="breadcrumb">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item"> <a href="/">Start</a></li> 
+            <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li>  
+            <li class="breadcrumb-item"> <a href="/drobne/{{ $category->link }}">{{ $category->name }} </a></li>  
+        </ol>
+    </nav> 
+    <div class="row">
+        <div class="col-3">
+            <div class="accordion  bg-white" id="menu_boczne">
+                <div class="accordion-item">                    
+                    <button class="list-group-item list-group-item-action active" type="button"  >
+                        KATEGORIA
+                    </button>                        
+                </div> 
+                
+                @foreach($categories as $category)   
+                
+                    <div class="accordion-item">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#podkategorie_{{ $category->id }}" aria-expanded="true" aria-controls="podkategorie_{{ $category->id }}">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold"> {{ $category->name }}</div>
+                                    {{ $category->description }}
+                            </div>
+                        </button>                        
+                        
+                        <div id="podkategorie_{{ $category->id }}" class="accordion-collapse collapse show" aria-labelledby="nazwa_kategori_{{ $category->id }}" data-bs-parent="#menu_boczne" >
+                            <div class="accordion-item">
+                                <div class="accordion-body">
+                                    <ul class="list-group  list-group-flush ">
+                                        @foreach($category->SmallAdsSubCategories as $subcategory)
+                                       
+                                            <li class=" list-group-item mb-2">
+                                                <a href="{{$category->link}}/{{$subcategory->link}}">{{ $subcategory->name }} </a> 
+                                            </li>
+                                        @endforeach    
+                                    </ul>    
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach  
+
             </div>
-        
+        </div>
 
-    </div>
-    </div>
+    <div class="col-7 p-0">
 
 
-    <div class="col-7">
-   
-        <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"> <a href="/">Start</a></li> 
-                    <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li>  
-                    <li class="breadcrumb-item"> <a href="/drobne/{{$category->link}}">{{$category->name}}</a></li>                    
-                </ol>
-            </nav> 
-         
+ 
         @foreach($contents as $content)
 
             
     <div class="card m-1">
-
-        <div class="card-body pt-1" style="background-color: {{ $content->highlighted }};">  
+    @php $highlighted = 'style=background-color:'.$content->highlighted.';' @endphp
+        <div class="card-body pt-1" {{ $highlighted }}>  
             
         <div class="col-xl-12 pt-0 ">                 
             <p class="text-end mb-0"> <small class="text-muted">{{  $content->date_start  }}</small></p>            
@@ -125,8 +135,6 @@
     </div>
 
 
-
-       
         </div>
         <div class="col-2">
 

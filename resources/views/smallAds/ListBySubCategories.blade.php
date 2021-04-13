@@ -5,49 +5,75 @@
 
 
 <div class="container">
-    
+<nav class="card p-3 pb-0 mb-3 bg-white" aria-label="breadcrumb">
+        <ol class="breadcrumb" >
+            <li class="breadcrumb-item"> <a href="/">Start</a></li> 
+            <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li>  
+            <li class="breadcrumb-item"> <a href="/drobne/{{ $category->link }}">{{ $category->name }} </a></li>  
+            <li class="breadcrumb-item"> <a href="/drobne/{{$category->link}}/{{$pomsubcategory->link}}">{{$pomsubcategory->name}}</a></li>
+        </ol>
+    </nav> 
     <div class="row">
-        <div class="col-3">
+    <div class="col-3">
             <div class="accordion  bg-white" id="menu_boczne">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="naglowek_{{ $category->id }}">
-                        <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#kategoria_{{ $category->id }}" aria-expanded="true" aria-controls="kategoria_{{ $category->id }}">
-                            {{ $category->name }}
+                    
+                        <button class="list-group-item list-group-item-action active" type="button"  >
+                            KATEGORIA
                         </button>
-                    </h2>  
+                        
+                </div> 
 
+                @php 
+                    $show='show'; 
+                    $trufalse = 'true';
+                @endphp
+            
 
-                    <div id="kategoria_{{ $category->id }}" class="accordion-collapse  " aria-labelledby="naglowek_{{ $category->id }}" data-bs-parent="#menu_boczne">
-                        <div class="accordion-body">
-                            <ul class="">
-                                @foreach($subcategories as $subcategories)
-                                    @if ($subcategories->id==$subcategory->id)                                         
-                                        <li class="mb-2"><a href="/drobne/{{ $category->link }}/{{ $subcategories->link }}"><strong>{{ $subcategories->name }}</strong></a></li>
-                                    @else
-                                        <li class="mb-2"><a href="/drobne/{{ $category->link }}/{{ $subcategories->link }}">{{ $subcategories->name }}</a></li>
-                                            
-                                    @endif  
-                                @endforeach    
-                            </ul>    
+                @foreach($categories as $category)   
+
+            
+                    <div class="accordion-item">
+                        <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#podkategorie_{{ $category->id }}" aria-expanded="true" aria-controls="podkategorie_{{ $category->id }}">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold"> {{ $category->name }}</div>
+                                    {{ $category->description }}
+                            </div>
+                        </button>
+                        
+                        
+                        <div id="podkategorie_{{ $category->id }}" class="accordion-collapse collapse show "  aria-labelledby="nazwa_kategori_{{ $category->id }}" data-bs-parent="#menu_boczne">
+                            <div class="accordion-item">
+                                <div class="accordion-body">
+                                    <ul class="list-group  list-group-flush ">
+                                        @foreach($category->SmallAdsSubCategories as $subcategory)                              
+                                            <li class=" list-group-item mb-2">
+                                            @if ($subcategory->id == $pomsubcategory->id)
+                                                <a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}/"><strong>{{ $subcategory->name }}</strong> </a> 
+                                            @else
+                                                <a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}/">{{ $subcategory->name }} </a> 
+                                            @endif
+                                            </li>
+                                        @endforeach    
+                                    </ul>    
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach  
+
             </div>
         </div>
 
 
-        <div class="col-7">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"> <a href="/">Start</a></li> 
-                    <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li> 
-                    <li class="breadcrumb-item"> <a href="/drobne/{{$category->link}}">{{$category->name}}</a></li>
-                    <li class="breadcrumb-item"> <a href="/drobne/{{$category->link}}/{{$subcategory->link}}">{{$subcategory->name}}</a></li>
-                </ol>
-            </nav> 
-            @foreach($contents as $content)                
+    <div class="col-7 p-0">
+
+            @foreach($contents as $content) 
+
+            @php $highlighted = 'style=background-color:'.$content->highlighted.';' @endphp
+
                 <div class="card m-1">
-                    <div class="card-body pt-1" style="background-color: {{ $content->highlighted }}">
+                    <div class="card-body pt-1" {{ $highlighted }}>
                         <div class="col-xl-12 pt-0 ">                 
                             <p class="text-end mb-0"> <small class="text-muted">{{  $content->date_start  }}</small></p>            
                         </div>
@@ -116,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-               </div>
+            </div>
             @endforeach
         {{ $contents->links() }}
         </div>

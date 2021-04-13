@@ -28,6 +28,16 @@ class SmallAdsCategoriesRepository extends BaseRepository
         return $data;
     }
 
+    public function getAllCategoriesWithSubcategoriesByCategoriesId($id = 0)
+    {
+        $data = $this->model
+        ->with('SmallAdsSubCategories')
+        ->where('small_ads_categories.id', '=', $id)->get();
+        
+        return $data;
+    }
+
+
 
 
     public function getPopularCategories()

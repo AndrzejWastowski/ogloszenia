@@ -46,7 +46,7 @@
                         </button>
                         
                         
-                        <div id="podkategorie_{{ $category->id }}" class="accordion-collapse collapse {{ $show }} " data-bs-toggle="collapse" aria-labelledby="nazwa_kategori_{{ $category->id }}" data-bs-parent="#menu_boczne">
+                        <div id="podkategorie_{{ $category->id }}" class="accordion-collapse collapse {{ $show }} "  aria-labelledby="nazwa_kategori_{{ $category->id }}" data-bs-parent="#menu_boczne">
                             <div class="accordion-item">
                                 <div class="accordion-body">
                                     <ul class="list-group  list-group-flush ">
@@ -71,8 +71,8 @@
 
             
     <div class="card mb-2">
-
-        <div class="card-body pt-1" style="background-color: {{ $content->highlighted }};">  
+        @php $highlighted = 'style=background-color:'.$content->highlighted.';' @endphp
+        <div class="card-body pt-1" {{ $highlighted }}>  
             
         <div class="col-xl-12 pt-0 ">                 
             <p class="text-end mb-0"> <small class="text-muted">{{  $content->date_start  }}</small></p>            

@@ -50,8 +50,8 @@ Route::get('/auth/callback', function () {
 
 Route::group(['prefix' => 'drobne'], function () {
     Route::get('/', [App\Http\Controllers\SmallAds\ListsController::class,'ListsAllCategories'])->name('SmallAdsStart'); 
-    Route::get('{categories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsByCategories'])->name('SmallAdsListsByCategories');
-    Route::get('{categories}/{subcategories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+    Route::get('{categories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsByCategories'])->name('small_ads_list_by_categories');
+    Route::get('{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie',App\Http\Controllers\SmallAds\ListsController::class, 'ListsBySubCategories'])->name('small_ads_list_by_subcategories');
 
     
 

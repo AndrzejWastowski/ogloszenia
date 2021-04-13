@@ -50,7 +50,6 @@ class ListsController extends Controller
 
         return View('smallAds.ListsAllCategories', [
             'pageName' => 'Lista Ogłoszeń Drobnych',
-          
             'categories' => $categories,
             'subcategories' => $subcategories,   
             'contents' => $content,         
@@ -63,13 +62,16 @@ class ListsController extends Controller
     {
 
         $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
+        $categories = $this->smallAdsCategoriesRepository->getAllCategoriesWithSubcategoriesByCategoriesId($category->id);
 
         if (!is_null($category)) {
 
             $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
             $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id,10);    
             return View('smallAds.ListByCategories', [
+
                 'pageName' => 'Lista Ogłoszeń',
+                'categories' => $categories,
                 'category' => $category,
                 'subcategories' => $subcategories,
                 'contents' => $content,
@@ -81,11 +83,7 @@ class ListsController extends Controller
         {
             $this->ListsAllCategories();
         }
-      
-
-      //  dd($total_page);        
-
-     
+      //  dd($total_page);
     }
 
 
@@ -93,30 +91,19 @@ class ListsController extends Controller
     //public function ListsBySubCategories($categories,$subcategories)  
     public function ListsBySubCategories($category_link,$subcategory_link )  
     {
-       $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
-       $subcategory = $this->smallAdsSubCategoriesRepository->getSubCategoriesByLink($subcategory_link);
-
-
-      if (!is_null($category)) {
-
-     
-          $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
-          $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($subcategory->id,20);
-      }
-      else
-      {
-
-
-      }
- 
+        $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
+        $pomsubcategory = $this->smallAdsSubCategoriesRepository->getSubCategoriesByLink($subcategory_link);
+        $categories = $this->smallAdsCategoriesRepository->getAllCategoriesWithSubcategoriesByCategoriesId($category->id);
+        $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($pomsubcategory->id,20);
+  
         //dd($subcategory);
-
 
         return View('smallAds.ListBySubCategories', [
             'pageName' => 'Lista Ogłoszeń',
             'category' => $category,
-            'subcategory' => $subcategory,         
-            'subcategories' => $subcategories,
+            'pomsubcategory' => $pomsubcategory,         
+            'categories' => $categories,          
+            
             'contents' => $content,
             'storage' => $this->storage
             ]);
