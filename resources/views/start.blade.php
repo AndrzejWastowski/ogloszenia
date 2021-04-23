@@ -2,6 +2,7 @@
 @extends('layouts.app')
 @section('content') 
 <main class="container">
+    @include('start.tab_menu')
     @include('start.popular_category')            
     @include('start.4reklamy_gora')
     @include('start.promo')
