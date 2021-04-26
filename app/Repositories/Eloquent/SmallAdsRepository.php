@@ -77,16 +77,14 @@ class SmallAdsRepository extends BaseRepository
     public function getLastSmallAds($number_row = 10)
     {
         $results = $this->model
-        ->select(
-            'small_ads_contents.*'           
-        )
-        ->with('User')
-        ->with('photos')
+                ->with('User')
+        ->with('top_photos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')  
         ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')   
-        ->paginate($number_row);
+        ->limit($number_row) 
+        ->get();
 
        // dd($results);
         return $results;
@@ -97,15 +95,11 @@ class SmallAdsRepository extends BaseRepository
     {
 
         $results = $this->model
-        ->select(
-            'small_ads_contents.*'           
-        )
-        ->with('User')
-        ->with('photos')
+        
+        ->with('top_photos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')       
-        ->where('small_ads_contents.promoted', 1)
-        
+        ->where('small_ads_contents.promoted', 1)        
         ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')
         ->limit($limit)

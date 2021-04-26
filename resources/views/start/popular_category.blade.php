@@ -32,32 +32,32 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <a href="/drobne/dziecko" class="dark-grey-text font-small">
-                            <i class="fas fa-baby  dark-grey-text mr-4" aria-hidden="true"></i>Dziecko</a>
+                            <i class="fas fa-baby  dark-grey-text mr-4" aria-hidden="true"> </i> Dziecko</a>
                         <span class="badge badge-danger badge-pill">37</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <a href="/drobne/zdrowie" class="dark-grey-text font-small">
-                            <i class="fas fa-heartbeat  dark-grey-text mr-4" aria-hidden="true"></i>Zdrowie</a>
+                            <i class="fas fa-heartbeat  dark-grey-text mr-4" aria-hidden="true"> </i> Zdrowie</a>
                         <span class="badge badge-danger badge-pill">15</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="/drobne/sport" class="dark-grey-text font-small">
-                                <i class="fas fa-volleyball-ball   dark-grey-text mr-4" aria-hidden="true"></i>Sport</a>
+                                <i class="fas fa-volleyball-ball   dark-grey-text mr-4" aria-hidden="true"></i> Sport</a>
                             <span class="badge badge-danger badge-pill">15</span>
                         </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <a href="/drobne/motoryzacja" class="dark-grey-text font-small">
-                            <i class="fas fa-car-alt dark-grey-text mr-3" aria-hidden="true"></i>Części samochodowe</a>
+                            <i class="fas fa-car-alt dark-grey-text mr-3" aria-hidden="true"> </i> Części samochodowe</a>
                         <span class="badge badge-danger badge-pill">64</span>
                     </li>  
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="/drobne/antyki" class="dark-grey-text font-small">
-                                <i class="fas fa-grin-hearts  dark-grey-text mr-3" aria-hidden="true"></i>Antyki, kolekcje, sztuka</a>
+                                <i class="fas fa-grin-hearts  dark-grey-text mr-3" aria-hidden="true"> </i> Antyki, kolekcje, sztuka</a>
                             <span class="badge badge-danger badge-pill">41</span>
                     </li>   
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="/drobne/biurowe" class="dark-grey-text font-small">
-                                <i class="fas fa-building dark-grey-text mr-3" aria-hidden="true"></i>Artykuły biurowe</a>
+                                <i class="fas fa-building dark-grey-text mr-3" aria-hidden="true"></i> Artykuły biurowe</a>
                             <span class="badge badge-danger badge-pill">22</span>
                     </li>                   
                 </ul>

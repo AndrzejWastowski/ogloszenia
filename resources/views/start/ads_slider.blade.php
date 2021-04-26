@@ -22,7 +22,7 @@
       <div class="carousel-item active">
         <div class="col-md-3 mb-2">
       
-      @foreach ($adsContents as $adsContent) 
+      @foreach ($smal_ads_promoted as $adsContent) 
     
     
           <!-- Card -->

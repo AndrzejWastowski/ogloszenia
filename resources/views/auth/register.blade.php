@@ -40,7 +40,7 @@
 											</div>
 											<div class="col-sm-6">
 												<label for="inputLastName" class="form-label">Nazwisko</label>
-												<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+												<input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
 
 												@error('name')
 													<span class="invalid-feedback" role="alert">
@@ -62,8 +62,9 @@
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">Podaj Hasło</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" class="form-control  @error('password') is-invalid @enderror  border-end-0" id="password" value="12345678" placeholder="Wpisz hasło" equired autocomplete="new-password"  "> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>                                                    
-
+													
+													<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  value="12345678" placeholder="Wpisz hasło"  required autocomplete="new-password"><a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+d
 									@error('password')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>

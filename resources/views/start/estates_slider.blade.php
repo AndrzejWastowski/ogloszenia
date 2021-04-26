@@ -1,81 +1,143 @@
-<!-- Section: Products v.5 -->
-<section id="estates_slider" class="text-center">
-  
-    <div class="container-fluid card p-2 m-3">
-      Nieruchomości  
-  </div>
+<div class="container my-4">
+d
+  <hr class="mb-5"/>
+
+  <!--Carousel Wrapper-->
 
 
-  <!-- Carousel Wrapper -->
-  <div id="estates-slider" class="carousel slide carousel-multi-item" data-ride="carousel">
-    @php 
-      $active='active'; 
-      $next_card=' '; 
-      $i = 1;
-    @endphp
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li class="primary-color active" data-target="#estates-slider" data-slide-to="0"></li>
-      <li class="primary-color" data-target="#estates-slider" data-slide-to="1"></li>
-      <li class="primary-color" data-target="#estates-slider" data-slide-to="2"></li>
-    </ol>
-    <!-- Indicators -->
-    <!-- Slides -->
-    <div class="carousel-inner" role="listbox">
-      <!-- First slide -->
-    
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
       <div class="carousel-item active">
-        <div class="col-md-3 mb-2">
-     
-      @foreach ($estatesContents as $estatesContent) 
-    
-          <!-- Card -->
-          <div class="card card-cascade narrower card-ecommerce">
-            <!-- Card image -->
-            <div class="view view-cascade overlay">
-              <img src="{{ $storage->url('nieruchomosci/'.$estatesContent->estates_photos_id.'.jpg') }}" class="card-img-top" alt="sample photo">
-              <a><div class="mask rgba-white-slight"></div></a>
-            </div>
-            <!-- Card image -->
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
-              <!-- Category & Title -->
-
-              <div class="text-muted max-two-line"><h6><a href="nieruchomosci/{{ $estatesContent->estates_categories_link }}/">{{ $estatesContent->estates_categories_name }}</a></h6></div>
-              <h4 class="card-title my-2" max-two-line><strong><a href="">{{ $estatesContent->estates_contents_name }} </a></strong></h4>
-
-              <!-- Description -->
-              <p class="card-text max-two-line">{{ $estatesContent->estates_contents_lead}} </p>
-              <!-- Card footer -->
-              <div class="card-footer px-1">
-                <span class="float-left">{{ $estatesContent->estates_contents_price }}PLN </span>
-                <span class="float-right">
-                  <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dodaj do obserwowanych">
-                    <i class="fas fa-eye ml-3"></i>
-                  </a>
-                </span>
+      <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-2">
+	    <img class="card-img-top" src="{{ $storage->url('public/estates/1x_kw.jpg') }}"" alt="Card image cap">                   
+              <div class="card-body">
+                <h4 class="card-title">Dom na sprzedaż</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
               </div>
             </div>
-            <!-- Card content -->
           </div>
-          <!-- Card -->
-        </div>  
-    
-      @php 
-        if (($i % 4)==0) {
-          echo ' </div>
-          <div class="carousel-item">';
-        }
-        $i++;
-        @endphp
-        <div class="col-md-3 mb-2 clearfix d-none d-md-block">
-      @endforeach
-      </div>
-    </div>
-    </div>
-    <!-- Slides -->
-  </div>
-  <!-- Carousel Wrapper -->
 
-</section>
-<!-- Section: Products v.5 -->
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card mb-2">
+              <img class="card-img-top" src="{{ $storage->url('public/estates/2x_kw.jpg') }}"" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Nieruchomość pod Kutnem</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card mb-2">
+	    <img class="card-img-top" src="{{ $storage->url('public/estates/3x_kw.jpg') }}"" alt="Card image cap">
+       
+              <div class="card-body">
+                <h4 class="card-title">Uroczy domek</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+      <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-2">
+	    <img class="card-img-top" src="{{ $storage->url('public/estates/4x_kw.jpg') }}"" alt="Card image cap">                   
+              <div class="card-body">
+                <h4 class="card-title">Dom na sprzedaż</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card mb-2">
+              <img class="card-img-top" src="{{ $storage->url('public/estates/5x_kw.jpg') }}"" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Nieruchomość pod Kutnem</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card mb-2">
+	    <img class="card-img-top" src="{{ $storage->url('public/estates/6x_kw.jpg') }}"" alt="Card image cap">
+       
+              <div class="card-body">
+                <h4 class="card-title">Uroczy domek</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <div class="carousel-item">
+      <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-2">
+	    <img class="card-img-top" src="{{ $storage->url('public/estates/7x_kw.jpg') }}"" alt="Card image cap">                   
+              <div class="card-body">
+                <h4 class="card-title">Dom na sprzedaż</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card mb-2">
+              <img class="card-img-top" src="{{ $storage->url('public/estates/8x_kw.jpg') }}"" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Nieruchomość pod Kutnem</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card mb-2">
+	    <img class="card-img-top" src="{{ $storage->url('public/estates/9x_kw.jpg') }}"" alt="Card image cap">
+       
+              <div class="card-body">
+                <h4 class="card-title">Uroczy domek</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
