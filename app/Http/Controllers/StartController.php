@@ -49,7 +49,7 @@ final class StartController extends Controller
         $smallAdsLastChanse = $this->smallAdsRepository->getLastChanse(4);
         $smallAdsNewOffer = $this->smallAdsRepository->getNewOffer(4);
         $smallAdsTopView = $this->smallAdsRepository->getTopView(4);
-        $estatesContents = $this->estatesRepository->getPromoted(12,0);
+        $estates = $this->estatesRepository->getPromoted(12,0);
  
 
    
@@ -58,7 +58,7 @@ final class StartController extends Controller
          return View('start', [
             'storage' => $storage,            
             'smal_ads_promoted' => $smal_ads_promoted,
-            'estatesContents' => $estatesContents,    
+            'estates' => $estates,    
             'adsLastChanse' => $smallAdsLastChanse,
             'adsNewOffer' => $smallAdsNewOffer,
             'adsTopView' => $smallAdsTopView,]);

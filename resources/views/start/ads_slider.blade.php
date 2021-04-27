@@ -22,27 +22,27 @@
       <div class="carousel-item active">
         <div class="col-md-3 mb-2">
       
-      @foreach ($smal_ads_promoted as $adsContent) 
+      @foreach ($smal_ads_promoted as $content) 
     
     
           <!-- Card -->
           <div class="card card-cascade narrower card-ecommerce">
             <!-- Card image -->
             <div class="view view-cascade overlay">
-              <img src="{{ $storage->url('small_ads/'.$adsContent->ads_photos_name.'_kw.jpg') }}" class="card-img-top" alt="sample photo">
+              <img src="{{ $storage->url('small_ads/'.$content->ads_photos_name.'_kw.jpg') }}" class="card-img-top" alt="sample photo">
               <a><div class="mask rgba-white-slight"></div></a>
             </div>
             <!-- Card image -->
             <!-- Card content -->
             <div class="card-body card-body-cascade text-center">
               <!-- Category & Title -->
-              <div class="text-muted max-two-line"><h6><a href="small_ads/{{ $adsContent->ads_categories_link }}/">{{ $adsContent->ads_categories_name }}</a> / <a href="drobne/{{ $adsContent->ads_categories_link }}/{{ $adsContent->ads_sub_categories_link }}/">{{ $adsContent->ads_sub_categories_name }} </a></h6></div>
-              <h4 class="card-title my-2 max-one-line"><strong><a href="small_ads/{{ $adsContent->ads_categories_link }}/{{ $adsContent->ads_sub_categories_link }}/{{ $adsContent->ads_contents_id }}">{{ $adsContent->ads_contents_name }} </a></strong></h4>
+              <div class="text-muted max-two-line"><h6><a href="small_ads/{{ $content->ads_categories_link }}/">{{ $content->ads_categories_name }}</a> / <a href="drobne/{{ $content->ads_categories_link }}/{{ $content->ads_sub_categories_link }}/">{{ $content->ads_sub_categories_name }} </a></h6></div>
+              <h4 class="card-title my-2 max-one-line"><strong><a href="small_ads/{{ $content->ads_categories_link }}/{{ $content->ads_sub_categories_link }}/{{ $content->ads_contents_id }}">{{ $content->ads_contents_name }} </a></strong></h4>
               <!-- Description -->
-              <p class="card-text max-two-line">{{ $adsContent->ads_contents_lead}} </p>
+              <p class="card-text max-two-line">{{ $content->ads_contents_lead}} </p>
               <!-- Card footer -->
               <div class="card-footer px-1">
-                <span class="float-left">{{ $adsContent->ads_contents_price }}PLN </span>
+                <span class="float-left">{{ $content->ads_contents_price }}PLN </span>
                 <span class="float-right">
                  
                   <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dodaj do obserwowanych">

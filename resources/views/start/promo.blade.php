@@ -1,13 +1,5 @@
-
-
-
-
-
 <!--Section: Bestsellers & offers-->
 <section id="promotion">
-
-
-
 
 <div class="containter">
     <div class="row mb-3">

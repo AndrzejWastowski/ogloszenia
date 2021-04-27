@@ -41,6 +41,12 @@ class EstatesContent extends Model
         return $this->hasMany(EstatesPhoto::class, 'estates_contents_id');
     }
 
+
+    public function top_photos()
+    {
+        return $this->hasMany(EstatesPhoto::class,'estates_contents_id');
+    }
+
     /**
      * Display the first photo
      * return one database ads_photos record.

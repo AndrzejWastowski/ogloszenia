@@ -16,7 +16,7 @@ class EstatesPhoto extends Model
     protected $guarded = [];
     public $timestamps = false;
     protected $fillable = [
-    'id', 'estates_contents_id', 'sort',
+    'id', 'estates_contents_id', 'name', 'sort',
    ];
 
     /**
