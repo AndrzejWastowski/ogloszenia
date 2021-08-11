@@ -78,7 +78,7 @@
     </div>
     <div class="tab-pane fade"                       id="car" role="tabpanel" aria-labelledby="car-tab">
     <div class="row">   
-    @foreach($estates_promo as $content)
+    @foreach($cars_promo as $content)
 
 					<div class="col-md-3 {{ $clearfix ?? ''  }}">
 						<div class="card mb-2">
@@ -89,16 +89,16 @@
 								@endphp
 								@foreach ($content->top_photos as $photo)
 									@php 
-										$imagefile = 'public/car/'.$photo->name.'_kw.jpg'; 
+										$imagefile = 'public/cars/'.$photo->name.'_kw.jpg'; 
 										break;
 									@endphp
 								@endforeach
-								<a href="nieruchomosci/{{$content->EstatesCategories->link}}/{{$content->id}}"><img class="card-img-top" src="{{ $storage->url($imagefile) }}" alt="{{ $content->name }}"></a>
+								<a href="/motoryzacja/{{$content->CarsBrands->link}}/{{$content->CarsModels->link}}/{{$content->id}}"><img class="card-img-top" src="{{ $storage->url($imagefile) }}" alt="{{ $content->name }}"></a>
 
 							<div class="card-body">
 								<h4 class="card-title" style=" display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $content->name }}</h4>
 								<p class="card-text " style=" display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $content->lead }}</p>
-								<a href="/nieruchomosci/{{$content->EstatesCategories->link}}/{{$content->id}}" class="btn btn-primary">Szczegóły</a>
+								<a href="/motoryzacja/{{$content->CarsBrands->link}}/{{$content->CarsModels->link}}/{{$content->id}}" class="btn btn-primary">Szczegóły</a>
 							</div>
 						</div>
 					</div>						
@@ -107,7 +107,7 @@
     </div>
     
     </div>
-    <div class="tab-pane fade"                       id="job" role="tabpanel" aria-labelledby="car-job">
+    <div class="tab-pane fade" id="job" role="tabpanel" aria-labelledby="car-job">
     
     
     </div>

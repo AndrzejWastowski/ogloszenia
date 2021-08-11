@@ -52,7 +52,6 @@ class CreateSmallAdsContentsTable extends Migration
             $table->integer('port')->nullable()->comment('port z którym nastąpiło połączenie');
             $table->string('browser')->nullable()->comment('Host - wpis pobrany z serwera');
             $table->tinyInteger('portal_id')->unsigned()->default(0)->comment('id portalu z którego uzytkownik dodawał ogłoszenie');
-
             $table->enum('status',['unfinished','active','disabled','removed','blocked'])->default('unfinished')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
             $table->enum('invoice', ['Nie wystawiam faktury','Faktura VAT','Faktura Vat-marża','Faktura bez VAT'])->comment('rodzaj dokumentu sprzedaży, faktura, paragon itd..');           
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

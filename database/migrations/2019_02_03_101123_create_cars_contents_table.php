@@ -45,6 +45,7 @@ class CreateCarsContentsTable extends Migration
             $table->unsignedTinyInteger('mileage')->comment('przebieg samochodu');
             $table->enum('fuel_type', ['benzyna','disel','benzyna + lpg','elektryczny'])->comment('rodzaj paliwa');
             $table->integer('portal_id')->unsigned()->comment('portal z którego pochodzi ogłoszenie');
+            $table->enum('status',['unfinished','active','disabled','removed','blocked'])->default('unfinished')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
             $table->ipAddress('visitor_ip')->comment('ip użytkownika');
             $table->string('visitor_host', 250)->nullable($value = true)->comment('dane z hosta (rev dns) użytkownika'); //rev dns hosta użytkownika - przydtne żeby szybko zlokalizować usługodawcę
             $table->string('visitor_soft', 250)->nullable($value = true)->comment('dane przeglądarki system itd..'); //wiem że to może się wydawać zbyteczne ale czasem policji się przydaje

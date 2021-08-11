@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Eloquent\SmallAdsRepository;
 use App\Repositories\Eloquent\EstatesRepository;
-
+use App\Repositories\Eloquent\CarsRepository;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -17,6 +17,7 @@ final class StartController extends Controller
     private $smallAdsCategoriesRepository;
     private $smallAdsSubCategoriesRepository;    
     private $estatesRepository;
+    private $carsRepository;
     private $priceRepository;
     private $storage;
 
@@ -28,10 +29,12 @@ final class StartController extends Controller
     public function __construct(
         SmallAdsRepository $smallAdsRepository, 
         EstatesRepository $estatesRepository,
+        CarsRepository $carsRepository,
         Storage $storage )
     {
         $this->smallAdsRepository = $smallAdsRepository;
         $this->estatesRepository = $estatesRepository;
+        $this->carsRepository = $carsRepository;
         $this->storage = $storage;
     }
 
@@ -53,11 +56,15 @@ final class StartController extends Controller
         $smallAdsTopView = $this->smallAdsRepository->getTopView(4);
         $estates = $this->estatesRepository->getPromoted(12,0);
         $estates_promo = $this->estatesRepository->getPromoted(4,0);
+        
+        $cars_promo = $this->carsRepository->getPromoted(4,0);
+//dd($cars_promo);
 
         return View('start', [
             'storage' => $storage,            
             'smal_ads_promo' => $smal_ads_promo,
             'estates_promo' => $estates_promo,
+            'cars_promo' => $cars_promo,
             'smal_ads_promoted' => $smal_ads_promoted,
             'estates' => $estates,    
             'adsLastChanse' => $smallAdsLastChanse,
@@ -66,4 +73,5 @@ final class StartController extends Controller
 
     }
 }
+
 
