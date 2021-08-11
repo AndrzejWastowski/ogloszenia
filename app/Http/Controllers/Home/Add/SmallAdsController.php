@@ -421,6 +421,12 @@ final class SmallAdsController extends Controller
 
     public function summary_post(Request $request)
     {
+            //dodajemy na potrzeby testowe potwirdzenie ze ogłoszenie zostało ukonczone
+        $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
+        $content->set_status('active');
+        $content->save();
+
+
         return view('/home/add/small_ads/payments');
     }
 

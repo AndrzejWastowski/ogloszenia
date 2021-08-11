@@ -44,9 +44,9 @@
             
     </div>
     </div>
-    <div class="tab-pane fade"                       id="estates" role="tabpanel" aria-labelledby="estates-tab">
-    <div class="row">
-   
+
+    <div class="tab-pane fade"  id="estates" role="tabpanel" aria-labelledby="estates-tab">
+    <div class="row">   
     @foreach($estates_promo as $content)
 
 					<div class="col-md-3 {{ $clearfix ?? ''  }}">
@@ -58,7 +58,7 @@
 								@endphp
 								@foreach ($content->top_photos as $photo)
 									@php 
-										$imagefile = 'public/small_ads/'.$photo->name.'_kw.jpg'; 
+										$imagefile = 'public/estates/'.$photo->name.'_kw.jpg'; 
 										break;
 									@endphp
 								@endforeach
@@ -77,7 +77,34 @@
     
     </div>
     <div class="tab-pane fade"                       id="car" role="tabpanel" aria-labelledby="car-tab">
-    
+    <div class="row">   
+    @foreach($estates_promo as $content)
+
+					<div class="col-md-3 {{ $clearfix ?? ''  }}">
+						<div class="card mb-2">
+								@php
+									$active='';
+									$clearfix='clearfix d-none d-md-block';
+									$imagefile =  'public/brak_kw.jpg';
+								@endphp
+								@foreach ($content->top_photos as $photo)
+									@php 
+										$imagefile = 'public/car/'.$photo->name.'_kw.jpg'; 
+										break;
+									@endphp
+								@endforeach
+								<a href="nieruchomosci/{{$content->EstatesCategories->link}}/{{$content->id}}"><img class="card-img-top" src="{{ $storage->url($imagefile) }}" alt="{{ $content->name }}"></a>
+
+							<div class="card-body">
+								<h4 class="card-title" style=" display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $content->name }}</h4>
+								<p class="card-text " style=" display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ $content->lead }}</p>
+								<a href="/nieruchomosci/{{$content->EstatesCategories->link}}/{{$content->id}}" class="btn btn-primary">Szczegóły</a>
+							</div>
+						</div>
+					</div>						
+			
+			@endforeach
+    </div>
     
     </div>
     <div class="tab-pane fade"                       id="job" role="tabpanel" aria-labelledby="car-job">

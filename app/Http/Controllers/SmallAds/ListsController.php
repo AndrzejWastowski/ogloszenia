@@ -58,7 +58,7 @@ class ListsController extends Controller
     }
 
 
-    public function ListsByCategories($category_link,$content_page=0) 
+    public function ListsByCategories($category_link='',$content_page=0) 
     {
 
         $category = $this->smallAdsCategoriesRepository->getCategoriesByLink($category_link);
