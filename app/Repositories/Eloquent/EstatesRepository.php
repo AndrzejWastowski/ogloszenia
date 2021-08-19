@@ -6,6 +6,9 @@ namespace  App\Repositories\Eloquent;
 
 use App\Models\EstatesContent;
 use App\Models\EstatesPhoto;
+use App\Repositories\Eloquent\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
+
 
 class EstatesRepository extends BaseRepository
 {
@@ -23,16 +26,19 @@ class EstatesRepository extends BaseRepository
             ->get($columns);
     }
 
-    public function getAllEstates($columns = array('*'))
+    public function getAllEstates()
     {
         $result = $this->model
-         ->with('User')
-         ->with('Photos')
+         ->with('user')
+         ->with('photos')
          ->with('EstatesCategories')
-         ->get();
-
+         ->where('estates_contents.status', 'active')
+         ->paginate(10);
+      //  dd($result);
         return $result;
     }
+
+    
 
     public function getEstatesByCategories($categories, $limit = 10, $page = 0)
     {
@@ -70,8 +76,7 @@ class EstatesRepository extends BaseRepository
         ->where('estates_categories.link', '=', $categories)
         ->where('estates_photos.sort', 1)
         ->orderBy('estates_contents.promoted', 'desc')
-        ->limit($limit)
-        ->get();
+        ->paginate(10);
         //dd($results);
         return $results;
     }
@@ -112,8 +117,7 @@ class EstatesRepository extends BaseRepository
         ->where('estates_categories.link', '=', $groups)
         ->where('estates_photos.sort', 1)
         ->orderBy('estates_contents.promoted', 'desc')
-        ->limit($limit)
-        ->get();
+        ->paginate($limit);
         //dd($results);
         return $results;
     }

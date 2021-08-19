@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace  App\Repositories\Eloquent;
 
 use App\Models\SmallAdsContent;
-
 use App\Repositories\Eloquent\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
-
 
 
 class SmallAdsRepository extends BaseRepository
@@ -17,7 +15,6 @@ class SmallAdsRepository extends BaseRepository
     /**
      * @var SmallAdsContent
     */
-
 
     public function __construct(SmallAdsContent $model)
     {
@@ -83,8 +80,9 @@ class SmallAdsRepository extends BaseRepository
         ->with('SmallAdsSubCategories')  
         ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')   
-        ->limit($number_row) 
-        ->get();
+    
+        ->paginate($number_row);
+
 
        // dd($results);
         return $results;

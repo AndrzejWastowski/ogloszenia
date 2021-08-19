@@ -52,12 +52,21 @@ Route::group(['prefix' => 'drobne'], function () {
     Route::get('/', [App\Http\Controllers\SmallAds\ListsController::class,'ListsAllCategories'])->name('SmallAdsStart'); 
     Route::get('{categories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsByCategories'])->name('small_ads_list_by_categories');
     Route::get('{categories}/{subcategories}', [App\Http\Controllers\SmallAds\ListsController::class, 'ListsBySubCategories'])->name('small_ads_list_by_sub_categories');
-
-    
-
     //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
     //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
-    Route::get('/{category}/{subcategory}/{id}', [App\Http\Controllers\SmallAds\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('SmallAdsContentsById');
+    Route::get('/{categories}/{subcategories}/{id}', [App\Http\Controllers\SmallAds\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('SmallAdsContentsById');
+
+
+});
+
+
+Route::group(['prefix' => 'nieruchomosci'], function () {
+    Route::get('/', [App\Http\Controllers\Estates\ListsController::class,'ListsAllCategories'])->name('EstatesStart'); 
+    Route::get('{categories}', [App\Http\Controllers\Estates\ListsController::class, 'ListsByCategories'])->name('EstatesListByCategories');    
+    
+    //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
+    //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+    Route::get('/{categories}/{id}', [App\Http\Controllers\Estates\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('EstatesContentsById');
 
 
 });

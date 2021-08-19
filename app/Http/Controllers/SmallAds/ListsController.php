@@ -45,6 +45,8 @@ class ListsController extends Controller
         $categories = $this->smallAdsCategoriesRepository->getAllCategoriesWithSubcategories();
         $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();        
         $content = $this->smallAdsRepository->getLastSmallAds(10);  
+
+        dd($content);
     
     
 
@@ -68,6 +70,9 @@ class ListsController extends Controller
 
             $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
             $content = $this->smallAdsRepository->getAllSmallAdsByCategoriesId($category->id,10);    
+
+           
+
             return View('smallAds.ListByCategories', [
 
                 'pageName' => 'Lista Ogłoszeń',
@@ -96,7 +101,7 @@ class ListsController extends Controller
         $categories = $this->smallAdsCategoriesRepository->getAllCategoriesWithSubcategoriesByCategoriesId($category->id);
         $content = $this->smallAdsRepository->getAllSmallAdsBySubCategoriesId($pomsubcategory->id,20);
   
-        //dd($subcategory);
+       // dd($content);
 
         return View('smallAds.ListBySubCategories', [
             'pageName' => 'Lista Ogłoszeń',

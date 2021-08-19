@@ -19,8 +19,5 @@ class EstatesCategorie extends Model
 
     protected $table = 'estates_categories';
 
-    public function estates_categories()
-    {
-        //return $this->belongsTo('products','');
-    }
+
 }

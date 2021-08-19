@@ -26,12 +26,13 @@ class EstatesContent extends Model
         'visitor_ip', 'visitor_host', 'visitor_soft', 'visitor_proxy', 'visitor_port', 'created_at', 'updated_at', 'portal_id',
        ];
 
-    public function estatesCategories()
+    public function EstatesCategories()
     {
         return $this->belongsTo(EstatesCategorie::class, 'estates_categories_id');
     }
 
-    public function estatesGruos()
+
+    public function EstatesGruos()
     {
         return $this->belongsTo(EstatesGroup::class, 'estates_groups_id');
     }

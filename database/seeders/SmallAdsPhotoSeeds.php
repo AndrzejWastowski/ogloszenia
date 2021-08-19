@@ -16,7 +16,7 @@ class SmallAdsPhotoSeeds extends Seeder
     {
         DB::disableQueryLog();
 
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1 ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => 'lorem ipsum' ]);
      
     }
 }

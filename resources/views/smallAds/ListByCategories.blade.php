@@ -87,11 +87,11 @@
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carousel_{{ $content->id }}"  data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden">Poprzednie</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carousel_{{ $content->id }}"  data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <span class="visually-hidden">Następne</span>
                             </button>
                         </div>
                     </div>
@@ -104,12 +104,7 @@
                             <p class="lead"><strong>{{ $content->lead }}.</strong></p>                            
                     </div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <label ><strong>OPIS</strong></label>
-                        <p class="stopoverflow">{{ $content->description }}</p>
-                    </div>
-                </div>
+               
                 <div class="row">  
                     <div class="col-9 mb-3">
                     </div>

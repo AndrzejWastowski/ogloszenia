@@ -17,7 +17,7 @@ class CreateSmallAdsPhotosTable extends Migration
         Schema::create('small_ads_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('small_ads_contents_id')->comment('zawartosc do której jest dodane zdjęcie');            ;
-            $table->integer('name')->comment('nazwa wygenerowana');            ;
+            $table->string('name')->comment('nazwa wygenerowana');            ;
             $table->integer('sort')->comment('ustalanie kolejności w grupie  zdejeć do danego ogłoszenia');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));

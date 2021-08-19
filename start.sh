@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo 'usowam wszystko co bylo wczesniej'
+php artisan migrate:reset
+
 echo 'tworze tabele - wywołuje migrację'
 php artisan migrate
 

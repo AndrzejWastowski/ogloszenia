@@ -8,7 +8,7 @@
     <nav class="card p-3 pb-0 mb-3 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb" >
             <li class="breadcrumb-item"> <a href="/">Start</a></li> 
-            <li class="breadcrumb-item"> <a href="/drobne/">Drobne</a></li>  
+            <li class="breadcrumb-item"> <a href="/nieruchomosci/">Nieruchomości</a></li>  
         </ol>
     </nav> 
     <div class="row">
@@ -46,19 +46,7 @@
                         </button>
                         
                         
-                        <div id="podkategorie_{{ $category->id }}" class="accordion-collapse collapse {{ $show }} "  aria-labelledby="nazwa_kategori_{{ $category->id }}" data-bs-parent="#menu_boczne">
-                            <div class="accordion-item">
-                                <div class="accordion-body">
-                                    <ul class="list-group  list-group-flush ">
-                                        @foreach($category->SmallAdsSubCategories as $subcategory)                              
-                                            <li class=" list-group-item mb-2">
-                                                <a href="/drobne/{{ $category->link }}/{{ $subcategory->link }}/">{{ $subcategory->name }} </a> 
-                                            </li>
-                                        @endforeach    
-                                    </ul>    
-                                </div>
-                            </div>
-                        </div>
+                     
                     </div>
                 @endforeach  
 
@@ -73,11 +61,13 @@
     <div class="card mb-2">
         @php $highlighted = 'style=background-color:'.$content->highlighted.';' @endphp
         <div class="card-body pt-1" {{ $highlighted }}>  
-            
+        
         <div class="col-xl-12 pt-0 ">                 
             <p class="text-end mb-0"> <small class="text-muted">{{  $content->date_start  }}</small></p>            
         </div>
-        <div class="col-xl-12"><h5 class="card-title"> <strong><a href="{{ route('SmallAdsContentsById', ['categories'=> $content->SmallAdsCategories->link,'subcategories'=> $content->SmallAdsSubCategories->link,'id' => $content->id ]) }}">{{ $content->name }} </a></strong></h5></div> 
+        <div class="col-xl-12">
+            <h5 class="card-title">
+                 <a href="{{ route('EstatesContentsById', ['categories'=>$content->EstatesCategories->link,'id' => $content->id ]) }}"><strong>{{ $content->name }} </a></strong></h5></div> 
             <div class="card-text black-text">                
                 <div class="row">
                     <div class="col-3">
@@ -93,7 +83,7 @@
 
                                 @foreach ($content->photos as $photo)
                                     @if ($active==null) @php($active = 'active') @else @php($active = ' ') @endif                            
-                                        <div class="carousel-item {{ $active }} "><img class="d-block w-100 "  src="{{ $storage->url('public/small_ads/'.$photo->name.'_kw.jpg') }}" alt=" {{ $content->name }} " ></div>
+                                        <div class="carousel-item {{ $active }} "><img class="d-block w-100 "  src="{{ $storage->url('public/estates/'.$photo->name.'_kw.jpg') }}" alt=" {{ $content->name }} " ></div>
                                 @endforeach    
 
                             </div>
@@ -127,7 +117,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="offset-lg-9 offset-sm-4">
-                            <form action="{{ route('SmallAdsContentsById', ['categories'=> $content->SmallAdsCategories->link,'subcategories'=> $content->SmallAdsSubCategories->link,'id' => $content->id ]) }}" method="get" enctype="text/plain"><div>
+                            <form action="{{ route('EstatesContentsById', ['categories'=>'link_do_kategori','id' => '1' ]) }}" method="get" enctype="text/plain"><div>
                             
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('więcej informacji') }}
