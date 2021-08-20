@@ -43,17 +43,15 @@ class ListsController extends Controller
     {
         
         
-        $content = $this->EstatesRepository->getAllEstates();
+        $contents = $this->EstatesRepository->getAllEstates();
         $categories = $this->EstatesCategoriesRepository->getAllCategories();  
 
-     //   dd($content);
-    
-    
+     
 
         return View('Estates.ListsAllCategories', [
             'pageName' => 'Lista Nieruchomości',        
             'categories' => $categories ,
-            'contents' => $content,         
+            'contents' => $contents,         
             'storage' => $this->storage
             ]);
     }
@@ -64,11 +62,15 @@ class ListsController extends Controller
 
         $category = $this->EstatesCategoriesRepository->getCategoriesByLink($category_link);
         
+        $categories = $this->EstatesCategoriesRepository->getAllCategories();  
+     
+        $groups = 'grupy';
 
         if (!is_null($category)) {
 
-            $subcategories = $this->EstatesSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
-         
+            //$subcategories = $this->EstatesSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
+            $contents = $this->EstatesRepository->getEstatesByCategoriesLink($category[0]->link); 
+            $contents = $this->EstatesRepository->getEstatesByCategoriesId($category[0]->id); 
 
            
 
@@ -77,8 +79,9 @@ class ListsController extends Controller
                 'pageName' => 'Lista Ogłoszeń',
                 
                 'category' => $category,
-                'subcategories' => $subcategories,
-                
+                'categories' => $categories,
+                'groups' => $groups,
+                'contents' => $contents,                
                 'storage' => $this->storage,  
     
                 ]);       

@@ -39,8 +39,29 @@ class EstatesRepository extends BaseRepository
     }
 
     
+    public function getEstatesByCategoriesId($categoriesId = 0,$number_row = 10) 
+    {
+        
+        $results = $this->model
+        ->select(
+            'estates_contents.*'           
+        )
+        ->with('User')
+        ->with('Photos')
+        ->with('EstatesCategories')
+        ->with('EstatesGroups')       
+        ->where('estates_contents.estates_categories_id', $categoriesId)        
+        ->where('estates_contents.status', 'active')
+        ->orderBy('estates_contents.promoted', 'desc')   
+        ->paginate($number_row);
 
-    public function getEstatesByCategories($categories, $limit = 10, $page = 0)
+       // dd($results);
+        return $results;
+    }
+
+
+
+    public function getEstatesByCategoriesLink($categories, $limit = 10, $page = 0)
     {
         $results = $this->model
         ->select(
@@ -134,14 +155,17 @@ class EstatesRepository extends BaseRepository
 
     public function getEstatesById($id)
     {
+        
         $results = $this->model
+        ->select(
+            'estates_contents.*'           
+        )
             ->with('User')
-            ->with('top_photos')
+            ->with('TopPhotos')
             ->with('EstatesCategories')  
-            ->join('estates_groups', 'estates_contents.estates_groups_id', '=', 'estates_groups.id')
-            ->join('users', 'users.id', '=', 'estates_contents.users_id')
+            ->with('EstatesGroups')            
             ->where('estates_contents.id', '=', $id)
-        ->first();
+            ->get();
 
         return $results;
     }

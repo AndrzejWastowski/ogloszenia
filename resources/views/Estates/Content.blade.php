@@ -4,14 +4,26 @@
 @section('content')
 <div class="container">
 <div class="row">
-    
+   
 
     <div class="col-9">
-        @foreach($contents as $content)       
+        @foreach($contents as $content)      
+        
+        @php
+            
+            $date = explode("-", $content->date_add);
+            $day = $date[2];
+            $month = $date[1];
+            $year = $date[0];
+
+        @endphp
+
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Start</a></li>
                 <li class="breadcrumb-item"><a href="/nieruchomosci/">Nieruchomosci</a></li>
+               
                 <li class="breadcrumb-item"><a href="/nieruchomosci/{{ $content->EstatesCategories->link }}">{{ $content->EstatesCategories->name }}</a></li>
                 
                 
@@ -20,7 +32,8 @@
         <div class="card m-1">
         <div class="card-body p-3" style="background-color: {{ $content->highlighted }};">  
             <div class="row mb-0 pb-0">
-                <div class="col-xl-8"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div>
+                <div class="col-xl-10"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div>
+                <div class="col-xl-2 text-end"><small>nr ogł.<strong> D/{{ $content->id }}/{{ $year }}</strong></small></div>
             </div>
             <div class="card-text black-text">                
                 <div class="row">
@@ -43,11 +56,11 @@
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carousel_{{ $content->id }}"  data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden">Poprzednie</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carousel_{{ $content->id }}"  data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <span class="visually-hidden">Następne</span>
                             </button>
                         </div>
                     </div>
@@ -55,18 +68,28 @@
                     <!--/.Slides-->
                     <!--Grid column-->
                     <div class="col-3">
-                    <ul class="list-unstyled">
-                            <li class="text-right"><small>nr ogł.<strong> D/{{ $content->id }}</strong></small></li>            
-                            <li><small>dodano: <strong>{{  $content->date_start  }}</strong></small></li>            
-                            <li><small>autor: <strong>{{  $content->User->name }} </strong></small></li>            
-                    </ul>                        
-                            <h4 class="text-right">Cena: <strong>{{ $content->price }} </strong> pln</h4>
-                            <p class="lead"><strong>{{ $content->lead }}.</strong></p>                            
+                       
+                            <ul class="list-unstyled">
+                                         
+                                    <li class="text-end"><small><strong>{{  $content->date_start  }}</strong></small></li>            
+                                    <li class="text-end"><small>dodał: <strong>{{  $content->User->name }} </strong></small></li>
+                                    <li class="text-end"><small> <strong>{{  $content->contact_phone }} </strong></small></li>
+                                    <li class="text-end"><small>Powierzchnia <strong>{{  $content->contact_email }} </strong> {{  $content->unit }}</small></li>   
+
+                            </ul>                        
+                            <h4 class="text-center">Cena<br> <strong>{{ $content->price }} </strong> pln</h4>
+                      
+                            unit
+                            Rynek: market
+                                                    
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <label ><strong>OPIS</strong></label>
+                        <label ><strong>Informacje podstawowe</strong></label>
+                        <p class="lead"><strong>{{ $content->lead }}.</strong></p>  
+
+                        <label ><strong>Opis rozszerzony</strong></label>
                         <p class="stopoverflow">{{ $content->description }}</p>
                     </div>
                 </div>

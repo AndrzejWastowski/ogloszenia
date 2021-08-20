@@ -82,7 +82,7 @@ class SmallAdsContent extends Model
      */
     public function firstPhotos()
     {
-        $result = $this->belongsTo(AdsPhSmallAdsPhotooto::class, 'small_ads_contents_id');
+        $result = $this->belongsTo(SmallAdsPhoto::class, 'small_ads_contents_id');
 
         return $result;
     }

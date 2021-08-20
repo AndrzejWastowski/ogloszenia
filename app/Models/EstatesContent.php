@@ -32,18 +32,18 @@ class EstatesContent extends Model
     }
 
 
-    public function EstatesGruos()
+    public function EstatesGroups()
     {
         return $this->belongsTo(EstatesGroup::class, 'estates_groups_id');
     }
 
-    public function photos()
+    public function Photos()
     {
         return $this->hasMany(EstatesPhoto::class, 'estates_contents_id');
     }
 
 
-    public function top_photos()
+    public function TopPhotos()
     {
         return $this->hasMany(EstatesPhoto::class,'estates_contents_id');
     }
@@ -52,14 +52,14 @@ class EstatesContent extends Model
      * Display the first photo
      * return one database ads_photos record.
      */
-    public function firstPhotos()
+    public function FirstPhotos()
     {
         $result = $this->belongsTo(EstatesPhoto::class, 'EstatesPhoto_contents_id');
 
         return $result;
     }
 
-    public function user()
+    public function User()
     {
         $result = $this->belongsTo(User::class, 'users_id');
 
