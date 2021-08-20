@@ -56,7 +56,7 @@
 									$clearfix='clearfix d-none d-md-block';
 									$imagefile =  'public/brak_kw.jpg';
 								@endphp
-								@foreach ($content->top_photos as $photo)
+								@foreach ($content->TopPhotos as $photo)
 									@php 
 										$imagefile = 'public/estates/'.$photo->name.'_kw.jpg'; 
 										break;
@@ -87,7 +87,7 @@
 									$clearfix='clearfix d-none d-md-block';
 									$imagefile =  'public/brak_kw.jpg';
 								@endphp
-								@foreach ($content->top_photos as $photo)
+								@foreach ($content->TopPhotos as $photo)
 									@php 
 										$imagefile = 'public/cars/'.$photo->name.'_kw.jpg'; 
 										break;

@@ -222,7 +222,7 @@ class EstatesRepository extends BaseRepository
         $request = $this->model
         
             ->with('User')
-            ->with('top_photos')
+            ->with('TopPhotos')
             ->with('EstatesCategories')          
             ->where('estates_contents.promoted', 1)         
             ->where('estates_contents.status', 'active')

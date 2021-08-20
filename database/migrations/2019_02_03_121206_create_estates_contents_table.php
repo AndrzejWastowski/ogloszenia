@@ -30,12 +30,23 @@ class CreateEstatesContentsTable extends Migration
             $table->unsignedTinyInteger('recomended')->comment('czy ogłoszenie jest rekomendowane');
             $table->enum('highlighted', ['#ffffff','#cfbcf8','#bcf8bc','#f1f8bc','#f8c0bc','#f8bcf5'])->default("#ffffff")->comment('czy ogłoszenie jest wyróżnione (kolor)');
             $table->unsignedTinyInteger('promoted')->comment('czy ogłoszenie jest promowane (przed innymi)');
-            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');
+            
+            $table->decimal('lat', 12, 10)->nullable()->comment('szerokość geograficzna - do map');
+            $table->decimal('lng', 12, 10)->nullable()->comment('długość geograficzna - do map');           
+           
+            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');            
+            
+            $table->string('contact_phone',100)->nullable()->comment('kontakt tel do sprzedawcy');  
+            $table->string('contact_email',200)->nullable()->comment('kontakt e-mail do sprzedawcy');  
+
+            $table->integer('adresses_id')->comment('id adresu ktory bedzie sie pojawiał przy kontakcie w sprawie tego ogłoszenia');
+
+
             $table->enum('status',['unfinished','active','disabled','removed','blocked'])->default('unfinished')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
             $table->timestamp('date_add')->useCurrent()->comment('data dodania ogłoszenia');
             $table->dateTime('date_start')->comment('data pojawienia się ogłoszenia na portalu (można zrobić opóźnienie)');
             $table->dateTime('date_end')->comment('data_waznosci');
-            $table->integer('adresses_id')->comment('id adresu ktory bedzie sie pojawiał przy kontakcie w sprawie tego ogłoszenia');
+            
             $table->integer('portal_id')->comment('id portalu z którego dodano ogłoszenie');
             $table->ipAddress('visitor_ip')->comment('ip użytkownika');
             $table->string('visitor_host', 250)->nullable($value = true)->comment('dane z hosta (rev dns) użytkownika'); //rev dns hosta użytkownika - przydtne żeby szybko zlokalizować usługodawcę
