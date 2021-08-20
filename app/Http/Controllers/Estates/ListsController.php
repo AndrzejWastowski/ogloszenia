@@ -48,7 +48,7 @@ class ListsController extends Controller
 
      
 
-        return View('Estates.ListsAllCategories', [
+        return View('estates.ListsAllCategories', [
             'pageName' => 'Lista Nieruchomości',        
             'categories' => $categories ,
             'contents' => $contents,         
@@ -66,18 +66,27 @@ class ListsController extends Controller
      
         $groups = 'grupy';
 
-        if (!is_null($category)) {
+         
+  
 
-            //$subcategories = $this->EstatesSubCategoriesRepository->getSubcategoriesByCategoriesId($category->id);
-            $contents = $this->EstatesRepository->getEstatesByCategoriesLink($category[0]->link); 
+        if (isset($category[0]->id)) {
+            
             $contents = $this->EstatesRepository->getEstatesByCategoriesId($category[0]->id); 
+            
+            
+            if ($contents->total()==0) 
+            return View('estates.ListByCategoriesEmpty',[
+                'pageName' => 'Lista nieruchomości',                
+                'category' => $category,
+                'categories' => $categories,
+                'storage' => $this->storage, 
+            ]);
 
            
 
-            return View('Estates.ListByCategories', [
+            return View('estates.ListByCategories', [
 
-                'pageName' => 'Lista Ogłoszeń',
-                
+                'pageName' => 'Lista nieruchomości',                
                 'category' => $category,
                 'categories' => $categories,
                 'groups' => $groups,
@@ -88,7 +97,7 @@ class ListsController extends Controller
         }
         else
         {
-            $this->ListsAllCategories();
+           return redirect('/nieruchomosci');
         }
       //  dd($total_page);
     }
@@ -103,10 +112,9 @@ class ListsController extends Controller
         
        // dd($content);
 
-        return View('Estates.ListBySubCategories', [
-            'pageName' => 'Lista Ogłoszeń',
-            'category' => $category,
-            'pomsubcategory' => $pomsubcategory,         
+        return View('estates.ListBySubCategories', [
+            'pageName' => 'Lista nieruchomosci',
+            'category' => $category,             
             'storage' => $this->storage
             ]);
     }

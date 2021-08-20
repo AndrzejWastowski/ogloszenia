@@ -43,7 +43,7 @@ class ContentController extends Controller
         $content = $this->EstatesRepository->getEstatesById($id);
      
        
-        return View('Estates.Content', [
+        return View('estates.Content', [
             'pageName' => 'Ogłoszenie',
             'categories' => $categories,            
             'contents' => $content,

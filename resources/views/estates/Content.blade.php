@@ -33,7 +33,7 @@
         <div class="card-body p-3" style="background-color: {{ $content->highlighted }};">  
             <div class="row mb-0 pb-0">
                 <div class="col-xl-10"><h5 class="card-title"> <strong>{{ $content->name }} </strong></h5></div>
-                <div class="col-xl-2 text-end"><small>nr ogł.<strong> D/{{ $content->id }}/{{ $year }}</strong></small></div>
+                <div class="col-xl-2 text-end"><small>nr ogł.<strong> N/{{ $content->id }}/{{ $year }}</strong></small></div>
             </div>
             <div class="card-text black-text">                
                 <div class="row">
@@ -73,14 +73,20 @@
                                          
                                     <li class="text-end"><small><strong>{{  $content->date_start  }}</strong></small></li>            
                                     <li class="text-end"><small>dodał: <strong>{{  $content->User->name }} </strong></small></li>
-                                    <li class="text-end"><small> <strong>{{  $content->contact_phone }} </strong></small></li>
-                                    <li class="text-end"><small>Powierzchnia <strong>{{  $content->contact_email }} </strong> {{  $content->unit }}</small></li>   
+
+                                    <li><h5 class="text-center">Cena <strong class="text-success">{{ $content->price }} </strong> pln</h5></li>
+
+                                    <li class="text-end"><small>tel: <strong>{{  $content->contact_phone ?? 'nie podano' }} </strong></small></li>
+                                    <li class="text-end"><small>mail: <strong>{{  $content->contact_email ?? 'nie podano'  }} </strong></small></li>   
+                                    <li class="text-end"><small>powierzchnia: <strong>{{  $content->area }} </strong> {{  $content->unit }}</small></li>   
+                                    
 
                             </ul>                        
-                            <h4 class="text-center">Cena<br> <strong>{{ $content->price }} </strong> pln</h4>
+                            
+
+
                       
-                            unit
-                            Rynek: market
+                            
                                                     
                     </div>
                 </div>
