@@ -26,7 +26,7 @@ class SmallAdsCreateUpdateRequest extends FormRequest
         return [
             'id' => 'required|integer|min:0',
             'name' => 'required|min:10|max:255',
-            'lead' => 'required|min:30|max:255',
+            'lead' => 'required|min:10|max:255',
             'description' => 'required|min:30|max:2500',
             'items' => 'required|numeric|min:0|max:99999999',
             'price' => 'required|numeric|min:0|max:99999999',
@@ -35,8 +35,12 @@ class SmallAdsCreateUpdateRequest extends FormRequest
             'small_ads_categories_id' => 'required|integer|min:1',
             'small_ads_sub_categories_id' => 'required|integer|min:1',
             'small_ads_classified_enum' => 'required|in:sprzedam,kupię,zamienię,oddam,wypożyczę',            
-            'contact_email' => 'email:rfc,dns',
-            'contact_phone' => '',
+            'contact_phone' =>  'nullable',
+            'contact_email' =>  'nullable', 'email:rfc',function($attribute, $value, $fail) {
+            if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+               $fail($attribute . ' is invalid.');
+            }
+         } ,           
             'invoice' => 'required|in:Nie wystawiam faktury,Faktura VAT,Faktura Vat-marża,Faktura bez VAT',                        
             'condition' => 'required|in:nowe,używane',
             

@@ -19,7 +19,7 @@
                 <div class="accordion-item">
                     
                         <button class="list-group-item list-group-item-action active" type="button"  >
-                            KATEGORIA
+                            <a href="/drobne/{{ $category->link }}" class="text-white"><strong>KATEGORIA</strong></a>
                         </button>
                         
                 </div> 
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-xl-12">
                             <h5 class="card-title"> 
-                                <strong><a href="{{ route('SmallAdsContentsById', ['category'=> $content->SmallAdsCategories->link,'subcategory'=> $content->SmallAdsSubCategories->link,'id' => $content->id ]) }}">{{ $content->name }} </a></strong>
+                                <strong><a href="{{ route('SmallAdsContentsById', ['categories'=> $content->SmallAdsCategories->link,'subcategories'=> $content->SmallAdsSubCategories->link,'id' => $content->id ]) }}">{{ $content->name }} </a></strong>
                             </h5>
                         </div> 
                         <div class="card-text black-text">                
@@ -131,7 +131,7 @@
                                 <div class="col-9 mb-3"></div>
                                 <div class="mb-3">
                                     <div class="offset-lg-9 offset-sm-4">
-                                        <form action="{{ route('SmallAdsContentsById', ['category'=> $content->SmallAdsCategories->link,'subcategory'=> $content->SmallAdsSubCategories->link,'id' => $content->id ]) }}" method="get" enctype="text/plain"><div>                                    
+                                        <form action="{{ route('SmallAdsContentsById', ['categories'=> $content->SmallAdsCategories->link,'subcategories'=> $content->SmallAdsSubCategories->link,'id' => $content->id ]) }}" method="get" enctype="text/plain"><div>                                    
                                             <button type="submit" class="btn btn-primary">
                                                 {{ __('więcej informacji') }}
                                             </button>

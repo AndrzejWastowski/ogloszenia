@@ -46,7 +46,7 @@ class ListsController extends Controller
         $subcategories = $this->smallAdsSubCategoriesRepository->getAllSubCategories();        
         $content = $this->smallAdsRepository->getLastSmallAds(10);  
 
-        dd($content);
+        //dd($content);
     
     
 

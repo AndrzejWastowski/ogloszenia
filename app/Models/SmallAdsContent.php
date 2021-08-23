@@ -182,26 +182,22 @@ class SmallAdsContent extends Model
         return $this->views;
     }
 
-    public function contact_phone(): string
+    public function get_contact_phone(): string
     {
         return $this->contact_phone;
     }
 
-    public function contact_email(): string
+    public function get_contact_email(): string
     {
         return $this->contact_email;
     }
 
-    public function adresses_id(): int
+    public function get_adresses_id(): int
     {
         return $this->adresses_id;
     }
 
-    public function master_portal(): int
-    {
-        return $this->master_portal;
-    }
-
+  
     public function get_top(): int
     {
         return $this->top;
