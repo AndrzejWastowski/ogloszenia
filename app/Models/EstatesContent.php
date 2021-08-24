@@ -14,7 +14,33 @@ class EstatesContent extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'lead', 'description', 'estates_categories_id', 'area', 'unit', 'estates_groups_id', 'market', 'price', 'user_id', 'active', 'date_add', 'date_start', 'date_end', 'adresses_id', 'portal_id', 'date_start', 'date_end', 'recomended', 'featured', 'promoted', 'invoice',
+        'id',
+        'users_id',
+        'name',
+        'condition',
+        'lead',
+        'description',
+        'items',
+        'price',
+        'date_start',
+        'date_end',
+        'estates_categories_id',        
+        'estates_groups_id',        
+        'views',
+        'contact_phone',
+        'contact_email',
+        'adresses_id',
+        'master_portal',
+        'promoted',
+        'highlighted',
+        'recomended',
+        'adress_ip',
+        'port',
+        'host',
+        'browser',
+        'portal_id', 
+        'status',
+        'invoice',
        ];
 
     /**
@@ -23,7 +49,7 @@ class EstatesContent extends Model
      * @var array
      */
     protected $hidden = [
-        'visitor_ip', 'visitor_host', 'visitor_soft', 'visitor_proxy', 'visitor_port', 'created_at', 'updated_at', 'portal_id',
+        'created_at', 'updated_at'
        ];
 
     public function EstatesCategories()
@@ -65,4 +91,317 @@ class EstatesContent extends Model
 
         return $result;
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Getters
+    |--------------------------------------------------------------------------
+    */
+
+    public function get_id(): int
+    {
+        return $this->id;
+    }   
+
+    public function get_name(): int
+    {
+        return $this->name;
+    }
+
+     public function get_lead(): string
+    {
+        return $this->lead;
+    }
+
+    public function get_description(): string
+    {
+        return $this->description;
+    }
+
+
+    public function get_estates_groups_id(): int
+    {
+        return $this->estates_groups_id;
+    }
+
+    public function get_estates_categories_id(): int
+    {
+        return $this->estates_categories_id;
+    }
+
+    public function get_area(): int
+    {
+        return $this->area;
+    }
+
+    public function get_unit(): float
+    {
+        return $this->unit;
+    }
+
+    public function get_market(): int
+    {
+        return $this->market;
+    }
+    
+    public function get_price(): int
+    {
+        return $this->price;
+    }
+
+ 
+
+    public function get_date_end(): int
+    {
+        return $this->date_end;
+    }
+
+
+    public function get_estates_user_group_id(): int
+    {
+        return $this->estates_user_group_id;
+    }
+
+    public function get_estates_classified_enum(): string
+    {
+        return $this->estates_classified_enum;
+    }
+
+    public function get_views(): string
+    {
+        return $this->views;
+    }
+
+    public function get_contact_phone(): string
+    {
+        return $this->contact_phone;
+    }
+
+    public function get_contact_email(): string
+    {
+        return $this->contact_email;
+    }
+
+    public function get_adresses_id(): int
+    {
+        return $this->adresses_id;
+    }
+
+  
+    public function get_top(): int
+    {
+        return $this->top;
+    }
+    
+    public function get_promoted(): int
+    {
+        return $this->promoted;
+    }
+
+    public function get_master_portal(): int
+    {
+        return $this->master_portal;
+    }
+
+    public function get_highlighted(): string
+    {
+        return $this->highlighted;
+    }
+
+    public function get_recomended(): string
+    {
+        return $this->recomended;
+    }
+
+    public function get_adress_ip(): string
+    {
+        return $this->adress_ip;
+    }
+
+    public function get_host(): string
+    {
+        return $this->host;
+    }
+
+    public function get_port(): int
+    {
+        return $this->get_port;
+    }
+
+    public function get_browser(): string
+    {
+        return $this->browser;
+    }
+    
+
+    public function get_portal_id(): int
+    {
+        return $this->portal_id;
+    }
+
+    public function get_status(): string
+    {
+        return $this->status;
+    }
+
+    public function get_invoice(): string
+    {
+        return $this->invoice;
+    }
+
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Setters
+    |--------------------------------------------------------------------------
+    */
+
+    public function set_users_id(?int $value): void
+    {
+        $this->users_id = $value;
+    }
+
+    public function set_name(?string $value): void
+    {
+        $this->name  = $value;
+    }
+
+    public function set_condition(?string $value): void
+    {
+        $this->condition  = $value;
+    }
+
+    public function set_lead(?string $value): void
+    {
+        $this->lead  = $value;
+    }
+
+        public function set_description(?string $value): void
+    {
+        $this->description  = $value;
+    }
+
+    public function set_items(?int $value): void
+    {
+        $this->items  = $value;
+    }
+
+    public function set_price(?float $value): void
+    {
+        $this->price  = $value;
+    }
+
+    public function set_date_start(string $value): void
+    {
+        $this->date_start = $value;
+    }
+
+    public function set_date_end(?string $value): void
+    {
+        $this->date_end = $value;
+    }
+
+    public function set_estates_categories_id(int $value): void
+    {
+        $this->estates_categories_id = $value;
+    }
+
+    public function set_estates_user_group_id(int $value): void
+    {
+        $this->estates_user_group_id = $value;
+    }
+
+    public function set_estates_sub_categories_id(int $value): void
+    {
+        $this->estates_sub_categories_id = $value;
+    }
+
+    public function set_estates_classified_enum(?string $value): void
+    {
+        $this->estates_classified_enum = $value;
+    }
+
+    public function set_views(?int $value): void
+    {
+        $this->views = $value;
+    }
+
+    public function set_contact_phone(?string $value): void
+    {
+        $this->contact_phone = $value;
+    }
+    public function set_contact_email(?string $value): void
+    {
+        $this->contact_email = $value;
+    }
+
+    public function set_adradresses_idess_id(?int $value): void
+    {
+        $this->adresses_id = $value;
+    }
+
+
+    public function set_master_portal(?bool $value): void
+    {
+        $this->master_portal = $value;
+    }
+
+    public function set_promoted(?bool $value): void
+    {
+        $this->promoted = $value;
+    }
+
+    public function set_top(?bool $value): void
+    {
+        $this->top = $value;
+    }
+
+
+    public function set_highlighted(?string $value): void
+    {
+        $this->highlighted = $value;
+    }
+
+    public function set_recomended(string $value): void
+    {
+        $this->recomended = $value;
+    }
+
+    public function set_adress_ip(?string $value): void
+    {
+        $this->adress_ip = $value;
+    }
+
+    public function set_host(?string $value): void
+    {
+        $this->host = $value;
+    }
+
+    public function set_port(?int $value): void
+    {
+        $this->port = $value;
+    }
+
+    public function set_browser(?string $value): void
+    {
+        $this->browser = $value;
+    }
+
+    public function set_portal_id(?int $value): void
+    {
+        $this->status = $value;
+    }
+    
+    public function set_status(?string $value): void
+    {
+        $this->status = $value;
+    }
+
+    public function set_invoice(?string $value): void
+    {
+        $this->invoice = $value;
+    }
+
 }
+

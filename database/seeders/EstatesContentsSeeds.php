@@ -29,8 +29,7 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>1,
-            'recomended' => 0,
-            'active' => 1,
+            'recomended' => 'none',            
             'status' => 'active',
             'highlighted' => '#ffffff',
             'area' => 4000,
@@ -38,8 +37,8 @@ class EstatesContentsSeeds extends Seeder
             'adresses_id' => 1,
             'price' => 240000,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
 
         DB::table('estates_contents')->insert([
@@ -56,8 +55,7 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>1,
-            'recomended' => 0,
-            'active' => 1,
+            'recomended' => 'none',          
             'status' => 'active',
             'highlighted' => '#ffffff',
             'area' => 1150,
@@ -65,8 +63,8 @@ class EstatesContentsSeeds extends Seeder
             'adresses_id' => 2,
             'price' => 240000,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
 
         DB::table('estates_contents')->insert([
@@ -83,17 +81,16 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>0,
-            'recomended' => 0,
-            'active' => 1,
+            'recomended' => 'none',
             'status' => 'active',
-            'highlighted' => '#f1f8bc',
+            'highlighted' => '#c8cdff',
             'area' => 3500,
             'unit' => 'mkw',
             'adresses_id' => 3,
             'price' => 240000,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
 
         DB::table('estates_contents')->insert([
@@ -110,17 +107,16 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>0,
-            'recomended' => 0,
-            'highlighted' => '#f1f8bc',
-            'active' => 1,
+            'recomended' => 'none',
+            'highlighted' => '#ffc8dd',            
             'status' => 'active',
             'area' => 2200,
             'unit' => 'mkw',
             'adresses_id' => 1,
             'price' => 565000,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
 
         DB::table('estates_contents')->insert([
@@ -137,17 +133,16 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>1,
-            'recomended' => 0,
-            'highlighted' => '#ffffff',
-            'active' => 1,
+            'recomended' => 'none',
+            'highlighted' => '#ffffff',            
             'status' => 'active',
             'area' => 3200,
             'adresses_id' => 2,
             'unit' => 'mkw',
             'price' => 260600,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
 
         DB::table('estates_contents')->insert([
@@ -164,17 +159,16 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>0,
-            'recomended' => 0,
-            'highlighted' => '#ffffff',
-            'active' => 1,
+            'recomended' => 'none',
+            'highlighted' => '#ffffff',            
             'status' => 'active',
             'adresses_id' => 3,
             'area' => 900,
             'unit' => 'mkw',
             'price' => 299000,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
 
         DB::table('estates_contents')->insert([
@@ -191,17 +185,16 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>0,
-            'recomended' => 0,
-            'highlighted' => '#f1f8bc',
-            'active' => 1,
+            'recomended' => 'none',
+            'highlighted' => '#c8ffdf',            
             'status' => 'active',
             'adresses_id' => 2,
             'area' => 10100,
             'unit' => 'mkw',
             'price' => 3000000,
             'market' => 'pierwotny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
                 
         DB::table('estates_contents')->insert([
@@ -218,17 +211,17 @@ class EstatesContentsSeeds extends Seeder
             'contact_phone'=>'123 456 789',
             'contact_email'=>'mail@test.pl',
             'promoted'=>1,
-            'recomended' => 1,
-            'highlighted' => '#ffffff',
-            'active' => 1,
+            'recomended' => 'Przecena',
+            'highlighted' => '#eac8ff',            
             'status' => 'active',
             'adresses_id' => 2,
             'area' => 1090,
             'unit' => 'mkw',
             'price' => 180000,
             'market' => 'wtórny',
-            'visitor_ip'=>'23.34.45.56',
-            'visitor_port'=>'236'
+
+            'adress_ip'=>'23.34.45.56',
+            'port'=>'236'
             ]);
     }
 }

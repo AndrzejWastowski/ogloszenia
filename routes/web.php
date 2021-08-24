@@ -91,7 +91,25 @@ Route::group(['prefix' => 'home'], function () {
     Route::post('/add/small_ads/payments', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'payments'])->name('small_ads_payments');
     Route::post('/add/small_ads/payments', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'payments'])->name('small_ads_payments_post');
 
+
     
+
+    
+        Route::get('/add/estates', [App\Http\Controllers\Home\Add\EstatesController::class, 'content'])->name('estates_content');
+        Route::post('/add/estates', [App\Http\Controllers\Home\Add\EstatesController::class, 'content_post'])->name('estates_content_post');
+        Route::get('/add/estates/photo', [App\Http\Controllers\Home\Add\EstatesController::class, 'photo'])->name('estates_photo');
+        Route::post('/add/estates/photo', [App\Http\Controllers\Home\Add\EstatesController::class, 'photo_post'])->name('estates_photo_post');
+        Route::get('/add/estates/promotion', [App\Http\Controllers\Home\Add\EstatesController::class, 'promotion'])->name('estates_promotion');
+        Route::post('/add/estates/promotion', [App\Http\Controllers\Home\Add\EstatesController::class, 'promotion_post'])->name('estates_promotion_post');
+        Route::get('/add/estates/summary', [App\Http\Controllers\Home\Add\EstatesController::class, 'summary'])->name('estates_summary');
+        Route::post('/add/estates/summary', [App\Http\Controllers\Home\Add\EstatesController::class, 'summary_post'])->name('estates_summary_post');
+        Route::get('/add/estates/success', [App\Http\Controllers\Home\Add\EstatesController::class, 'summary_post'])->name('estates_success');
+        Route::post('/add/estates/success', [App\Http\Controllers\Home\Add\EstatesController::class, 'summary_post'])->name('estates_success_post');
+        Route::post('/add/estates/payments', [App\Http\Controllers\Home\Add\EstatesController::class, 'payments'])->name('estates_payments');
+        Route::post('/add/estates/payments', [App\Http\Controllers\Home\Add\EstatesController::class, 'payments'])->name('estates_payments_post');
+
+        
+
 
     Route::get('/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
     Route::get('/add/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/estates');
