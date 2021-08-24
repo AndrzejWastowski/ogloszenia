@@ -119,12 +119,11 @@ final class EstatesController extends Controller
 
     public function content_post(EstatesCreateUpdateRequest $request)
     {
-
-       // dd($request);
-
+   
+     //   dd($request);
+      
         $data = $request->validated();  
-        
-      //  dd($data);
+       
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
             
@@ -157,17 +156,17 @@ final class EstatesController extends Controller
         $estates_contents->set_name($data['name']);
         $estates_contents->set_lead($data['lead']);
         $estates_contents->set_description($data['description']);
-        $estates_contents->set_condition($data['condition']);
-        $estates_contents->set_items($data['items']);
+        $estates_contents->set_estates_type($data['estates_type']);
+        $estates_contents->set_estates_categories_id($data['estates_categories_id']);        
         $estates_contents->set_price($data['price']);
+        $estates_contents->set_area($data['area']);
+        $estates_contents->set_unit($data['unit']);
+        $estates_contents->set_market($data['market']);
         $estates_contents->set_date_start($data['date_start']);
         $data['date_end'] = (date('Y-m-d', strtotime($data['date_start']. ' + '.$data['date_end'].' days')));
 
       //  dd($data['date_end']);
-        $estates_contents->set_date_end($data['date_end']);
-        $estates_contents->set_estates_categories_id($data['estates_categories_id']);
-        $estates_contents->set_estates_sub_categories_id($data['estates_sub_categories_id']);
-        $estates_contents->set_estates_classified_enum($data['estates_classified_enum']);
+        $estates_contents->set_date_end($data['date_end']);                    
         $estates_contents->set_contact_email($data['contact_email']);
         $estates_contents->set_contact_phone($data['contact_phone']);
         $estates_contents->set_users_id(Auth::id());
@@ -181,8 +180,8 @@ final class EstatesController extends Controller
         $user['port'] = Arr::get($_SERVER,'REMOTE_PORT');
         $user['host'] = Arr::get($_SERVER,'REMOTE_HOST');
 
-        $ip = '91.228.136.201';
-        $location = Location::get($ip);
+        //$ip = '91.228.136.201';
+        $location = Location::get($user['ip']);
 
         if ($location!=null)
         {

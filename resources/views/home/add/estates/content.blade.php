@@ -52,7 +52,23 @@
             Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
         @endif
             <strong>{{ session('komunikat') }}</strong> 
-                                
+
+            <div class="bd-example">  
+
+            <label class=""><strong>Rynek</strong></label>                
+           
+            <div class="col-md-2">                
+                <input type="radio" class="form-check-input" id="market" name="market" value="pierwotny" checked>
+                <label class="form-check-label" for="market">Pierwotny</label>
+            </div>
+            <div class="col-md-2">
+                <input type="radio" class="form-check-input" id="market" name="market" value="wtórny" >
+                <label class="form-check-label" for="market">Wtórny</label>
+            </div>
+
+
+        </div>
+
             <div class="col-12">
                 <label class="category"><strong>Rodzaj ogłoszenia:</strong></label>
             </div> 
@@ -116,31 +132,21 @@
             </div>
             
             <div class="col-md-3 mb-4">
-                <label class="form-label" for="items"><strong>ile sztuk</strong></label>
-                <input type="text" id="items" name="items" class="form-control" placeholder="sztuk" value="{{ $content->items ?? '' }}" required>
+                <label class="form-label" for="area"><strong>Powierzchnia</strong></label>
+                <input type="text" id="area" name="area" class="form-control" placeholder="powierzchnia" value="{{ $content->area ?? '' }}" required>
             </div>   
             <div class="col-md-6 mb-4">
-                <label for="invoice"><strong>Rodzaj wystawianego rachunku</strong></label>
-                <select class="form-select" name="invoice" id="invoice" required>
-                    <option value="0" diabled selected="">Wybierz rodzaj rachunku</option>
-                    <option value="Nie wystawiam faktury" >Nie wystawiam faktury</option>
-                    <option value="Faktura VAT">Faktura z VAT</option>
-                    <option value="Faktura Vat-marża">Faktura Vat-marża</option>
-                    <option value="Faktura bez VAT">Faktura bez VAT</option>                              
+                <label class="form-label"  for="unit"><strong>Jednostka</strong></label>
+                <select class="form-select" name="unit" id="unit" required>
+                    <option value="0" diabled selected="">Wybierz jednostkę!</option>
+                    <option value="mkw" >Metr kwadratowy</option>
+                    <option value="ar">Ar</option>
+                    <option value="hektar">Hektar</option>
+                    
                 </select>                                 
             </div>
                             
-            <div class="col-md-12">                 
-                <label class=""><strong>Rodzaj oferty</strong></label>                
-            </div>
-            <div class="col-md-4 mb-4">                
-                <input type="radio" class="form-check-input" id="conditionNew" name="condition" value="nowe" checked>
-                <label class="form-check-label" for="condition_new">Produkt nowy</label>
-            </div>
-            <div class="col-md-4 mb-4">
-                <input type="radio" class="form-check-input" id="conditionUsed" name="condition" value="używane" >
-                <label class="form-check-label" for="conditionUsed">Produkt używany</label>
-            </div>
+           
             
             <div class="col-md-6">          
                 <label for="contact_phone" value=""><strong>Telefon kontaktowy</strong></label>

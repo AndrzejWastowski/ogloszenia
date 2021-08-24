@@ -267,9 +267,9 @@ class EstatesContent extends Model
         $this->name  = $value;
     }
 
-    public function set_condition(?string $value): void
+    public function set_estates_type(?string $value): void
     {
-        $this->condition  = $value;
+        $this->estates_type  = $value;
     }
 
     public function set_lead(?string $value): void
@@ -282,15 +282,26 @@ class EstatesContent extends Model
         $this->description  = $value;
     }
 
-    public function set_items(?int $value): void
+    public function set_unit(?string $value): void
     {
-        $this->items  = $value;
+        $this->unit  = $value;
+    }
+
+    public function set_area(?string $value): void
+    {
+        $this->area  = $value;
     }
 
     public function set_price(?float $value): void
     {
         $this->price  = $value;
     }
+
+    public function set_market(?string $value): void
+    {
+        $this->market  = $value;
+    }
+
 
     public function set_date_start(string $value): void
     {
