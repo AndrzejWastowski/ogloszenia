@@ -211,7 +211,7 @@ final class EstatesController extends Controller
         $estates_contents = $request->session()->get('estates_contents'); 
         $photos = $this->EstatesPhotosRepository->getAllPhotosByEstate($estates_contents->get_id());   
 
-        $contents = Storage::url('public/estates/601aaab35cbdb_kw.jpg');
+       // $contents = Storage::url('public/estates/601aaab35cbdb_kw.jpg');
 
        // dd($contents);
 

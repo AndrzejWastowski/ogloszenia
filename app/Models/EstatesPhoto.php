@@ -15,9 +15,7 @@ class EstatesPhoto extends Model
      */
     protected $guarded = [];
     public $timestamps = false;
-    protected $fillable = [
-    'id', 'estates_contents_id', 'name', 'sort',
-   ];
+    protected $fillable = ['id', 'estates_contents_id', 'name', 'sort',];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -32,4 +30,55 @@ class EstatesPhoto extends Model
     {
         return $this->belongsTo(EstatesContent::class, 'id');
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Getters
+    |--------------------------------------------------------------------------
+    */
+
+    public function get_id(): int
+    {
+        return $this->id;
+    }  
+
+
+    public function get_name(): string
+    {
+        return $this->name;
+    }
+
+    public function get_estates_contents_id():int 
+    {
+        return $this->estates_contents_id;
+    }
+
+    public function get_sort(): int
+    {
+        return $this->sort;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Setters
+    |--------------------------------------------------------------------------
+    */
+
+    public function set_name(string $value): void
+    {
+        $this->name = $value;
+    }
+
+    public function set_estates_contents_id(?int $value): void
+    {
+        $this->estates_contents_id = $value;
+    }
+
+    
+    public function set_sort(?int $value): void
+    {
+        $this->sort = $value;
+    }
+
 }

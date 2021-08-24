@@ -99,9 +99,15 @@ class EstatesContent extends Model
     |--------------------------------------------------------------------------
     */
 
+
     public function get_id(): int
     {
         return $this->id;
+    }   
+    
+    public function get_users_id(): int
+    {
+        return $this->users_id;
     }   
 
     public function get_name(): int
