@@ -48,12 +48,16 @@ final class StartController extends Controller
     public function start()
     {
         $storage = $this->storage::disk('local');
-        $smal_ads_promo= $this->smallAdsRepository->getPromoted(4, 0);
-        $smal_ads_promoted = $this->smallAdsRepository->getPromoted(12, 0);
+        $smal_ads_promo= $this->smallAdsRepository->getPromoted(12, 0);        
+
+    
 
         $smallAdsLastChanse = $this->smallAdsRepository->getLastChanse(4);
+     
+        
         $smallAdsNewOffer = $this->smallAdsRepository->getNewOffer(4);
         $smallAdsTopView = $this->smallAdsRepository->getTopView(4);
+
         $estates = $this->estatesRepository->getPromoted(12,0);
         $estates_promo = $this->estatesRepository->getPromoted(4,0);
         
@@ -61,11 +65,11 @@ final class StartController extends Controller
 //dd($cars_promo);
 
         return View('start', [
-            'storage' => $storage,            
+            'storage' => $storage,   
             'smal_ads_promo' => $smal_ads_promo,
             'estates_promo' => $estates_promo,
             'cars_promo' => $cars_promo,
-            'smal_ads_promoted' => $smal_ads_promoted,
+            
             'estates' => $estates,    
             'adsLastChanse' => $smallAdsLastChanse,
             'adsNewOffer' => $smallAdsNewOffer,

@@ -69,7 +69,7 @@ class SmallAdsContent extends Model
         return $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id');
     }
 
-        public function top_photos()
+        public function topPhotos()
     {
         return $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id')->limit(1);
     }

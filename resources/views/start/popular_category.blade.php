@@ -21,6 +21,23 @@
                         </a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/nieruchomosci" class="dark-grey-text font-small">
+                            <i class="fas fa-map dark-grey-text mr-3" aria-hidden="true"></i> Nieruchomości - mieszkania</a>
+                        <a href=""></a>
+                        <span class="badge badge-danger badge-pill">43</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/motoryzacja/" class="dark-grey-text font-small">
+                            <i class="fas fa-car dark-grey-text mr-3" aria-hidden="true"></i> Samochody - motoryzacja</a>
+                        <span class="badge badge-danger badge-pill">32</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/motoryzacja/" class="dark-grey-text font-small">
+                            <i class="fas fa-users-cog dark-grey-text mr-3" aria-hidden="true"></i> Usługi</a>
+                        <span class="badge badge-danger badge-pill">32</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
                         <a href="/drobne/moda/" class="dark-grey-text font-small">
                             <i class="fas fa-tshirt dark-grey-text mr-3" aria-hidden="true"></i> Moda</a>
                         <span class="badge badge-danger badge-pill">32</span>

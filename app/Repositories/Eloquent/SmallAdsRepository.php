@@ -74,8 +74,8 @@ class SmallAdsRepository extends BaseRepository
     public function getLastSmallAds($number_row = 10)
     {
         $results = $this->model
-                ->with('User')
-        ->with('top_photos')
+                ->with('user')
+        ->with('topPhotos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')  
         ->where('small_ads_contents.status', 'active')
@@ -92,17 +92,21 @@ class SmallAdsRepository extends BaseRepository
     public function getPromoted($limit, $skip) :Collection
     {
 
+
         $results = $this->model
         
-        ->with('top_photos')
-        ->with('SmallAdsCategories')
-        ->with('SmallAdsSubCategories')       
-        ->where('small_ads_contents.promoted', 1)        
+        ->with('user')
+        ->with('topPhotos')
+        ->with('SmallAdsCategories')          
+        ->where('small_ads_contents.promoted', 1)         
         ->where('small_ads_contents.status', 'active')
         ->orderBy('small_ads_contents.promoted', 'desc')
-        ->limit($limit)
-        ->offset($skip)
-        ->get();
+    ->limit($limit)
+    ->offset($skip)
+    ->get();
+
+
+        
 
         return $results;
     }
@@ -143,7 +147,7 @@ class SmallAdsRepository extends BaseRepository
         ->select(
             'small_ads_contents.*'           
         )
-        ->with('User')
+        ->with('user')
         ->with('photos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')       
@@ -165,7 +169,7 @@ class SmallAdsRepository extends BaseRepository
         ->select(
             'small_ads_contents.*'           
         )
-        ->with('User')
+        ->with('user')
         ->with('photos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')       
@@ -185,7 +189,7 @@ class SmallAdsRepository extends BaseRepository
         ->select(
             'small_ads_contents.*'           
         )
-        ->with('User')
+        ->with('user')
         ->with('photos')
         ->with('SmallAdsCategories')
         ->with('SmallAdsSubCategories')       
