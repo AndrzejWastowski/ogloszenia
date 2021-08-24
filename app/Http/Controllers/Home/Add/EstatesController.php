@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 use App\Repositories\Eloquent\EstatesRepository;
 use App\Repositories\Eloquent\EstatesCategoriesRepository;
-use App\Repositories\Eloquent\EstatesGroupsRepository;
 use App\Repositories\Eloquent\EstatesPhotosRepository;
 use App\Repositories\Eloquent\PriceRepository;
 use App\Repositories\Eloquent\PaymentRepository;
@@ -43,8 +42,7 @@ final class EstatesController extends Controller
     public function __construct(
     
         EstatesRepository $EstatesRepository,
-        EstatesCategoriesRepository $EstatesCategoriesRepository,
-        EstatesGroupsRepository $EstatesGroupsRepository,
+        EstatesCategoriesRepository $EstatesCategoriesRepository,       
         EstatesPhotosRepository $EstatesPhotosRepository,
         PriceRepository $priceRepository,
         Storage $storage
@@ -61,8 +59,7 @@ final class EstatesController extends Controller
             $this->middleware('auth');
             
             $this->EstatesRepository = $EstatesRepository;
-            $this->EstatesCategoriesRepository = $EstatesCategoriesRepository;
-            $this->EstatesGroupsRepository = $EstatesGroupsRepository;
+            $this->EstatesCategoriesRepository = $EstatesCategoriesRepository;         
             $this->EstatesPhotosRepository = $EstatesPhotosRepository;
             $this->priceRepository = $priceRepository;
             $this->storage = $storage::disk('local');
@@ -102,6 +99,7 @@ final class EstatesController extends Controller
 
         // dd($content);
         $categories = $this->EstatesCategoriesRepository->getAllCategories();  
+       
         
         // dd($subcategories);
 
@@ -109,9 +107,9 @@ final class EstatesController extends Controller
         // dd($user);
 
 
-        return view('home.add.estates.content',[
+        return view('home.add.estates.content',[            
             'content' => $content,
-            'categories' => $categories,            
+            'categories' => $categories,
             'user' => $user
         
         ]);
@@ -370,7 +368,7 @@ final class EstatesController extends Controller
         $categories = $this->EstatesCategoriesRepository->getCategoriesById($content['estates_categories_id']);  
 
        // dd($categories);
-        $groups = $this->EstatesGroupsRepository->getGroupsById($content['estates_groups_id'] );  
+        $groups = $this->EstatesGroupsRepository->getGroupsById($content['estates_type'] );  
        // dd($subcategories);
 
        //zliczanie płatności po stronie serwera

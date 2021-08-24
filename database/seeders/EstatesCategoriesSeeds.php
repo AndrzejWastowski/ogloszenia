@@ -19,8 +19,7 @@ class EstatesCategoriesSeeds extends Seeder
         //1
         DB::table('estates_categories')->insert([
             'name'=> 'Powierzchnia biurowa',
-            'link'=> 'powierzchnia_biurowa',
-            'estates_groups_id'=> 2,
+            'link'=> 'powierzchnia_biurowa',          
             'icon'=> '',
             'popular'=> 1,
             'description'=> 'powierzchnia biurowa'
@@ -28,8 +27,7 @@ class EstatesCategoriesSeeds extends Seeder
 
         DB::table('estates_categories')->insert([
             'name'=> 'Sklepy',
-            'link'=> 'sklepy',
-            'estates_groups_id'=> 2,
+            'link'=> 'sklepy',          
             'icon'=> '',
             'popular'=> 1,
             'description'=> 'sprzdam sklep / firmę'
@@ -37,17 +35,15 @@ class EstatesCategoriesSeeds extends Seeder
 
         DB::table('estates_categories')->insert([
             'name'=> 'Stoiska Handlowe',
-            'link'=> 'stoiska_handlowe',
-            'estates_groups_id'=> 2,
+            'link'=> 'stoiska_handlowe',       
             'icon'=> '',
             'popular'=> 1,
-            'description'=> 'stoiska handlowe'
+            'description'=> 'wynajem stoisk handlowych'
         ]);
 
         DB::table('estates_categories')->insert([
             'name'=> 'Tereny Inwestycyjne',
-            'link'=> 'tereny_insestycyjne',
-            'estates_groups_id'=> 2,
+            'link'=> 'tereny_insestycyjne',      
             'icon'=> '',
             'popular'=> 1,
             'description'=> 'tereny pod sklep, biuro, firmę, magazyn'
@@ -56,8 +52,7 @@ class EstatesCategoriesSeeds extends Seeder
 
         DB::table('estates_categories')->insert([
             'name'=> 'Magazyny',
-            'link'=> 'magazyny',
-            'estates_groups_id'=> 2,
+            'link'=> 'magazyny',            
             'icon'=> '',
             'popular'=> 1,
             'description'=> 'powierzchnia magazynowa, budynki magazynowe'
@@ -66,8 +61,7 @@ class EstatesCategoriesSeeds extends Seeder
         
         DB::table('estates_categories')->insert([
             'name'=> 'Mieszkania',
-            'link'=> 'mieszkania',
-            'estates_groups_id'=> 1,
+            'link'=> 'mieszkania',          
             'icon'=> '',
             'popular'=> 1,
             'description'=> 'sprzedam mieszkanie '
@@ -76,8 +70,7 @@ class EstatesCategoriesSeeds extends Seeder
 
         DB::table('estates_categories')->insert([
             'name'=> 'Domy',
-            'link'=> 'domy',
-            'estates_groups_id'=> 1,
+            'link'=> 'domy',        
             'icon'=> '',
             'popular'=> 1,
             'description'=> 'Sprzedam dom mieszkalny'
@@ -85,77 +78,29 @@ class EstatesCategoriesSeeds extends Seeder
 
 
         DB::table('estates_categories')->insert([
-            'name'=> 'Działki Budowlane',
-            'link'=> 'dzialki_budowlane',
-            'estates_groups_id'=> 1,
+            'name'=> 'Działki budowlane',
+            'link'=> 'dzialki_budowlane',        
             'icon'=> '',
             'popular'=> 1,
-            'description'=> 'sprzedam działkę budowlaną pod dom'
+            'description'=> 'Sprzedam działkę budowlaną pod dom'
         ]);
 
 
         DB::table('estates_categories')->insert([
             'name'=> 'Garaże',
-            'link'=> 'garaze',
-            'estates_groups_id'=> 1,
+            'link'=> 'garaze',        
             'icon'=> '',
             'popular'=> 1,
-            'description'=> 'sprzedam garaż'
+            'description'=> 'Sprzedam garaż'
         ]);
 
         DB::table('estates_categories')->insert([
             'name'=> 'Działki rekreacyjne',
-            'link'=> 'dzialki_rekreacyjne',
-            'estates_groups_id'=> 1,
+            'link'=> 'dzialki_rekreacyjne',       
             'icon'=> '',
             'popular'=> 1,
-            'description'=> 'sprzedam działkę rekreacyjną'
+            'description'=> 'Sprzedam działkę rekreacyjną'
         ]);
-
-
-        DB::table('estates_categories')->insert([
-            'name'=> 'Wynajem mieszkan',
-            'link'=> 'wynajem_mieszkan',
-            'estates_groups_id'=> 3,
-            'icon'=> '',
-            'popular'=> 1,
-            'description'=> 'Wynajmę mieszkanie'
-        ]);
-
-        DB::table('estates_categories')->insert([
-            'name'=> 'Wynajem biur',
-            'link'=> 'wynajem_biur',
-            'estates_groups_id'=> 3,
-            'icon'=> '',
-            'popular'=> 1,
-            'description'=> 'Wynajmę pomieszczenie biurowe'
-        ]);
-
-        DB::table('estates_categories')->insert([
-            'name'=> 'Powierzchnia handlowa',
-            'link'=> 'powierzchnia_handlowa',
-            'estates_groups_id'=> 3,
-            'icon'=> '',
-            'popular'=> 1,
-            'description'=> 'Wynajmę powierzchnię handlową'
-        ]);
-
-        DB::table('estates_categories')->insert([
-            'name'=> 'Wynajmę magazyn',
-            'link'=> 'wynajem_magazyn',
-            'estates_groups_id'=> 3,
-            'icon'=> '',
-            'popular'=> 1,
-            'description'=> 'Wynajmę magazyn, powierzchnię magazynową'
-        ]);
-
-        DB::table('estates_categories')->insert([
-            'name'=> 'Parkingi',
-            'link'=> 'parkingi',
-            'estates_groups_id'=> 3,
-            'icon'=> '',
-            'popular'=> 1,
-            'description'=> 'Wynajmę parking'
-        ]);
+;
     }
 }

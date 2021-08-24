@@ -17,12 +17,13 @@
                 <div class="accordion-body">
                     <ul class="list-unstyled" id="AddSubmenu">
                         <li><a href="{{ route('small_ads_content') }}">Ogłoszenia drobne</a></li>
+                        <li><a href="{{ route('estates_content') }}">Nieruchomości</a></li>
                         <li><a href="{{ route('small_ads_content') }}">Usługi</a></li>
-                        <li><a href="{{ route('home/add/estates') }}">Nieruchomości</a></li>
+                
                         <li><a href="{{ route('home/add/automotive') }}">Motoryzacja</a></li>
                         <li><a href="{{ route('home/add/jobs') }}">Praca</a></li>
-                        <li><a href="{{ route('small_ads_content') }}">Towarzyskie</a></li>
-                        <li><a href="{{ route('small_ads_content') }}">Zgubione/znalezione</a></li>
+                        
+                        
                     </ul>
                 </div>
             </div>

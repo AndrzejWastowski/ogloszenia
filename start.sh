@@ -31,9 +31,6 @@ echo 'uzupelniam zdjęcia przy uzytkownikach- ';
 echo 'uzupelniam kategogie przy nieruchomosciach';
 php artisan db:seed --class EstatesCategoriesSeeds
 
-echo 'uzupelniam grupy przy nieruchomosciach';
-php artisan db:seed --class EstatesGroupSeeds
-
 echo 'uzupelniam dane nieruchomosc - przyklady';
 php artisan db:seed --class EstatesContentsSeeds
 

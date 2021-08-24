@@ -22,7 +22,7 @@ class CreateEstatesContentsTable extends Migration
             $table->string('name', 150)->comment('nazwa / temat nieruchomosci');
             $table->string('lead', 255)->comment('krotki opis nieruchomosci - do wyswietlania na liscie podstawowej 256 znaków max');
             $table->text('description')->comment('długi opis');
-            $table->integer('estates_groups_id')->comment('grupa ogłoszeń');
+            $table->enum('estates_type',['Sprzedam','Wynajmę'])->comment('rodzaj ołoszenia');
             $table->integer('estates_categories_id')->comment('kategoria ogłoszenia');
             $table->integer('area')->comment('powierzchnia ');
             $table->enum('unit', ['mkw','ar','hektar'])->comment('powierzchnia ');

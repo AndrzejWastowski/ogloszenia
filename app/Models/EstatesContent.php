@@ -25,7 +25,7 @@ class EstatesContent extends Model
         'date_start',
         'date_end',
         'estates_categories_id',        
-        'estates_groups_id',        
+        'estates_type',        
         'views',
         'contact_phone',
         'contact_email',
@@ -60,7 +60,7 @@ class EstatesContent extends Model
 
     public function EstatesGroups()
     {
-        return $this->belongsTo(EstatesGroup::class, 'estates_groups_id');
+        return $this->belongsTo(EstatesGroup::class, 'estates_type');
     }
 
     public function Photos()
@@ -120,9 +120,9 @@ class EstatesContent extends Model
     }
 
 
-    public function get_estates_groups_id(): int
+    public function get_estates_type(): int
     {
-        return $this->estates_groups_id;
+        return $this->estates_type;
     }
 
     public function get_estates_categories_id(): int
