@@ -42,3 +42,6 @@ php artisan db:seed --class ServicesCategoriesSeeds
 
 echo 'dodaje ceny do cennika'
 php artisan db:seed --class PricesSeeds
+
+echo 'dodaje sekcje'
+php artisan db:seed --class SectionSeeds

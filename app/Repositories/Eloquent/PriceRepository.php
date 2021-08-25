@@ -18,4 +18,13 @@ class PriceRepository extends BaseRepository
         $data = $this->model->orderBy('name', 'asc')->get();
         return $data;
     }
+
+
+    public function getAllFromSection($section)
+    {
+        $data = $this->model->orderBy('name', 'asc')
+        ->where('section', $section)  
+        ->get();
+        return $data;
+    }
 }

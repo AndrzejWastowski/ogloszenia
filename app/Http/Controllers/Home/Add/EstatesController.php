@@ -353,7 +353,7 @@ final class EstatesController extends Controller
         $teraz = strtotime(now());
 
        // dd($content);
-        $price = $this->priceRepository->getAll();  
+        $price = $this->priceRepository->getAllFromSection('estates');  
 
         if (($data - $teraz)<0)
         { 
@@ -367,8 +367,7 @@ final class EstatesController extends Controller
         $categories = $this->EstatesCategoriesRepository->getCategoriesById($content['estates_categories_id']);  
 
        // dd($categories);
-        $groups = $this->EstatesGroupsRepository->getGroupsById($content['estates_type'] );  
-       // dd($subcategories);
+        
 
        //zliczanie płatności po stronie serwera
 
@@ -404,8 +403,7 @@ final class EstatesController extends Controller
         return view('home.add.estates.summary',[
 
             'content' => $content,            
-            'categories' => $categories,
-            'groups' => $groups,
+            'categories' => $categories,            
             'photos' => $photos,
             'storage' => $this->storage,
             'payments' => $payments,
