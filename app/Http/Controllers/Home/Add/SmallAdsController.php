@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Home\Add;
 
 use App\Http\Controllers\Controller;
@@ -88,10 +90,15 @@ final class SmallAdsController extends Controller
             $content = new \App\Models\SmallAdsContent();
             $content->setTable('small_ads_contents');
             $content->setConnection('mysql');
+            $content->set_date_start(now()->format('Y-m-d'));
+
         }
+      
 
         $data = strtotime($content['date_start']);
-        $teraz = strtotime(now());
+       
+    
+        $teraz = strtotime(now()->format('Y-m-d'));
 
         if (($data - $teraz)<0)
         { $content['date_start'] = date('Y-m-d'); }
@@ -354,7 +361,7 @@ final class SmallAdsController extends Controller
         
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $data = strtotime($content['date_start']);
-        $teraz = strtotime(now());
+        $teraz = strtotime(now()->format('Y-m-d'));
 
        // dd($content);
         $price = $this->priceRepository->getAll();  

@@ -172,8 +172,9 @@
                             <div class="row mt-3">                               
                                 <h3 class="text-primary">Zleć publikację w gazecie</h3> 
                                 <div class="col-3 p-0"></div>
-                                    <div class="col-9 p-0"><strong>{{ $price['lokalna_ogloszenie']->price }}zł za 1 ogłoszenie do 300znaków <span class="text-danger">(publikujemy w gazecie zawartość leadu)</span></strong>
-                                    <div class="col-9 p-0"><strong>{{ $price['magazyn_kci_ogloszenie']->price }}zł za 1 ogłoszenie do 300znaków (publikujemy zawartość leadu)</strong>
+                                    <div class="col-9 p-0"><strong>{{ $price['gazeta_ogloszenie']->price }}zł za 1 ogłoszenie do 300 znaków <br>
+                                        <i><span class="text-danger">(publikujemy w gazecie zawartość leadu)</span></i></strong>
+                                    
                                 
                             </div>
 

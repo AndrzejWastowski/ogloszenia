@@ -18,7 +18,7 @@ class CreateEstatesPhotosTable extends Migration
             $table->increments('id');
             $table->integer('estates_contents_id')->comment('powiązanie zdjecia z wpisem');
             $table->integer('sort')->comment('sortowanie zdjęć 1 jako głowne');         
-            $table->string('name',10)->comment('hash name - wygenerowana aaa');          
+            $table->string('name',13)->comment('hash name - wygenerowana aaa');          
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

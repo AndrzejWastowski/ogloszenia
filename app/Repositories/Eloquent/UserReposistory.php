@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
+
 namespace App\Repositories\Eloquent;
 
 use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Collection;
 
-class UserRepository extends BaseRepository implements UserRepositoryInterface
+class UserReposistory extends BaseRepository implements UserRepositoryInterface
 {
 
    /**

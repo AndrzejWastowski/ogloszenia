@@ -147,12 +147,12 @@ class SmallAdsContent extends Model
         return $this->price;
     }
 
-    public function get_date_start(): int
+    public function get_date_start(): string
     {
         return $this->date_start;
     }
 
-    public function get_date_end(): int
+    public function get_date_end(): string
     {
         return $this->date_end;
     }
@@ -196,7 +196,6 @@ class SmallAdsContent extends Model
     {
         return $this->adresses_id;
     }
-
   
     public function get_top(): int
     {

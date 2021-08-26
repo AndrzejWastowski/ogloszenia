@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Home\Add;
 use App\Http\Controllers\Controller;
 use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
 
-class SmallAdsSubCategoriesController extends Controller
+class SmallAdsSubcategoriesController extends Controller
 {
     
     private $smallAdsSubCategories;
