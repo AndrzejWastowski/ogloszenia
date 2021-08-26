@@ -35,7 +35,7 @@ class SmallAdsContent extends Model
     'master_portal',
     'promoted',
     'highlighted',
-    'recomended',
+    'inscription',
     'adress_ip',
     'port',
     'host',
@@ -217,9 +217,9 @@ class SmallAdsContent extends Model
         return $this->highlighted;
     }
 
-    public function get_recomended(): string
+    public function get_inscription(): string
     {
-        return $this->recomended;
+        return $this->inscription;
     }
 
     public function get_adress_ip(): string
@@ -371,9 +371,9 @@ class SmallAdsContent extends Model
         $this->highlighted = $value;
     }
 
-    public function set_recomended(string $value): void
+    public function set_inscription(string $value): void
     {
-        $this->recomended = $value;
+        $this->inscription = $value;
     }
 
     public function set_adress_ip(?string $value): void

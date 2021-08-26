@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateServicesContentsTable extends Migration
 {
@@ -22,7 +23,7 @@ class CreateServicesContentsTable extends Migration
             $table->integer('services_categories_id')->unsigned()->comment('kategoria usługi');
             $table->dateTime('date_start')->comment('data pojawienia się usługi na portalu (można zrobić opóźnienie)');
             $table->dateTime('date_end')->comment('data_waznosci usługi, po jakim czasie ma ogłoszenie zniknąć');
-            $table->unsignedTinyInteger('recomended')->comment('czy ogłoszenie jest rekomendowane');
+            $table->unsignedTinyInteger('inscription')->comment('czy ogłoszenie jest rekomendowane');
             $table->enum('highlighted', ['#ffffff','#cfbcf8','#bcf8bc','#f1f8bc','#f8c0bc','#f8bcf5'])->default("#ffffff")->comment('czy ogłoszenie jest wyróżnione (kolor)');
             $table->unsignedTinyInteger('promoted')->default(0)->comment('czy ogłoszenie jest promowane (przed innymi)');
             $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');

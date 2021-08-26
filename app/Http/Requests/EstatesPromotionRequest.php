@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EstatesPromotionRequest extends FormRequest
@@ -25,8 +24,7 @@ class EstatesPromotionRequest extends FormRequest
     {
         return [
 
-            'recomended' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',
-           
+            'inscription' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',           
             'highlighted' => 'required|in:#ffffff,#c8cdff,#ffc8dd,#c8ffdf,#eac8ff,#fff7c8',
            
 
@@ -43,7 +41,7 @@ class EstatesPromotionRequest extends FormRequest
     public function messages()
     {
         return [
-            'recomended.required' => 'pole <b>nazwa</b> jest wymagane!<br>',            
+            'inscription.required' => 'pole <b>nazwa</b> jest wymagane!<br>',            
             'highlighted.required' => 'pole <b>nazwa</b> jest wymagane!<br>',
 
         ];

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateJobContentsTable extends Migration
 {
@@ -22,7 +23,7 @@ class CreateJobContentsTable extends Migration
             $table->tinyInteger('portal_id')->unsigned()->comment('id portalu z którego uzytkownik dodawał ogłoszenie');
             $table->dateTime('date_start')->comment('data pojawienia się ogłoszenia na portalu (można zrobić opóźnienie)');
             $table->dateTime('date_end')->comment('data_waznosci');            
-            $table->unsignedTinyInteger('recomended')->comment('czy ogłoszenie jest rekomendowane');
+            $table->unsignedTinyInteger('inscription')->comment('czy ogłoszenie jest rekomendowane');
             $table->enum('highlighted', ['#ffffff','#cfbcf8','#bcf8bc','#f1f8bc','#f8c0bc','#f8bcf5'])->default("#ffffff")->comment('czy ogłoszenie jest wyróżnione (kolor)');
             $table->unsignedTinyInteger('promoted')->comment('czy ogłoszenie jest promowane (przed innymi)');
             $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');

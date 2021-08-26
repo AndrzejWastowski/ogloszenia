@@ -25,7 +25,7 @@ class SmallAdsPromotionRequest extends FormRequest
     {
         return [
 
-            'recomended' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',
+            'inscription' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',
            
             'highlighted' => 'required|in:#ffffff,#c8cdff,#ffc8dd,#c8ffdf,#eac8ff,#fff7c8',
            
@@ -43,7 +43,7 @@ class SmallAdsPromotionRequest extends FormRequest
     public function messages()
     {
         return [
-            'recomended.required' => 'pole <b>nazwa</b> jest wymagane!<br>',            
+            'inscription.required' => 'pole <b>nazwa</b> jest wymagane!<br>',            
             'highlighted.required' => 'pole <b>nazwa</b> jest wymagane!<br>',
 
         ];

@@ -15,8 +15,8 @@ use App\Repositories\Eloquent\PaymentRepository;
 
 use Stevebauman\Location\Facades\Location;
 
-use App\Http\Requests\EstatesCreateUpdateRequest;
-use App\Http\Requests\EstatesCreatePhotoRequest;
+use App\Http\Requests\EstatesContentRequest;
+use App\Http\Requests\EstatesPhotoRequest;
 use App\Http\Requests\EstatesPromotionRequest;
 use App\Http\Requests\EstatesPaymentRequest;
 
@@ -26,7 +26,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-//use App\Repositories\AdPhotosRepository;
 
 
 final class EstatesController extends Controller
@@ -117,12 +116,13 @@ final class EstatesController extends Controller
     }
 
 
-    public function content_post(EstatesCreateUpdateRequest $request)
+    public function content_post(EstatesContentRequest $request)
     {
    
-     //   dd($request);
+   
       
         $data = $request->validated();  
+       // dd($data);
        
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
@@ -223,7 +223,7 @@ final class EstatesController extends Controller
     }
 
 
-    public function photo_post(EstatesCreatePhotoRequest $request)
+    public function photo_post(EstatesPhotoRequest $request)
     {
         //$validatedData = $request->validate(['photos[]' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']);
         // create an image manager instance with favored driver
@@ -290,28 +290,23 @@ final class EstatesController extends Controller
         $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_7'); 
         $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_14'); 
         $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_30');
-
+                
+        $price['promotion_7']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_7'); 
+        $price['promotion_14']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_14'); 
+        $price['promotion_30']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_30');
 
         $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_7'); 
         $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_14');         
         $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_30'); 
-        
-        $price['promotion_7']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_7'); 
-        $price['promocja_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_14'); 
-        $price['promocja_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_30');         
 
-        $price['recomendation_7']=$this->priceRepository->getAllFromSectionAndName('estates','recomendation_7'); 
-        $price['recomendation_14']=$this->priceRepository->getAllFromSectionAndName('estates','recomendation_14'); 
-        $price['recomendation_30']=$this->priceRepository->getAllFromSectionAndName('estates','recomendation_30'); 
-
+        $price['inscription_7']=$this->priceRepository->getAllFromSectionAndName('estates','inscription_7'); 
+        $price['inscription_14']=$this->priceRepository->getAllFromSectionAndName('estates','inscription_14'); 
+        $price['inscription_30']=$this->priceRepository->getAllFromSectionAndName('estates','inscription_30'); 
         
         $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_advertisement'); 
         $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_frame'); 
         $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_background'); 
-        
 
-
-        
         return view('home.add.estates.promotion', [
             'request'=>$request,
             'price'=>$price
@@ -360,7 +355,7 @@ final class EstatesController extends Controller
         $estates_contents = $this->EstatesRepository->getNonUnfinishedEstates(Auth::id());  
         $estates_contents->set_highlighted($data['highlighted']);        
         $estates_contents->set_promoted($data['promoted']);
-        $estates_contents->set_recomended($data['recomended']);
+        $estates_contents->set_inscription($data['inscription']);
         $estates_contents->set_master_portal($master_portal);
         $estates_contents->set_top($top);
         $estates_contents->save();
@@ -398,7 +393,7 @@ final class EstatesController extends Controller
         $promoted_price = 0;
         $top_price = 0;
         $highlighted_price = 0;
-        $recomended_price = 0;
+        $inscription_price = 0;
 
         if ($content['date_end_promotion']>0) {
 
@@ -412,12 +407,12 @@ final class EstatesController extends Controller
             if ($content['highlighted']!='#ffffff') {
                 $highlighted_price = $price['highlighted_'.$content['date_end_promotion']];
             }
-            if ($content['recomended']!='none') {
-                $recomended_price = $price['recomended_'.$content['date_end_promotion']];
+            if ($content['inscription']!='none') {
+                $inscription_price = $price['inscription_'.$content['date_end_promotion']];
             }
         }
 
-        $payments = $promoted_price + $highlighted_price + $top_price + $recomended_price;
+        $payments = $promoted_price + $highlighted_price + $top_price + $inscription_price;
 
 //        dd($payments);
 

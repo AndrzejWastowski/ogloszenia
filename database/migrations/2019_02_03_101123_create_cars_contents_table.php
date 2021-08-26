@@ -37,7 +37,7 @@ class CreateCarsContentsTable extends Migration
             $table->unsignedTinyInteger('demaged')->comment('liczba miejsc siedzących');
             $table->unsignedTinyInteger('accident')->comment('liczba miejsc siedzących');
             $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');
-            $table->unsignedTinyInteger('recomended')->default(0)->comment('czy ogłoszenie jest rekomendowane');
+            $table->unsignedTinyInteger('inscription')->default(0)->comment('czy ogłoszenie jest rekomendowane');
             $table->enum('highlighted', ['#ffffff','#cfbcf8','#bcf8bc','#f1f8bc','#f8c0bc','#f8bcf5'])->default("#ffffff")->comment('czy ogłoszenie jest wyróżnione (kolor)');
             $table->unsignedTinyInteger('promoted')->default(0)->comment('czy ogłoszenie jest promowane (przed innymi)');
             $table->unsignedTinyInteger('active')->default(0)->comment('czy ogloszenie jet aktywne (ustawiane jak cała procedura dodawania ogłoszenia dojdzie do konca)');

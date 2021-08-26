@@ -48,7 +48,7 @@ class CarsContent extends Model
         'promoted',
         'top',
         'highlighted',
-        'recomended',
+        'inscription',
     ];
 
     /**

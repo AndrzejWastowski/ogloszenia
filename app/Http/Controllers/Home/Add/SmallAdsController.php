@@ -18,9 +18,10 @@ use App\Repositories\Eloquent\PaymentRepository;
 
 use Stevebauman\Location\Facades\Location;
 
-use App\Http\Requests\SmallAdsCreateUpdateRequest;
+use App\Http\Requests\SmallAdsContentRequest;
 use App\Http\Requests\SmallAdsCreatePhotoRequest;
 use App\Http\Requests\SmallAdsPromotionRequest;
+use App\Http\Requests\SmallAdsPhotoRequest;
 use App\Http\Requests\SmallAdsPaymentRequest;
 
 use Intervention\Image\ImageManager;
@@ -127,14 +128,12 @@ final class SmallAdsController extends Controller
     }
 
 
-    public function content_post(SmallAdsCreateUpdateRequest $request)
+    public function content_post(SmallAdsContentRequest $request)
     {
-
-       // dd($request);
 
         $data = $request->validated();  
         
-      //  dd($data);
+     //   dd($data);
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
             
@@ -168,15 +167,15 @@ final class SmallAdsController extends Controller
         $small_ads_contents->set_lead($data['lead']);
         $small_ads_contents->set_description($data['description']);
         $small_ads_contents->set_condition($data['condition']);
-        $small_ads_contents->set_items($data['items']);
-        $small_ads_contents->set_price($data['price']);
+        $small_ads_contents->set_items((int)$data['items']);
+        $small_ads_contents->set_price((float)$data['price']);
         $small_ads_contents->set_date_start($data['date_start']);
         $data['date_end'] = (date('Y-m-d', strtotime($data['date_start']. ' + '.$data['date_end'].' days')));
 
       //  dd($data['date_end']);
         $small_ads_contents->set_date_end($data['date_end']);
-        $small_ads_contents->set_small_ads_categories_id($data['small_ads_categories_id']);
-        $small_ads_contents->set_small_ads_sub_categories_id($data['small_ads_sub_categories_id']);
+        $small_ads_contents->set_small_ads_categories_id((int)$data['small_ads_categories_id']);
+        $small_ads_contents->set_small_ads_sub_categories_id((int)$data['small_ads_sub_categories_id']);
         $small_ads_contents->set_small_ads_classified_enum($data['small_ads_classified_enum']);
         $small_ads_contents->set_contact_email($data['contact_email']);
         $small_ads_contents->set_contact_phone($data['contact_phone']);
@@ -234,7 +233,7 @@ final class SmallAdsController extends Controller
     }
 
 
-    public function photo_post(SmallAdsCreatePhotoRequest $request)
+    public function photo_post(SmallAdsPhotoRequest $request)
     {
         //$validatedData = $request->validate(['photos[]' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']);
         // create an image manager instance with favored driver
@@ -347,7 +346,7 @@ final class SmallAdsController extends Controller
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $small_ads_contents->set_highlighted($data['highlighted']);        
         $small_ads_contents->set_promoted($data['promoted']);
-        $small_ads_contents->set_recomended($data['recomended']);
+        $small_ads_contents->set_inscription($data['inscription']);
         $small_ads_contents->set_master_portal($master_portal);
         $small_ads_contents->set_top($top);
         $small_ads_contents->save();
@@ -386,7 +385,7 @@ final class SmallAdsController extends Controller
         $promoted_price = 0;
         $top_price = 0;
         $highlighted_price = 0;
-        $recomended_price = 0;
+        $inscription_price = 0;
 
         if ($content['date_end_promotion']>0) {
 
@@ -400,12 +399,12 @@ final class SmallAdsController extends Controller
             if ($content['highlighted']!='#ffffff') {
                 $highlighted_price = $price['highlighted_'.$content['date_end_promotion']];
             }
-            if ($content['recomended']!='none') {
-                $recomended_price = $price['recomended_'.$content['date_end_promotion']];
+            if ($content['inscription']!='none') {
+                $inscription_price = $price['inscription_'.$content['date_end_promotion']];
             }
         }
 
-        $payments = $promoted_price + $highlighted_price + $top_price + $recomended_price;
+        $payments = $promoted_price + $highlighted_price + $top_price + $inscription_price;
 
 //        dd($payments);
 

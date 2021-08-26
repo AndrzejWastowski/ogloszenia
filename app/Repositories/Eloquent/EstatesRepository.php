@@ -174,7 +174,7 @@ class EstatesRepository extends BaseRepository
             'estates_contents.market as estates_contents_market',
             'estates_contents.price as estates_contents_price',
             'estates_contents.active as estates_contents_active',
-            'estates_contents.recomended as estates_contents_recomended',
+            'estates_contents.inscription as estates_contents_inscription',
             'estates_contents.highlighted as estates_contents_highlighted',
             'estates_contents.promoted as estates_contents_promoted',
             'estates_contents.date_add as estates_contents_date_add',

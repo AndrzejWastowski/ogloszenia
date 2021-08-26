@@ -41,7 +41,7 @@
                     
                     <form action="{{ route('estates_promotion_post') }}"  method="POST" enctype="multipart/form-data" role="form" name="formPromotion">
                             @csrf
-                            <p class="h4 mb-4 text-center">Wybierz rodzaj promocji ogłoszenia</p>
+                            <p class="h4 mb-4 text-center">Wybierz czas promocji ogłoszenia</p>
                             <div class="row">
                                 <div class="col-3">
                                         
@@ -72,7 +72,7 @@
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie będzie się pojawiać na głównym portalu w ramce "ogłoszenia". Ogłoszenia które się tam znajdują są rotujące. Czyli zmieniają przy każdym wejściu na stronę oraz gdy użytkownik przegląda stronę. Dzięki tej opcji masz dużo większe szanse trafić do dużego grona odbiorców, nawet jeśli nie wejdą na portal ogłoszeniowy. 
                                         
-                                        Koszt <b>ogłoszenia promowanego</b> to:<br> <b>{{ $price['promocja_7_dni']->price }} zł</b> / tydzień | <b>{{ $price['promocja_14_dni']->price }} zł</b> / 2 tygodnie | <b>{{ $price['promocja_30_dni']->price }} zł</b> / miesiąc
+                                        Koszt <b>ogłoszenia promowanego</b> to:<br> <b>{{ $price['promotion_7']->price }} zł</b> / tydzień | <b>{{ $price['promotion_14']->price }} zł</b> / 2 tygodnie | <b>{{ $price['promotion_30']->price }} zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                 <div class="col-9">                                       
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie <b>wyróżnienie</b> jak sama nazwa wskazuje - pozwoli Ci <strong>wyróżnić się z tłumu!</strong> nieważne czy będziesz na liście promowanych, czy rekomendowanych, twoje ogłoszenie będzie miało wybrane przez Ciebie tło.</p>
-                                        Koszt <b>wyróżnienia kolorem</b> to <b>{{ $price['kolor_7_dni']->price }} zł</b> / tydzień | <b>{{ $price['kolor_14_dni']->price }} zł</b> / 2 tygodnie | <b>{{ $price['kolor_30_dni']->price }} zł</b> / miesiąc
+                                        Koszt <b>wyróżnienia kolorem</b> to <b>{{ $price['highlighted_7']->price }} zł</b> / tydzień | <b>{{ $price['highlighted_14']->price }} zł</b> / 2 tygodnie | <b>{{ $price['highlighted_30']->price }} zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                             <div class="row mb-3">                                
                                 <div class="col-3 p-0">                                       
                                     <div class="md-form">
-                                    <select class="browser-default custom-select mb-4" name="recomended" id="recomended" >                                            
+                                    <select class="browser-default custom-select mb-4" name="inscription" id="inscription" >                                            
                                             <option value="none" selected="selected">Bez rekomendacji</option>    
                                             <option value="Promocja!">Promocja</option>
                                             <option value="Bestseller">Bestseller</option>
@@ -164,7 +164,7 @@
                                         <span class="badge badge-danger mb-2">Promocja!</span>
                                         <span class="badge badge-secondary mb-2">Bestseller</span>
                                         <span class="badge badge-success mb-2">Wyprzedaż!</span></p>
-                                        Koszt <b>ogłoszenia rekomendowanego</b> to: <br><b>{{ $price['rekomendacja_7_dni']->price }}zł</b> / tydzień | <b>{{ $price['rekomendacja_14_dni']->price }}zł</b> / 2 tygodnie | <b>{{ $price['rekomendacja_30_dni']->price }}zł</b> / miesiąc
+                                        Koszt <b>ogłoszenia rekomendowanego</b> to: <br><b>{{ $price['inscription_7']->price }}zł</b> / tydzień | <b>{{ $price['inscription_14']->price }}zł</b> / 2 tygodnie | <b>{{ $price['inscription_30']->price }}zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                             <div class="row mt-3">                               
                                 <h3 class="text-primary">Zleć publikację w gazecie</h3> 
                                 <div class="col-3 p-0"></div>
-                                    <div class="col-9 p-0"><strong>{{ $price['gazeta_ogloszenie']->price }}zł za 1 ogłoszenie do 300 znaków <br>
+                                    <div class="col-9 p-0"><strong>{{ $price['newspaper_advertisement']->price }}zł za 1 ogłoszenie do 300 znaków <br>
                                         <i><span class="text-danger">(publikujemy w gazecie zawartość leadu)</span></i></strong>
                                     
                                 
@@ -230,12 +230,12 @@ function summary()
 {
 
     var date_end_promotion=document.getElementById('date_end_promotion').value;
-    var recomended = document.getElementById('recomended').value;    
+    var inscription = document.getElementById('inscription').value;    
 
-    if (recomended=="none") 
-        recomended = false; 
+    if (inscription=="none") 
+        inscription = false; 
     else 
-        recomended = true; 
+        inscription = true; 
 
     if (highligted=="#ffffff") 
         highlighted = false; 
@@ -243,7 +243,7 @@ function summary()
         highlighted = true;
 
     promotion_price = 0;    
-    recomended_price = 0;
+    inscription_price = 0;
     master_portal_price = 0;    
     highlighted_price = 0;
 
@@ -251,29 +251,29 @@ function summary()
     {
         
         case '7':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_7']->price }}
+            if (master_portal)  master_portal_price = {{ $price['master_portal_7']->price }};
             if (promotion)      promotion_price = {{ $price['promotion_7']->price }};
             if (highlighted)    highlighted_price = {{ $price['highlighted_7']->price }};
-            if (recomended)     recomended_price = {{ $price['recomended_7']->price }} 4;
+            if (inscription)    inscription_price = {{ $price['inscription_7']->price }};
         break;
         case '14':
             if (master_portal)  master_portal_price = {{ $price['master_portal_14']->price }}
             if (promotion)      promotion_price = {{ $price['promotion_14']->price }};
             if (highlighted)    highlighted_price = {{ $price['highlighted_14']->price }};
-            if (recomended)     recomended_price = {{ $price['recomended_14']->price }} 4;
+            if (inscription)    inscription_price = {{ $price['inscription_7']->price }};
         break;
         case '30':
             if (master_portal)  master_portal_price = {{ $price['master_portal_30']->price }}
             if (promotion)      promotion_price = {{ $price['promotion_30']->price }};
             if (highlighted)    highlighted_price = {{ $price['highlighted_30']->price }};
-            if (recomended)     recomended_price = {{ $price['recomended_30']->price }} 4;
+            if (inscription)    inscription_price = {{ $price['inscription_7']->price }};
             
         break;
     }
 
-    var summary = recomended_price+master_portal_price+highlighted_price+promotion_price;
-    console.log('znaczniki - recomended: '+ recomended + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', promotion '+ promotion + ' :suma ' + summary + ' + na ile czasu: '+date_end_promotion);
-    console.log('ceny - recomended: '+ recomended_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', promotion '+ promotion_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promotion);
+    var summary = inscription_price+master_portal_price+highlighted_price+promotion_price;
+    console.log('znaczniki - inscription: '+ inscription + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', promotion '+ promotion + ' :suma ' + summary + ' + na ile czasu: '+date_end_promotion);
+    console.log('ceny - inscription: '+ inscription_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', promotion '+ promotion_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promotion);
 
     document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary + '</strong> pln'
 }
@@ -284,7 +284,7 @@ function summary()
         summary();
     });     
 
-    $(document).on('change', '#recomended', function (e) {    
+    $(document).on('change', '#inscription', function (e) {    
         summary();
     }); 
 

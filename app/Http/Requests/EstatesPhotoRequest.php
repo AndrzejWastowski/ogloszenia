@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SmallAdsCreatePhotoRequest extends FormRequest
+class EstatesPhotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
