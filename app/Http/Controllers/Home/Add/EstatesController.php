@@ -287,19 +287,27 @@ final class EstatesController extends Controller
     public function promotion(Request $request)
     {
 
-        $price['kolor_7_dni']=$this->priceRepository->getAllFromSectionAndName('estates','kolor 7 dni'); 
-        $price['kolor_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','kolor 14 dni');         
-        $price['kolor_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','kolor 30 dni'); 
+        $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_7'); 
+        $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_14'); 
+        $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_30');
+
+
+        $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_7'); 
+        $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_14');         
+        $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_30'); 
         
-        $price['promocja_7_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promocja 7 dni'); 
-        $price['promocja_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promocja 14 dni'); 
-        $price['promocja_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promocja 30 dni');         
+        $price['promotion_7']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_7'); 
+        $price['promocja_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_14'); 
+        $price['promocja_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_30');         
 
-        $price['rekomendacja_7_dni']=$this->priceRepository->getAllFromSectionAndName('estates','rekomendacja 7 dni'); 
-        $price['rekomendacja_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','rekomendacja 14 dni'); 
-        $price['rekomendacja_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','rekomendacja 30 dni'); 
+        $price['recomendation_7']=$this->priceRepository->getAllFromSectionAndName('estates','recomendation_7'); 
+        $price['recomendation_14']=$this->priceRepository->getAllFromSectionAndName('estates','recomendation_14'); 
+        $price['recomendation_30']=$this->priceRepository->getAllFromSectionAndName('estates','recomendation_30'); 
 
-        $price['gazeta_ogloszenie']=$this->priceRepository->getAllFromSectionAndName('estates','gazeta_ogloszenie'); 
+        
+        $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_advertisement'); 
+        $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_frame'); 
+        $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_background'); 
         
 
 

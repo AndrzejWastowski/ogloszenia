@@ -229,7 +229,6 @@ $( document ).ready(function() {
 function summary()
 {
 
-
     var date_end_promotion=document.getElementById('date_end_promotion').value;
     var recomended = document.getElementById('recomended').value;    
 
@@ -252,22 +251,22 @@ function summary()
     {
         
         case '7':
-            if (master_portal)  master_portal_price = 9;
-            if (promotion)      promotion_price = 18;
-            if (highlighted)    highlighted_price = 8;
-            if (recomended)     recomended_price = 4;
+            if (master_portal)  master_portal_price = {{ $price['master_portal_7']->price }}
+            if (promotion)      promotion_price = {{ $price['promotion_7']->price }};
+            if (highlighted)    highlighted_price = {{ $price['highlighted_7']->price }};
+            if (recomended)     recomended_price = {{ $price['recomended_7']->price }} 4;
         break;
         case '14':
-            if (master_portal)  master_portal_price = 17;
-            if (promotion)      promotion_price = 34;            
-            if (highlighted)    highlighted_price = 14;
-            if (recomended)     recomended_price = 7;            
+            if (master_portal)  master_portal_price = {{ $price['master_portal_14']->price }}
+            if (promotion)      promotion_price = {{ $price['promotion_14']->price }};
+            if (highlighted)    highlighted_price = {{ $price['highlighted_14']->price }};
+            if (recomended)     recomended_price = {{ $price['recomended_14']->price }} 4;
         break;
         case '30':
-            if (master_portal)  master_portal_price = 32;
-            if (promotion)      promotion_price = 49;            
-            if (highlighted)    highlighted_price = 26;
-            if (recomended)     recomended_price = 12;            
+            if (master_portal)  master_portal_price = {{ $price['master_portal_30']->price }}
+            if (promotion)      promotion_price = {{ $price['promotion_30']->price }};
+            if (highlighted)    highlighted_price = {{ $price['highlighted_30']->price }};
+            if (recomended)     recomended_price = {{ $price['recomended_30']->price }} 4;
             
         break;
     }
