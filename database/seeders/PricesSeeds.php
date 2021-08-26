@@ -16,17 +16,21 @@ class PricesSeeds extends Seeder
 
         //ogloszenia drobne
   
-        DB::table('prices')->insert(['name' => 'rekomendacja 7 dni','price'=>20,'section'=>'small ads' ]);
-        DB::table('prices')->insert(['name' => 'rekomendacja 14 dni','price'=>35,'section'=>'small ads' ]);
-        DB::table('prices')->insert(['name' => 'rekomendacja 30 dni','price'=>50,'section'=>'small ads' ]);
+        DB::table('prices')->insert(['name' => 'rekomendacja 7 dni','price'=>16,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'rekomendacja 14 dni','price'=>30,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'rekomendacja 30 dni','price'=>50,'section'=>'small_ads' ]);
         
-        DB::table('prices')->insert(['name' => 'promocja 7 dni','price'=>10,'section'=>'small ads' ]);
-        DB::table('prices')->insert(['name' => 'promocja 14 dni','price'=>15,'section'=>'small ads' ]);
-        DB::table('prices')->insert(['name' => 'promocja 30 dni','price'=>30,'section'=>'small ads' ]);;
+        DB::table('prices')->insert(['name' => 'promocja 7 dni','price'=>10,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'promocja 14 dni','price'=>15,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'promocja 30 dni','price'=>30,'section'=>'small_ads' ]);;
       
-        DB::table('prices')->insert(['name' => 'kolor 7 dni','price'=>8,'section'=>'small ads' ]);
-        DB::table('prices')->insert(['name' => 'kolor 14 dni','price'=>14,'section'=>'small ads' ]);
-        DB::table('prices')->insert(['name' => 'kolor 30 dni','price'=>25,'section'=>'small ads' ]);
+        DB::table('prices')->insert(['name' => 'kolor 7 dni','price'=>8,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'kolor 14 dni','price'=>14,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'kolor 30 dni','price'=>25,'section'=>'small_ads' ]);
+
+        DB::table('prices')->insert(['name' => 'gazeta_ogloszenie','price'=>10,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_szare_tlo','price'=>5,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_ramka','price'=>5,'section'=>'small_ads' ]);
 
         //usługi
 
@@ -42,6 +46,10 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'kolor 14 dni','price'=>14,'section'=>'services' ]);
         DB::table('prices')->insert(['name' => 'kolor 30 dni','price'=>25,'section'=>'services' ]);
 
+        DB::table('prices')->insert(['name' => 'gazeta_ogloszenie','price'=>10,'section'=>'services' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_szare_tlo','price'=>5,'section'=>'services' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_ramka','price'=>5,'section'=>'services' ]);
+
         //praca
 
         DB::table('prices')->insert(['name' => 'rekomendacja 7 dni','price'=>20,'section'=>'job' ]);
@@ -55,6 +63,11 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'kolor 7 dni','price'=>8,'section'=>'job' ]);
         DB::table('prices')->insert(['name' => 'kolor 14 dni','price'=>14,'section'=>'job' ]);
         DB::table('prices')->insert(['name' => 'kolor 30 dni','price'=>25,'section'=>'job' ]);
+
+        DB::table('prices')->insert(['name' => 'gazeta_ogloszenie','price'=>10,'section'=>'job' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_szare_tlo','price'=>5,'section'=>'job' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_ramka','price'=>5,'section'=>'job' ]);
+
 
         //nieruchomości
 
@@ -70,6 +83,11 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'kolor 14 dni','price'=>14,'section'=>'estates' ]);
         DB::table('prices')->insert(['name' => 'kolor 30 dni','price'=>25,'section'=>'estates' ]);
 
+        DB::table('prices')->insert(['name' => 'gazeta_ogloszenie','price'=>10,'section'=>'estates' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_szare_tlo','price'=>5,'section'=>'estates' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_ramka','price'=>5,'section'=>'estates' ]);
+
+
         // motoryzacja
 
         DB::table('prices')->insert(['name' => 'rekomendacja 7 dni','price'=>20,'section'=>'cars' ]);
@@ -84,15 +102,11 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'kolor 14 dni','price'=>14,'section'=>'cars' ]);
         DB::table('prices')->insert(['name' => 'kolor 30 dni','price'=>25,'section'=>'cars' ]);
 
-        // gazeta Magazyn KCI
+        DB::table('prices')->insert(['name' => 'gazeta_ogloszenie','price'=>10,'section'=>'cars' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_szare_tlo','price'=>5,'section'=>'cars' ]);
+        DB::table('prices')->insert(['name' => 'gazeta_ramka','price'=>5,'section'=>'cars' ]);
 
-        DB::table('prices')->insert(['name' => 'publikacja ogłoszenia','price'=>20,'section'=>'magazyn kci' ]);
-        DB::table('prices')->insert(['name' => 'w czarnej ramce','price'=>35,'section'=>'magazyn kci' ]);
-        DB::table('prices')->insert(['name' => 'na szarym tle','price'=>50,'section'=>'magazyn kci' ]);
 
-        DB::table('prices')->insert(['name' => 'publikacja ogłoszenia','price'=>20,'section'=>'gazeta lokalna' ]);
-        DB::table('prices')->insert(['name' => 'w czarnej ramce','price'=>35,'section'=>'gazeta lokalna' ]);
-        DB::table('prices')->insert(['name' => 'na szarym tle','price'=>50,'section'=>'gazeta lokalna' ]);
 
     }
 }

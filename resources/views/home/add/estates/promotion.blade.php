@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     
     <h3><strong>Nieruchomości - Promocja</strong></h3>
-
+ 
     <div class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
         <!-- your steps here -->
@@ -72,7 +72,7 @@
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie będzie się pojawiać na głównym portalu w ramce "ogłoszenia". Ogłoszenia które się tam znajdują są rotujące. Czyli zmieniają przy każdym wejściu na stronę oraz gdy użytkownik przegląda stronę. Dzięki tej opcji masz dużo większe szanse trafić do dużego grona odbiorców, nawet jeśli nie wejdą na portal ogłoszeniowy. 
                                         
-                                        Koszt <b>ogłoszenia promowanego</b> to:<br> <b>9zł</b> / tydzień | <b>17zł</b> / 2 tygodnie | <b>32zł</b> / miesiąc
+                                        Koszt <b>ogłoszenia promowanego</b> to:<br> <b>{{ $price['promocja_7_dni']->price }} zł</b> / tydzień | <b>{{ $price['promocja_14_dni']->price }} zł</b> / 2 tygodnie | <b>{{ $price['promocja_30_dni']->price }} zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                 <div class="col-9">                                       
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie <b>wyróżnienie</b> jak sama nazwa wskazuje - pozwoli Ci <strong>wyróżnić się z tłumu!</strong> nieważne czy będziesz na liście promowanych, czy rekomendowanych, twoje ogłoszenie będzie miało wybrane przez Ciebie tło.</p>
-                                        Koszt <b>wyróżnienia kolorem</b> to <b>8zł</b> / tydzień | <b>14zł</b> / 2 tygodnie | <b>26zł</b> / miesiąc
+                                        Koszt <b>wyróżnienia kolorem</b> to <b>{{ $price['kolor_7_dni']->price }} zł</b> / tydzień | <b>{{ $price['kolor_14_dni']->price }} zł</b> / 2 tygodnie | <b>{{ $price['kolor_30_dni']->price }} zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                                         <span class="badge badge-danger mb-2">Promocja!</span>
                                         <span class="badge badge-secondary mb-2">Bestseller</span>
                                         <span class="badge badge-success mb-2">Wyprzedaż!</span></p>
-                                        Koszt <b>ogłoszenia rekomendowanego</b> to: <br><b>4zł</b> / tydzień | <b>7zł</b> / 2 tygodnie | <b>12zł</b> / miesiąc
+                                        Koszt <b>ogłoszenia rekomendowanego</b> to: <br><b>{{ $price['rekomendacja_7_dni']->price }}zł</b> / tydzień | <b>{{ $price['rekomendacja_14_dni']->price }}zł</b> / 2 tygodnie | <b>{{ $price['rekomendacja_30_dni']->price }}zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,8 @@
                             <div class="row mt-3">                               
                                 <h3 class="text-primary">Zleć publikację w gazecie</h3> 
                                 <div class="col-3 p-0"></div>
-                                    <div class="col-9 p-0"><strong>5zł za 1 ogłoszenie do 300znaków (publikujemy zawartość leadu)</strong>
+                                    <div class="col-9 p-0"><strong>{{ $price['lokalna_ogloszenie']->price }}zł za 1 ogłoszenie do 300znaków <span class="text-danger">(publikujemy w gazecie zawartość leadu)</span></strong>
+                                    <div class="col-9 p-0"><strong>{{ $price['magazyn_kci_ogloszenie']->price }}zł za 1 ogłoszenie do 300znaków (publikujemy zawartość leadu)</strong>
                                 
                             </div>
 

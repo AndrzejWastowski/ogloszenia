@@ -17,7 +17,7 @@ class SectionSeeds extends Seeder
         //ogloszenia drobne
   
         DB::table('sections')->insert(['name' => 'estates','description'=>'Nieruchomości','state'=>'active']);
-        DB::table('sections')->insert(['name' => 'small ads','description'=>'Ogłoszenia drobne','state'=>'active']);
+        DB::table('sections')->insert(['name' => 'small_ads','description'=>'Ogłoszenia drobne','state'=>'active']);
         DB::table('sections')->insert(['name' => 'cars','description'=>'Mororyzacja','state'=>'active']);
         DB::table('sections')->insert(['name' => 'job','description'=>'Praca','state'=>'active']);
         DB::table('sections')->insert(['name' => 'services','description'=>'Usługi','state'=>'active']);

@@ -286,8 +286,27 @@ final class EstatesController extends Controller
 
     public function promotion(Request $request)
     {
+
+        $price['kolor_7_dni']=$this->priceRepository->getAllFromSectionAndName('estates','kolor 7 dni'); 
+        $price['kolor_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','kolor 14 dni');         
+        $price['kolor_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','kolor 30 dni'); 
+        
+        $price['promocja_7_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promocja 7 dni'); 
+        $price['promocja_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promocja 14 dni'); 
+        $price['promocja_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','promocja 30 dni');         
+
+        $price['rekomendacja_7_dni']=$this->priceRepository->getAllFromSectionAndName('estates','rekomendacja 7 dni'); 
+        $price['rekomendacja_14_dni']=$this->priceRepository->getAllFromSectionAndName('estates','rekomendacja 14 dni'); 
+        $price['rekomendacja_30_dni']=$this->priceRepository->getAllFromSectionAndName('estates','rekomendacja 30 dni'); 
+
+        $price['gazeta_ogloszenie']=$this->priceRepository->getAllFromSectionAndName('estates','gazeta_ogloszenie'); 
+        
+
+
+        
         return view('home.add.estates.promotion', [
-            'request'=>$request
+            'request'=>$request,
+            'price'=>$price
         ]);
     }
 
@@ -295,9 +314,6 @@ final class EstatesController extends Controller
     public function promotion_post(EstatesPromotionRequest $request)
     {
         // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
-
-
-
         
         //$estates_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         

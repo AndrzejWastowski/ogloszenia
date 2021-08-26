@@ -27,4 +27,16 @@ class PriceRepository extends BaseRepository
         ->get();
         return $data;
     }
+
+
+    
+    public function getAllFromSectionAndName($section,$name)
+    {
+        $data = $this->model
+        ->where('section', $section)  
+        ->where('name', $name)  
+        ->first();
+        return $data;
+    }
+
 }
