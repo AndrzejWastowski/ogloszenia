@@ -131,8 +131,7 @@ final class SmallAdsController extends Controller
     public function content_post(SmallAdsContentRequest $request)
     {
 
-        $data = $request->validated();  
-        
+        $data = $request->validated();          
      //   dd($data);
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {

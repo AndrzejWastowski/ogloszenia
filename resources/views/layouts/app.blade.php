@@ -33,44 +33,29 @@
 
 	<link href="/assets/css/icons.css" rel="stylesheet">
 
-
-
     <!-- Styles -->
 </head>
 
 <body class="bg-light-grey">  
 
+    <div class="row" id="example"></div>
+     
     @include('layouts.menu_top')
     @yield('content')
     @include('layouts.footer')
-
+  
     <!-- SCRIPTS -->
-
+    <script src="/js/app.js"></script>
     <script src="/assets/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="/assets/dist/js/jquery-3.4.1.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <script src="/assets/dist/js/wow.min.js"></script>
-    
-    $oCURL = curl_init();
-    
-    <!-- start react js -->
 
-    <!-- start react js -->
+    <script src="/assets/dist/js/wow.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
     <!-- Initializations -->
     <script type="text/javascript">
-        new WOW().init();
-
-        (function () {  'use strict'
-            document.querySelector('[data-bs-toggle="offcanvas"]').addEventListener('click', function () {
-            document.querySelector('.offcanvas-collapse').classList.toggle('open')
-        })
-        })()
-
-        $(document).ready(function () {
-        //jquery code... 
-
-    });
-
+        new WOW().init();   
+ 
 
     function addDays(date, days) {
             const copy = new Date(Number(date))
@@ -83,6 +68,7 @@
 
     @yield('java_script')
 
+ 
 
 </body>
 </html>

@@ -118,12 +118,9 @@ final class EstatesController extends Controller
 
     public function content_post(EstatesContentRequest $request)
     {
-   
-   
-      
+         
         $data = $request->validated();  
-       // dd($data);
-       
+       // dd($data);       
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
             
