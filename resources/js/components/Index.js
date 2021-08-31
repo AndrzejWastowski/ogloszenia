@@ -20,3 +20,4 @@ export default class Dutylist extends React.Component {
 if (document.getElementById('dutylist')) {
     ReactDOM.render(<Dutylist />, document.getElementById('dutylist'));
 }
+

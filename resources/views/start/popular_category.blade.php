@@ -88,7 +88,10 @@
         <div class="col-xl-9 col-md-12">            <!--Image -->
 
             <div class="view zoom z-depth-1">
-                <img src="{{ $storage->url('reklama/product1.jpg') }}" class="img-fluid" alt="sample image">
+               
+
+              <div id="SliderPromo"></div>
+  
                 <div class="mask rgba-white-light">
                     <div class="dark-grey-text  pt-4 ml-3 pl-3">
                         <div>
@@ -97,6 +100,7 @@
                             </a>
                             <h2 class="card-title font-weight-bold pt-2">
                                 <strong>Reklama - informacja o promocjach </strong>
+
                             </h2>
                             <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
                             <a class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block">Zobacz ofertę</a>
