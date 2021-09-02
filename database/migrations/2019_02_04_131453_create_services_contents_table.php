@@ -21,21 +21,34 @@ class CreateServicesContentsTable extends Migration
             $table->text('description')->comment('opis usługi którą się wykonuje');
             $table->integer('users_id')->unsigned()->comment('id użytkownika który dodał usługę');
             $table->integer('services_categories_id')->unsigned()->comment('kategoria usługi');
-            $table->dateTime('date_start')->comment('data pojawienia się usługi na portalu (można zrobić opóźnienie)');
-            $table->dateTime('date_end')->comment('data_waznosci usługi, po jakim czasie ma ogłoszenie zniknąć');
-            $table->unsignedTinyInteger('inscription')->comment('czy ogłoszenie jest rekomendowane');
-            $table->enum('highlighted', ['#ffffff','#cfbcf8','#bcf8bc','#f1f8bc','#f8c0bc','#f8bcf5'])->default("#ffffff")->comment('czy ogłoszenie jest wyróżnione (kolor)');
-            $table->unsignedTinyInteger('promoted')->default(0)->comment('czy ogłoszenie jest promowane (przed innymi)');
-            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');
-            $table->unsignedTinyInteger('active')->default(0)->comment('czy ogloszenie jet aktywne (ustawiane jak cała procedura dodawania ogłoszenia dojdzie do konca)');
-            $table->integer('portal_id')->coment('id portalu z którego dodano ogłoszenie');            
-            $table->ipAddress('visitor_ip')->comment('ip użytkownika');
-            $table->string('visitor_host', 250)->nullable($value = true)->comment('dane z hosta (rev dns) użytkownika'); //rev dns hosta użytkownika - przydtne żeby szybko zlokalizować usługodawcę
-            $table->string('visitor_soft', 250)->nullable($value = true)->comment('dane przeglądarki system itd..'); //wiem że to może się wydawać zbyteczne ale czasem policji się przydaje
-            $table->string('visitor_proxy', 250)->nullable($value = true)->comment('dane proxy przez które się łączył'); //wiem że to może się wydawać zbyteczne ale czasem policji się przydaje
-            $table->smallInteger('visitor_port')->unsigned();
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+             //dane wspolne dla kazdego ogloszenia
+             $table->integer('users_id')->comment('id użytkownika który dodał ogłoszenie ');
+             $table->integer('adresses_id')->nullable()->unsigned()->comment('polaczenie do kontaktu adresowego');  
+             $table->enum('status',['unfinished','active','disabled','removed','blocked'])->default('unfinished')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
+             $table->timestamp('date_add')->useCurrent()->comment('data dodania ogłoszenia');
+             $table->dateTime('date_start')->comment('data pojawienia się ogłoszenia na portalu (można zrobić opóźnienie)');
+             $table->dateTime('date_end')->comment('data_waznosci');
+             $table->tinyInteger('portal_id')->unsigned()->default(0)->comment('id portalu z którego uzytkownik dodawał ogłoszenie');                        
+             $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');            
+ 
+             //informacje reklamowe
+             
+             $table->tinyInteger('master_portal')->default(0)->comment('czy ogłoszenie jest wyswietlane na portalu nadrzędnym jako reklama');
+             $table->tinyInteger('promoted')->default(0)->comment('czy ogłoszenie jest promowane - przed innymi');            
+             $table->tinyInteger('top')->default(0)->comment('czy ogłoszenie jest promowane - przed innymi');            
+             $table->enum('highlighted', ['#ffffff','#c8cdff','#ffc8dd','#c8ffdf','#eac8ff','#fff7c8'])->default('#ffffff')->comment('czy ogłoszenie jest wyróżnione (kolor)');            
+             $table->enum('inscription',['none','Promocja!','Wyprzedaż','Przecena','Bestseller'])->default('none')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
+             
+             //logi dotyczące ogłoszenia
+             
+             $table->ipAddress('adress_ip')->default(0)->comment('adres IP użytkownika do logów ');
+             $table->string('host')->nullable()->comment('Host - wpis pobrany z serwera');
+             $table->integer('port')->nullable()->comment('port z którym nastąpiło połączenie');
+             $table->string('browser')->nullable()->comment('Host - wpis pobrany z serwera');            
+             
+             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 
