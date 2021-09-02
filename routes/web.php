@@ -70,6 +70,18 @@ Route::group(['prefix' => 'nieruchomosci'], function () {
 });
 
 
+Route::group(['prefix' => 'uslugi'], function () {
+    Route::get('/', [App\Http\Controllers\Services\ListsController::class,'ListsAllCategories'])->name('ServicesStart'); 
+    Route::get('/{categories}', [App\Http\Controllers\Services\ListsController::class, 'ListsByCategories'])->name('ServicesListByCategories');    
+    
+    //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
+    //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+    Route::get('/{categories}/{id}', [App\Http\Controllers\Services\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('ServicesContentsById');
+
+
+});
+
+
 Auth::routes();
 #group route to task of adding services
 Route::group(['prefix' => 'home'], function () {
