@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <h3><strong>Nieruchomości - Płatności</strong></h3>
+        <h3><strong>Usługi - Płatności</strong></h3>
             
     </div>
     

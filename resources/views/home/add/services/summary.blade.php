@@ -2,7 +2,7 @@
 @section('step')
 
 <div class="row justify-content-center">
-<h3><strong>Nieruchomości - Promocja</strong></h3>
+<h3><strong>Usługi - Promocja</strong></h3>
 
 <div class="bs-stepper">
     <div class="bs-stepper-header" role="tablist">
@@ -72,7 +72,7 @@
 
                             @if ($active==null) @php($active = 'active') @else @php($active = ' ') @endif                            
                                 
-                            @php ($HTML_PHOTO .= '<div class="carousel-item '.$active.'"><img class="d-block w-100 "  src="'.$storage->url('public/estates/'.$photo->name.'_kw.jpg').'" alt="'.$content->name.'" width="200"></div>')
+                            @php ($HTML_PHOTO .= '<div class="carousel-item '.$active.'"><img class="d-block w-100 "  src="'.$storage->url('public/services/'.$photo->name.'_kw.jpg').'" alt="'.$content->name.'" width="200"></div>')
                                     
                         @endforeach                            
                         
@@ -151,7 +151,7 @@
                 </form>
                 @else
 
-                <form action="{{ route('estates_success_post') }}"  class="p-5" method="POST" role="form" >
+                <form action="{{ route('services_success_post') }}"  class="p-5" method="POST" role="form" >
                     @csrf
                     
                     <input type="hidden" name="payment_id" value="{{ $payments }}">

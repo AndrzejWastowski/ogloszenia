@@ -67,21 +67,21 @@ final class ServicesController extends Controller
 
     public function index(Request $request)
     {
-     //   $request->session()->forget('estates');
+     //   $request->session()->forget('services');
      //   $products = \App\Register::all();
-      //  return view('home.add.estates.step1');
+      //  return view('home.add.services.step1');
     }
 
     public function content(Request $request)
     {
  
-        //$request->session()->forget('estates_contents');
+        //$request->session()->forget('services_contents');
 
         $content = $this->ServicesRepository->getNonUnfinishedServices(Auth::id());  
         //$content = $this->ServicesRepository->getNonUnfinishedServices(55);  
         if ($content==null) {
             $content = new \App\Models\ServicesContent();
-            $content->setTable('estates_contents');
+            $content->setTable('services_contents');
             $content->setConnection('mysql');
         }
 
@@ -105,7 +105,7 @@ final class ServicesController extends Controller
         // dd($user);
 
 
-        return view('home.add.estates.content',[            
+        return view('home.add.services.content',[            
             'content' => $content,
             'categories' => $categories,
             'user' => $user
@@ -125,13 +125,13 @@ final class ServicesController extends Controller
             
             //aktualizacja wczesniej dodawanego ogłoszenia
 
-            $estates_contents = $this->ServicesRepository->get($data['id']);
+            $services_contents = $this->ServicesRepository->get($data['id']);
             
             // pobieramy istniejacy rekord 
             // sprawdzamy czy aktualny uzytkownik jest faktycznym właścicielem ogłoszenia
             // czy p[rzypadkiem nie nastąpiła podmiana id]
 
-            if (Auth::id()!=$estates_contents->get_users_id()) 
+            if (Auth::id()!=$services_contents->get_users_id()) 
             {
                 //proba podmiany ogłoszenia innego uzytkownika
                 //natychmiastowe wylogowanie
@@ -142,32 +142,27 @@ final class ServicesController extends Controller
         else
         {
             //dodanie całkiem nowego ogłoszenia
-            $estates_contents = new \App\Models\ServicesContent();
+            $services_contents = new \App\Models\ServicesContent();
         }
 
         
-        //$estates_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
+        //$services_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
-        $estates_contents->users_id = Auth::id();
-        $estates_contents->set_name($data['name']);
-        $estates_contents->set_lead($data['lead']);
-        $estates_contents->set_description($data['description']);
-        $estates_contents->set_estates_type($data['estates_type']);
-        $estates_contents->set_estates_categories_id($data['estates_categories_id']);        
-        $estates_contents->set_price($data['price']);
-        $estates_contents->set_area($data['area']);
-        $estates_contents->set_unit($data['unit']);
-        $estates_contents->set_market($data['market']);
-        $estates_contents->set_date_start($data['date_start']);
+        $services_contents->users_id = Auth::id();
+        $services_contents->set_name($data['name']);
+        $services_contents->set_lead($data['lead']);
+        $services_contents->set_description($data['description']);        
+        $services_contents->set_services_categories_id($data['services_categories_id']);        
+        $services_contents->set_date_start($data['date_start']);
         $data['date_end'] = (date('Y-m-d', strtotime($data['date_start']. ' + '.$data['date_end'].' days')));
 
       //  dd($data['date_end']);
-        $estates_contents->set_date_end($data['date_end']);                    
-        $estates_contents->set_contact_email($data['contact_email']);
-        $estates_contents->set_contact_phone($data['contact_phone']);
-        $estates_contents->set_users_id(Auth::id());
+        $services_contents->set_date_end($data['date_end']);                    
+        $services_contents->set_contact_email($data['contact_email']);
+        $services_contents->set_contact_phone($data['contact_phone']);
+        $services_contents->set_users_id(Auth::id());
 
-        $estates_contents->set_portal_id((int)(env('PORTAL_ID')));
+        $services_contents->set_portal_id((int)(env('PORTAL_ID')));
 
         //logi przy ogloszeniu
 
@@ -191,27 +186,27 @@ final class ServicesController extends Controller
         }
 
 
-        $estates_contents->set_adress_ip($user['ip']);
-        $estates_contents->set_host($user['host']);
-        $estates_contents->set_port($user['port']);
-        $estates_contents->set_browser($user['browser']);
+        $services_contents->set_adress_ip($user['ip']);
+        $services_contents->set_host($user['host']);
+        $services_contents->set_port($user['port']);
+        $services_contents->set_browser($user['browser']);
 
-        $estates_contents->save();
-        $request->session()->put('estates_contents', $estates_contents);        
+        $services_contents->save();
+        $request->session()->put('services_contents', $services_contents);        
 
-        return redirect('home/add/estates/photo');
+        return redirect('home/add/services/photo');
     }
 
     public function photo(Request $request)
     {
-        $estates_contents = $request->session()->get('estates_contents'); 
-        $photos = $this->ServicesPhotosRepository->getAllPhotosByEstate($estates_contents->get_id());   
+        $services_contents = $request->session()->get('services_contents'); 
+        $photos = $this->ServicesPhotosRepository->getAllPhotosByEstate($services_contents->get_id());   
 
-       // $contents = Storage::url('public/estates/601aaab35cbdb_kw.jpg');
+       // $contents = Storage::url('public/services/601aaab35cbdb_kw.jpg');
 
        // dd($contents);
 
-        return view('home.add.estates.photo', [
+        return view('home.add.services.photo', [
             'request'=>$request,
             'photos' => $photos,        
             'storage' => $this->storage
@@ -226,9 +221,9 @@ final class ServicesController extends Controller
        // dd($request);
        // $data = $request->validate();
 
-        $estates_contents = $request->session()->get('estates_contents');
+        $services_contents = $request->session()->get('services_contents');
 
-      //  dd($estates_contents);
+      //  dd($services_contents);
 
         if ($request->hasFile('photos')) 
         {
@@ -240,31 +235,31 @@ final class ServicesController extends Controller
 
                 $name = uniqid();                
 
-                $estates_photo = new \App\Models\ServicesPhoto();
+                $services_photo = new \App\Models\ServicesPhoto();
 
-                $estates_photo->set_name($name);
-                $estates_photo->set_estates_contents_id($estates_contents->get_id());
-                $estates_photo->set_sort($sort);
+                $services_photo->set_name($name);
+                $services_photo->set_services_contents_id($services_contents->get_id());
+                $services_photo->set_sort($sort);
                 
-                $estates_photo->save();
+                $services_photo->save();
 
                 // generujemy miniaturke
                 $width = 300;
                 $height = 250;
-                $output =  'public/estates/'.$name.'_m.jpg';
+                $output =  'public/services/'.$name.'_m.jpg';
 
                 create_image($width, $height, $image, $output);
 
                 // generujemy srednie foto
                 $width = 1920;
                 $height = 1080;
-                $output =  'public/estates/'.$name.'_d.jpg';
+                $output =  'public/services/'.$name.'_d.jpg';
 
                 create_image($width, $height, $image, $output);
 
                 // generujemy kw foto
                 $width = 350;                
-                $output =  'public/estates/'.$name.'_kw.jpg';
+                $output =  'public/services/'.$name.'_kw.jpg';
 
                 create_square_image($width, $image, $output);
 
@@ -275,35 +270,35 @@ final class ServicesController extends Controller
     {
         dd('brak zdjec');
     }       
-        return redirect('/home/add/estates/photo');
-        //return view('home.add.estates.photo',[compact('estates_contents')]);
+        return redirect('/home/add/services/photo');
+        //return view('home.add.services.photo',[compact('services_contents')]);
 
     }
 
     public function promotion(Request $request)
     {
 
-        $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_7'); 
-        $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_14'); 
-        $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('estates','master_portal_30');
+        $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('services','master_portal_7'); 
+        $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('services','master_portal_14'); 
+        $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('services','master_portal_30');
                 
-        $price['promotion_7']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_7'); 
-        $price['promotion_14']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_14'); 
-        $price['promotion_30']=$this->priceRepository->getAllFromSectionAndName('estates','promotion_30');
+        $price['promotion_7']=$this->priceRepository->getAllFromSectionAndName('services','promotion_7'); 
+        $price['promotion_14']=$this->priceRepository->getAllFromSectionAndName('services','promotion_14'); 
+        $price['promotion_30']=$this->priceRepository->getAllFromSectionAndName('services','promotion_30');
 
-        $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_7'); 
-        $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_14');         
-        $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('estates','highlighted_30'); 
+        $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('services','highlighted_7'); 
+        $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('services','highlighted_14');         
+        $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('services','highlighted_30'); 
 
-        $price['inscription_7']=$this->priceRepository->getAllFromSectionAndName('estates','inscription_7'); 
-        $price['inscription_14']=$this->priceRepository->getAllFromSectionAndName('estates','inscription_14'); 
-        $price['inscription_30']=$this->priceRepository->getAllFromSectionAndName('estates','inscription_30'); 
+        $price['inscription_7']=$this->priceRepository->getAllFromSectionAndName('services','inscription_7'); 
+        $price['inscription_14']=$this->priceRepository->getAllFromSectionAndName('services','inscription_14'); 
+        $price['inscription_30']=$this->priceRepository->getAllFromSectionAndName('services','inscription_30'); 
         
-        $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_advertisement'); 
-        $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_frame'); 
-        $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('estates','newspaper_background'); 
+        $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('services','newspaper_advertisement'); 
+        $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('services','newspaper_frame'); 
+        $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('services','newspaper_background'); 
 
-        return view('home.add.estates.promotion', [
+        return view('home.add.services.promotion', [
             'request'=>$request,
             'price'=>$price
         ]);
@@ -314,7 +309,7 @@ final class ServicesController extends Controller
     {
         // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
         
-        //$estates_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
+        //$services_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
         $data = $request->validated(); 
 
@@ -348,15 +343,15 @@ final class ServicesController extends Controller
 
         
 
-        $estates_contents = $this->ServicesRepository->getNonUnfinishedServices(Auth::id());  
-        $estates_contents->set_highlighted($data['highlighted']);        
-        $estates_contents->set_promoted($data['promoted']);
-        $estates_contents->set_inscription($data['inscription']);
-        $estates_contents->set_master_portal($master_portal);
-        $estates_contents->set_top($top);
-        $estates_contents->save();
+        $services_contents = $this->ServicesRepository->getNonUnfinishedServices(Auth::id());  
+        $services_contents->set_highlighted($data['highlighted']);        
+        $services_contents->set_promoted($data['promoted']);
+        $services_contents->set_inscription($data['inscription']);
+        $services_contents->set_master_portal($master_portal);
+        $services_contents->set_top($top);
+        $services_contents->save();
 
-        return redirect('/home/add/estates/summary');
+        return redirect('/home/add/services/summary');
 
     }
 
@@ -368,7 +363,7 @@ final class ServicesController extends Controller
         $teraz = strtotime(now());
 
        // dd($content);
-        $price = $this->priceRepository->getAllFromSection('estates');  
+        $price = $this->priceRepository->getAllFromSection('services');  
 
         if (($data - $teraz)<0)
         { 
@@ -379,7 +374,7 @@ final class ServicesController extends Controller
             $content['date_start'] = date('Y-m-d',$data);
         }
       // dd($content);
-        $categories = $this->ServicesCategoriesRepository->getCategoriesById($content['estates_categories_id']);  
+        $categories = $this->ServicesCategoriesRepository->getCategoriesById($content['services_categories_id']);  
 
        // dd($categories);
         
@@ -415,14 +410,14 @@ final class ServicesController extends Controller
         $photos = $this->ServicesPhotosRepository->getAllPhotosByEstate($content->get_id());   
 
         $user = Auth::user();
-        return view('home.add.estates.summary',[
+        return view('home.add.services.summary',[
 
             'content' => $content,            
             'categories' => $categories,            
             'photos' => $photos,
             'storage' => $this->storage,
             'payments' => $payments,
-            'section' => 'estates',
+            'section' => 'services',
             'user' => $user
         
         ]);
@@ -438,7 +433,7 @@ final class ServicesController extends Controller
         $content->save();
 
 
-        return view('/home/add/estates/payments');
+        return view('/home/add/services/payments');
     }
 
     public function createStep1(Request $request)
@@ -540,14 +535,14 @@ final class ServicesController extends Controller
 /*
 
 obsługa sesji... 
-if(empty($request->session()->get('estates_contents'))){
-    $estates_contents = new \App\Models\ServicesContent();
-    $estates_contents->fill($validatedData);
-    $request->session()->put('estates_contents', $estates_contents);
+if(empty($request->session()->get('services_contents'))){
+    $services_contents = new \App\Models\ServicesContent();
+    $services_contents->fill($validatedData);
+    $request->session()->put('services_contents', $services_contents);
 }else{
-    $estates_contents = $request->session()->get('estates_contents');            
-    $estates_contents->fill($validatedData);
-    $request->session()->put('estates_contents', $estates_contents);
+    $services_contents = $request->session()->get('services_contents');            
+    $services_contents->fill($validatedData);
+    $request->session()->put('services_contents', $services_contents);
 }
 */
 

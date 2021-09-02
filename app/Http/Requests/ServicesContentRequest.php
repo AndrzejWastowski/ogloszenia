@@ -26,9 +26,8 @@ class ServicesContentRequest extends FormRequest
             'id' => ['required', 'integer', 'min:0'],
             'name' => 'required|min:10|max:255',
             'lead' => 'required|min:30|max:255',
-            'description' => 'required|min:30|max:2500',
-            'estates_type'=> 'required|in:Sprzedam,Wynajmę,Zamienię',            
-            'estates_categories_id' => 'required|integer|min:1',      
+            'description' => 'required|min:30|max:2500',                     
+            'services_categories_id' => 'required|integer|min:1',      
             'date_start' => 'required|date|date_format:Y-m-d|after:yesterday',
             'date_end' => 'required|integer|min:1|digits_between: 1,30',            
             'contact_phone' =>  'nullable',
@@ -61,9 +60,8 @@ class ServicesContentRequest extends FormRequest
             'date_start.date_format' => 'niepoprawny format <b>data start</b>',
             'date_start.after' => 'Pole  <b>data startowa</b> ogłoszenia nie może być z datą wsteczną!',
             'date_end.required' => 'Pole <b>data end</b> musi być późniejsza niż data start',            
-            'estates_categories_id:required' => 'nie wybrałeś podkategorii',
-            'estates_categories_id:min:1' => 'nie wybrałeś podkategorii',      
-            'estates_type:in' => 'rodzaj ogłoszenia'
+            'services_categories_id:required' => 'nie wybrałeś podkategorii',
+            'services_categories_id:min:1' => 'nie wybrałeś podkategorii',                  
        
         ];
     }

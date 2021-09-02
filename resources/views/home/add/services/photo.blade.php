@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
     
-    <h3><strong>Nieruchomości - Dodaj zdjęcia</strong></h3>
+    <h3><strong>Usługi - Dodaj zdjęcia</strong></h3>
 
     <div class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
@@ -49,7 +49,7 @@
                             <!--Body-->
                                 <div class="modal-body mb-0 p-0">  
                                 <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                                    <iframe class="embed-responsive-item"  class="image-fluid" src="{{ $storage->url('public/estates/'.$photo->name.'_d.jpg') }}" allowfullscreen></iframe>
+                                    <iframe class="embed-responsive-item"  class="image-fluid" src="{{ $storage->url('public/services/'.$photo->name.'_d.jpg') }}" allowfullscreen></iframe>
                                 </div>  
                                 </div>  
                             <!--Footer-->
@@ -62,13 +62,13 @@
                         </div>
                         </div>
                         <!--Modal: Name-->                  
-                        <a><img class="img-fluid z-depth-1" src="{{ $storage->url('public/estates/'.$photo->name.'_kw.jpg') }}" alt="images" data-toggle="modal" data-target="#modal{{ $photo->id }}"></a>
+                        <a><img class="img-fluid z-depth-1" src="{{ $storage->url('public/services/'.$photo->name.'_kw.jpg') }}" alt="images" data-toggle="modal" data-target="#modal{{ $photo->id }}"></a>
                     </div>
                     <!-- Grid column -->       
                     @endforeach 
                 </div>       
 
-                <form action="{{ route('estates_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >                           
+                <form action="{{ route('services_photo_post') }}"  method="POST" enctype="multipart/form-data" role="form" >                           
                 @csrf
                     @if ($errors->any())
                             <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
@@ -88,7 +88,7 @@
 
                     <div class="row mb-3">      
                         <div class="offset-lg-8 offset-sm-4">
-                            <a href="{{ route('estates_promotion') }}">
+                            <a href="{{ route('services_promotion') }}">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Dalej') }}
                                 </button>

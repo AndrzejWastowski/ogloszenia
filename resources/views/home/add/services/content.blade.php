@@ -1,10 +1,9 @@
 @extends('home.dashboard')
 @section('step')
 
-
 <div class="row justify-content-center">
     
-    <h3><strong>Nieruchomości - Dodaj Treść</strong></h3>
+    <h3><strong>Usługi - Dodaj Treść</strong></h3>
 
     <div class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
@@ -39,7 +38,7 @@
         </div>
     </div>
     
-    <form class="row g-3" action="{{ route('estates_content_post') }}"  method="POST" role="form" >
+    <form class="row g-3" action="{{ route('services_content_post') }}"  method="POST" role="form" >
         <input type="hidden" name="id" value="{{ $content->id==null ? 0  : $content->id  }}">   
         @csrf
         @if ($errors->any())
@@ -51,51 +50,21 @@
                 </ul>                            
             Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
         @endif
-            <strong>{{ session('komunikat') }}</strong> 
-
-            <div class="bd-example">  
-
-            <label class=""><strong>Rynek</strong></label>                
-           
-            <div class="col-md-2">                
-                <input type="radio" class="form-check-input" id="market" name="market" value="pierwotny" checked>
-                <label class="form-check-label" for="market">Pierwotny</label>
-            </div>
-            <div class="col-md-2">
-                <input type="radio" class="form-check-input" id="market" name="market" value="wtórny" >
-                <label class="form-check-label" for="market">Wtórny</label>
-            </div>
-
-
-        </div>
+            <strong>{{ session('komunikat') }}</strong>
 
             <div class="col-12">
                 <label class="category"><strong>Rodzaj ogłoszenia:</strong></label>
-            </div> 
-            <div class="row">
-                            
-                <div class="col-md-2">
-                    <label class="form-label" for="sprzedam">Sprzedaż</label>
-                    <input type="radio" class="form-check-input" id="estates_type" name="estates_type" value="Sprzedam" checked>
-                </div>
-                
-                <div class="col-md-2">
-                    <label class="form-label" for="oddam">Wynajem</label>
-                    <input type="radio" class="form-check-input"  id="estates_type" name="estates_type" value="Wynajmę" >
-                </div>
-            </div>
-            
+            </div>                    
 
             <div class="col-md-6">
-                <label class="form-label" for="estates_categories_id"><strong>Kategoria</strong></label>
-                <select class="form-select" name="estates_categories_id" id="estates_categories_id" required>
+                <label class="form-label" for="services_categories_id"><strong>Kategoria</strong></label>
+                <select class="form-select" name="services_categories_id" id="services_categories_id" required>
                     <option value="" diabled selected="">Wybierz kategorię</option>  
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}" {{ ($category->id == $content->estates_categories_id ? 'selected' : '') }} >{{$category->name}}</option>
+                            <option value="{{$category->id}}" {{ ($category->id == $content->services_categories_id ? 'selected' : '') }} >{{$category->name}}</option>
                         @endforeach                            
                     </select>
-            </div>
-                                    
+            </div>                                    
                             
             <div class="col-md-6">
                 <label class="form-label"  for="date_start"><strong>Start ogłoszenia</strong></label>                                               
@@ -125,28 +94,6 @@
                 <label class="form-label"  for="description"><strong>Treść - pełny opis wyświetlany w  rozwinięciu ogłoszenia</strong></label><br>
                 <textarea class="form-control rounded-2 p-2" id="description" name="description" rows="10" placeholder="Treść ogłoszenia (od 30 do 3000 znaków)" required>{{ $content->description ?? ''}}</textarea>
             </div>
-
-            <div class="col-md-3 mb-4">
-                <label class="form-label" for="price"><strong>Cena</strong></label>
-                <input type="text" id="price" name="price" class="form-control" placeholder="Cena" value="{{ $content->price ?? ''}}" required>
-            </div>
-            
-            <div class="col-md-3 mb-4">
-                <label class="form-label" for="area"><strong>Powierzchnia</strong></label>
-                <input type="text" id="area" name="area" class="form-control" placeholder="powierzchnia" value="{{ $content->area ?? '' }}" required>
-            </div>   
-            <div class="col-md-6 mb-4">
-                <label class="form-label"  for="unit"><strong>Jednostka</strong></label>
-                <select class="form-select" name="unit" id="unit" required>
-                    <option value="0" diabled selected="">Wybierz jednostkę!</option>
-                    <option value="mkw" >Metr kwadratowy</option>
-                    <option value="ar">Ar</option>
-                    <option value="hektar">Hektar</option>
-                    
-                </select>                                 
-            </div>
-                            
-           
             
             <div class="col-md-6">          
                 <label for="contact_phone" value=""><strong>Telefon kontaktowy</strong></label>
@@ -164,7 +111,6 @@
                     </button>
                 </div>
             </div>
-
 </div> 
 
 @endsection
@@ -193,19 +139,8 @@ $( document ).ready(function() {
         console.log(regex.test(value));
         return(regex.test(value));
      
-    });  
-
-   
-    $(document).on('change', '#estates_categories_id', function (e) {    
-        //  console.log(e);    
-        var cat_id = e.target.value;
-        $.get('/internal-api/add/subcat/' + cat_id,function(data){
-            $('#estates_sub_categories_id').empty();
-            $.each(data,function(index,subCatObj){ $('#estates_sub_categories_id').append('<option value="'+subCatObj.id+'">'+subCatObj.name+'</option>'); }); 
-        });
-    });     
+    });    
 });
 
-</script>
-   
+</script>   
 @endsection

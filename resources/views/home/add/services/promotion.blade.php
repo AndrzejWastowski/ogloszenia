@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
     
-    <h3><strong>Nieruchomości - Promocja</strong></h3>
+    <h3><strong>Usługi - Promocja</strong></h3>
  
     <div class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
@@ -39,7 +39,7 @@
         </div>
     </div>
                     
-                    <form action="{{ route('estates_promotion_post') }}"  method="POST" enctype="multipart/form-data" role="form" name="formPromotion">
+                    <form action="{{ route('services_promotion_post') }}"  method="POST" enctype="multipart/form-data" role="form" name="formPromotion">
                             @csrf
                             <p class="h4 mb-4 text-center">Wybierz czas promocji ogłoszenia</p>
                             <div class="row">

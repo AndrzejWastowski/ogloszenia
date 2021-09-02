@@ -19,8 +19,7 @@ class ServicesContent extends Model
         'name',     
         'lead',
         'description',        
-        'services_categories_id',
-        
+        'services_categories_id',        
         'views',
         'contact_phone',
         'contact_email',
@@ -52,11 +51,6 @@ class ServicesContent extends Model
         return $this->belongsTo(ServicesCategorie::class, 'Services_categories_id');
     }
 
-
-    public function ServicesGroups()
-    {
-        return $this->belongsTo(ServicesGroup::class, 'Services_type');
-    }
 
     public function Photos()
     {
@@ -120,13 +114,7 @@ class ServicesContent extends Model
         return $this->description;
     }
 
-
-    public function get_Services_type(): int
-    {
-        return $this->Services_type;
-    }
-
-    public function get_Services_categories_id(): int
+    public function get_services_categories_id(): int
     {
         return $this->Services_categories_id;
     }
@@ -159,12 +147,12 @@ class ServicesContent extends Model
     }
 
 
-    public function get_Services_user_group_id(): int
+    public function get_services_user_group_id(): int
     {
         return $this->Services_user_group_id;
     }
 
-    public function get_Services_classified_enum(): string
+    public function get_services_classified_enum(): string
     {
         return $this->Services_classified_enum;
     }
@@ -266,12 +254,7 @@ class ServicesContent extends Model
     public function set_name(?string $value): void
     {
         $this->name  = $value;
-    }
-
-    public function set_Services_type(?string $value): void
-    {
-        $this->Services_type  = $value;
-    }
+    } 
 
     public function set_lead(?string $value): void
     {
@@ -314,22 +297,22 @@ class ServicesContent extends Model
         $this->date_end = $value;
     }
 
-    public function set_Services_categories_id(int $value): void
+    public function set_services_categories_id(int $value): void
     {
         $this->Services_categories_id = $value;
     }
 
-    public function set_Services_user_group_id(int $value): void
+    public function set_services_user_group_id(int $value): void
     {
         $this->Services_user_group_id = $value;
     }
 
-    public function set_Services_sub_categories_id(int $value): void
+    public function set_services_sub_categories_id(int $value): void
     {
         $this->Services_sub_categories_id = $value;
     }
 
-    public function set_Services_classified_enum(?string $value): void
+    public function set_services_classified_enum(?string $value): void
     {
         $this->Services_classified_enum = $value;
     }

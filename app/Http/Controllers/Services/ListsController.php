@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 
 use App\Repositories\Eloquent\ServicesRepository;
 use App\Repositories\Eloquent\ServicesCategoriesRepository;
-use App\Repositories\Eloquent\ServicesSubCategoriesRepository;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\Paginator;
 

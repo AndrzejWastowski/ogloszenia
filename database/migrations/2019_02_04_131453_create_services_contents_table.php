@@ -18,9 +18,11 @@ class CreateServicesContentsTable extends Migration
             $table->increments('id');
             $table->string('name', 50)->comment('nazwa');
             $table->string('lead', 250)->comment('krótki opis usługi którą się wykonuje do wyświetlenia na liście');
-            $table->text('description')->comment('opis usługi którą się wykonuje');
-            $table->integer('users_id')->unsigned()->comment('id użytkownika który dodał usługę');
+            $table->text('description')->comment('opis usługi którą się wykonuje');            
             $table->integer('services_categories_id')->unsigned()->comment('kategoria usługi');
+            $table->string('contact_phone',100)->nullable()->comment('kontakt tel do sprzedawcy');  
+            $table->string('contact_email',200)->nullable()->comment('kontakt e-mail do sprzedawcy');  
+            
 
              //dane wspolne dla kazdego ogloszenia
              $table->integer('users_id')->comment('id użytkownika który dodał ogłoszenie ');
