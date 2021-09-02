@@ -21,6 +21,7 @@ const mix = require('laravel-mix');
 mix.js([
         'resources/js/wow.min.js',
     ],  'public/assets/js/wow.min.js')
+    
 
 
 
