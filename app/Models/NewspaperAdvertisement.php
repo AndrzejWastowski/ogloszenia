@@ -6,7 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Newspaper extends Model
+class NewspaperAdvertisement extends Model
 {
     /**
      * The attributes that are mass assignable.

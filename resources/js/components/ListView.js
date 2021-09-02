@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from 'react-bootstrap/Carousel';
 
 
-function SliderPromo(props) {
+function ListView() {
     return (
-        <Carousel 
-        autoPlay={true}
-        interval={1500}
-        controls={true}
-        indicators={true}
-        >
+        <Carousel>
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -50,8 +44,10 @@ function SliderPromo(props) {
     );
 }
 
-export default SliderPromo;
+export default ListView;
 
-if (document.getElementById('SliderPromo')) {
-    ReactDOM.render(<SliderPromo />, document.getElementById('SliderPromo'));
+if (document.getElementById('ListView')) {
+    ReactDOM.render(<ListView />, document.getElementById('ListView'));
 }
+
+

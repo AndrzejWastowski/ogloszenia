@@ -88,9 +88,10 @@
         <div class="col-xl-9 col-md-12">            <!--Image -->
 
             <div class="view zoom z-depth-1">
-               
+              
 
               <div id="SliderPromo"></div>
+              <div id="SliderPromoParm" ></div>
   
                 <div class="mask rgba-white-light">
                     <div class="dark-grey-text  pt-4 ml-3 pl-3">

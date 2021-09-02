@@ -13,10 +13,14 @@ const mix = require('laravel-mix');
 
  mix.js([
     'resources/js/app.js',
-    'resources/js/jquery-3.6.0.min.js',
-    'resources/js/bootstrap.bundle.min.js',
-],  'public/js/app.js')
+    'resources/js/bootstrap.js',    
+],  'public/assets/js/app.js')
     .react()  
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/assets/css');
+
+mix.js([
+        'resources/js/wow.min.js',
+    ],  'public/assets/js/wow.min.js')
+
 
 
