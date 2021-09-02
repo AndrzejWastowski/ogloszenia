@@ -122,18 +122,18 @@ Route::group(['prefix' => 'home'], function () {
    
     //dodawanie usługi
     
-    Route::get('/add/services', [App\Http\Controllers\Home\Add\servicesController::class, 'content'])->name('services_content');
-    Route::post('/add/services', [App\Http\Controllers\Home\Add\servicesController::class, 'content_post'])->name('services_content_post');
-    Route::get('/add/services/photo', [App\Http\Controllers\Home\Add\servicesController::class, 'photo'])->name('services_photo');
-    Route::post('/add/services/photo', [App\Http\Controllers\Home\Add\servicesController::class, 'photo_post'])->name('services_photo_post');
-    Route::get('/add/services/promotion', [App\Http\Controllers\Home\Add\servicesController::class, 'promotion'])->name('services_promotion');
-    Route::post('/add/services/promotion', [App\Http\Controllers\Home\Add\servicesController::class, 'promotion_post'])->name('services_promotion_post');
-    Route::get('/add/services/summary', [App\Http\Controllers\Home\Add\servicesController::class, 'summary'])->name('services_summary');
-    Route::post('/add/services/summary', [App\Http\Controllers\Home\Add\servicesController::class, 'summary_post'])->name('services_summary_post');
-    Route::get('/add/services/success', [App\Http\Controllers\Home\Add\servicesController::class, 'summary_post'])->name('services_success');
-    Route::post('/add/services/success', [App\Http\Controllers\Home\Add\servicesController::class, 'summary_post'])->name('services_success_post');
-    Route::post('/add/services/payments', [App\Http\Controllers\Home\Add\servicesController::class, 'payments'])->name('services_payments');
-    Route::post('/add/services/payments', [App\Http\Controllers\Home\Add\servicesController::class, 'payments'])->name('services_payments_post');
+    Route::get('/add/services', [App\Http\Controllers\Home\Add\ServicesController::class, 'content'])->name('services_content');
+    Route::post('/add/services', [App\Http\Controllers\Home\Add\ServicesController::class, 'content_post'])->name('services_content_post');
+    Route::get('/add/services/photo', [App\Http\Controllers\Home\Add\ServicesController::class, 'photo'])->name('services_photo');
+    Route::post('/add/services/photo', [App\Http\Controllers\Home\Add\ServicesController::class, 'photo_post'])->name('services_photo_post');
+    Route::get('/add/services/promotion', [App\Http\Controllers\Home\Add\ServicesController::class, 'promotion'])->name('services_promotion');
+    Route::post('/add/services/promotion', [App\Http\Controllers\Home\Add\ServicesController::class, 'promotion_post'])->name('services_promotion_post');
+    Route::get('/add/services/summary', [App\Http\Controllers\Home\Add\ServicesController::class, 'summary'])->name('services_summary');
+    Route::post('/add/services/summary', [App\Http\Controllers\Home\Add\ServicesController::class, 'summary_post'])->name('services_summary_post');
+    Route::get('/add/services/success', [App\Http\Controllers\Home\Add\ServicesController::class, 'summary_post'])->name('services_success');
+    Route::post('/add/services/success', [App\Http\Controllers\Home\Add\ServicesController::class, 'summary_post'])->name('services_success_post');
+    Route::post('/add/services/payments', [App\Http\Controllers\Home\Add\ServicesController::class, 'payments'])->name('services_payments');
+    Route::post('/add/services/payments', [App\Http\Controllers\Home\Add\ServicesController::class, 'payments'])->name('services_payments_post');
 
 
 
