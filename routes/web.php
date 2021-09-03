@@ -82,6 +82,22 @@ Route::group(['prefix' => 'uslugi'], function () {
 });
 
 
+
+
+Route::group(['prefix' => 'motoryzacja'], function () {
+    Route::get('/', [App\Http\Controllers\Cars\ListsController::class,'ListsAllCategories'])->name('CarsStart'); 
+    Route::get('/{categories}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByCategories'])->name('CarsListByCategories');    
+    
+    //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
+    //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
+    Route::get('/{categories}/{id}', [App\Http\Controllers\Cars\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('CarsContentsById');
+
+
+});
+
+
+
+
 Auth::routes();
 #group route to task of adding services
 Route::group(['prefix' => 'home'], function () {
@@ -136,15 +152,29 @@ Route::group(['prefix' => 'home'], function () {
     Route::post('/add/services/payments', [App\Http\Controllers\Home\Add\ServicesController::class, 'payments'])->name('services_payments_post');
 
 
-
-    Route::get('/add/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/automotive');
+    //dodawanie motoryzacja
+    
+    Route::get('/add/cars', [App\Http\Controllers\Home\Add\CarsController::class, 'content'])->name('cars_content');
+    Route::post('/add/cars', [App\Http\Controllers\Home\Add\CarsController::class, 'content_post'])->name('cars_content_post');
+    Route::get('/add/cars/photo', [App\Http\Controllers\Home\Add\CarsController::class, 'photo'])->name('cars_photo');
+    Route::post('/add/cars/photo', [App\Http\Controllers\Home\Add\CarsController::class, 'photo_post'])->name('cars_photo_post');
+    Route::get('/add/cars/promotion', [App\Http\Controllers\Home\Add\CarsController::class, 'promotion'])->name('cars_promotion');
+    Route::post('/add/cars/promotion', [App\Http\Controllers\Home\Add\CarsController::class, 'promotion_post'])->name('cars_promotion_post');
+    Route::get('/add/cars/summary', [App\Http\Controllers\Home\Add\CarsController::class, 'summary'])->name('cars_summary');
+    Route::post('/add/cars/summary', [App\Http\Controllers\Home\Add\CarsController::class, 'summary_post'])->name('cars_summary_post');
+    Route::get('/add/cars/success', [App\Http\Controllers\Home\Add\CarsController::class, 'summary_post'])->name('cars_success');
+    Route::post('/add/cars/success', [App\Http\Controllers\Home\Add\CarsController::class, 'summary_post'])->name('cars_success_post');
+    Route::post('/add/cars/payments', [App\Http\Controllers\Home\Add\CarsController::class, 'payments'])->name('cars_payments');
+    Route::post('/add/cars/payments', [App\Http\Controllers\Home\Add\CarsController::class, 'payments'])->name('cars_payments_post');
+   
+       
 
     Route::get('/add/jobs', [App\Http\Controllers\HomeController::class, 'index'])->name('home/add/jobs');
     
 
 
     Route::get('/lists/small', [App\Http\Controllers\Home\Lists\SmallAdsController::class, 'lists'])->name('home/lists/small');
-    Route::get('/lists/automotive', [App\Http\Controllers\HomeController::class, 'index'])->name('home/lists/automotive');
+    Route::get('/lists/cars', [App\Http\Controllers\HomeController::class, 'index'])->name('home/lists/cars');
     Route::get('/lists/estates', [App\Http\Controllers\HomeController::class, 'index'])->name('home/lists/estates');
 });
 

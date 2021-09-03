@@ -16,7 +16,7 @@ class CreateCarsContentsTable extends Migration
     {
         Schema::create('cars_contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id')->unsigned()->comment('id użytkownika który dodał ogłoszenie');
+            
             $table->string('name', 250)->comment('nazwa sprzedawanego samochodu, np. super Opel Astra! Niemiec płakał jak sprzedawał...');
             $table->text('lead')->comment('krótki opis sprzedawanego samochodu do wyświetlania na liście')->collation('utf8_polish_ci');
             $table->text('description')->comment('opis sprzedawanego samochodu')->collation('utf8_polish_ci');
@@ -24,8 +24,6 @@ class CreateCarsContentsTable extends Migration
             $table->integer('cars_models_id')->unsigned()->comment('model pojazdu');
             $table->integer('cars_body_id')->unsigned()->comment('nadwozie sedan kombi itd.. zróżnicowane od modelu');
             $table->string('color', 50)->comment('kolor pojazdu, 50 liter powinno styknac');
-            $table->dateTime('date_start')->comment('data wyswietlenia ogłoszenia');
-            $table->dateTime('date_end')->comment('data zakonczenia ogłoszenia');
             $table->dateTime('date_production')->comment('data produkcji');
             $table->dateTime('date_registration')->comment('data prodpierwszej rejestracji');
             $table->dateTime('country_registration')->comment('kraj rejestracji - z którego pochodzi auto');
@@ -36,21 +34,34 @@ class CreateCarsContentsTable extends Migration
             $table->enum('condition', ['nowy','używany'])->comment('stan pojazdu - nowy / używany');
             $table->unsignedTinyInteger('demaged')->comment('liczba miejsc siedzących');
             $table->unsignedTinyInteger('accident')->comment('liczba miejsc siedzących');
-            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');
-            $table->unsignedTinyInteger('inscription')->default(0)->comment('czy ogłoszenie jest rekomendowane');
-            $table->enum('highlighted', ['#ffffff','#cfbcf8','#bcf8bc','#f1f8bc','#f8c0bc','#f8bcf5'])->default("#ffffff")->comment('czy ogłoszenie jest wyróżnione (kolor)');
-            $table->unsignedTinyInteger('promoted')->default(0)->comment('czy ogłoszenie jest promowane (przed innymi)');
-            $table->unsignedTinyInteger('active')->default(0)->comment('czy ogloszenie jet aktywne (ustawiane jak cała procedura dodawania ogłoszenia dojdzie do konca)');
-            $table->enum('invoice', ['nie wystawiam faktury','faktura VAT','Faktura Vat-marża','faktura bez VAT'])->comment('stan pojazdu - nowy / używany');
-            $table->unsignedTinyInteger('mileage')->comment('przebieg samochodu');
-            $table->enum('fuel_type', ['benzyna','disel','benzyna + lpg','elektryczny'])->comment('rodzaj paliwa');
-            $table->integer('portal_id')->unsigned()->comment('portal z którego pochodzi ogłoszenie');
+            $table->string('contact_phone',100)->nullable()->comment('kontakt tel do sprzedawcy');  
+            $table->string('contact_email',200)->nullable()->comment('kontakt e-mail do sprzedawcy');  
+     
+            //dane wspolne dla kazdego ogloszenia
+            $table->integer('users_id')->comment('id użytkownika który dodał ogłoszenie ');
+            $table->integer('adresses_id')->nullable()->unsigned()->comment('polaczenie do kontaktu adresowego');  
             $table->enum('status',['unfinished','active','disabled','removed','blocked'])->default('unfinished')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
-            $table->ipAddress('visitor_ip')->comment('ip użytkownika');
-            $table->string('visitor_host', 250)->nullable($value = true)->comment('dane z hosta (rev dns) użytkownika'); //rev dns hosta użytkownika - przydtne żeby szybko zlokalizować usługodawcę
-            $table->string('visitor_soft', 250)->nullable($value = true)->comment('dane przeglądarki system itd..'); //wiem że to może się wydawać zbyteczne ale czasem policji się przydaje
-            $table->string('visitor_proxy', 250)->nullable($value = true)->comment('dane proxy przez które się łączył'); //wiem że to może się wydawać zbyteczne ale czasem policji się przydaje
-            $table->smallInteger('visitor_port')->unsigned();
+            $table->timestamp('date_add')->useCurrent()->comment('data dodania ogłoszenia');
+            $table->dateTime('date_start')->comment('data pojawienia się ogłoszenia na portalu (można zrobić opóźnienie)');
+            $table->dateTime('date_end')->comment('data_waznosci');
+            $table->tinyInteger('portal_id')->unsigned()->default(0)->comment('id portalu z którego uzytkownik dodawał ogłoszenie');                        
+            $table->integer('views')->unsigned()->default(0)->comment('ile było odsłon danego ogłoszenia, do statystyk');            
+
+            //informacje reklamowe
+            
+            $table->tinyInteger('master_portal')->default(0)->comment('czy ogłoszenie jest wyswietlane na portalu nadrzędnym jako reklama');
+            $table->tinyInteger('promoted')->default(0)->comment('czy ogłoszenie jest promowane - przed innymi');            
+            $table->tinyInteger('top')->default(0)->comment('czy ogłoszenie jest promowane - przed innymi');            
+            $table->enum('highlighted', ['#ffffff','#c8cdff','#ffc8dd','#c8ffdf','#eac8ff','#fff7c8'])->default('#ffffff')->comment('czy ogłoszenie jest wyróżnione (kolor)');            
+            $table->enum('inscription',['none','Promocja!','Wyprzedaż','Przecena','Bestseller'])->default('none')->comment('active - normalne opłacone ogłoszenie, disabled - wyłaczone przez uzytkownika lub z wygasłym terminem, mozliwe do ponowienia, removed - usunięte przez moderatora, nie wyświetla się użytkownikowi, blocked - zablokowane do wyjaśnienia do wyjasnienia, nie mozna go ponowić');
+            
+            //logi dotyczące ogłoszenia
+            
+            $table->ipAddress('adress_ip')->default(0)->comment('adres IP użytkownika do logów ');
+            $table->string('host')->nullable()->comment('Host - wpis pobrany z serwera');
+            $table->integer('port')->nullable()->comment('port z którym nastąpiło połączenie');
+            $table->string('browser')->nullable()->comment('Host - wpis pobrany z serwera');            
+            
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

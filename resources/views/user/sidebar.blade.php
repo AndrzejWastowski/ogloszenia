@@ -18,9 +18,8 @@
                     <ul class="list-unstyled" id="AddSubmenu">
                         <li><a href="{{ route('small_ads_content') }}">Ogłoszenia drobne</a></li>
                         <li><a href="{{ route('estates_content') }}">Nieruchomości</a></li>
-                        <li><a href="{{ route('small_ads_content') }}">Usługi</a></li>
-                
-                        <li><a href="{{ route('home/add/automotive') }}">Motoryzacja</a></li>
+                        <li><a href="{{ route('services_content') }}">Usługi</a></li>                
+                        <li><a href="{{ route('cars_content') }}">Motoryzacja</a></li>
                         <li><a href="{{ route('home/add/jobs') }}">Praca</a></li>
                         
                         
@@ -39,7 +38,7 @@
                     <ul class="list-unstyled" id="homeSubmenu">
                         <li><a href="{{ route('home/lists/small') }}">Ogłoszenia drobne</a></li>
                         <li><a href="{{ route('home/lists/estates') }}">Nieruchomości</a></li>
-                        <li><a href="{{ route('home/lists/automotive') }}">Motoryzacja</a></li>
+                        <li><a href="{{ route('home/lists/cars') }}">Motoryzacja</a></li>
                     </ul>
                 </div>
             </div>

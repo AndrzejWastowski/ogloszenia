@@ -78,4 +78,17 @@ class CarsRepository extends BaseRepository
         return $results;
     }
 
+    public function getNonUnfinishedCars($userId = 0) :?CarsContent
+    {
+        $result = $this->model
+        ->limit(1)
+        ->with('user')        
+        ->where('cars_contents.status', 'unfinished')
+        ->where('cars_contents.users_id', $userId)
+        ->orderBy('cars_contents.id', 'desc')
+        ->first();
+
+        return $result;
+    }
+
 }
