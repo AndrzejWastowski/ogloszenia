@@ -6403,59 +6403,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Carousel */ "./node_modules/react-bootstrap/esm/Carousel.js");
-/* harmony import */ var _storage_addons_product1_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../storage/addons/product1.jpg */ "./storage/app/public/addons/product1.jpg");
-/* harmony import */ var _storage_addons_product2_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../storage/addons/product2.jpg */ "./storage/app/public/addons/product2.jpg");
-/* harmony import */ var _storage_addons_product3_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../storage/addons/product3.jpg */ "./storage/app/public/addons/product3.jpg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+/* harmony import */ var react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Carousel */ "./node_modules/react-bootstrap/esm/Carousel.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
 
-
-
-
-
-function SliderPromoParm(_ref) {
-  _objectDestructuringEmpty(_ref);
-
-  var items = [{
-    key: '1',
+function SliderPromoParm() {
+  var obj = [{
+    id: '1',
     alt: 'jeden',
     captionTitle: 'title1',
-    caption: "pierwszy obrazek",
+    caption: 'pierwszy obrazek',
     src: '/storage/addons/product1.jpg'
   }, {
-    key: '2',
+    id: '2',
     alt: 'dwa',
     captionTitle: 'title2',
-    caption: "drugi obrazek",
+    caption: 'drugi obrazek',
     src: '/storage/addons/product2.jpg'
   }, {
-    key: '3',
+    id: '3',
     alt: 'trzy',
     captionTitle: 'title3',
-    caption: "trzeci obrazek",
+    caption: 'trzeci obrazek',
     src: '/storage/addons/product3.jpg'
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_6__.default, {
-    children: items.map(function (item) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_6__.default.Item, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+  }]; //items = JSON.stringify(items_);    
+  //  items = '[{"id":"1","alt":"jeden","captionTitle":"title 1a","caption":"pierwszy obrazek","src":"\/storage\/addons\/product1.jpg"},{"id":"2","alt":"dwa","captionTitle":"title 2a","caption":"drugi obrazek","src":"\/storage\/addons\/product2.jpg"},{"id":"3","alt":"trzy","captionTitle":"title 3a","caption":"trzykoty obrazek","src":"\/storage\/addons\/product3.jpg"}]';
+  // const obj = JSON.parse(items);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_3__.default, {
+    children: obj.map(function (item) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_3__.default.Item, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
           className: "d-block w-100",
           src: item.src,
           alt: item.alt
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_6__.default.Caption, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_3__.default.Caption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
             children: item.captionTitle
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
             children: item.caption
           })]
-        }, "{item.id}")]
-      }, "{item.id}");
+        })]
+      }, item.id.toString());
     })
   });
 }
@@ -6464,7 +6457,7 @@ function SliderPromoParm(_ref) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SliderPromoParm);
 
 if (document.getElementById('SliderPromoParm')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(SliderPromoParm, {}), document.getElementById('SliderPromoParm'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SliderPromoParm, {}), document.getElementById('SliderPromoParm'));
 }
 
 /***/ }),
@@ -11982,51 +11975,6 @@ function triggerEvent(node, eventName, bubbles, cancelable) {
     node.dispatchEvent(event);
   }
 }
-
-/***/ }),
-
-/***/ "./storage/app/public/addons/product1.jpg":
-/*!************************************************!*\
-  !*** ./storage/app/public/addons/product1.jpg ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/product1.jpg?8430b93569a2a52463952c04fc12b836");
-
-/***/ }),
-
-/***/ "./storage/app/public/addons/product2.jpg":
-/*!************************************************!*\
-  !*** ./storage/app/public/addons/product2.jpg ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/product2.jpg?7ed18fd7a666b45b456a778af52b2e8c");
-
-/***/ }),
-
-/***/ "./storage/app/public/addons/product3.jpg":
-/*!************************************************!*\
-  !*** ./storage/app/public/addons/product3.jpg ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/product3.jpg?173237445b1762266986ca7c4d77a277");
 
 /***/ }),
 
