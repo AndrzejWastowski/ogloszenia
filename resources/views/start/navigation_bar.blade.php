@@ -7,7 +7,7 @@
             <!--Image -->
             
             <div class="view zoom z-depth-1">
-                <img src="{{ $storage->url('resources/reklama/reklama_poziom.jpg') }}" class="img-fluid" alt="sample image">
+                <img src="{{ $storage->url('addons/reklama_poziom.jpg') }}" class="img-fluid" alt="sample image">
             </div>
         
             <!--Image -->            

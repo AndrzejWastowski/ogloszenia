@@ -27,7 +27,7 @@
 								@endphp
 								@foreach ($content->top_photos as $photo)
 									@php 
-										$imagefile = 'public/small_ads/'.$photo->name.'_kw.jpg'; 
+										$imagefile = $storage->url('small_ads/'.$photo->name.'_kw.jpg') }};  
 										break;
 									@endphp
 								@endforeach

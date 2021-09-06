@@ -26,7 +26,7 @@
 								@endphp
 								@foreach ($content->topPhotos as $photo)
 									@php 
-										$imagefile = 'public/small_ads/'.$photo->name.'_kw.jpg'; 
+										$imagefile = $storage->url('small_ads/'.$photo->name.'_kw.jpg'); 
 										break;
 									@endphp
 								@endforeach
@@ -58,7 +58,7 @@
 								@endphp
 								@foreach ($content->TopPhotos as $photo)
 									@php 
-										$imagefile = 'public/estates/'.$photo->name.'_kw.jpg'; 
+										$imagefile = $storage->url('estates/'.$photo->name.'_kw.jpg'); 
 										break;
 									@endphp
 								@endforeach
@@ -89,7 +89,7 @@
 								@endphp
 								@foreach ($content->TopPhotos as $photo)
 									@php 
-										$imagefile = 'public/cars/'.$photo->name.'_kw.jpg'; 
+										$imagefile = $storage->url('cars/'.$photo->name.'_kw.jpg'); 
 										break;
 									@endphp
 								@endforeach

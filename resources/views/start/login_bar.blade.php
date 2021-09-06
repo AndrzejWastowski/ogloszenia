@@ -5,8 +5,8 @@
     <!--Grid column-->
         <div class="col-xl-9 col-md-12">
                 <!--Image -->            
-                <div class="view zoom z-depth-1">
-                    <img src="{{ $storage->url('resources/reklama/baner_970x250.jpg') }}" class="img-fluid" alt="Baner reklamowy 970x250">               
+                <div class="view zoom z-depth-1">     
+                    <img src="{{ $storage->url('addons/baner_970x250.jpg') }}" class="img-fluid" alt="Baner reklamowy 970x250">               
                 </div>
                 <!--Image -->            
         </div>
