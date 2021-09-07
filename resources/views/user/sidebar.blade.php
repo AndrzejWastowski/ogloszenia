@@ -19,7 +19,7 @@
                         <li><a href="{{ route('small_ads_content') }}">Ogłoszenia drobne</a></li>
                         <li><a href="{{ route('estates_content') }}">Nieruchomości</a></li>
                         <li><a href="{{ route('services_content') }}">Usługi</a></li>                
-                        <li><a href="{{ route('cars_content') }}">Motoryzacja</a></li>
+                        <li><a href="{{ route('automotive_type') }}">Motoryzacja</a></li>
                         <li><a href="{{ route('home/add/jobs') }}">Praca</a></li>
                         
                         

@@ -23,7 +23,7 @@ class CarsModelsRepository extends BaseRepository
     public function getModelsByBrandsId($id)
     {
         $data = $this->model->where('cars_brands_id', $id)->orderBy('model', 'asc')->get();
-       // dd($data);
+      //  dd($data);
         return $data;
     }
 

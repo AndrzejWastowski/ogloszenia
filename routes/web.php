@@ -105,7 +105,11 @@ Route::group(['prefix' => 'home'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/tablica', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
+    
     Route::get('/select', [App\Http\Controllers\HomeController::class, 'select'])->name('select');
+
+    Route::get('/automotive_type', [App\Http\Controllers\Home\Add\AutomotiveTypeController::class, 'index'])->name('automotive_type');
+    
 
     Route::get('/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content'])->name('small_ads_content');
     Route::post('/add/small_ads', [App\Http\Controllers\Home\Add\SmallAdsController::class, 'content_post'])->name('small_ads_content_post');
@@ -186,7 +190,8 @@ Route::group(['prefix' => 'home'], function () {
     Route::group(['prefix' => 'internal-api'], function () {
     
         //Route::get('/add/subcat/{categoriesId}', ['categoriesId'=>'0','uses'=>'Ads\SubCategoriesController@getJson']);        
-        Route::get('/add/subcat/{categoriesId}', ['categoriesId'=>'0', App\Http\Controllers\Home\Add\SmallAdsSubcategoriesController::class, 'getJson']);
+    Route::get('/add/subcat/{categoriesId}', ['categoriesId'=>'0', App\Http\Controllers\Home\Add\SmallAdsSubcategoriesController::class, 'getJson']);
+    Route::get('/cars/{categoriesId}', ['categoriesId'=>'0', App\Http\Controllers\InternalApi\CarsModelsController::class, 'getJson']);
         
     }); 
 

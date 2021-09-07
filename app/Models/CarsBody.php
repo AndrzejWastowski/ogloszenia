@@ -13,9 +13,7 @@ class CarsBody extends Model
      *
      * @var array
      */
-    protected $fillable = [
-    'id', 'name', 
-   ];
+    protected $fillable = ['id', 'name'];
    protected $table = 'cars_body';
 
 }

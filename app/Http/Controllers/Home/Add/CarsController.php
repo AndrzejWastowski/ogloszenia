@@ -12,6 +12,8 @@ use App\Repositories\Eloquent\CarsRepository;
 use App\Repositories\Eloquent\CarsBrandsRepository;
 use App\Repositories\Eloquent\CarsModelsRepository;
 use App\Repositories\Eloquent\CarsPhotosRepository;
+use App\Repositories\Eloquent\CarsBodiesRepository;
+
 use App\Repositories\Eloquent\PriceRepository;
 use App\Repositories\Eloquent\PaymentRepository;
 
@@ -40,6 +42,7 @@ final class CarsController extends Controller
     private $carsBrandsRepository;
     private $carsModelsRepository;
     private $carsPhotosRepository;
+    private $carsBodiesRepository;
     private $priceRepository;
     private $storage;
 
@@ -49,6 +52,7 @@ final class CarsController extends Controller
         CarsBrandsRepository $carsBrandsRepository,
         CarsModelsRepository $carsModelsRepository,
         CarsPhotosRepository $carsPhotosRepository,
+        CarsBodiesRepository $carsBodiesRepository,
         PriceRepository $priceRepository,
         Storage $storage
 
@@ -67,6 +71,7 @@ final class CarsController extends Controller
             $this->carsBrandsRepository = $carsBrandsRepository;
             $this->carsModelsRepository = $carsModelsRepository;
             $this->carsPhotosRepository = $carsPhotosRepository;
+            $this->carsBodiesRepository = $carsBodiesRepository;
             $this->priceRepository = $priceRepository;
             $this->storage = $storage::disk('local');
         }
@@ -77,7 +82,7 @@ final class CarsController extends Controller
     {
      //   $request->session()->forget('cars');
      //   $products = \App\Register::all();
-      //  return view('home.add.cars.step1');
+      //  return view('home.add.automotive.cars.step1');
     }
 
     public function content(Request $request)
@@ -111,16 +116,19 @@ final class CarsController extends Controller
         // dd($content);
         $brands = $this->carsBrandsRepository->getAllBrands();  
         $models = $this->carsModelsRepository->getModelsByBrandsId($content['cars_brands_id'] );  
+        $bodies = $this->carsBodiesRepository->getAllBodies();
+
         // dd($models);
 
         $user = Auth::user();
         // dd($user);
 
 
-        return view('home.add.cars.content',[
+        return view('home.add.automotive.cars.content',[
             'content' => $content,
             'brands' => $brands,
             'models' => $models,
+            'bodies'=> $bodies,
             'user' => $user
         
         ]);
@@ -224,7 +232,7 @@ final class CarsController extends Controller
 
        // dd($contents);
 
-        return view('home.add.cars.photo', [
+        return view('home.add.automotive.cars.photo', [
             'request'=>$request,
             'photos' => $photos,        
             'storage' => $this->storage
@@ -295,7 +303,7 @@ final class CarsController extends Controller
 
     public function promotion(Request $request)
     {
-        return view('home.add.cars.promotion', [
+        return view('home.add.automotive.cars.promotion', [
             'request'=>$request
         ]);
     }
@@ -377,6 +385,8 @@ final class CarsController extends Controller
 
        // dd($brands);
         $models = $this->carsModelsRepository->getModelsByBrandsId($content['cars_brands_id'] );  
+
+        $bodies = $this->carsBodiesRepository->getBodiesById($content['cars_bodies_id'] ); 
        // dd($models);
 
        //zliczanie płatności po stronie serwera
@@ -410,7 +420,7 @@ final class CarsController extends Controller
         $photos = $this->carsPhotosRepository->getAllPhotosByCars($content->get_id());   
 
         $user = Auth::user();
-        return view('home.add.cars.summary',[
+        return view('home.add.automotive.cars.summary',[
 
             'content' => $content,            
             'brands' => $brands,
@@ -546,4 +556,5 @@ if(empty($request->session()->get('cars_contents'))){
     $request->session()->put('cars_contents', $cars_contents);
 }
 */
+
 
