@@ -17,14 +17,14 @@ class SmallAdsPhotoSeeds extends Seeder
         DB::disableQueryLog();
 
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '601aaab34e09a' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '601aaab35cbdb' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>2, 'name' => '601aaab35cbdb' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 2,'sort'=>1, 'name' => '601aaab3884cb' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 2,'sort'=>1, 'name' => '601aaab3d9875' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 2,'sort'=>1, 'name' => '601aaab3e55bc' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 2,'sort'=>2, 'name' => '601aaab3d9875' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 2,'sort'=>3, 'name' => '601aaab3e55bc' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 3,'sort'=>1, 'name' => '601aaab40f34b' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 3,'sort'=>1, 'name' => '601aaab44147e' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 3,'sort'=>2, 'name' => '601aaab44147e' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 4,'sort'=>1, 'name' => '602e67cca5d96' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 5,'sort'=>1, 'name' => '602e67cca5d96' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 5,'sort'=>2, 'name' => '602e67cca5d96' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 5,'sort'=>1, 'name' => '602e67cce82b2' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 6,'sort'=>1, 'name' => '602e67cd2cf73' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 7,'sort'=>1, 'name' => '6036450413626' ]);
@@ -42,21 +42,21 @@ class SmallAdsPhotoSeeds extends Seeder
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 18,'sort'=>1, 'name' => '6048d71199c68' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 19,'sort'=>1, 'name' => '6048d711df821' ]);
         DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 21,'sort'=>1, 'name' => '6048d7122c93b' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 21,'sort'=>1, 'name' => '6048d71268ab2' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 21,'sort'=>1, 'name' => '6048d712a2eb9' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 22,'sort'=>1, 'name' => '606db124c5df1' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 23,'sort'=>1, 'name' => '606db12516f9d' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 24,'sort'=>1, 'name' => '606db1255980d' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 25,'sort'=>1, 'name' => '606db125cc84b' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 26,'sort'=>1, 'name' => '6088128256efa' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 27,'sort'=>1, 'name' => '608814c3d8d4d' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 28,'sort'=>1, 'name' => '608818f046357' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '6113c0e8bef4b' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '6113c0e8ee875' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '6113c0e907d32' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '61236c1dc5ae8' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '61236c1e8044d' ]);
-        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 1,'sort'=>1, 'name' => '61236c1f2602d' ]);        
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 22,'sort'=>1, 'name' => '6048d71268ab2' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 22,'sort'=>1, 'name' => '6048d712a2eb9' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 24,'sort'=>1, 'name' => '606db124c5df1' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 25,'sort'=>1, 'name' => '606db12516f9d' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 26,'sort'=>1, 'name' => '606db1255980d' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 27,'sort'=>1, 'name' => '606db125cc84b' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 28,'sort'=>1, 'name' => '6088128256efa' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 29,'sort'=>1, 'name' => '608814c3d8d4d' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 30,'sort'=>1, 'name' => '608818f046357' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 31,'sort'=>1, 'name' => '6113c0e8bef4b' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 31,'sort'=>1, 'name' => '6113c0e8ee875' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 23,'sort'=>2, 'name' => '6113c0e907d32' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 15,'sort'=>2, 'name' => '61236c1dc5ae8' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 16,'sort'=>2, 'name' => '61236c1e8044d' ]);
+        DB::table('small_ads_photos')->insert(['small_ads_contents_id' => 17,'sort'=>2, 'name' => '61236c1f2602d' ]);        
      
     }
 }
