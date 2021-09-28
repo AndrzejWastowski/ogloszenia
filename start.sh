@@ -27,7 +27,6 @@ php artisan db:seed --class UsersSeeds
 
 echo 'uzupelniam zdjęcia przy uzytkownikach- ';
 
-
 echo 'uzupelniam kategogie przy nieruchomosciach';
 php artisan db:seed --class EstatesCategoriesSeeds
 
