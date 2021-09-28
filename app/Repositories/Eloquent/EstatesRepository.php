@@ -201,8 +201,6 @@ class EstatesRepository extends BaseRepository
     public function getPromoted($limit, $skip) 
     {
         $request = $this->model
-        
-            ->with('User')
             ->with('TopPhotos')
             ->with('EstatesCategories')          
             ->where('estates_contents.promoted', 1)         

@@ -69,10 +69,16 @@ class SmallAdsContent extends Model
         return $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id');
     }
 
-        public function topPhotos()
+        public function TopPhotos()
     {
-        return $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id')->limit(1);
+        //$result = $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id')
+        
+        $result = $this->hasMany(SmallAdsPhoto::class, 'small_ads_contents_id')
+        ->where('sort',1)
+        ->limit(1);
+        return $result;        
     }
+
 
 
 

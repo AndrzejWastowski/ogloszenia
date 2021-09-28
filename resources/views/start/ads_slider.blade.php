@@ -8,7 +8,7 @@
    
     <div class="carousel-inner">
     @foreach ($smal_ads_promo->chunk(4) as $chunkContent)	
-     @php $pom++; @endphp;
+     @php $pom++; @endphp
         <div class="carousel-item {{ $active }}" data-bs-interval="3000">			
         <div class="row">	
         <h4 class="text-center"><strong>Ogłoszenia drobne {{ $pom }}</strong></h4>

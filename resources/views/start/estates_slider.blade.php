@@ -12,7 +12,7 @@
  
 	<div class="carousel-inner">
 	@foreach ($estates->chunk(4) as $chunkContent)	
-	 @php $pom++; @endphp;
+	 @php $pom++; @endphp
 			<div class="carousel-item {{ $active }}" data-bs-interval="3000">			
 			<div class="row">	
 			<h4 class="text-center"><strong>Promowane nieruchomości {{ $pom }}</strong></h4>

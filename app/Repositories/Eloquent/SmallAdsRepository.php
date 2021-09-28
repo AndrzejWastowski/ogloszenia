@@ -92,11 +92,8 @@ class SmallAdsRepository extends BaseRepository
     public function getPromoted($limit, $skip) :Collection
     {
 
-
-        $results = $this->model
-        
-        ->with('user')
-        ->with('topPhotos')
+        $results = $this->model   
+        ->with('TopPhotos')
         ->with('SmallAdsCategories')          
         ->where('small_ads_contents.promoted', 1)         
         ->where('small_ads_contents.status', 'active')

@@ -48,20 +48,18 @@ final class StartController extends Controller
     public function start()
     {
         $storage = $this->storage::disk('local');
-        $smal_ads_promo= $this->smallAdsRepository->getPromoted(12, 0);        
-
-    
-
-        $smallAdsLastChanse = $this->smallAdsRepository->getLastChanse(4);
-     
         
+        $smal_ads_promo= $this->smallAdsRepository->getPromoted(4, 0); 
+        $estates_promo = $this->estatesRepository->getPromoted(4,0);        
+        $cars_promo = $this->carsRepository->getPromoted(4,0);
+
+       // dd($smal_ads_promo);
+        $smallAdsLastChanse = $this->smallAdsRepository->getLastChanse(4);             
         $smallAdsNewOffer = $this->smallAdsRepository->getNewOffer(4);
         $smallAdsTopView = $this->smallAdsRepository->getTopView(4);
 
         $estates = $this->estatesRepository->getPromoted(12,0);
-        $estates_promo = $this->estatesRepository->getPromoted(4,0);
         
-        $cars_promo = $this->carsRepository->getPromoted(4,0);
 //dd($cars_promo);
 
 
