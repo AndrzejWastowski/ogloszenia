@@ -3,7 +3,7 @@
 		<div class="nav nav-tabs" id="nav-tab" role="tablist">
 			<button class="nav-link active  id="nav-smal-ads" data-bs-toggle="tab" data-bs-target="#nav-small-ads" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Ogłoszenia Drobne</button>
 			<button class="nav-link" id="nav-estates-tab" data-bs-toggle="tab" data-bs-target="#nav-estates" type="button" role="tab" aria-controls="nav-estates" aria-selected="false">Nieruchomości</button>
-			<button class="nav-link" id="nav-services-tab" data-bs-toggle="tab" data-bs-target="#nav-services" type="button" role="tab" aria-controls="nav-services" aria-selected="false">Praca</button>
+			<button class="nav-link" id="nav-services-tab" data-bs-toggle="tab" data-bs-target="#nav-services" type="button" role="tab" aria-controls="nav-services" aria-selected="false">Usługi</button>
 			<button class="nav-link" id="nav-job-tab" data-bs-toggle="tab" data-bs-target="#nav-job" type="button" role="tab" aria-controls="nav-job" aria-selected="false">Praca</button>
 			<button class="nav-link" id="nav-automoto-tab" data-bs-toggle="tab" data-bs-target="#nav-automoto" type="button" role="tab" aria-controls="nav-automoto" aria-selected="false">Motoryzacja</button>
 			<button class="nav-link" id="nav-agro-tab" data-bs-toggle="tab" data-bs-target="#nav-agro" type="button" role="tab" aria-controls="nav-agro" aria-selected="false">Rolnictwo</button>
