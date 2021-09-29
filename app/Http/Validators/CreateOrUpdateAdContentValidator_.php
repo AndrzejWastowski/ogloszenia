@@ -8,8 +8,8 @@ final class CreateOrUpdateAdContentValidator extends Validator
     {
         return [
             'id' => ['required', 'integer', 'min:0'],
-            'name' => 'required|min:10|max:255',
-            'lead' => 'required|min:30|max:255',
+            'name' => 'required|min:5|max:255',
+            'lead' => 'required|min:15|max:255',
             'description' => 'required|min:30|max:2500',
             'small_ads_categories_id' => 'required|integer|min:1',
             'small_ads_sub_categories_id' => 'required|integer|min:1',
@@ -26,10 +26,10 @@ final class CreateOrUpdateAdContentValidator extends Validator
     {
         return [
             'name.required' => 'pole <b>nazwa</b> jest wymagane!<br>',
-            'name.min' => 'pole <b>nazwa</b> musi zawierać wiecej niż 10 znaków (i mniej niż 255!)<br>',
+            'name.min' => 'pole <b>nazwa</b> musi zawierać wiecej niż 5 znaków (i mniej niż 255!)<br>',
             'name.max' => 'pole <b>nazwa</b> musi zawierać mniej niż 255 znaków (i więcej niż 10!)<br>',
             'lead.required' => 'pole <b>lid</b> jest wymagane!<br>',
-            'lead.min' => 'pole <b>lid</b> musi zawierać wiecej niż 30 znaków (i mniej niż 255!)<br>',
+            'lead.min' => 'pole <b>lid</b> musi zawierać wiecej niż 15 znaków (i mniej niż 255!)<br>',
             'lead.max' => 'pole <b>lid</b> musi zawierać mniej niż 255 znaków (i więcej niż 30!)<br>',
             'description.required' => 'pole <b>opis</b> jest wymagane!<br>',
             'description.min' => 'pole <b>opis</b> musi zawierać wiecej niż 30 znaków (i mniej niż 2500!)<br>',

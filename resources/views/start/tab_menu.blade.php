@@ -25,7 +25,14 @@
 	</div>
 	<div class="tab-pane fade" id="nav-automoto" role="tabpanel" aria-labelledby="nav-automoto-tab">
 		<div class="card">
-			<div class="card-body">Motoryzacja - kategorie</div>
+			<div class="card-body">Motoryzacja 
+				<a href="motoryzacja/samochody_osobowe">Samochody osobowe</a>
+				<a href="motoryzacja/autobus">Busy / autobusy</a>
+				<a href="motoryzacja/ciezarowe">Samochody dostawcze i ciężarowe</a>
+				<a href="motoryzacja/motocykle">Motocykle / quady</a>
+				<a href="motoryzacja/rolnicze">Traktory / Sprzęt rolniczy</a>				
+
+			</div>
 		</div>
 		</div>
 	</div>  

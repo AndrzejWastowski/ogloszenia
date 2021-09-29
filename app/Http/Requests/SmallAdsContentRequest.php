@@ -24,8 +24,8 @@ class SmallAdsContentRequest extends FormRequest
     {
         return [
             'id' => 'required|integer|min:0',
-            'name' => 'required|min:10|max:255',
-            'lead' => 'required|min:10|max:255',
+            'name' => 'required|min:5|max:255',
+            'lead' => 'required|min:15|max:255',
             'description' => 'required|min:30|max:2500',
             'items' => 'required|integer|min:0|max:99999999',
             'price' => 'required|numeric|min:0|max:99999999',
@@ -40,8 +40,25 @@ class SmallAdsContentRequest extends FormRequest
                $fail($attribute . ' is invalid.');
             }
          } ,           
-            'invoice' => 'required|in:Nie wystawiam faktury,Faktura VAT,Faktura Vat-marża,Faktura bez VAT',                        
-            'condition' => 'required|in:nowe,używane',
+                'name.required' => 'pole <b>nazwa</b> jest wymagane!<br>',
+                'name.min' => 'pole <b>nazwa</b> musi zawierać wiecej niż 5 znaków (i mniej niż 255!)<br>',
+                'name.max' => 'pole <b>nazwa</b> musi zawierać mniej niż 255 znaków (i więcej niż 10!)<br>',
+                'lead.required' => 'pole <b>lid</b> jest wymagane!<br>',
+                'lead.min' => 'pole <b>lid</b> musi zawierać wiecej niż 15 znaków (i mniej niż 255!)<br>',
+                'lead.max' => 'pole <b>lid</b> musi zawierać mniej niż 255 znaków (i więcej niż 30!)<br>',
+                'description.required' => 'pole <b>opis</b> jest wymagane!<br>',
+                'description.min' => 'pole <b>opis</b> musi zawierać wiecej niż 30 znaków (i mniej niż 2500!)<br>',
+                'description.max' => 'pole <b>opis</b> musi zawierać mniej niż 2500 znaków (i więcej niż 30!)<br>',
+                'date_start.required' => 'Pole <b>data start</b> jest niepoprawne<br>',
+                'date_start.date_format' => 'niepoprawny format <b>data start</b>',
+                'date_start.after' => 'Pole  <b>data startowa</b> ogłoszenia nie może być z datą wsteczną!',
+                'date_end.required' => 'Pole <b>data end</b> musi być późniejsza niż data start',            
+                'small_ads_categories_id:required' => 'nie wybrałeś podkategorii',
+                'small_ads_categories_id:min:1' => 'nie wybrałeś podkategorii',
+                'invoice:required' => 'pole z rodzajem rachunku jest wymagane',
+                'price:required' => 'pole <b>cena</b> jest wymagane',
+                'price:max' => 'Chyba troche przesadziłeś z <b>ceną</b> ',
+                'invoice:in' => 'niepoprawna wartość w polu rodzaj rachunku'
             
         ];
     }

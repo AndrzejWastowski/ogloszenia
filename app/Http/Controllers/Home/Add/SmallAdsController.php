@@ -220,10 +220,6 @@ final class SmallAdsController extends Controller
         $small_ads_contents = $request->session()->get('small_ads_contents'); 
         $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($small_ads_contents->get_id());   
 
-        $contents = Storage::url('public/small_ads/601aaab35cbdb_kw.jpg');
-
-       // dd($contents);
-
         return view('home.add.small_ads.photo', [
             'request'=>$request,
             'photos' => $photos,        
