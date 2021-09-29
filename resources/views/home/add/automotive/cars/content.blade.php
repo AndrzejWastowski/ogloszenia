@@ -108,6 +108,7 @@
                         <option value="Gaz LPG">Gaz LPG</option>
                         <option value="Gaz CNG">Gaz CNG</option>
                         <option value="Elektryczny">Elektryczny</option>
+                        <option value="Hybryda">Hybryda</option>
                         <option value="Wodór">Wodór</option>
                     </select>                        
                 </div>

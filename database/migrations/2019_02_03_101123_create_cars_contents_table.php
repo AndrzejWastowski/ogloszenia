@@ -28,7 +28,7 @@ class CreateCarsContentsTable extends Migration
             $table->dateTime('date_registration')->comment('data prodpierwszej rejestracji');
             $table->dateTime('country_registration')->comment('kraj rejestracji - z którego pochodzi auto');
             $table->integer('power')->unsigned()->comment('moc silnika (Konie mechaniczne)');
-            $table->enum('fuel_type',['Benzyna','Olej napędowy','Gaz LPG','Gaz CNG','Elektryczny','Wodór'])->comment('rodzaj paliwa');
+            $table->enum('fuel_type',['Benzyna','Olej napędowy','Gaz LPG','Gaz CNG','Elektryczny','Hybryda','Wodór'])->comment('rodzaj paliwa');
             $table->integer('capacity')->unsigned()->comment('pojemnosc (cm 3)');
             $table->unsignedTinyInteger('doors_number')->comment('liczba drzwi');
             $table->unsignedTinyInteger('seats')->comment('liczba miejsc siedzących');
