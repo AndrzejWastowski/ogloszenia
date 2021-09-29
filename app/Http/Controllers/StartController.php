@@ -59,6 +59,11 @@ final class StartController extends Controller
         $smallAdsTopView = $this->smallAdsRepository->getTopView(4);
 
         $estates = $this->estatesRepository->getPromoted(12,0);
+
+
+
+        $smal_ads_slider= $this->smallAdsRepository->getPromoted(12, 0); 
+
         
 //dd($cars_promo);
 
@@ -95,6 +100,7 @@ $props[2] = array (
             'items' =>  $json_items,
             'storage' => $storage,   
             'smal_ads_promo' => $smal_ads_promo,
+            'smal_ads_slider' => $smal_ads_slider,
             'estates_promo' => $estates_promo,
             'cars_promo' => $cars_promo,            
             'estates' => $estates,    

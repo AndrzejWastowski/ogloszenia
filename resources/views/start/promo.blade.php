@@ -32,7 +32,7 @@
 										break;
 									@endphp
 								@endforeach
-								<a href="drobne/{{$content->SmallAdsCategories->link}}/{{$content->SmallAdsSubCategories->link}}/{{$content->id}}"><img class="card-img-top" src="{{ $storage->url($imagefile) }}" alt="{{ $content->name }}"></a>
+							<a href="drobne/{{$content->SmallAdsCategories->link}}/{{$content->SmallAdsSubCategories->link}}/{{$content->id}}"><img class="card-img-top" src="{{ $storage->url($imagefile) }}" alt="{{ $content->name }}"></a>
 
 							<div class="card-body">
 								<h5 class="card-title" style=" display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><strong><a href="drobne/{{$content->SmallAdsCategories->link}}/{{$content->SmallAdsSubCategories->link}}/{{$content->id}}">{{ $content->name }}</a></strong></h5>								

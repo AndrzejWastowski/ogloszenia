@@ -11,8 +11,9 @@
     @include('start.4reklamy_dol')   
     slider ads
     @include('start.ads_slider')  
+    slider moto
+    @include('start.cars_slider')  
     slider estates
-
     @include('start.estates_slider')
 </main>
 @endsection
