@@ -22,7 +22,7 @@
 		</div>
 		<div class="tab-pane fade" id="nav-services" role="tabpanel" aria-labelledby="nav-services-tab">
 			<div class="card">
-				<div class="card-body">Praca- kategorie</div>
+				<div class="card-body">Usługi budowlane , ksiegowe itd... tu będą najczęściej używane kategorie</div>
 			</div>
 		</div>
 		<div class="tab-pane fade" id="nav-job" role="tabpanel" aria-labelledby="nav-job-tab">
