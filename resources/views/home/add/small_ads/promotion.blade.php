@@ -41,6 +41,16 @@
                     
                     <form action="{{ route('small_ads_promotion_post') }}"  method="POST" enctype="multipart/form-data" role="form" name="formPromotion">
                             @csrf
+                            @csrf
+                            @if ($errors->any())
+                                <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
+                                    <ul class="alert alert-danger">                
+                                        @foreach ($errors->all() as $error)
+                                            <li> {!! $error !!} </li>
+                                        @endforeach
+                                    </ul>                            
+                                Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
+                            @endif
                             <p class="h4 mb-4 text-center">Wybierz rodzaj promocji ogłoszenia</p>
                             <div class="row">
                                 <div class="col-3">

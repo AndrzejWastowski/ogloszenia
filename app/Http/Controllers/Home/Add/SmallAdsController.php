@@ -132,7 +132,7 @@ final class SmallAdsController extends Controller
     {
 
         $data = $request->validated();          
-     //   dd($data);
+        //dd($data);
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
         if ($data['id']>0) {
             
@@ -189,25 +189,34 @@ final class SmallAdsController extends Controller
         $user['port'] = Arr::get($_SERVER,'REMOTE_PORT');
         $user['host'] = Arr::get($_SERVER,'REMOTE_HOST');
 
+        //dd($user);
         $ip = '91.228.136.201';
-        $location = Location::get($ip);
+        $location = Location::get( $user['ip']);
+       // dd($location);
 
         if ($location!=null)
         {
-            $user['countryCode'] = $location->countryName;        
-            $user['regionCode'] = $location->regionCode;
-            $user['regionName'] = $location->regionName;
-            $user['zipCode'] = $location->zipCode;
-            $user['cityName'] = $location->cityName;
-            $user['latitude'] = $location->latitude;
-            $user['longitude'] = $location->longitude;        
+            $user['cc'] = $location->countryName; //Country Code
+            $user['rc'] = $location->regionCode; //Region Code
+            $user['rn'] = $location->regionName; //Region Name
+            $user['zip'] = $location->zipCode; //zipCode
+            $user['city'] = $location->cityName;
+            $user['lat'] = $location->latitude;
+            $user['lng'] = $location->longitude;        
         }
+       // $location_serialize = (serialize($location));
+
+       // dd(($location_serialize));
+
+
+
 
 
         $small_ads_contents->set_adress_ip($user['ip']);
         $small_ads_contents->set_host($user['host']);
-        $small_ads_contents->set_port($user['port']);
+        $small_ads_contents->set_port((int)$user['port']);
         $small_ads_contents->set_browser($user['browser']);
+       // $small_ads_contents->set_location();
 
         $small_ads_contents->save();
         $request->session()->put('small_ads_contents', $small_ads_contents);        
@@ -341,7 +350,7 @@ final class SmallAdsController extends Controller
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $small_ads_contents->set_highlighted($data['highlighted']);        
         $small_ads_contents->set_promoted($data['promoted']);
-        $small_ads_contents->set_inscription($data['inscription']);
+        $small_ads_contents->set_recomended($data['recomended']);
         $small_ads_contents->set_master_portal($master_portal);
         $small_ads_contents->set_top($top);
         $small_ads_contents->save();

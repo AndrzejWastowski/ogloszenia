@@ -33,7 +33,8 @@ class SmallAdsContentRequest extends FormRequest
             'date_end' => 'required|integer|min:1|digits_between: 1,30',
             'small_ads_categories_id' => 'required|integer|min:1',
             'small_ads_sub_categories_id' => 'required|integer|min:1',
-            'small_ads_classified_enum' => 'required|in:sprzedam,kupię,zamienię,oddam,wypożyczę',            
+            'small_ads_classified_enum' => 'required|in:sprzedam,kupię,zamienię,oddam,wypożyczę',   
+            'condition' => 'required|in:nowe,używane',
             'contact_phone' =>  'nullable',
             'contact_email' =>  'nullable', 'email:rfc',function($attribute, $value, $fail) {
             if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
@@ -75,7 +76,7 @@ class SmallAdsContentRequest extends FormRequest
             'name.min' => 'pole <b>nazwa</b> musi zawierać wiecej niż 10 znaków (i mniej niż 255!)<br>',
             'name.max' => 'pole <b>nazwa</b> musi zawierać mniej niż 255 znaków (i więcej niż 10!)<br>',
             'lead.required' => 'pole <b>lid</b> jest wymagane!<br>',
-            'lead.min' => 'pole <b>lid</b> musi zawierać wiecej niż 30 znaków (i mniej niż 255!)<br>',
+            'lead.min' => 'pole <b>lid</b> musi zawierać wiecej niż 15 znaków (i mniej niż 255!)<br>',
             'lead.max' => 'pole <b>lid</b> musi zawierać mniej niż 255 znaków (i więcej niż 30!)<br>',
             'description.required' => 'pole <b>opis</b> jest wymagane!<br>',
             'description.min' => 'pole <b>opis</b> musi zawierać wiecej niż 30 znaków (i mniej niż 2500!)<br>',
