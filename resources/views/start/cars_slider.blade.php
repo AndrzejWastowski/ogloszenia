@@ -1,6 +1,6 @@
 
 <div class="container p-3 " style="background-color: rgb(194, 168, 255)">
-    <h4 class="text-white mb-0"><strong>MOTORYZACJA</strong></h4>
+    <h4 class="text-white text-end mb-0"><strong>MOTORYZACJA</strong></h4>
     <div class="row  ">
         <div class="col-9">
             
@@ -61,6 +61,7 @@
         </div>
     </div>
 </div>
+<h6 class="text-white text-center mb-0"><strong><a href="/motoryzacja/">ZOBACZ WIĘCEJ Z DZIAŁU MOTORYZACJA</a></strong></h6>
 </div>
             
             

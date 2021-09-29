@@ -62,6 +62,7 @@
       </div>   
   
 </div>
+<h6 class="text-white text-center mb-0"><strong><a href="/drobne/">ZOBACZ WIĘCEJ OGŁOSZEŃ DROBNYCH</a></strong></h6>
 </div>
           
           

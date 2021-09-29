@@ -1,9 +1,9 @@
-<div class="container my-4">
-
-<div id="EstatesCarousel" class="carousel slide " data-bs-ride="carousel">
+<div class="container p-3 " style="background-color: rgb(203, 255, 168)">
+	<h4 class="text-white text-center mb-0"><strong>PROMOMOWANE NIERUCHOMOŚCI</strong></h4>
+<div id="EstatesCarousel" class="carousel slide pt-1" data-bs-ride="carousel">
 		
-	<hr class="mb-5"/>
-	<!--Carousel Wrapper-->
+	
+	<!--Carousel Wrapper-->git push
 
 	@php 
 		$active = 'active'; 		
@@ -15,7 +15,7 @@
 	 @php $pom++; @endphp
 			<div class="carousel-item {{ $active }}" data-bs-interval="3000">			
 			<div class="row">	
-			<h4 class="text-center"><strong>Promowane nieruchomości {{ $pom }}</strong></h4>
+			
 				@foreach($chunkContent as $content)
 			
 					<div class="col-md-3 {{ $clearfix ?? ''  }}">
@@ -50,7 +50,7 @@
 		</div>
 		
 	</div>
-	
+	<h6 class="text-white text-center mb-0"><strong><a href="/nieruchomosci/">ZOBACZ WIĘCEJ NIERUCHOMOŚCI</a></strong></h6>
 </div>
 	
 
