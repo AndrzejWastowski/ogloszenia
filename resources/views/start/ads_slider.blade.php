@@ -1,17 +1,17 @@
 
-<div class="container p-3 " style="background-color: rgb(255, 207, 168)">
+<div class="container p-3 mb-3" style="background-color: rgb(255, 207, 168)">
   <h4 class="text-white mb-0"><strong>OGŁOSZENIA DROBNE</strong></h4>
   <div class="row  ">
 
-  <div class="col-3">
-    <div class="card mb-3">
+  <div class="col-lg-3 mb-3">
+    <div class="card">
         <img class="card-img-top" src="{{ $storage->url('addons/sredni_prostokat_300x_250.jpg') }}" >
     </div>
     <div class="card">
         <img class="card-img-top" src="{{ $storage->url('addons/baner_mobilny_300x50.jpg') }}">
     </div>
 </div>
-      <div class="col-9">
+      <div class="col-md-9">
           
           <div id="SmallAdsCarousel" class="carousel slide " data-bs-ride="carousel">     
         
@@ -28,7 +28,7 @@
             
                   @foreach($chunkContent as $content)
               
-                  <div class="col-md-3 {{ $clearfix ?? ''  }}">
+                  <div class="col-md-3 mb-2 {{ $clearfix ?? ''  }}">
                       <div class="card mb-2">
                           @php
                           $active='';
