@@ -4,7 +4,7 @@
 @section('content')
 <div class="container  mb-3">
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-9 mb-3">
         @foreach($contents as $content)  
         
         <nav class="card p-3 pb-0 mb-3 bg-white" aria-label="breadcrumb">
@@ -17,13 +17,19 @@
             </ol>
         </nav>
 
+
+       
         <div class="card">
             <div class="card-body p-3" style="background-color: {{ $content->highlighted }};">          
             <h5 class="card-title"> <strong>{{ $content->name }} </strong></h5>        
             <div class="card-text black-text">                
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div id="carousel_{{ $content->id }}" class="carousel slide" data-bs-ride="carousel">
+
+
+
+
                             <div class="carousel-inner">
 
                                 @php
@@ -48,11 +54,19 @@
                                 <span class="visually-hidden">Następne</span>
                             </button>
                         </div>
+
+
+
+                        <div class="carousel-indicators" style=" position: static;">
+                            {{ $HTML_THUMBS }}                       
+                        </div>
+
+
                     </div>
                      <!--/.Carousel Wrapper--> 
                     <!--/.Slides-->
                     <!--Grid column-->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <ul class="list-unstyled">
                                          
                             <li class="text-end"><small><strong>{{  $content->date_start  }}</strong></small></li>            
@@ -76,7 +90,7 @@
     
         @endforeach
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
 
         @include('addons.2col')  
         
