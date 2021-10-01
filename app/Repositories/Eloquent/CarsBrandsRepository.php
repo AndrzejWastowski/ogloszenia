@@ -20,7 +20,7 @@ class CarsBrandsRepository extends BaseRepository
     }
 
 
-    public function getAllBrandsWithSubBrands()
+    public function getAllBrandsWithModels()
     {
         $data = $this->model
         ->with('CarsModels')
@@ -37,6 +37,17 @@ class CarsBrandsRepository extends BaseRepository
         return $data;
     }
 
+    public function getAllBrandsWithModelsByBrandsName($name = "")
+    {
+
+        
+        $data = $this->model
+        ->with('CarsModels')
+        ->where('cars_brands.name', '=', $name)->get();
+
+        
+        return $data;
+    }
 
 
 

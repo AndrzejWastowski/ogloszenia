@@ -31,9 +31,17 @@ class CarsModelsRepository extends BaseRepository
     public function getModelsByLink($link) {
 
        
-        return $this->model->where('link', '=', $link)->first();
+        return $this->model->where('link', '=', $link)->get();
      
         }
+
+
+    public function getModelsById($id) {
+
+       
+        return $this->model->where('id', '=', $id)->get();
+         
+    }
     
     public function getLastAds($how_mutch)
     {

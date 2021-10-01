@@ -34,11 +34,11 @@
 			<div class="card">
 				<div class="card-body">Motoryzacja 
 					<li><a href="motoryzacja/samochody_osobowe">Samochody osobowe</a></li>
-					<li><a href="motoryzacja/autobus">Busy / autobusy</a></li>
-					<li><a href="motoryzacja/ciezarowe">Samochody dostawcze i ciężarowe</a></li>
-					<li><a href="motoryzacja/motocykle">Motocykle / quady</a></li>
-					<li><a href="motoryzacja/rolnicze">Traktory / Sprzęt rolniczy</a></li>
-
+					<li><a href="motoryzacja/motocykle">Motocykle / skutery / quady</a></li>
+					<li><a href="motoryzacja/autobusy">Busy / autobusy</a></li>
+					<li><a href="motoryzacja/ciezarowe">Samochody dostawcze i ciężarowe</a></li>					
+					<li><a href="motoryzacja/rolnicze">Pojazdy rolnicze</a></li>
+					<li><a href="motoryzacja/pozostałe">Pozostałe</a></li>
 				</div>
 			</div>
 		</div>

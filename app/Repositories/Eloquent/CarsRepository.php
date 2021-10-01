@@ -42,6 +42,24 @@ class CarsRepository extends BaseRepository
     }
 
 
+
+    public function getAllCars($number_row)
+    {
+
+        $results = $this->model
+        
+        ->with('top_photos')
+        ->with('CarsBrand')
+        ->with('CarsModel')        
+        ->where('cars_contents.promoted', 1)        
+        ->where('cars_contents.status', 'active')
+        ->orderBy('cars_contents.promoted', 'desc')
+        ->paginate($number_row);
+//dd($results);
+        return $results;
+    }
+
+
     public function getCarsById($id) :?Collection
     {
         $results = $this->model
@@ -77,6 +95,68 @@ class CarsRepository extends BaseRepository
 //dd($results);
         return $results;
     }
+    public function getLastCars($number_row = 10)
+    {
+        $results = $this->model
+                ->with('user')
+        ->with('topPhotos')
+        ->with('SmallAdsCategories')
+        ->with('SmallAdsSubCategories')  
+        ->where('small_ads_contents.status', 'active')
+        ->orderBy('small_ads_contents.promoted', 'desc')   
+    
+        ->paginate($number_row);
+
+
+       // dd($results);
+        return $results;
+
+    }
+
+    public function getAllCarsByBrandsId($brandsId = 0,$number_row = 10) 
+    {
+        
+        $results = $this->model
+        ->select(
+            'cars_contents.*'           
+        )
+        ->with('user')
+        ->with('photos')
+        ->with('CarsBrands')
+        ->with('CarsModels')       
+        ->where('cars_contents.cars_brands_id', $brandsId)        
+        ->where('cars_contents.status', 'active')
+        ->orderBy('cars_contents.promoted', 'desc')   
+        ->paginate($number_row);
+
+       // dd($results);
+        return $results;
+    }
+
+
+    
+
+    public function getAllCarsByModelsId($modelId = 0,$number_row = 10) 
+    {
+        
+        $results = $this->model
+        ->select(
+            'cars_contents.*'           
+        )
+        ->with('user')
+        ->with('photos')
+        ->with('CarsBrands')
+        ->with('CarsModels')       
+        ->where('cars_contents.cars_models_id', $modelId)        
+        ->where('cars_contents.status', 'active')
+        ->orderBy('cars_contents.promoted', 'desc')   
+        ->paginate($number_row);
+
+       // dd($results);
+        return $results;
+    }
+
+
 
     public function getNonUnfinishedCars($userId = 0) :?CarsContent
     {

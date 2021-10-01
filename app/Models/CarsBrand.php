@@ -17,5 +17,8 @@ class CarsBrand extends Model
 
     protected $table = 'cars_brands';
 
-
+    public function CarsModels()
+    {
+        return $this->hasMany(CarsModel::class, 'cars_brands_id');
+    }
 }

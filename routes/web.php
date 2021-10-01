@@ -85,8 +85,11 @@ Route::group(['prefix' => 'uslugi'], function () {
 
 
 Route::group(['prefix' => 'motoryzacja'], function () {
-    Route::get('/', [App\Http\Controllers\Cars\ListsController::class,'ListsAllCategories'])->name('CarsStart'); 
-    Route::get('/{categories}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByCategories'])->name('CarsListByCategories');    
+    Route::get('/', [App\Http\Controllers\Automotive\Start::class,'index'])->name('MotoryzationStart'); 
+    Route::get('samochody_osobowe/', [App\Http\Controllers\Cars\ListsController::class,'ListsAllCars'])->name('CarsStart'); 
+    Route::get('samochody_osobowe/{brand}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByBrands'])->name('CarsListByBrands');    
+    Route::get('samochody_osobowe/{brand}/{model}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByModels'])->name('CarsListByModels');    
+    Route::get('samochody_osobowe/{brand}/{model}/{id}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByModelsId'])->where(['id' => '[0-9]+'])->name('CarsListByModelsId');    
     
     //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
     //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
