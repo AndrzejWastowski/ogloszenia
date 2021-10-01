@@ -50,7 +50,7 @@ class ListsController extends Controller
     
     
 
-        return View('Cars.ListsAllModels', [
+        return View('cars.ListsAllModels', [
             'pageName' => 'Lista Ogłoszeń Drobnych',
             'brands' => $brands,
             'models' => $models,   
@@ -69,7 +69,7 @@ class ListsController extends Controller
 
        
 
-        return View('Cars.ListAllCars', [
+        return View('cars.ListAllCars', [
 
             'pageName' => 'Lista ogłoszeń motoryzacyjnych - wszystkie',                
             'brands' => $brands,
@@ -97,7 +97,7 @@ class ListsController extends Controller
 
            
 
-            return View('Cars.ListByBrands', [
+            return View('cars.ListByBrands', [
 
                 'pageName' => 'Lista ogłoszeń motoryzacyjnych',                
                 'brands' => $brands,
@@ -126,7 +126,7 @@ class ListsController extends Controller
   
         dd($content);
 
-        return View('Cars.ListBymodels', [
+        return View('cars.ListBymodels', [
             'pageName' => 'Lista Ogłoszeń',
             'contents' => $content,
             'storage' => $this->storage
@@ -152,7 +152,7 @@ class ListsController extends Controller
         if ($content!=null) {
            // dd($content);
 
-            return View('Cars.ListByModels', [
+            return View('cars.ListByModels', [
             'pageName' => 'Lista ogłoszeń motoryzacyjnych - samocody osobowe ',
             'pom_model' => $model,
             'brands'=> $brands,

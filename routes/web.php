@@ -85,7 +85,7 @@ Route::group(['prefix' => 'uslugi'], function () {
 
 
 Route::group(['prefix' => 'motoryzacja'], function () {
-    Route::get('/', [App\Http\Controllers\Automotive\Start::class,'index'])->name('MotoryzationStart'); 
+    Route::get('/', [App\Http\Controllers\Automotive\StartController::class,'index'])->name('MotoryzationStart'); 
     Route::get('samochody_osobowe/', [App\Http\Controllers\Cars\ListsController::class,'ListsAllCars'])->name('CarsStart'); 
     Route::get('samochody_osobowe/{brand}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByBrands'])->name('CarsListByBrands');    
     Route::get('samochody_osobowe/{brand}/{model}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByModels'])->name('CarsListByModels');    

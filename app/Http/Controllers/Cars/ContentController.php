@@ -47,7 +47,7 @@ class ContentController extends Controller
         $content = $this->CarsRepository->getCarsById($id);
      
        
-        return View('Cars.Content', [
+        return View('cars.Content', [
             'pageName' => 'Ogłoszenie',
             'categories' => $categories,
             'subcategories' => $subcategories,
