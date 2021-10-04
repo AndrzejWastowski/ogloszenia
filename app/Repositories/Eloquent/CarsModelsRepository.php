@@ -6,7 +6,6 @@ namespace  App\Repositories\Eloquent;
 
 use App\Models\CarsModel;
 use App\Repositories\Eloquent\BaseRepository;
-use Illuminate\Database\Eloquent\Collection;
 
 class CarsModelsRepository extends BaseRepository
 {
@@ -17,29 +16,24 @@ class CarsModelsRepository extends BaseRepository
 
     public function getAllModels()
     {
-        return $this->model->orderBy('model','asc')->get();
+        return $this->model->orderBy('name','asc')->get();
     }
 
     public function getModelsByBrandsId($id)
     {
-        $data = $this->model->where('cars_brands_id', $id)->orderBy('model', 'asc')->get();
-      //  dd($data);
+        
+        $data = $this->model->where('cars_brands_id', $id)->orderBy('cars_brands.name', 'asc')->get();
+       
         return $data;
     }
 
    
-    public function getModelsByLink($link) {
+    public function getModelsById($id = 0) {
 
        
-        return $this->model->where('link', '=', $link)->get();
+        $data =  $this->model->where('cars_models.id', $id)->get();
      
-        }
-
-
-    public function getModelsById($id) {
-
-       
-        return $this->model->where('id', '=', $id)->get();
+        return $data;
          
     }
     

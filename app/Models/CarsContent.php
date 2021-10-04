@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class CarsContent extends Model
 {
     /**
@@ -66,12 +67,13 @@ class CarsContent extends Model
 
     public function carsModels()
     {
-        return $this->hasOne(CarsModel::class, 'cars_model_sid');
+        return $this->belongsTo(CarsModel::class, 'cars_models_id');
     }
 
     public function carsBrands()
     {
-        return $this->hasOne(CarsBrands::class, 'cars_brands_id');
+        
+        return $this->belongsTo(CarsBrand::class, 'cars_brands_id');
     }
 
     public function photos()

@@ -65,16 +65,14 @@ class ListsController extends Controller
     {
         $content = $this->CarsRepository->getAllCars(10);
         $brands = $this->CarsBrandsRepository->getAllBrandsWithModels();    
-        $models = $this->CarsModelsRepository->getAllModels();    
+           
 
        
 
         return View('cars.ListAllCars', [
 
             'pageName' => 'Lista ogłoszeń motoryzacyjnych - wszystkie',                
-            'brands' => $brands,
-            'model' => $models,
-            'models' => $models,
+            'brands' => $brands,            
             'contents' => $content,
             'storage' => $this->storage,  
 
@@ -84,15 +82,17 @@ class ListsController extends Controller
 
 
 
-    public function ListsByBrands($brand_link='',$content_page=0) 
+    public function ListsByBrandsId(Request $request) 
     {
 
-        $brand = $this->CarsBrandsRepository->getBrandsByLink($brand_link);
+
+        $bid = $request->input('bid');
+        $brand = $this->CarsBrandsRepository->getBrandsById($bid);        
         $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsId($brand->id);
+      
+        if (!is_null($brand->id)) {
 
-        if (!is_null($brand)) {
-
-            $models = $this->CarsModelsRepository->getmodelsByBrandsId($brand->id);
+            $models = $this->CarsModelsRepository->getModelsByBrandsId($brand->id);
             $content = $this->CarsRepository->getAllCarsByBrandsId($brand->id,10);    
 
            
@@ -117,40 +117,26 @@ class ListsController extends Controller
 
 
 
-    //public function ListsBymodels($Brands,$models)  
-    public function ListsByModels($model_link,$subcategory_link )  
+    public function ListsByModelsId($brand,$bid,$model,$mid)  
     {
-        $model = $this->CarsModelsRepository->getModelsByLink($model_link);
-        
-        $content = $this->CarsRepository->getAllCarsByModelsId($model->id,20);
-  
-        dd($content);
-
-        return View('cars.ListBymodels', [
-            'pageName' => 'Lista Ogłoszeń',
-            'contents' => $content,
-            'storage' => $this->storage
-            ]);
-    }
-
-
-    public function ListsByModelsId($brand_link,$model_link,$id)  
-    {
-        
-        
-        $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsName($brand_link);       
+        $res = $brand . ' ' . $bid  .' ' . $model . ' ' . $mid;
+        //dd($res);
+        //$bid = $request->input('bid');
+        //$id = $request->input('id');
+        $bid = 1;
+        $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsId($bid);       
         $content = null;
-        $models = $this->CarsModelsRepository->getModelsById((int)$id);
+        $models = $this->CarsModelsRepository->getModelsById($mid);
         $model = null;
         foreach ($models as $model) {
             
-            $content = $this->CarsRepository->getAllCarsByModelsId($model->id,20);
+            $content = $this->CarsRepository->getAllCarsByModelsId($model->id);
         }
 
       
 
         if ($content!=null) {
-           // dd($content);
+         //  dd($content);
 
             return View('cars.ListByModels', [
             'pageName' => 'Lista ogłoszeń motoryzacyjnych - samocody osobowe ',

@@ -39,18 +39,31 @@ class ContentController extends Controller
         $this->storage = $storage::disk('local');
     }
 
-    public function content(Request $request, $categories, $subcategories, $id)
+    //public function content($brand,$bid,$model,$mid,$name,$id)
+
+    public function content(Request $request)    
     {
-        //dd($id);
-        $categories = $this->CarsBrandsRepository->getAllBrands();
-        $subcategories = $this->CarsModelsRepository->getAll();        
-        $content = $this->CarsRepository->getCarsById($id);
+        $name = $request->input('user.name');
+        $id = (int)$request->id;
+        $model = (string)$request->model;
+        $mid = (int)$request->mid;
+        $brand = (string)$request->brand;
+        $bid = (int)$request->bid;
+        $name = (string)$request->name;
+
+     /*   $validated = $request->validate([
+            'name' => 'required',
+            'brand' => 'required',
+        ]);
+*/
+        $data = 'data: '.$brand.' '.$bid.' '.$model.' '.$mid.' '.$name.' '.$id;
+    //    dd($validated);
+        
+        $content = $this->CarsRepository->getCarsById($request->id);
      
        
         return View('cars.Content', [
-            'pageName' => 'Ogłoszenie',
-            'categories' => $categories,
-            'subcategories' => $subcategories,
+            'pageName' => 'Ogłoszenie',            
             'contents' => $content,
             'storage' => $this->storage
             ]);

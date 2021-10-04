@@ -86,14 +86,24 @@ Route::group(['prefix' => 'uslugi'], function () {
 
 Route::group(['prefix' => 'motoryzacja'], function () {
     Route::get('/', [App\Http\Controllers\Automotive\StartController::class,'index'])->name('MotoryzationStart'); 
+
     Route::get('samochody_osobowe/', [App\Http\Controllers\Cars\ListsController::class,'ListsAllCars'])->name('CarsStart'); 
-    Route::get('samochody_osobowe/{brand}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByBrands'])->name('CarsListByBrands');    
-    Route::get('samochody_osobowe/{brand}/{model}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByModels'])->name('CarsListByModels');    
-    Route::get('samochody_osobowe/{brand}/{model}/{id}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByModelsId'])->where(['id' => '[0-9]+'])->name('CarsListByModelsId');    
+    Route::get('samochody_osobowe/oferta/{id}', [App\Http\Controllers\Cars\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('CarsShortContentsById');
+    Route::get('samochody_osobowe/{brand}/{bid}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByBrandsId'])->name('CarsListByBrandsId');    
+    Route::get('samochody_osobowe/{brand}/{bid}/{model}/{mid}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByModelsId'])->name('CarsListByModelsId');    
+    Route::get('samochody_osobowe/{brand}/{bid}/{model}/{mid}/{name}/{id}', [App\Http\Controllers\Cars\ContentController::class, 'content'])->where(['id' => '[0-9]+'])->name('CarsContentsById');    
     
+
+    Route::get('motocykle/', [App\Http\Controllers\Mmotorcycles\ListsController::class,'ListsAllMotorcycles'])->name('MotorcyclesStart'); 
+    Route::get('autobusy/', [App\Http\Controllers\Bus\ListsController::class,'ListsAllBus'])->name('BusStart'); 
+    Route::get('ciezarowe/', [App\Http\Controllers\Truck\ListsController::class,'ListsAllTruck'])->name('TruckStart'); 
+    Route::get('pojazdy_rolnicze/', [App\Http\Controllers\AgriculturalVehicles\ListsController::class,'ListsAllAgriculturalVehicles'])->name('AgriculturalVehiclesStart'); 
+    Route::get('pozostałe/', [App\Http\Controllers\Another\ListsController::class,'ListsAllAnother'])->name('AnotherStart'); 
+
+
     //Route::get('/{categories} ', ['categories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsByCategories'])->name('SmallAdsListsByCategories');
     //Route::get('/{categories}/{subcategories}', ['categories'=>'wszystkie','subcategories'=>'wszystkie','uses'=>'App\Http\Controllers\SmallAds\ListsController@ListsBySubCategories'])->name('SmallAdsListsBySubCategories');
-    Route::get('/{categories}/{id}', [App\Http\Controllers\Cars\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('CarsContentsById');
+    
 
 
 });

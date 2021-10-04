@@ -22,12 +22,12 @@
                         
                 </div> 
 
-                <div class="row">Samochody Osobowe</div>
-                <div class="row">Motocykle / skutery / quady</div>
-                <div class="row">Busy / autobusy</div>
-                <div class="row">Samochody dostawcze i ciężarowe</div>
-                <div class="row">Pojazdy rolnicze</div>
-                <div class="row">Pozostałe</div>
+                <div class="row p-3"><a href="{{ route("CarsStart") }}">Samochody Osobowe</a></div>
+                <div class="row p-3"><a href="{{ route("MotorcyclesStart") }}">Motocykle / skutery / quady</a></div>
+                <div class="row p-3"><a href="{{ route("BusStart") }}">Busy / autobusy</a></div>
+                <div class="row p-3"><a href="{{ route("TruckStart") }}">Samochody dostawcze i ciężarowe</a></div>
+                <div class="row p-3"><a href="{{ route("AgriculturalVehiclesStart") }}">Pojazdy rolnicze</a></div>
+                <div class="row p-3"><a href="{{ route("AnotherStart") }}/">Pozostałe</a></div>
             </div>
         </div>
 

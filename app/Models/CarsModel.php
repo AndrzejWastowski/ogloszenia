@@ -15,7 +15,7 @@ class CarsModel extends Model
      */
     protected $guarded = [];
     
-    protected $fillable = ['id', 'cars_brands_id', 'model'];
+    protected $fillable = ['id', 'cars_brands_id', 'name'];
     
     protected $table = 'cars_models';
 

@@ -26,12 +26,10 @@
                 @php 
                     $show='show'; 
                     $trufalse = 'true';
-                @endphp
-            
+                @endphp            
 
                 @foreach($brands as $brand)   
 
-            
                     <div class="accordion-item">
                         <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#podkategorie_{{ $brand->id }}" aria-expanded="true" aria-controls="podkategorie_{{ $brand->id }}">
                             <div class="me-auto">
@@ -47,9 +45,9 @@
                                         @foreach($brand->CarsModels as $model)                              
                                             <li class=" list-group-item mb-2">
                                             @if ($model->id == $pom_model->id)
-                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name,'model'=> $model->model,'id' => $model->id ]) }}"><strong>{{ $model->model }}</strong></a>
+                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $model->name, 'mid' => $model->id ]) }}"><strong>{{ $model->name }}</strong></a>
                                             @else
-                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name,'model'=> $model->model,'id' => $model->id ]) }}">{{ $model->model }}</a>
+                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $model->name, 'mid' => $model->id ]) }}">{{ $model->name }}</a>
                                             @endif
                                             </li>
                                         @endforeach    
@@ -68,8 +66,8 @@
     <div class="col-7 p-0">
 
     @foreach($contents as $content)
-
-            
+{{-- dd($content) --}}
+    
     <div class="card mb-2">
         @php $highlighted = 'style=background-color:'.$content->highlighted.';' @endphp
         <div class="card-body pt-1" {{ $highlighted }}>  
@@ -77,7 +75,9 @@
         <div class="col-xl-12 pt-0 ">                 
             <p class="text-end mb-0"> <small class="text-muted">{{  $content->date_start  }}</small></p>            
         </div>
-        <div class="col-xl-12"><h5 class="card-title"> <strong><a href="{{ route('SmallAdsContentsById', ['categories'=> $content->SmallAdsCategories->link,'subcategories'=> $content->Models->link,'id' => $content->id ]) }}">{{ $content->name }} </a></strong></h5></div> 
+        {{-- dd($content) --}}        
+        
+        <div class="col-xl-12"><h5 class="card-title"> <strong><a href="{{ route('CarsContentsById', ['brand'=> $content->CarsBrands->name, 'bid' => $content->CarsBrands->id, 'model' => $content->CarsModels->name, 'mid' =>  $content->CarsModels->id, 'name' => $content->name, 'id' => $content->id ]) }}">{{ $content->name }} </a></strong></h5></div> 
             <div class="card-text black-text">                
                 <div class="row">
                     <div class="col-3">
@@ -122,24 +122,11 @@
                         <p class="stopoverflow">{{ $content->description }}</p>
                     </div>
                 </div>
-                <div class="row">  
-                    <div class="col-9 mb-3">
-                    </div>
-                    <div class="mb-3">
-                        <div class="offset-lg-9 offset-sm-4">
-                            <form action="{{ route('CarsContentsById', ['brand'=> $content->CarsBrands->name,'model'=> $content->Models->model,'id' => $content->id ]) }}" method="get" enctype="text/plain"><div>
-                            
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('więcej informacji') }}
-                            </button>
-                            </form>
-                        </div>
-                    </div>
-            </div>
+                
             </div>
             </div>
         </div>
-    </div>
+
 
         @endforeach
    

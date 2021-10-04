@@ -53,7 +53,7 @@
                                     <ul class="list-group  list-group-flush ">
                                         @foreach($brand->CarsModels as $model)                              
                                             <li class=" list-group-item mb-2">
-                                                <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name,'model'=> $model->model,'id' => $model->id ]) }}">{{ $model->model }}</a>
+                                                <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name,'bid'=> $brand->id,'model'=> $model->name,'mid'=> $model->id]) }}">{{ $model->name }}</a>
                                             </li>
                                         @endforeach    
                                     </ul>    

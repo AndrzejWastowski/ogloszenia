@@ -49,8 +49,8 @@ class CarsRepository extends BaseRepository
         $results = $this->model
         
         ->with('top_photos')
-        ->with('CarsBrand')
-        ->with('CarsModel')        
+        ->with('CarsBrands')
+        ->with('CarsModels')        
         ->where('cars_contents.promoted', 1)        
         ->where('cars_contents.status', 'active')
         ->orderBy('cars_contents.promoted', 'desc')
@@ -64,12 +64,12 @@ class CarsRepository extends BaseRepository
     {
         $results = $this->model
         ->select(
-            'small_ads_contents.*'           
+            'cars_contents.*'           
         )
         ->with('User')
         ->with('photos')
-        ->with('CarsBrand')
-        ->with('CarsModel')       
+        ->with('CarsBrands')
+        ->with('CarsModels')       
         ->where('cars_contents.id', $id)
         ->get();
                 
