@@ -21,6 +21,8 @@ php artisan db:seed --class AutoBrandModelSeeds
 echo 'uzupełniam dane w tabeli nadwozia'
 php artisan db:seed --class CarsBodySeeds
 
+echo 'uzupełniam dane w tabeli nadwozia'
+php artisan db:seed --class CarsContentSeeds
 
 echo 'uzupelniam dane uzytkownikow - ';
 php artisan db:seed --class UsersSeeds

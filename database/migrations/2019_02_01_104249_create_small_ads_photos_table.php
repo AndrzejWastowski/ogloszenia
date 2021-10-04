@@ -19,8 +19,7 @@ class CreateSmallAdsPhotosTable extends Migration
             $table->integer('small_ads_contents_id')->comment('zawartosc do której jest dodane zdjęcie');            ;
             $table->string('name')->comment('nazwa wygenerowana');            ;
             $table->integer('sort')->comment('ustalanie kolejności w grupie  zdejeć do danego ogłoszenia');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));            
         });
     }
 
