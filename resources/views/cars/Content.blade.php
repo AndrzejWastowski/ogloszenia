@@ -12,7 +12,7 @@
                 <li class="breadcrumb-item"><a href="/">Start</a></li>
                 <li class="breadcrumb-item"><a href="/motoryzacja/samochody_osobowe/">Samochody osobowe</a></li>
                 <li class="breadcrumb-item"><a href="/motoryzacja/samochody_osobowe/{{ $content->CarsBrands->name }}">{{ $content->CarsBrands->name }}</a></li>
-                <li class="breadcrumb-item"><a href="/motoryzacja/samochody_osobowe/{{ $content->CarsModels->name }}/{{ $content->CarsModels->name }}">{{ $content->CarsModels->name }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('CarsListByModelsId', ['brand'=> $content->CarsBrands->name, 'bid' => $content->CarsBrands->id, 'model'=> $content->CarsModels->name, 'mid' => $content->CarsModels->id ]) }}"><strong>{{ $content->CarsModels->name }}</strong></li>
                 <li class="breadcrumb-item active"><a href="/motoryzacja/samochody_osobowe/oferta/{{ $content->id }}">{{ $content->name }}</a></li>
             </ol>
         </nav>
@@ -41,7 +41,7 @@
 
                                 @foreach ($content->photos as $photo)
                                     @if ($active==null) @php($active = 'active') @else @php($active = ' ') @endif                            
-                                        <div class="carousel-item {{ $active }} "><img class="d-block w-100 "  src="{{ $storage->url('public/small_ads/'.$photo->name.'_d.jpg') }}" alt=" {{ $content->name }} " ></div>
+                                        <div class="carousel-item {{ $active }} "><img class="d-block w-100 "  src="{{ $storage->url('public/cars/'.$photo->name.'_d.jpg') }}" alt=" {{ $content->name }} " ></div>
                                 @endforeach    
 
                             </div>

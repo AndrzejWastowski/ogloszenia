@@ -78,7 +78,7 @@
         <div class="col-xl-12 pt-0 ">                 
             <p class="text-end mb-0"> <small class="text-muted">{{  $content->date_start  }}</small></p>            
         </div>
-        <div class="col-xl-12"><h5 class="card-title"> <strong><a href="{{ route('SmallAdsContentsById', ['categories'=> $content->SmallAdsCategories->link,'subcategories'=> $content->Models->link,'id' => $content->id ]) }}">{{ $content->name }} </a></strong></h5></div> 
+        <div class="col-xl-12"><h5 class="card-title"> <strong><a href="{{ route('CarsContentsById', ['brand'=> $content->CarsBrands->name,'model'=> $content->Models->link,'id' => $content->id ]) }}">{{ $content->name }} </a></strong></h5></div> 
             <div class="card-text black-text">                
                 <div class="row">
                     <div class="col-3">

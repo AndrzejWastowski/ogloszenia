@@ -93,7 +93,7 @@
 
                                 @foreach ($content->photos as $photo)
                                     @if ($active==null) @php($active = 'active') @else @php($active = ' ') @endif                            
-                                        <div class="carousel-item {{ $active }} "><img class="d-block w-100 "  src="{{ $storage->url('public/small_ads/'.$photo->name.'_kw.jpg') }}" alt=" {{ $content->name }} " ></div>
+                                        <div class="carousel-item {{ $active }} "><img class="d-block w-100 "  src="{{ $storage->url('public/cars/'.$photo->name.'_kw.jpg') }}" alt=" {{ $content->name }} " ></div>
                                 @endforeach    
 
                             </div>
