@@ -98,6 +98,8 @@ Route::group(['prefix' => 'motoryzacja'], function () {
     Route::get('autobusy/', [App\Http\Controllers\Bus\ListsController::class,'ListsAllBus'])->name('BusStart'); 
     Route::get('ciezarowe/', [App\Http\Controllers\Truck\ListsController::class,'ListsAllTruck'])->name('TruckStart'); 
     Route::get('pojazdy_rolnicze/', [App\Http\Controllers\AgriculturalVehicles\ListsController::class,'ListsAllAgriculturalVehicles'])->name('AgriculturalVehiclesStart'); 
+    Route::get('budowlane/', [App\Http\Controllers\ConstructionVehiclesStart\ListsController::class,'ListsAllConstructionVehicles'])->name('ConstructionVehiclesStart'); 
+    
     Route::get('pozostałe/', [App\Http\Controllers\Another\ListsController::class,'ListsAllAnother'])->name('AnotherStart'); 
 
 

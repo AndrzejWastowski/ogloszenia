@@ -35,31 +35,32 @@
 				<div class="card-body">Motoryzacja 
 					<div class="row">
 						<div class="col-lg-2" class="text-center">
-							<a href="motoryzacja/samochody_osobowe" title=""><img class="img-fluid" src="{{ $storage->url('icons/osobowe.png') }}" alt=""></a>
-							<a href="motoryzacja/samochody_osobowe">Samochody osobowe</a>
+							<a href="{{ route("CarsStart") }}" title=""><img class="img-fluid" src="{{ $storage->url('icons/osobowe.png') }}" alt=""></a>
+							<a href="{{ route("CarsStart") }}">Samochody osobowe</a>
 						</div>
 						<div class="col-lg-2" class="text-center">
-							<a href="motoryzacja/motocykle" title=""><img class="img-fluid" src="{{ $storage->url('icons/motocykl.png') }}" alt=""></a>
-							<a href="motoryzacja/motocykle">Motocykle / skutery / quady</a>
+							<a href="{{ route("MotorcyclesStart") }}" title=""><img class="img-fluid" src="{{ $storage->url('icons/motocykl.png') }}" alt=""></a>
+							<a href="{{ route("MotorcyclesStart") }}">Motocykle / skutery / quady</a>
 						</div>
 						<div class="col-md-2" class="text-center">
-							<a href="motoryzacja/autobusy" title=""><img class="img-fluid" src="{{ $storage->url('icons/autobus.png') }}" alt=""></a>
-							<a href="motoryzacja/autobusy">Busy / autobusy</a>
+							<a href="{{ route("BusStart") }}" title=""><img class="img-fluid" src="{{ $storage->url('icons/autobus.png') }}" alt=""></a>
+							<a href="{{ route("BusStart") }}">Busy / autobusy</a>
 						</div>
 						<div class="col-lg-2" class="text-center">
-							<a href="motoryzacja/ciezarowe" title=""><img class="img-fluid" src="{{ $storage->url('icons/transport.png') }}" alt=""></a>
-							<a href="motoryzacja/ciezarowe">Samochody dostawcze i ciężarowe</a>
+							<a href="{{ route("TruckStart") }}" title=""><img class="img-fluid" src="{{ $storage->url('icons/transport.png') }}" alt=""></a>
+							<a href="{{ route("TruckStart") }}">Samochody dostawcze i ciężarowe</a>
 						</div>
 						<div class="col-lg-2" class="text-center">
-							<a href="motoryzacja/rolnicze" title=""><img class="img-fluid" src="{{ $storage->url('icons/rolnicze.png') }}" alt=""></a>
-							<a href="motoryzacja/rolnicze">Pojazdy rolnicze</a>
+							<a href="{{ route("AgriculturalVehiclesStart") }}" title=""><img class="img-fluid" src="{{ $storage->url('icons/rolnicze.png') }}" alt=""></a>
+							<a href="{{ route("AgriculturalVehiclesStart") }}">Pojazdy rolnicze</a>
 						</div>
 						<div class="col-lg-2" class="text-center">
-							<a href="motoryzacja/budowlane" title=""><img class="img-fluid" src="{{ $storage->url('icons/budowa.png') }}" alt=""></a>
-							<a class="text-center" href="motoryzacja/budowlane">Budowlane</a>
+							<a href="{{ route("ConstructionVehiclesStart") }}" title=""><img class="img-fluid" src="{{ $storage->url('icons/budowa.png') }}" alt=""></a>
+							<a class="text-center" href="{{ route("ConstructionVehiclesStart") }}">Budowlane</a>                        
 						</div>
 						
 					</div>
+				   
 				</div>
 			</div>
 		</div>
