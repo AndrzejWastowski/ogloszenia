@@ -86,33 +86,24 @@ class ListsController extends Controller
     {
 
 
-        $bid = $request->input('bid');
-        $brand = $this->CarsBrandsRepository->getBrandsById($bid);        
-        $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsId($brand->id);
-      
-        if (!is_null($brand->id)) {
+        $bid = (int)$request->bid;
+        //$brand = $this->CarsBrandsRepository->getBrandsById($bid);        
+        $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsId($bid);
+        foreach ($brands as $brand) {
 
-            $models = $this->CarsModelsRepository->getModelsByBrandsId($brand->id);
-            $content = $this->CarsRepository->getAllCarsByBrandsId($brand->id,10);    
-
-           
-
-            return View('cars.ListByBrands', [
-
-                'pageName' => 'Lista ogłoszeń motoryzacyjnych',                
-                'brands' => $brands,
-                'model' => $models,
-                'models' => $models,
-                'contents' => $content,
-                'storage' => $this->storage,  
+            $contents = $this->CarsRepository->getAllCarsByBrandsId($brand->id,10);    
     
-                ]);       
+            return View('cars.ListByBrands', [
+    
+               'pageName' => 'Lista ogłoszeń motoryzacyjnych',                
+                'brand' => $brand,
+                'brands' => $brands,                    
+                'contents' => $contents,
+                'storage' => $this->storage,  
+            ]);       
+
         }
-        else
-        {
-            $this->ListsAllBrands();
-        }
-      //  dd($total_page);
+        
     }
 
 

@@ -46,7 +46,9 @@ class CarsBrandsRepository extends BaseRepository
 
     public function getBrandsById($id)
     {
-        return $this->model->where('id', '=', $id)->get();
+        $data = $this->model->where('id', '=', $id)->get();
+        //dd($data);   
+        return $data;
     }
 
  

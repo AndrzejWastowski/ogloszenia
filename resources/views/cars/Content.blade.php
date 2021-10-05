@@ -11,9 +11,9 @@
             <ol class="breadcrumb" >
                 <li class="breadcrumb-item"><a href="/">Start</a></li>
                 <li class="breadcrumb-item"><a href="/motoryzacja/samochody_osobowe/">Samochody osobowe</a></li>
-                <li class="breadcrumb-item"><a href="/motoryzacja/samochody_osobowe/{{ $content->CarsBrands->name }}">{{ $content->CarsBrands->name }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('CarsListByModelsId', ['brand'=> $content->CarsBrands->name, 'bid' => $content->CarsBrands->id, 'model'=> $content->CarsModels->name, 'mid' => $content->CarsModels->id ]) }}"><strong>{{ $content->CarsModels->name }}</strong></li>
-                <li class="breadcrumb-item active"><a href="/motoryzacja/samochody_osobowe/oferta/{{ $content->id }}">{{ $content->name }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('CarsListByBrandsId', ['brand'=> $content->CarsBrands->name, 'bid' => $content->CarsBrands->id]) }}"> {{ $content->CarsBrands->name }} / </li>
+                <li class="breadcrumb-item"><a href="{{ route('CarsListByModelsId', ['brand'=> $content->CarsBrands->name, 'bid' => $content->CarsBrands->id, 'model'=> $content->CarsModels->name, 'mid' => $content->CarsModels->id ]) }}"> {{ $content->CarsModels->name }} / </li>
+                <li class="breadcrumb-item active"> <a href="/motoryzacja/samochody_osobowe/oferta/{{ $content->id }}">{{ $content->name }}</a></li>
             </ol>
         </nav>
 
