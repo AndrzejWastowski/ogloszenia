@@ -26,35 +26,35 @@ class AutoBrandModelSeeds extends Seeder
 
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CL'
+            'name' => 'CL'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Legend'
+            'name' => 'Legend'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'MDX'
+            'name' => 'MDX'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'RDX'
+            'name' => 'RDX'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'RL'
+            'name' => 'RL'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'TL'
+            'name' => 'TL'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'TSX'
+            'name' => 'TSX'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'ZDX'
+            'name' => 'ZDX'
         ]];
 
         foreach ($data as $key => $d) {
@@ -71,83 +71,83 @@ class AutoBrandModelSeeds extends Seeder
 
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '33'
+            'name' => '33'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '75'
+            'name' => '75'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '145'
+            'name' => '145'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '147'
+            'name' => '147'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '155'
+            'name' => '155'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '156'
+            'name' => '156'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '159'
+            'name' => '159'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '164'
+            'name' => '164'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '166'
+            'name' => '166'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Alfasud'
+            'name' => 'Alfasud'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Brera'
+            'name' => 'Brera'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Crosswagon'
+            'name' => 'Crosswagon'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Giulia'
+            'name' => 'Giulia'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Giulietta'
+            'name' => 'Giulietta'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'GT'
+            'name' => 'GT'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'GTV'
+            'name' => 'GTV'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Mito'
+            'name' => 'Mito'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Spider'
+            'name' => 'Spider'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sportwagon'
+            'name' => 'Sportwagon'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Stelvio'
+            'name' => 'Stelvio'
         ]
         ];
         foreach ($data as $key => $d) {
@@ -163,27 +163,27 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '328'
+            'name' => '328'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '243'
+            'name' => '243'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '244'
+            'name' => '244'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '145'
+            'name' => '145'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '246'
+            'name' => '246'
         ],
         [
             'cars_brands_id'=> $LAST_ID,
-            'model' => '104'
+            'name' => '104'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -198,16 +198,16 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'DB8'
+            'name' => 'DB8'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'DB9'
+            'name' => 'DB9'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vanquish'
+            'name' => 'Vanquish'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'DB7'
+            'name' => 'DB7'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -220,40 +220,40 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'TT'
+            'name' => 'TT'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'A8/S8'
+            'name' => 'A8/S8'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'A3/S3'
+            'name' => 'A3/S3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '90'
+            'name' => '90'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'V8'
+            'name' => 'V8'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Q7'
+            'name' => 'Q7'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'A4/S4'
+            'name' => 'A4/S4'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '100'
+            'name' => '100'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Allroad'
+            'name' => 'Allroad'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'A6/S6'
+            'name' => 'A6/S6'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'A2'
+            'name' => 'A2'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '80'
+            'name' => '80'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -266,10 +266,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -283,10 +283,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -299,10 +299,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -315,10 +315,40 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'Arnage'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'Azure'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Bentayga'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Broollands'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Continental Dlaing Spur'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Continental GT'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Eight'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Mulsanne'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Turbo'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Turbo R'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Turbo RT'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Turbo S'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -331,34 +361,34 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 3'
+            'name' => 'Seria 3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Z3'
+            'name' => 'Z3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 5'
+            'name' => 'Seria 5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 8'
+            'name' => 'Seria 8'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Z4'
+            'name' => 'Z4'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'X3'
+            'name' => 'X3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 6'
+            'name' => 'Seria 6'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 1'
+            'name' => 'Seria 1'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'X5'
+            'name' => 'X5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 7'
+            'name' => 'Seria 7'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -371,10 +401,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -387,10 +417,49 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'Centurion'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'Century'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Electra'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Enclave'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Encore'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Inny'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Lacrosse'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Le Sabre'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Lucerne'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Park Avenue'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Reatta'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Rendezvous'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Riviera'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Readmaster'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Skyhawk'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -404,10 +473,52 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'Allante'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'ATS'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'BLS'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Brougham'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Catera'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Cimarron'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'CT6'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'CTS'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Deville'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'DTS'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Eldorado'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'ELR'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Escalade'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Fleetwood'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Seville'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Inny'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -421,49 +532,49 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Astro'
+            'name' => 'Astro'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Avalanche'
+            'name' => 'Avalanche'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Aveo'
+            'name' => 'Aveo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Blazer'
+            'name' => 'Blazer'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Camaro'
+            'name' => 'Camaro'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Captiva'
+            'name' => 'Captiva'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Corsica'
+            'name' => 'Corsica'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Corvette'
+            'name' => 'Corvette'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Evanda'
+            'name' => 'Evanda'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Impala'
+            'name' => 'Impala'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Lancetti'
+            'name' => 'Lancetti'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Lumina'
+            'name' => 'Lumina'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Silverado'
+            'name' => 'Silverado'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Spark'
+            'name' => 'Spark'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Venture'
+            'name' => 'Venture'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -478,46 +589,46 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '300C'
+            'name' => '300C'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '300M'
+            'name' => '300M'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Concorde'
+            'name' => 'Concorde'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Crossfire'
+            'name' => 'Crossfire'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grand Voyager'
+            'name' => 'Grand Voyager'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Neon'
+            'name' => 'Neon'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Pacifica'
+            'name' => 'Pacifica'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'PT Cruiser'
+            'name' => 'PT Cruiser'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Saratoga'
+            'name' => 'Saratoga'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sebring'
+            'name' => 'Sebring'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Stratus/Cirrus'
+            'name' => 'Stratus/Cirrus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Town&Country'
+            'name' => 'Town&Country'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vission'
+            'name' => 'Vission'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Voyager'
+            'name' => 'Voyager'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -531,58 +642,58 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'AX'
+            'name' => 'AX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Berlingo'
+            'name' => 'Berlingo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'BX'
+            'name' => 'BX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C1'
+            'name' => 'C1'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C2'
+            'name' => 'C2'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C3'
+            'name' => 'C3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C3 Pluriel'
+            'name' => 'C3 Pluriel'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C4'
+            'name' => 'C4'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C5'
+            'name' => 'C5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C8'
+            'name' => 'C8'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CX'
+            'name' => 'CX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Evacion'
+            'name' => 'Evacion'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Saxo'
+            'name' => 'Saxo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Xantia'
+            'name' => 'Xantia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Xara'
+            'name' => 'Xara'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Xara Picasso'
+            'name' => 'Xara Picasso'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'XM'
+            'name' => 'XM'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'ZX'
+            'name' => 'ZX'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -596,7 +707,46 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Logan'
+            'name' => '1300'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => '1310'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => '1400'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => '1410'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Dokker'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Dokker Van'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Duster'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Lodgy'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Lodgy Van'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Nova'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Pick Up'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Sendero'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Sendero Stepway'
+        ],[
+            'cars_brands_id'=> $LAST_ID,
+            'name' => 'Solenza'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -610,57 +760,41 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Espero'
+            'name' => 'Espero'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Korando'
+            'name' => 'Korando'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Lanos'
+            'name' => 'Lanos'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Leganza'
+            'name' => 'Leganza'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Matiz'
+            'name' => 'Matiz'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Musso'
+            'name' => 'Musso'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Nexia'
+            'name' => 'Nexia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Nubira'
+            'name' => 'Nubira'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tacuma'
+            'name' => 'Tacuma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tico'
+            'name' => 'Tico'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
             //    $this->command->info($key);
         }
         
-        /* model auta */
-        DB::table('cars_brands')->insert([
-            'name'=> 'Daf'
-        ]);
-        $LAST_ID = DB::getPdo()->lastInsertId();
-        $data = [[
-            'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
-        ],[
-            'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
-        ]];
-        foreach ($data as $key => $d) {
-            DB::table('cars_models')->insert($d);
-            //  $this->command->info($key);
-        }
-        
+       
         /* model auta */
         DB::table('cars_brands')->insert([
             'name'=> 'Daihatsu'
@@ -668,16 +802,16 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Applause'
+            'name' => 'Applause'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Charade'
+            'name' => 'Charade'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cuore'
+            'name' => 'Cuore'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Feroza'
+            'name' => 'Feroza'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -691,40 +825,40 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Caliber'
+            'name' => 'Caliber'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Caravan'
+            'name' => 'Caravan'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Dacota'
+            'name' => 'Dacota'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Durango'
+            'name' => 'Durango'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grand Caravan'
+            'name' => 'Grand Caravan'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Intrepid'
+            'name' => 'Intrepid'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Magnum'
+            'name' => 'Magnum'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Neon'
+            'name' => 'Neon'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'RAM'
+            'name' => 'RAM'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Stealth'
+            'name' => 'Stealth'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Stratus'
+            'name' => 'Stratus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Viper'
+            'name' => 'Viper'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -738,10 +872,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -755,10 +889,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -772,79 +906,79 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '125'
+            'name' => '125'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '126'
+            'name' => '126'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Albea'
+            'name' => 'Albea'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Barchetta'
+            'name' => 'Barchetta'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Brava'
+            'name' => 'Brava'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Bravo'
+            'name' => 'Bravo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cinquecento'
+            'name' => 'Cinquecento'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Coupe'
+            'name' => 'Coupe'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Croma'
+            'name' => 'Croma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Doblo'
+            'name' => 'Doblo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Idea'
+            'name' => 'Idea'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Marea'
+            'name' => 'Marea'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Multipla'
+            'name' => 'Multipla'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Palio Weekend'
+            'name' => 'Palio Weekend'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Panda'
+            'name' => 'Panda'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Punto'
+            'name' => 'Punto'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grande Punto'
+            'name' => 'Grande Punto'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Scudo'
+            'name' => 'Scudo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seicento'
+            'name' => 'Seicento'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Siena'
+            'name' => 'Siena'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Stilo'
+            'name' => 'Stilo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tempra'
+            'name' => 'Tempra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tipo'
+            'name' => 'Tipo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Ulysse'
+            'name' => 'Ulysse'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Uno'
+            'name' => 'Uno'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -858,79 +992,79 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Aerostar'
+            'name' => 'Aerostar'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cougar'
+            'name' => 'Cougar'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Escort'
+            'name' => 'Escort'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Expedition'
+            'name' => 'Expedition'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Explorer'
+            'name' => 'Explorer'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Fiesta'
+            'name' => 'Fiesta'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Focus'
+            'name' => 'Focus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Focus C-max'
+            'name' => 'Focus C-max'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Fusion'
+            'name' => 'Fusion'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Galaxy'
+            'name' => 'Galaxy'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Granada'
+            'name' => 'Granada'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Ka/StreetKA'
+            'name' => 'Ka/StreetKA'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Maverick'
+            'name' => 'Maverick'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Mondeo'
+            'name' => 'Mondeo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Mustang'
+            'name' => 'Mustang'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Orion'
+            'name' => 'Orion'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Probe'
+            'name' => 'Probe'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Puma'
+            'name' => 'Puma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Scorpio'
+            'name' => 'Scorpio'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria F'
+            'name' => 'Seria F'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sierra'
+            'name' => 'Sierra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Taunus'
+            'name' => 'Taunus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Taurus'
+            'name' => 'Taurus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Transit'
+            'name' => 'Transit'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Windstar'
+            'name' => 'Windstar'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -944,10 +1078,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'fiat 125p'
+            'name' => 'fiat 125p'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'fiat 126p'
+            'name' => 'fiat 126p'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -961,10 +1095,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -978,10 +1112,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -996,10 +1130,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1014,10 +1148,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1031,43 +1165,43 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Accord'
+            'name' => 'Accord'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'City'
+            'name' => 'City'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Civic'
+            'name' => 'Civic'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Concerto'
+            'name' => 'Concerto'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CR-V'
+            'name' => 'CR-V'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CRX'
+            'name' => 'CRX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'FR-V'
+            'name' => 'FR-V'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'HR-V'
+            'name' => 'HR-V'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Jazz'
+            'name' => 'Jazz'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Legend'
+            'name' => 'Legend'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Odyssey'
+            'name' => 'Odyssey'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Prelude'
+            'name' => 'Prelude'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S2000'
+            'name' => 'S2000'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1081,10 +1215,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1098,49 +1232,49 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Accent'
+            'name' => 'Accent'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Atos'
+            'name' => 'Atos'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Coupe'
+            'name' => 'Coupe'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Elantra'
+            'name' => 'Elantra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Galloper'
+            'name' => 'Galloper'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Getz'
+            'name' => 'Getz'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'H'
+            'name' => 'H'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Lantra'
+            'name' => 'Lantra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Matrix'
+            'name' => 'Matrix'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Ponny'
+            'name' => 'Ponny'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Santa Fe'
+            'name' => 'Santa Fe'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'SG'
+            'name' => 'SG'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sonata'
+            'name' => 'Sonata'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Terracan'
+            'name' => 'Terracan'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tucson'
+            'name' => 'Tucson'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1155,10 +1289,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1173,10 +1307,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1190,10 +1324,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1207,10 +1341,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1224,10 +1358,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1241,19 +1375,19 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S-type'
+            'name' => 'S-type'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'X-type'
+            'name' => 'X-type'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'XJ'
+            'name' => 'XJ'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'XJR'
+            'name' => 'XJR'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'XJS'
+            'name' => 'XJS'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1267,16 +1401,16 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cherokee'
+            'name' => 'Cherokee'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grand Cherokee'
+            'name' => 'Grand Cherokee'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Liberty'
+            'name' => 'Liberty'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Wrangler'
+            'name' => 'Wrangler'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1291,43 +1425,43 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Carnival'
+            'name' => 'Carnival'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cee`d'
+            'name' => 'Cee`d'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cerato'
+            'name' => 'Cerato'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Clarus'
+            'name' => 'Clarus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Joice'
+            'name' => 'Joice'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Opirus/Amanti'
+            'name' => 'Opirus/Amanti'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Picanto'
+            'name' => 'Picanto'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Pride'
+            'name' => 'Pride'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Rio'
+            'name' => 'Rio'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sephia'
+            'name' => 'Sephia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Shuma'
+            'name' => 'Shuma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sorento'
+            'name' => 'Sorento'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sporttage'
+            'name' => 'Sporttage'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1341,10 +1475,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1358,10 +1492,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1377,16 +1511,16 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Defender'
+            'name' => 'Defender'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Discovery'
+            'name' => 'Discovery'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Freelander'
+            'name' => 'Freelander'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Range Rover'
+            'name' => 'Range Rover'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1401,10 +1535,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1420,22 +1554,22 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria ES'
+            'name' => 'Seria ES'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria GS'
+            'name' => 'Seria GS'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria IS'
+            'name' => 'Seria IS'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria LS'
+            'name' => 'Seria LS'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria RX'
+            'name' => 'Seria RX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria SC'
+            'name' => 'Seria SC'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1451,13 +1585,13 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Continental'
+            'name' => 'Continental'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Navigator'
+            'name' => 'Navigator'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Town Car'
+            'name' => 'Town Car'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1472,10 +1606,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1491,13 +1625,13 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '2107'
+            'name' => '2107'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Niva'
+            'name' => 'Niva'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Samara'
+            'name' => 'Samara'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1512,10 +1646,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1529,10 +1663,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1547,10 +1681,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1565,67 +1699,67 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '121'
+            'name' => '121'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '323/323F'
+            'name' => '323/323F'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '2'
+            'name' => '2'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '3'
+            'name' => '3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '3 MPS'
+            'name' => '3 MPS'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '5'
+            'name' => '5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '6'
+            'name' => '6'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '626'
+            'name' => '626'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '929'
+            'name' => '929'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'MPV'
+            'name' => 'MPV'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'MX-3'
+            'name' => 'MX-3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'MX-5'
+            'name' => 'MX-5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'MX-6'
+            'name' => 'MX-6'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Premacy'
+            'name' => 'Premacy'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'RX-7'
+            'name' => 'RX-7'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'RX-8'
+            'name' => 'RX-8'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tribute'
+            'name' => 'Tribute'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Xedos'
+            'name' => 'Xedos'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CX-3'
+            'name' => 'CX-3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CX-5'
+            'name' => 'CX-5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CX-7'
+            'name' => 'CX-7'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1640,10 +1774,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1658,55 +1792,55 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'A klasa'
+            'name' => 'A klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'B klasa'
+            'name' => 'B klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C klasa'
+            'name' => 'C klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CL/SEC'
+            'name' => 'CL/SEC'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CLK'
+            'name' => 'CLK'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'CLS'
+            'name' => 'CLS'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'E klasa'
+            'name' => 'E klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'G klasa'
+            'name' => 'G klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'M klasa'
+            'name' => 'M klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'R klasa'
+            'name' => 'R klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S klasa'
+            'name' => 'S klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'SL'
+            'name' => 'SL'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'SLK'
+            'name' => 'SLK'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'V klasa'
+            'name' => 'V klasa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'W123'
+            'name' => 'W123'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'W124'
+            'name' => 'W124'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'W201 (190)'
+            'name' => 'W201 (190)'
         ]];
 
         foreach ($data as $key => $d) {
@@ -1721,10 +1855,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1738,10 +1872,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1755,10 +1889,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1772,10 +1906,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1790,52 +1924,52 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '3000GT'
+            'name' => '3000GT'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Carisma'
+            'name' => 'Carisma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Colt'
+            'name' => 'Colt'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Eclipse'
+            'name' => 'Eclipse'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Galant'
+            'name' => 'Galant'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grandis'
+            'name' => 'Grandis'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'L200'
+            'name' => 'L200'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Lancer'
+            'name' => 'Lancer'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Outlander'
+            'name' => 'Outlander'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Pajero'
+            'name' => 'Pajero'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sigma'
+            'name' => 'Sigma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Space Gear'
+            'name' => 'Space Gear'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sigma'
+            'name' => 'Sigma'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Space Runner'
+            'name' => 'Space Runner'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Space Star'
+            'name' => 'Space Star'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Space Wagon'
+            'name' => 'Space Wagon'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1849,10 +1983,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1866,61 +2000,61 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '100NX'
+            'name' => '100NX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '200SX'
+            'name' => '200SX'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '350 Z'
+            'name' => '350 Z'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Almera'
+            'name' => 'Almera'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Almera Tino'
+            'name' => 'Almera Tino'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Altima'
+            'name' => 'Altima'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Maxima'
+            'name' => 'Maxima'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Micra'
+            'name' => 'Micra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Murano'
+            'name' => 'Murano'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Navara'
+            'name' => 'Navara'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Note'
+            'name' => 'Note'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Pathfinder'
+            'name' => 'Pathfinder'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Patrol'
+            'name' => 'Patrol'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Primera'
+            'name' => 'Primera'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Quest'
+            'name' => 'Quest'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Serena'
+            'name' => 'Serena'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Terrano'
+            'name' => 'Terrano'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vanette'
+            'name' => 'Vanette'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'X-trail'
+            'name' => 'X-trail'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1934,10 +2068,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1951,10 +2085,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1968,10 +2102,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -1985,10 +2119,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2002,61 +2136,61 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Agila'
+            'name' => 'Agila'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Ascona'
+            'name' => 'Ascona'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Astra'
+            'name' => 'Astra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Calibra'
+            'name' => 'Calibra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Combo'
+            'name' => 'Combo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Corsa'
+            'name' => 'Corsa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Frontera'
+            'name' => 'Frontera'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Kadett'
+            'name' => 'Kadett'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Manta'
+            'name' => 'Manta'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Meriva'
+            'name' => 'Meriva'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Monterey'
+            'name' => 'Monterey'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Omega'
+            'name' => 'Omega'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Record'
+            'name' => 'Record'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Senator'
+            'name' => 'Senator'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Signum'
+            'name' => 'Signum'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sintra'
+            'name' => 'Sintra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Tigra'
+            'name' => 'Tigra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vectra'
+            'name' => 'Vectra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Zafira'
+            'name' => 'Zafira'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2071,61 +2205,61 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '1007'
+            'name' => '1007'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '106'
+            'name' => '106'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '107'
+            'name' => '107'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '205'
+            'name' => '205'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '206'
+            'name' => '206'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '206cc'
+            'name' => '206cc'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '207'
+            'name' => '207'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '306'
+            'name' => '306'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '307'
+            'name' => '307'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '307cc'
+            'name' => '307cc'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '309'
+            'name' => '309'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '405'
+            'name' => '405'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '406'
+            'name' => '406'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '407'
+            'name' => '407'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '605'
+            'name' => '605'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '607'
+            'name' => '607'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '806'
+            'name' => '806'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '808'
+            'name' => '808'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Partner'
+            'name' => 'Partner'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2139,10 +2273,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2156,10 +2290,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Caro'
+            'name' => 'Caro'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2174,22 +2308,22 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Firebird'
+            'name' => 'Firebird'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grand Am'
+            'name' => 'Grand Am'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Grand Prix'
+            'name' => 'Grand Prix'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sun Fire'
+            'name' => 'Sun Fire'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Trans Sport'
+            'name' => 'Trans Sport'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vibe'
+            'name' => 'Vibe'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2203,22 +2337,22 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '911'
+            'name' => '911'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '924'
+            'name' => '924'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '928'
+            'name' => '928'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '944'
+            'name' => '944'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Boxster'
+            'name' => 'Boxster'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cayenne'
+            'name' => 'Cayenne'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2233,10 +2367,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2251,49 +2385,49 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '19'
+            'name' => '19'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '21'
+            'name' => '21'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '25'
+            'name' => '25'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '5'
+            'name' => '5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Clio'
+            'name' => 'Clio'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Espace'
+            'name' => 'Espace'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Kangoo'
+            'name' => 'Kangoo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Laguna'
+            'name' => 'Laguna'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Megane'
+            'name' => 'Megane'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Modus'
+            'name' => 'Modus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Safrane'
+            'name' => 'Safrane'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Scenic'
+            'name' => 'Scenic'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Thalia'
+            'name' => 'Thalia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Twingo'
+            'name' => 'Twingo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vel Satis'
+            'name' => 'Vel Satis'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2308,10 +2442,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2326,28 +2460,28 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '25'
+            'name' => '25'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '45'
+            'name' => '45'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '75'
+            'name' => '75'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 100'
+            'name' => 'Seria 100'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 200'
+            'name' => 'Seria 200'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 400'
+            'name' => 'Seria 400'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 600'
+            'name' => 'Seria 600'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 800'
+            'name' => 'Seria 800'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2362,16 +2496,16 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '9-3'
+            'name' => '9-3'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '9-5'
+            'name' => '9-5'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '900'
+            'name' => '900'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '90000'
+            'name' => '90000'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2386,10 +2520,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2404,10 +2538,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2422,10 +2556,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2440,34 +2574,34 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Alhambara'
+            'name' => 'Alhambara'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Altea'
+            'name' => 'Altea'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Arosa'
+            'name' => 'Arosa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Cordoba'
+            'name' => 'Cordoba'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Ibiza'
+            'name' => 'Ibiza'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Inca'
+            'name' => 'Inca'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Leon'
+            'name' => 'Leon'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Malaga'
+            'name' => 'Malaga'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Marbella'
+            'name' => 'Marbella'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Toledo'
+            'name' => 'Toledo'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2482,22 +2616,22 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Fabia'
+            'name' => 'Fabia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Favorit'
+            'name' => 'Favorit'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Felicia'
+            'name' => 'Felicia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Octavia'
+            'name' => 'Octavia'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Rumster'
+            'name' => 'Rumster'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Superb'
+            'name' => 'Superb'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2512,10 +2646,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2530,10 +2664,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2548,16 +2682,16 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Forester'
+            'name' => 'Forester'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Impreza'
+            'name' => 'Impreza'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Justy'
+            'name' => 'Justy'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Legacy'
+            'name' => 'Legacy'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2572,10 +2706,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => '105'
+            'name' => '105'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2590,10 +2724,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2608,10 +2742,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2626,10 +2760,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2644,10 +2778,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2662,70 +2796,70 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Avalon'
+            'name' => 'Avalon'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Avensis'
+            'name' => 'Avensis'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Avensis Verso'
+            'name' => 'Avensis Verso'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Aygo'
+            'name' => 'Aygo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Camry'
+            'name' => 'Camry'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Carina'
+            'name' => 'Carina'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Celica'
+            'name' => 'Celica'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Corolla'
+            'name' => 'Corolla'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Corolla Verso'
+            'name' => 'Corolla Verso'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Hilux'
+            'name' => 'Hilux'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Land Cruiser'
+            'name' => 'Land Cruiser'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'MR 2'
+            'name' => 'MR 2'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Passeo'
+            'name' => 'Passeo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Picnic'
+            'name' => 'Picnic'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Previa'
+            'name' => 'Previa'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Prius'
+            'name' => 'Prius'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'RAV 4'
+            'name' => 'RAV 4'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sienna'
+            'name' => 'Sienna'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Starlet'
+            'name' => 'Starlet'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Supra'
+            'name' => 'Supra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Yaris'
+            'name' => 'Yaris'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Yaris Verso'
+            'name' => 'Yaris Verso'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2740,10 +2874,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2758,10 +2892,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2776,10 +2910,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2794,55 +2928,55 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Bora'
+            'name' => 'Bora'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Corrado'
+            'name' => 'Corrado'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Fox'
+            'name' => 'Fox'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Garbus'
+            'name' => 'Garbus'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Golf'
+            'name' => 'Golf'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Jetta'
+            'name' => 'Jetta'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Lupo'
+            'name' => 'Lupo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'New Beetle'
+            'name' => 'New Beetle'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Passat'
+            'name' => 'Passat'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Phaenton'
+            'name' => 'Phaenton'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Polo'
+            'name' => 'Polo'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Scirrocco'
+            'name' => 'Scirrocco'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Sharan'
+            'name' => 'Sharan'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Touran'
+            'name' => 'Touran'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Touareg'
+            'name' => 'Touareg'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Transporter'
+            'name' => 'Transporter'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Vento'
+            'name' => 'Vento'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2857,52 +2991,52 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C30'
+            'name' => 'C30'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'C70'
+            'name' => 'C70'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S40/V40'
+            'name' => 'S40/V40'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S60'
+            'name' => 'S60'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S70/V70'
+            'name' => 'S70/V70'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'S80'
+            'name' => 'S80'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 200'
+            'name' => 'Seria 200'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 300'
+            'name' => 'Seria 300'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 400'
+            'name' => 'Seria 400'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 700'
+            'name' => 'Seria 700'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 800'
+            'name' => 'Seria 800'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Seria 900'
+            'name' => 'Seria 900'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'V50'
+            'name' => 'V50'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'XC 70'
+            'name' => 'XC 70'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'XC 90'
+            'name' => 'XC 90'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2917,10 +3051,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
 
         foreach ($data as $key => $d) {
@@ -2935,10 +3069,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2953,10 +3087,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2971,10 +3105,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -2989,10 +3123,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -3007,10 +3141,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -3025,10 +3159,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -3043,10 +3177,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -3061,10 +3195,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -3079,19 +3213,19 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Ambra'
+            'name' => 'Ambra'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Inny'
+            'name' => 'Inny'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Nova'
+            'name' => 'Nova'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'Optima'
+            'name' => 'Optima'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'X - Too'
+            'name' => 'X - Too'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
@@ -3108,10 +3242,10 @@ class AutoBrandModelSeeds extends Seeder
         $LAST_ID = DB::getPdo()->lastInsertId();
         $data = [[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ],[
             'cars_brands_id'=> $LAST_ID,
-            'model' => 'xxx'
+            'name' => 'xxx'
         ]];
         foreach ($data as $key => $d) {
             DB::table('cars_models')->insert($d);
