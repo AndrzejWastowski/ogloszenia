@@ -17,7 +17,7 @@ class CreateCarsModelsTable extends Migration
             $table->increments('id')->omment('unikatowy identyfikator');
             $table->integer('cars_brands_id')->comment('klucz łączący modele z marką auta');
             $table->integer('cars_type_id')->nullable($value = 1)->comment('znacznik czy osobowy czy dostawczy');
-            $table->string('model', 75)->comment('model auta , polaczony z marką');
+            $table->string('name', 75)->comment('model auta , polaczony z marką');
         });
     }
 
