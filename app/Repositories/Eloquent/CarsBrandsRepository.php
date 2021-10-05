@@ -30,7 +30,7 @@ class CarsBrandsRepository extends BaseRepository
     }
 
 
-    public function getAllBrandsWithModelsByBrandsId($id = 0)
+    public function getBrandWithModelsByBrandId($id = 0)
     {   
         $data = $this->model
         ->with('CarsModels')

@@ -40,25 +40,6 @@ class ListsController extends Controller
 
 
 
-    public function  ListsAllModels()
-    {
-        $brands = $this->CarsBrandsRepository->getAllBrandsWithModels();
-        $models = $this->CarsModelsRepository->getAllModels();        
-        $content = $this->CarsRepository->getLastCars(10);  
-
-        //dd($content);
-    
-    
-
-        return View('cars.ListsAllModels', [
-            'pageName' => 'Lista Ogłoszeń Drobnych',
-            'brands' => $brands,
-            'models' => $models,   
-            'contents' => $content,         
-            'storage' => $this->storage
-            ]);
-    }
-
     
 
     public function ListsAllCars() 
@@ -88,7 +69,7 @@ class ListsController extends Controller
 
         $bid = (int)$request->bid;
         //$brand = $this->CarsBrandsRepository->getBrandsById($bid);        
-        $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsId($bid);
+        $brands = $this->CarsBrandsRepository->getBrandWithModelsByBrandId($bid);
         foreach ($brands as $brand) {
 
             $contents = $this->CarsRepository->getAllCarsByBrandsId($brand->id,10);    
@@ -108,41 +89,38 @@ class ListsController extends Controller
 
 
 
-    public function ListsByModelsId($brand,$bid,$model,$mid)  
+    public function ListsByModelsId(Request $request)  
     {
-        $res = $brand . ' ' . $bid  .' ' . $model . ' ' . $mid;
+        $res = $request->brand . ' ' . $request->bid  .' ' . $request->model . ' ' . $request->mid;
         //dd($res);
         //$bid = $request->input('bid');
-        //$id = $request->input('id');
-        $bid = 1;
-        $brands = $this->CarsBrandsRepository->getAllBrandsWithModelsByBrandsId($bid);       
-        $content = null;
-        $models = $this->CarsModelsRepository->getModelsById($mid);
+        //$id = $request->input('id');        
+        
+        $brands = $this->CarsBrandsRepository->getBrandWithModelsByBrandId($request->bid);               
+        $models = $this->CarsModelsRepository->getModelsById($request->mid);
+        $content = $this->CarsRepository->getAllCarsByModelsId($request->mid);
+        
+        $brand = null;
         $model = null;
-        foreach ($models as $model) {
+        foreach ($brands as $brand) { }
+        foreach ($models as $model) { }
             
-            $content = $this->CarsRepository->getAllCarsByModelsId($model->id);
+            if ($content!=null) {
+                //  dd($content);
+
+                return View('cars.ListByModels', [
+                'pageName' => 'Ogłoszenia - samochody na sprzedaż -  ',
+                'brand'=> $brand,
+                'model'=>$model,
+                'contents' => $content,
+                'storage' => $this->storage
+                ]);
+            } else {
+                return redirect()->route("CarsStart");
+            }
         }
 
-      
-
-        if ($content!=null) {
-         //  dd($content);
-
-            return View('cars.ListByModels', [
-            'pageName' => 'Lista ogłoszeń motoryzacyjnych - samocody osobowe ',
-            'pom_model' => $model,
-            'brands'=> $brands,
-            'contents' => $content,
-            'storage' => $this->storage
-            ]);
-        }
-        else 
-        {
-            return redirect()->route("CarsStart");
-        }
-
-    }
+   
     
 
 

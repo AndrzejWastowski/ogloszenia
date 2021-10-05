@@ -3,13 +3,15 @@
 
 @section('content')
 
-
 <div class="container">
     <nav class="card p-3 pb-0 mb-3 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb" >
             <li class="breadcrumb-item"> <a href="/">Start</a></li> 
             <li class="breadcrumb-item"> <a href="/motoryzacja/">Motoryzacja</a></li>  
-            <li class="breadcrumb-item"> <a href="/motoryzacja/samochody_osobowe">Samochody osobowe</a></li>  
+            <li class="breadcrumb-item"> <a href="/motoryzacja/samochody_osobowe">Samochody osobowe</a></li> 
+            <li class="breadcrumb-item"> <a href="{{ route('CarsListByBrandsId', ['brand'=> $brand->name, 'bid' => $brand->id]) }}"> {{ $brand->name }}</a></li>
+            <li class="breadcrumb-item"> <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $model->name, 'mid' => $model->id ]) }}"> {{ $model->name }} </a></li>
+            
         </ol>
     </nav> 
     <div class="row">
@@ -28,7 +30,7 @@
                     $trufalse = 'true';
                 @endphp            
 
-                @foreach($brands as $brand)   
+                
 
                     <div class="accordion-item">
                         <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#podkategorie_{{ $brand->id }}" aria-expanded="true" aria-controls="podkategorie_{{ $brand->id }}">
@@ -38,16 +40,16 @@
                             </div>
                         </button>
                         
-                        <div id="podkategorie_{{ $brand->id }}" class="accordion-collapse collapse show "  aria-labelledby="nazwa_kategori_{{ $brand->id }}" data-bs-parent="#menu_boczne">
+                        <div id="podkategorie_{{ $model->id }}" class="accordion-collapse collapse show "  aria-labelledby="nazwa_kategori_{{ $brand->id }}" data-bs-parent="#menu_boczne">
                             <div class="accordion-item">
                                 <div class="accordion-body">
                                     <ul class="list-group  list-group-flush ">
-                                        @foreach($brand->CarsModels as $model)                              
+                                        @foreach($brand->CarsModels as $modelx)                              
                                             <li class=" list-group-item mb-2">
-                                            @if ($model->id == $pom_model->id)
-                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $model->name, 'mid' => $model->id ]) }}"><strong>{{ $model->name }}</strong></a>
+                                            @if ($modelx->id == $model->id)
+                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $modelx->name, 'mid' => $modelx->id ]) }}"><strong>{{ $modelx->name }}</strong></a>
                                             @else
-                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $model->name, 'mid' => $model->id ]) }}">{{ $model->name }}</a>
+                                            <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $modelx->name, 'mid' => $modelx->id ]) }}">{{ $modelx->name }}</a>
                                             @endif
                                             </li>
                                         @endforeach    
@@ -56,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach  
+
 
             </div>
         </div>

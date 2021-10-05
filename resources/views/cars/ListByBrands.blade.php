@@ -8,7 +8,8 @@
     <nav class="card p-3 pb-0 mb-3 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb" >
             <li class="breadcrumb-item"> <a href="/">Start</a></li> 
-            <li class="breadcrumb-item"><a href="/motoryzacja/samochody_osobowe/">Samochody osobowe</a></li>
+            <li class="breadcrumb-item"> <a href="/motoryzacja/">Motoryzacja</a></li>  
+            <li class="breadcrumb-item"> <a href="/motoryzacja/samochody_osobowe">Samochody osobowe</a></li> 
             <li class="breadcrumb-item"><a href="{{ route('CarsListByBrandsId', ['brand'=> $brand->name, 'bid' => $brand->id]) }}"> {{ $brand->name }} / </li>
         </ol>
     </nav> 
@@ -43,8 +44,7 @@
                                 <div class="accordion-body">
                                     <ul class="list-group  list-group-flush ">
                                         @foreach($brand->CarsModels as $model)                              
-                                            <li class=" list-group-item mb-2">
-                                         
+                                            <li class=" list-group-item mb-2">                                         
                                             <a href="{{ route('CarsListByModelsId', ['brand'=> $brand->name, 'bid' => $brand->id, 'model'=> $model->name, 'mid' => $model->id ]) }}">{{ $model->name }}</a>
                                            
                                             </li>
