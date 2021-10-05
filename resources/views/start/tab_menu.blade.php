@@ -33,27 +33,51 @@
 		<div class="tab-pane fade" id="nav-automoto" role="tabpanel" aria-labelledby="nav-automoto-tab">
 			<div class="card">
 				<div class="card-body">Motoryzacja 
-					<li><a href="motoryzacja/samochody_osobowe">Samochody osobowe</a></li>
-					<li><a href="motoryzacja/motocykle">Motocykle / skutery / quady</a></li>
-					<li><a href="motoryzacja/autobusy">Busy / autobusy</a></li>
-					<li><a href="motoryzacja/ciezarowe">Samochody dostawcze i ciężarowe</a></li>					
-					<li><a href="motoryzacja/rolnicze">Pojazdy rolnicze</a></li>
-					<li><a href="motoryzacja/pozostałe">Pozostałe</a></li>
+					<div class="row">
+						<div class="col-lg-2" class="text-center">
+							<a href="motoryzacja/samochody_osobowe" title=""><img class="img-fluid" src="{{ $storage->url('icons/osobowe.png') }}" alt=""></a>
+							<a href="motoryzacja/samochody_osobowe">Samochody osobowe</a>
+						</div>
+						<div class="col-lg-2" class="text-center">
+							<a href="motoryzacja/motocykle" title=""><img class="img-fluid" src="{{ $storage->url('icons/motocykl.png') }}" alt=""></a>
+							<a href="motoryzacja/motocykle">Motocykle / skutery / quady</a>
+						</div>
+						<div class="col-md-2" class="text-center">
+							<a href="motoryzacja/autobusy" title=""><img class="img-fluid" src="{{ $storage->url('icons/autobus.png') }}" alt=""></a>
+							<a href="motoryzacja/autobusy">Busy / autobusy</a>
+						</div>
+						<div class="col-lg-2" class="text-center">
+							<a href="motoryzacja/ciezarowe" title=""><img class="img-fluid" src="{{ $storage->url('icons/transport.png') }}" alt=""></a>
+							<a href="motoryzacja/ciezarowe">Samochody dostawcze i ciężarowe</a>
+						</div>
+						<div class="col-lg-2" class="text-center">
+							<a href="motoryzacja/rolnicze" title=""><img class="img-fluid" src="{{ $storage->url('icons/rolnicze.png') }}" alt=""></a>
+							<a href="motoryzacja/rolnicze">Pojazdy rolnicze</a>
+						</div>
+						<div class="col-lg-2" class="text-center">
+							<a href="motoryzacja/budowlane" title=""><img class="img-fluid" src="{{ $storage->url('icons/budowa.png') }}" alt=""></a>
+							<a class="text-center" href="motoryzacja/budowlane">Budowlane</a>
+						</div>
+						
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="tab-pane fade" id="nav-agro" role="tabpanel" aria-labelledby="nav-agro-tab">
-			<div class="card">
-				<div class="card-body">
-					Rolnictwo
-					<ul>
-						<li>Ciągniki / kombajny</li>
-						<li>Przyczepy i naczepy</li>
-						<li>Skup / sprzedaż zwierząt</li>
-						<li>Skup / sprzedaż roślin</li>
-					</div>
+			<div class="tab-pane fade" id="nav-agro" role="tabpanel" aria-labelledby="nav-agro-tab">
+				<div class="card">
+					<div class="card-body">
+						Rolnictwo
+						<ul>
+							<li>Ciągniki / kombajny</li>
+							<li>Przyczepy i naczepy</li>
+							<li>Skup / sprzedaż zwierząt</li>
+							<li>Skup / sprzedaż roślin</li>
+						</div>
+				</div>
 			</div>
-		</div>
-	</div>  
+		</div>  
+	</div>
 </div>
+
+
 

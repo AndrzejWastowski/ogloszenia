@@ -140,11 +140,15 @@
             
 
             <div class="col-md-6">
-                <label class="form-label" for="cars_categories_id"><strong>Marka</strong></label>
-                <select class="form-select" name="cars_categories_id" id="cars_categories_id" required>
+                <label class="form-label" for="cars_brands_id"><strong>Marka</strong></label>
+                <select class="form-select" name="cars_brands_id" id="cars_brands_id" required>
                     <option value="" diabled selected="">Wybierz markę</option>  
                         @foreach($brands as $brand)
-                            <option value="{{$brand->id}}" {{ ($brand->id == $content->cars_categories_id ? 'selected' : '') }} >{{$brand->name}}</option>
+
+                            <option {{ old('cars_brands_id') == $brand->id ? "selected" : "" }} value="{{ $brand->id }}">{{ $brand->name }}</option>
+
+
+                            {{-- <option value="{{$brand->id}}" {{ ($brand->id == $content->cars_brands_id ? 'selected' : '') }} >{{$brand->name}}</option> --}}
                         @endforeach                            
                 </select>
             </div>
@@ -153,11 +157,17 @@
                 <select class="form-select" name="cars_models_id" id="cars_models_id" required>
                     <option value="" diabled selected="">Wybierz najpierw kategorię</option>
                     @foreach($models as $model)
-                    <option value="{{$model->id}}" {{ ($model->id == $content->cars_models_id ? 'selected' : '') }} >{{$model->name}}</option>
+                    
+                    <option {{ old('cars_models_id') == $model->id ? "selected" : "" }} value="{{ $model->id }}">{{ $model->name }}</option>
+                    
+                    {{-- <option value="{{$model->id}}" {{ ($model->id == $content->cars_models_id ? 'selected' : '') }} >{{$model->name}}</option> --}}
                     @endforeach                           
                 </select>
             </div>     
             
+
+
+
             <div class="col-md-6">
                 <label class="form-label"  for="date_production"><strong>Data produkcji</strong></label>                                               
                 <input placeholder="Data produkcji" type="text" id="date_production" name="date_production" value='{{ $content->date_production ?? ''}}' class="form-control datepicker" data-provide="datepicker" required>
@@ -297,12 +307,12 @@ $( document ).ready(function() {
     });  
 
    
-    $(document).on('change', '#cars_categories_id', function (e) {    
+    $(document).on('change', '#cars_brands_id', function (e) {    
         //  console.log(e);    
         var cat_id = e.target.value;
         $.get('/internal-api/cars/' + cat_id,function(data){
             $('#cars_models_id').empty();
-            $.each(data,function(index,subCatObj){ $('#cars_models_id').append('<option value="'+subCatObj.id+'">'+subCatObj.model+'</option>'); }); 
+            $.each(data,function(index,subCatObj){ $('#cars_models_id').append('<option value="'+subCatObj.id+'">'+subCatObj.name+'</option>'); }); 
         });
     });     
 });
