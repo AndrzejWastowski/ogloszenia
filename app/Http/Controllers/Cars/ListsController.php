@@ -45,14 +45,11 @@ class ListsController extends Controller
     public function ListsAllCars() 
     {
         $content = $this->CarsRepository->getAllCars(10);
-        $brands = $this->CarsBrandsRepository->getAllBrandsWithModels();    
-           
-
-       
+        $brands = $this->CarsBrandsRepository->getAllBrandsWithModels();          
 
         return View('cars.ListAllCars', [
 
-            'pageName' => 'Lista ogłoszeń motoryzacyjnych - wszystkie',                
+            'pageName' => 'Lista ogłoszeń motoryzacyjnych - wszystkie',   
             'brands' => $brands,            
             'contents' => $content,
             'storage' => $this->storage,  

@@ -50,12 +50,11 @@ class CarsRepository extends BaseRepository
         
         ->with('top_photos')
         ->with('CarsBrands')
-        ->with('CarsModels')        
-        ->where('cars_contents.promoted', 1)        
+        ->with('CarsModels')                       
         ->where('cars_contents.status', 'active')
         ->orderBy('cars_contents.promoted', 'desc')
         ->paginate($number_row);
-//dd($results);
+
         return $results;
     }
 
@@ -66,11 +65,12 @@ class CarsRepository extends BaseRepository
         ->select(
             'cars_contents.*'           
         )
-        ->with('User')
+        ->with('user')
         ->with('photos')
         ->with('CarsBrands')
-        ->with('CarsModels')       
-        ->where('cars_contents.id', $id)
+        ->with('CarsModels')               
+        ->where('cars_contents.status', 'active')
+        ->orderBy('cars_contents.promoted', 'desc') 
         ->get();
                 
        //dd($results);

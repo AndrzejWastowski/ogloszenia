@@ -1,49 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from 'react-bootstrap/Carousel';
 
+'use strict';
 
-function LikeButton() {
-    return (
-        <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="storage/addons/product1.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="storage/addons/product2.jpg"
-            alt="Second slide"
-          />
-      
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="storage/addons/product3.jpg"
-            alt="Third slide"
-          />
-      
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+const e = React.createElement;
+
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+
+  render() {
+    if (this.state.liked) {
+      return 'You liked comment number ' + this.props.commentID;
+    }
+
+    return e(
+      'button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like'
     );
+  }
 }
+
+// Find all DOM containers, and render Like buttons into them.
+document.querySelectorAll('.like_button_container')
+  .forEach(domContainer => {
+    // Read the comment ID from a data-* attribute.
+    const commentID = parseInt(domContainer.dataset.commentid, 10);
+    ReactDOM.render(
+      e(LikeButton, { commentID: commentID }),
+      domContainer
+    );
+  });
 
 export default LikeButton;
 

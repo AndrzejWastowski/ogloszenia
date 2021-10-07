@@ -89,14 +89,7 @@
                                 <option value="{{$body->id}}" {{ ($body->id == $content->cars_body_id ? 'selected' : '') }} >{{$body->name}}</option>
                             @endforeach                            
                     </select>                        
-                </div>
-
-                <div class="col-md-5 mb-4">  
-                    <label class="form-label" for="color"><strong>Kolor nadwozia</strong></label>                                               
-                    <input type="color" class="form-control form-control-color" id="color" value="#563d7c" title="wybierz kolor">
-                    
-                </div>
-
+                </div>       
 
             </div> 
             <div class="row">   

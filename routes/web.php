@@ -87,6 +87,7 @@ Route::group(['prefix' => 'uslugi'], function () {
 Route::group(['prefix' => 'motoryzacja'], function () {
     Route::get('/', [App\Http\Controllers\Automotive\StartController::class,'index'])->name('MotoryzationStart'); 
 
+    Route::post('samochody_osobowe/szukaj/', [App\Http\Controllers\Cars\ListsController::class,'ListsSearch'])->name('CarsSearch'); 
     Route::get('samochody_osobowe/', [App\Http\Controllers\Cars\ListsController::class,'ListsAllCars'])->name('CarsStart'); 
     Route::get('samochody_osobowe/oferta/{id}', [App\Http\Controllers\Cars\ContentController::class,'content'])->where(['id' => '[0-9]+'])->name('CarsShortContentsById');
     Route::get('samochody_osobowe/{brand}/{bid}', [App\Http\Controllers\Cars\ListsController::class, 'ListsByBrandsId'])->name('CarsListByBrandsId');    
