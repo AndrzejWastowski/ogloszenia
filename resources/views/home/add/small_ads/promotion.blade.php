@@ -157,7 +157,7 @@
                             <div class="row mb-3">                                
                                 <div class="col-3 p-0">                                       
                                     <div class="md-form">
-                                    <select class="browser-default custom-select mb-4" name="recomended" id="recomended" >                                            
+                                    <select class="browser-default custom-select mb-4" name="inscription" id="inscription" >                                            
                                             <option value="none" selected="selected">Bez rekomendacji</option>    
                                             <option value="Promocja!">Promocja</option>
                                             <option value="Bestseller">Bestseller</option>
@@ -239,12 +239,12 @@ function summary()
 
 
     var date_end_promotion=document.getElementById('date_end_promotion').value;
-    var recomended = document.getElementById('recomended').value;    
+    var inscription = document.getElementById('inscription').value;    
 
-    if (recomended=="none") 
-        recomended = false; 
+    if (inscription=="none") 
+        inscription = false; 
     else 
-        recomended = true; 
+        inscription = true; 
 
     if (highligted=="#ffffff") 
         highlighted = false; 
@@ -252,7 +252,7 @@ function summary()
         highlighted = true;
 
     promotion_price = 0;    
-    recomended_price = 0;
+    inscription_price = 0;
     master_portal_price = 0;    
     highlighted_price = 0;
 
@@ -263,26 +263,26 @@ function summary()
             if (master_portal)  master_portal_price = 9;
             if (promotion)      promotion_price = 18;
             if (highlighted)    highlighted_price = 8;
-            if (recomended)     recomended_price = 4;
+            if (inscription)     inscription_price = 4;
         break;
         case '14':
             if (master_portal)  master_portal_price = 17;
             if (promotion)      promotion_price = 34;            
             if (highlighted)    highlighted_price = 14;
-            if (recomended)     recomended_price = 7;            
+            if (inscription)     inscription_price = 7;            
         break;
         case '30':
             if (master_portal)  master_portal_price = 32;
             if (promotion)      promotion_price = 49;            
             if (highlighted)    highlighted_price = 26;
-            if (recomended)     recomended_price = 12;            
+            if (inscription)     inscription_price = 12;            
             
         break;
     }
 
-    var summary = recomended_price+master_portal_price+highlighted_price+promotion_price;
-    console.log('znaczniki - recomended: '+ recomended + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', promotion '+ promotion + ' :suma ' + summary + ' + na ile czasu: '+date_end_promotion);
-    console.log('ceny - recomended: '+ recomended_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', promotion '+ promotion_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promotion);
+    var summary = inscription_price+master_portal_price+highlighted_price+promotion_price;
+    console.log('znaczniki - inscription: '+ inscription + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', promotion '+ promotion + ' :suma ' + summary + ' + na ile czasu: '+date_end_promotion);
+    console.log('ceny - inscription: '+ inscription_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', promotion '+ promotion_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promotion);
 
     document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary + '</strong> pln'
 }
@@ -293,7 +293,7 @@ function summary()
         summary();
     });     
 
-    $(document).on('change', '#recomended', function (e) {    
+    $(document).on('change', '#inscription', function (e) {    
         summary();
     }); 
 

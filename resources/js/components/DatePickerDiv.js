@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale }  from "react-datepicker";
 import moment from "moment";
+import pl from "date-fns/locale/pl"; // the locale you want
+
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,36 +19,52 @@ function DatePickerDiv() {
   const handleCheckOutDate = (date) => {
     setCheckOutDate(date);
   };
+ 
+  	const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
+	const days = ['Pn', 'Wt', 'Śr', 'Czw', 'Pt', 'Sb', 'Nd']
+
 
   return (
-    <div className="App">
-      <div className="input-container">
-        <div>
-          <label>Check-in</label>
-          <DatePicker
-            selected={checkInDate}
-            minDate={new Date()}
-            onChange={handleCheckInDate}
-          />
-        </div>
-        <div>
-          <label>Check-out</label>
-          <DatePicker
-            selected={checkOutDate}
-            minDate={checkInDate}
-            onChange={handleCheckOutDate}
-          />
-        </div>
-      </div>
+	<div class="container-fluid">
+    <div class="row">
+		<div class="col-md-3">
+			<div className="input-container">
+				<label class="form-label">Od</label>
+				<DatePicker 
+					wrapperClassName="datePicker"
+					dateFormat="yyyy"				
+					selected={checkInDate}
+					minDate={new Date()}
+					onChange={handleCheckInDate}
+					class="form-control"
+				/>
+			</div>
+		</div>
+
+ 
+		<div class="col-md-3">
+			<div className="input-container">
+				<label class="form-label">Do</label>
+				<DatePicker                
+					dateFormat="yyyy"	
+					selected={checkOutDate}
+					minDate={checkInDate}
+					onChange={handleCheckOutDate}
+					class="form-control"
+				/>
+			</div>
+		</div>
+	</div>
+      
       {checkInDate && checkOutDate && (
         <div className="summary">
           <p>
-            You book a hotel from {moment(checkInDate).format("LL")} to{" "}
-            {moment(checkOutDate).format("LL")}.
+            Pojazdy wyprodukowane od: {moment(checkInDate).format("LL")} do {" "}             {moment(checkOutDate).format("LL")}.
           </p>
         </div>
       )}
     </div>
+   
   );
 }
 

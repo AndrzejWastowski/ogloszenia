@@ -25,13 +25,8 @@ class SmallAdsPromotionRequest extends FormRequest
     {
         return [
 
-            'recomended' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',
-           
+            'inscription' => 'required|in:none,Promocja!,Wyprzedaż,Przecena,Bestseller',
             'highlighted' => 'required|in:#ffffff,#c8cdff,#ffc8dd,#c8ffdf,#eac8ff,#fff7c8',
-           
-
-
-            
         ];
     }
 

@@ -38,32 +38,18 @@
                             <label class="form-label" for="cars_models_id"><strong>Cena</strong></label>
                             <input class="typeahead form-control" type="text">
                         </div>
-                        <div class="col-6"></div>
+                        <div class="col-6">
+                            <label class="form-label" for="cars_models_id"><strong>Rok produkcji</strong></label>
+                            <div class="DatePickerDiv" id="DatePickerDiv" name="DatePickerDiv"></div>
+                        </div>
                     </div>
 
 
-                    <label class="brand"><strong>Marka:</strong></label>
-
-                    <label class="brand"><strong>Model:</strong></label>
                     <div>
-
-                        <input class="TableDatePicker" id="TableDatePicker" name="TableDatePicker">
-                        <p>
-                            kalendarzyk React
-                            <!-- We will put our React component inside this div. -->
-                            <div class="DatePickerDiv" data-commentid="1"></div>
-                        </p>
-
-                        <p>
-                            This is the second comment.
-                            <!-- We will put our React component inside this div. -->
-                            <div class="like_button_container" data-commentid="2"></div>
-                        </p>
-
-
-
+                       
+                        
                         <label class="brand"><strong>Nadwozie:</strong></label>
-
+                        
 
 
                     </div>
@@ -75,7 +61,7 @@
 
 
     </div>
-
+</div>
 
 
     @section('java_script')
@@ -85,11 +71,6 @@
 
 
 
-            moment.locale('ja', {
-                week: {
-                    dow: 1
-                }
-            });
 
 
             $(document).on('change', '#cars_brands_id', function (e) {

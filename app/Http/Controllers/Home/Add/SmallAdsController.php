@@ -350,9 +350,9 @@ final class SmallAdsController extends Controller
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $small_ads_contents->set_highlighted($data['highlighted']);        
         $small_ads_contents->set_promoted($data['promoted']);
-        $small_ads_contents->set_recomended($data['recomended']);
+        $small_ads_contents->set_inscription($data['inscription']);
         $small_ads_contents->set_master_portal($master_portal);
-        $small_ads_contents->set_top($top);
+        $small_ads_contents->set_top($top); 
         $small_ads_contents->save();
 
         return redirect('/home/add/small_ads/summary');

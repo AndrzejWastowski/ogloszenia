@@ -6501,9 +6501,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/SliderPromo */ "./resources/js/components/SliderPromo.js");
 
-__webpack_require__(/*! ./components/SliderPromoParm */ "./resources/js/components/SliderPromoParm.js");
+__webpack_require__(/*! ./components/SliderPromoParm */ "./resources/js/components/SliderPromoParm.js"); //require('./components/LikeButton');
 
-__webpack_require__(/*! ./components/LikeButton */ "./resources/js/components/LikeButton.js");
 
 __webpack_require__(/*! ./components/DatePickerDiv */ "./resources/js/components/DatePickerDiv.js"); //require('./components/PriceAutocomplete');
 
@@ -6593,17 +6592,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+ // the locale you want
+
 
 
 
 
 function DatePickerDiv() {
-  var _useState = useState(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       checkInDate = _useState2[0],
       setCheckInDate = _useState2[1];
 
-  var _useState3 = useState(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState4 = _slicedToArray(_useState3, 2),
       checkOutDate = _useState4[0],
       setCheckOutDate = _useState4[1];
@@ -6617,31 +6618,48 @@ function DatePickerDiv() {
     setCheckOutDate(date);
   };
 
+  var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+  var days = ['Pn', 'Wt', 'Śr', 'Czw', 'Pt', 'Sb', 'Nd'];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "App",
+    "class": "container-fluid",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "input-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-          children: "Check-in"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_5___default()), {
-          selected: checkInDate,
-          minDate: new Date(),
-          onChange: handleCheckInDate
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-          children: "Check-out"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_5___default()), {
-          selected: checkOutDate,
-          minDate: checkInDate,
-          onChange: handleCheckOutDate
-        })]
+      "class": "row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        "class": "col-md-3",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            "class": "form-label",
+            children: "Od"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_5___default()), {
+            wrapperClassName: "datePicker",
+            dateFormat: "yyyy",
+            selected: checkInDate,
+            minDate: new Date(),
+            onChange: handleCheckInDate,
+            "class": "form-control"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        "class": "col-md-3",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            "class": "form-label",
+            children: "Do"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_5___default()), {
+            dateFormat: "yyyy",
+            selected: checkOutDate,
+            minDate: checkInDate,
+            onChange: handleCheckOutDate,
+            "class": "form-control"
+          })]
+        })
       })]
     }), checkInDate && checkOutDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "summary",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-        children: ["You book a hotel from ", moment__WEBPACK_IMPORTED_MODULE_2___default()(checkInDate).format("LL"), " to", " ", moment__WEBPACK_IMPORTED_MODULE_2___default()(checkOutDate).format("LL"), "."]
+        children: ["Pojazdy wyprodukowane od: ", moment__WEBPACK_IMPORTED_MODULE_2___default()(checkInDate).format("LL"), " do ", " ", "             ", moment__WEBPACK_IMPORTED_MODULE_2___default()(checkOutDate).format("LL"), "."]
       })
     })]
   });
@@ -6651,104 +6669,6 @@ function DatePickerDiv() {
 
 if (document.getElementById('DatePickerDiv')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(DatePickerDiv, {}), document.getElementById('DatePickerDiv'));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/LikeButton.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/LikeButton.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-'use strict';
-
-var e = react__WEBPACK_IMPORTED_MODULE_0__.createElement;
-
-var LikeButton = /*#__PURE__*/function (_React$Component) {
-  _inherits(LikeButton, _React$Component);
-
-  var _super = _createSuper(LikeButton);
-
-  function LikeButton(props) {
-    var _this;
-
-    _classCallCheck(this, LikeButton);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      liked: false
-    };
-    return _this;
-  }
-
-  _createClass(LikeButton, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      if (this.state.liked) {
-        return 'You liked comment number ' + this.props.commentID;
-      }
-
-      return e('button', {
-        onClick: function onClick() {
-          return _this2.setState({
-            liked: true
-          });
-        }
-      }, 'Like');
-    }
-  }]);
-
-  return LikeButton;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component); // Find all DOM containers, and render Like buttons into them.
-
-
-document.querySelectorAll('.like_button_container').forEach(function (domContainer) {
-  // Read the comment ID from a data-* attribute.
-  var commentID = parseInt(domContainer.dataset.commentid, 10);
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(e(LikeButton, {
-    commentID: commentID
-  }), domContainer);
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LikeButton);
-
-if (document.getElementById('LikeButton')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(LikeButton, {}), document.getElementById('LikeButton'));
 }
 
 /***/ }),

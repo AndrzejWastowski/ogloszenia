@@ -14,7 +14,7 @@ require('./bootstrap');
 
 require('./components/SliderPromo');
 require('./components/SliderPromoParm');
-require('./components/LikeButton');
+//require('./components/LikeButton');
 require('./components/DatePickerDiv');
 //require('./components/PriceAutocomplete');
 
