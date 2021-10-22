@@ -4,11 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 
 function SliderPromoParm() {   
-
-
-
-
-
+    
     const obj = [
         { id:'1', alt:'jeden', captionTitle:'title1', caption:'pierwszy obrazek',src: '/storage/addons/product1.jpg'},
         { id:'2', alt:'dwa', captionTitle:'title2', caption:'drugi obrazek',src: '/storage/addons/product2.jpg'},

@@ -52,40 +52,41 @@
             Jeśli nie wiesz jak dodać ogłoszenie skorzystaj z <a href="{{ route('help') }}"><strong>pomocy<strong></a>
         @endif
             <strong>{{ session('komunikat') }}</strong> 
-
-            <div class="bd-example">  
-
-            <label class=""><strong>Rynek</strong></label>                
-           
-            <div class="col-md-2">                
-                <input type="radio" class="form-check-input" id="market" name="market" value="pierwotny" checked>
-                <label class="form-check-label" for="market">Pierwotny</label>
+            <div class="col-6">
+                <label class="category"><strong>Rynek</strong></label>      
+                <div class="row">     
+                    <div class="col-md-6">                
+                        <label class="form-check-label" for="market">Pierwotny</label>
+                        <input type="radio" class="form-check-input" id="market" name="market" value="pierwotny" checked>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="market">Wtórny</label>
+                        <input type="radio" class="form-check-input" id="market" name="market" value="wtórny" >
+                    </div>
+                </div>
             </div>
-            <div class="col-md-2">
-                <input type="radio" class="form-check-input" id="market" name="market" value="wtórny" >
-                <label class="form-check-label" for="market">Wtórny</label>
-            </div>
+            <div class="col-6">
 
 
-        </div>
+     
 
-            <div class="col-12">
+            
                 <label class="category"><strong>Rodzaj ogłoszenia:</strong></label>
-            </div> 
+          
             <div class="row">
-                            
-                <div class="col-md-2">
+                <div class="col-md-6">
                     <label class="form-label" for="sprzedam">Sprzedaż</label>
                     <input type="radio" class="form-check-input" id="estates_type" name="estates_type" value="Sprzedam" checked>
                 </div>
                 
-                <div class="col-md-2">
+                <div class="col-md-6">
                     <label class="form-label" for="oddam">Wynajem</label>
                     <input type="radio" class="form-check-input"  id="estates_type" name="estates_type" value="Wynajmę" >
                 </div>
             </div>
             
-
+        </div>
             <div class="col-md-6">
                 <label class="form-label" for="estates_categories_id"><strong>Kategoria</strong></label>
                 <select class="form-select" name="estates_categories_id" id="estates_categories_id" required>

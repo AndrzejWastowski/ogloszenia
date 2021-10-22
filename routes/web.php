@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/', [App\Http\Controllers\StartController::class, 'start'])->name('start');
 Route::get('/start', [App\Http\Controllers\StartController::class, 'start'])->name('startx');
+Route::get('/formtest', [App\Http\Controllers\FormTestController::class, 'index'])->name('formtest');
 
 Route::get('login/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');

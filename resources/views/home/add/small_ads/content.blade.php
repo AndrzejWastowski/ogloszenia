@@ -1,7 +1,6 @@
 @extends('home.dashboard')
 @section('step')
 
-
 <div class="row justify-content-center">
     
     <h3><strong>Ogłoszenia Drobne - Dodaj Treść</strong></h3>
@@ -39,7 +38,7 @@
         </div>
     </div>
     
-    <form class="row g-3" action="{{ route('small_ads_content_post') }}"  method="POST" role="form" >
+    <form id="form" name="form" class="row g-3" action="{{ route('small_ads_content_post') }}"  method="POST" role="form" >
         <input type="hidden" name="id" value="{{ $content->id==null ? 0  : $content->id  }}">   
         @csrf
         @if ($errors->any())
@@ -112,17 +111,17 @@
             </div>
 
             <div class="col-md-12 mb-4"> 
-                    <label class="form-label" for="name"><strong>Nazwa</strong></label>
-                    <input type="text" id="name" name="name" class="form-control rounded " placeholder="Nazwa towaru / produktu" value="{{ $content->name ?? '' }}" required >
+                    <label class="form-label" for="name"><strong>Nazwa</strong> <small>(min. 15 znaków max. 250)*</small></label>
+                    <input type="text" id="name" name="name" class="form-control rounded " minlength=15 maxlength=250 placeholder="Nazwa towaru / produktu" value="{{ $content->name ?? '' }}" required >
             </div>                            
 
             <div class="col-md-12 mb-4">
-                <label class="form-label"  for="lead"><strong>Lid - krótki opis wyświetlany przy ogłoszeniu</strong></label><br>
-                <textarea class="form-control rounded-2 p-2" id="lead" name="lead" rows="3" placeholder="Opis skrócony (od 10 do 250znaków)" required>{{ $content->lead ?? '' }}</textarea>                
+                <label class="form-label"  for="lead"><strong>Lid - krótki opis wyświetlany przy ogłoszeniu </strong> <small>(min. 30 znaków max. 250)*</label><br>
+                <textarea class="form-control rounded-2 p-2" id="lead" name="lead" rows="3"  minlength=30 maxlength=250 placeholder="Opis skrócony (od 10 do 250znaków)" required>{{ $content->lead ?? '' }}</textarea>                
             </div>
 
             <div class="col-md-12 mb-4">
-                <label class="form-label"  for="description"><strong>Treść - pełny opis wyświetlany w  rozwinięciu ogłoszenia</strong></label><br>
+                <label class="form-label"  for="description"><strong>Treść - pełny opis wyświetlany w  rozwinięciu ogłoszenia</strong> <small>(min. 35 znaków max. 2500)* </label><br>
                 <textarea class="form-control rounded-2 p-2" id="description" name="description" rows="10" placeholder="Treść ogłoszenia (od 30 do 3000 znaków)" required>{{ $content->description ?? ''}}</textarea>
             </div>
 
@@ -184,6 +183,23 @@
 <script type="text/javascript">
 
 $( document ).ready(function() {
+
+
+    const form = document.querySelector("form");
+    const input = form.querySelector("input");
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+
+        //jeżeli wszystko ok to wysyłamy
+        if (input.value.length >= 3) {
+            e.target.submit();
+        } else {
+            //jeżeli nie to pokazujemy jakieś błędy
+            alert("Kolego wypełniłeś błędnie nasz super formularz");
+        }
+    })
+
     const date = new Date();
 
     $( "#date_start" ).datepicker({

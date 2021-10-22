@@ -11,11 +11,15 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+ //import MultiStepForm from "./components//form/multiFormTest/MultiStepForm";
 
 require('./components/SliderPromo');
 require('./components/SliderPromoParm');
 //require('./components/LikeButton');
 require('./components/DatePickerDiv');
+require('./components/form/FormReactContent');
+//require('./components/form/multiFormTest/MultiStepForm');
+
 //require('./components/PriceAutocomplete');
 
 import $ from 'jquery';
