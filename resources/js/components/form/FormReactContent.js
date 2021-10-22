@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container';
-import { Form, Button, Group, Select, Col, Row, FloatingLabel } from 'react-bootstrap';
+import { Form, Button, Group, Select, Col, Row, FloatingLabel, InputGroup, FormControl, OverlayTrigger, Tooltip, Image, ProgressBar } from 'react-bootstrap';
+
+
 
 class FormReactContent extends React.Component {
     constructor(props) {
@@ -12,7 +14,11 @@ class FormReactContent extends React.Component {
       };
   
       this.handleInputChange = this.handleInputChange.bind(this);
+
+	  
     }
+
+	 
   
     handleInputChange(event) {
       const target = event.target;
@@ -23,10 +29,82 @@ class FormReactContent extends React.Component {
         [name]: value
       });
     }
-  
+ 
     render() {
       return (
         <Container>
+<OverlayTrigger
+    placement="bottom"
+    overlay={<Tooltip id="button-tooltip-2">Check out this avatar</Tooltip>}
+  >
+    {({ ref, ...triggerHandler }) => (
+      <Button
+        variant="dark"
+        {...triggerHandler}
+        className="d-inline-flex align-items-center"
+      >
+     <Image
+          ref={ref}
+          roundedCircle
+          src="holder.js/20x20?text=J&bg=28a745&fg=FFF"
+        />
+        <span className="ms-1">Hover to see</span>
+      </Button>
+    )}
+  </OverlayTrigger>
+
+
+<InputGroup className="mb-3">
+    <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+    <FormControl
+      placeholder="Username"
+      aria-label="Username"
+      aria-describedby="basic-addon1"
+
+	 
+    />
+  </InputGroup>
+
+  <InputGroup className="mb-3">
+    <FormControl
+      placeholder="Recipient's username"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+    />
+    <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+  </InputGroup>
+
+  <Form.Label htmlFor="basic-url">Your vanity URL</Form.Label>
+  <InputGroup className="mb-3">
+    <InputGroup.Text id="basic-addon3">
+      https://example.com/users/
+    </InputGroup.Text>
+    <FormControl id="basic-url" aria-describedby="basic-addon3" />
+  </InputGroup>
+
+  <InputGroup className="mb-3">
+    <InputGroup.Text>$</InputGroup.Text>
+    <FormControl aria-label="Amount (to the nearest dollar)" />
+    <InputGroup.Text>.00</InputGroup.Text>
+  </InputGroup>
+
+  <InputGroup>
+    <InputGroup.Text>With textarea</InputGroup.Text>
+    <FormControl as="textarea" aria-label="With textarea" />
+  </InputGroup>
+			<Row>
+				<Col>1 of 3</Col>
+				<Col xs={6}>2 of 3 (wider)</Col>
+				<Col>3 of 3</Col>
+			</Row>
+			<Row>
+				<Col>1 of 3</Col>
+				<Col xs={5}>2 of 3 (wider)</Col>
+				<Col>3 of 3</Col>
+			</Row>
+
+
+
         <Form>
           <Form.Group controlId="formName">
               <Form.Label>Name</Form.Label>
@@ -59,10 +137,23 @@ class FormReactContent extends React.Component {
     </FloatingLabel>
   </Col>
 </Row>
+<Row>
+<InputGroup className="mb-3">
+    <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+    <FormControl aria-label="Text input with checkbox" />
+  </InputGroup>
+  <InputGroup>
+    <InputGroup.Radio aria-label="Radio button for following text input" />
+    <FormControl aria-label="Text input with radio button" />
+  </InputGroup>
+</Row>
         </Form>
-     
-       
+		<Row>
+			<ProgressBar now={60} />
+		</Row>
         </Container>
+
+		
       );
     }
   }
