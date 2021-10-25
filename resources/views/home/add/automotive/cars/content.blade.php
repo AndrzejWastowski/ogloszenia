@@ -83,8 +83,8 @@
                 
                 <div class="col-md-3 mb-4">                
                     <label class="brand"><strong>Typ nadwozia:</strong></label>
-                    <select class="form-select" name="cars_categories_id" id="cars_categories_id" required>
-                        <option value="" diabled selected="">Wybierz nadwozie</option>  
+                    <select class="form-select" name="cars_body_id" id="cars_body_id" required>
+                        <option value="0" diabled selected="">Wybierz nadwozie</option>  
                             @foreach($bodies as $body)
                                 <option value="{{$body->id}}" {{ ($body->id == $content->cars_body_id ? 'selected' : '') }} >{{$body->name}}</option>
                             @endforeach                            
@@ -95,7 +95,7 @@
             <div class="row">   
                 <div class="col-md-4 mb-4">    
                     <label class="brand"><strong>Rodzaj paliwa</strong></label>            
-                    <select class="form-select" id="technical_condition">
+                    <select class="form-select" id="fuel_type" name="fuel_type">
                         <option value="Benzyna">Benzyna</option>
                         <option value="Olej napędowy">Olej napędowy</option>
                         <option value="Gaz LPG">Gaz LPG</option>
@@ -112,7 +112,7 @@
 
                 <div class="col-md-4 mb-4">  
                     <label class="form-label"   for="capacity"><strong>Pojemnosć silnika</strong></label>                                               
-                    <input placeholder="Pojemnosć silnika / baterii" type="text" id="capacity" name="capacity" value='{{ $content->capacity ?? ''}}' class="form-control rounded" >
+                    <input placeholder="Pojemnosć silnika / baterii" type="number" id="capacity" name="capacity" value='{{ $content->capacity ?? 0}}' class="form-control rounded" >
                 </div>
             </div>
 
@@ -120,12 +120,12 @@
             <div class="row">
                 <div class="col-md-2 mb-4">    
                     <label class="brand"><strong>Ilość drzwi:</strong></label>            
-                    <input type="number" class="form-control" value="4">
+                    <input type="number" id ="doors_number" name="doors_number" class="form-control" value="4">
                         
                 </div>
                 <div class="col-md-2 mb-4">    
                     <label class="brand"><strong>Osób:</strong></label>            
-                    <input type="number" class="form-control" value="5">
+                    <input type="number" id="seats" name="seats" class="form-control" value="5">
                         
                 </div>
             </div>
@@ -156,10 +156,7 @@
                     {{-- <option value="{{$model->id}}" {{ ($model->id == $content->cars_models_id ? 'selected' : '') }} >{{$model->name}}</option> --}}
                     @endforeach                           
                 </select>
-            </div>     
-            
-
-
+            </div>                 
 
             <div class="col-md-6">
                 <label class="form-label"  for="date_production"><strong>Data produkcji</strong></label>                                               
@@ -172,18 +169,20 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label"  for="date_registration"><strong>Data rejestracji</strong></label>                                               
-                <input placeholder="date_registration" type="text" id="date_registration" name="date_registration" value='{{ $content->date_registration ?? ''}}' class="form-control" required>
+                <label class="form-label"  for="country_registration"><strong>Kraj pierwszej rejestracji</strong></label>                                               
+                <input placeholder="Kraj rejestracji" type="text" id="country_registration" name="country_registration" value='{{ $content->country_registration ?? ''}}' class="form-control" required>
             </div>
 
             <div class="col-md-6">
-                <label class="form-label"  for="country_registration"><strong>Kraj pierwszej rejestracji</strong></label>                                               
-                <input placeholder="country_registration" type="text" id="country_registration" name="country_registration" value='{{ $content->country_registration ?? ''}}' class="form-control" required>
+                <div class="form-check">
+                    <label class="form-label" ><strong>Zarejestrowany w Polsce?</strong></label><br>
+                    <input class="form-check-input" type="checkbox" value="1" id="poland_registration" checked>
+                    <label class="form-check-label" for="poland_registration">
+                      Tak
+                    </label>
+                  </div>
             </div>
 
-
-            
-                            
             <div class="col-md-6">
                 <label class="form-label"  for="date_start"><strong>Start ogłoszenia</strong></label>                                               
                 <input placeholder="Data publikacji" type="text" id="date_start" name="date_start" value='{{ $content->date_start ?? ''}}' class="form-control datepicker" data-provide="datepicker" required>
@@ -197,20 +196,16 @@
                         <option value="30">Miesiąc</option>                        
                     </select>                             
             </div>
-
-            <div class="col-md-12 mb-4"> 
-                    <label class="form-label" for="name"><strong>Nazwa</strong></label>
-                    <input type="text" id="name" name="name" class="form-control rounded " placeholder="Nazwa towaru / produktu" value="{{ $content->name ?? '' }}" required >
-            </div>                            
+                       
 
             <div class="col-md-12 mb-4">
                 <label class="form-label"  for="lead"><strong>Lid - krótki opis wyświetlany przy ogłoszeniu</strong></label><br>
-                <textarea class="form-control rounded-2 p-2" id="lead" name="lead" rows="3" placeholder="Opis skrócony (od 10 do 250znaków)" required>{{ $content->lead ?? '' }}</textarea>                
+                <textarea class="form-control rounded-2 p-2" id="lead" minlength=30 maxlength=255 name="lead" rows="3" placeholder="Opis skrócony (od 10 do 250znaków)" required>{{ $content->lead ?? '' }}</textarea>                
             </div>
 
             <div class="col-md-12 mb-4">
                 <label class="form-label"  for="description"><strong>Treść - pełny opis wyświetlany w  rozwinięciu ogłoszenia</strong></label><br>
-                <textarea class="form-control rounded-2 p-2" id="description" name="description" rows="10" placeholder="Treść ogłoszenia (od 30 do 3000 znaków)" required>{{ $content->description ?? ''}}</textarea>
+                <textarea class="form-control rounded-2 p-2" id="description" minlength=30 maxlength=2500 name="description" rows="10" placeholder="Treść ogłoszenia (od 30 do 3000 znaków)" required>{{ $content->description ?? ''}}</textarea>
             </div>
 
             <div class="col-md-3 mb-4">
@@ -218,14 +213,11 @@
                 <input type="text" id="price" name="price" class="form-control" placeholder="Cena" value="{{ $content->price ?? ''}}" required>
             </div>
             
-            <div class="col-md-3 mb-4">
-                <label class="form-label" for="items"><strong>ile sztuk</strong></label>
-                <input type="text" id="items" name="items" class="form-control" placeholder="sztuk" value="{{ $content->items ?? '' }}" required>
-            </div>   
+         
             <div class="col-md-6 mb-4">
                 <label for="invoice"><strong>Rodzaj wystawianego rachunku</strong></label>
                 <select class="form-select" name="invoice" id="invoice" required>
-                    <option value="0" diabled selected="">Wybierz rodzaj rachunku</option>
+                    <option diabled selected="">Wybierz rodzaj rachunku</option>
                     <option value="Nie wystawiam faktury" >Nie wystawiam faktury</option>
                     <option value="Faktura VAT">Faktura z VAT</option>
                     <option value="Faktura Vat-marża">Faktura Vat-marża</option>
@@ -233,17 +225,7 @@
                 </select>                                 
             </div>
                             
-            <div class="col-md-12">                 
-                <label class=""><strong>Rodzaj oferty</strong></label>                
-            </div>
-            <div class="col-md-4 mb-4">                
-                <input type="radio" class="form-check-input" id="conditionNew" name="condition" value="nowe" checked>
-                <label class="form-check-label" for="condition_new">Produkt nowy</label>
-            </div>
-            <div class="col-md-4 mb-4">
-                <input type="radio" class="form-check-input" id="conditionUsed" name="condition" value="używane" >
-                <label class="form-check-label" for="conditionUsed">Produkt używany</label>
-            </div>
+        
             
             <div class="col-md-6">          
                 <label for="contact_phone" value=""><strong>Telefon kontaktowy</strong></label>
@@ -272,6 +254,15 @@
 
 $( document ).ready(function() {
     const date = new Date();
+
+
+    $( "#date_production" ).datepicker({
+        dayNamesShort: [ "Pn", "Wt", "Śr", "Czw", "Pt", "So", "Nd" ],
+        dateFormat: 'yy',
+        setDate: date,
+        value: date
+    });
+
 
     $( "#date_registration" ).datepicker({
         dayNamesShort: [ "Pn", "Wt", "Śr", "Czw", "Pt", "So", "Nd" ],

@@ -39,24 +39,23 @@ class ContentController extends Controller
         $this->storage = $storage::disk('local');
     }
 
-    //public function content($brand,$bid,$model,$mid,$name,$id)
+    //public function content($brand,$bid,$model,$mid,$id)
 
     public function content(Request $request)    
     {
-        $name = $request->input('user.name');
+     
         $id = (int)$request->id;
         $model = (string)$request->model;
         $mid = (int)$request->mid;
         $brand = (string)$request->brand;
-        $bid = (int)$request->bid;
-        $name = (string)$request->name;
+        $bid = (int)$request->bid;        
 
      /*   $validated = $request->validate([
-            'name' => 'required',
+           
             'brand' => 'required',
         ]);
 */
-        $data = 'data: '.$brand.' '.$bid.' '.$model.' '.$mid.' '.$name.' '.$id;
+        $data = 'data: '.$brand.' '.$bid.' '.$model.' '.$mid.' '.$id;
     //    dd($validated);
         
         $content = $this->CarsRepository->getCarsById($request->id);

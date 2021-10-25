@@ -23,24 +23,38 @@ class CarsContentRequest extends FormRequest
     public function rules()
     {
         return [           
-            'id' => ['required', 'integer', 'min:0'],
-            'name' => 'required|min:10|max:255',
+            'id' => 'required', 'integer', 'min:0',
             'lead' => 'required|min:30|max:255',
             'description' => 'required|min:30|max:2500',
-            'estates_type'=> 'required|in:Sprzedam,Wynajmę,Zamienię',            
-            'cars_brands' => 'required|integer|min:1',      
-            'date_start' => 'required|date|date_format:Y-m-d|after:yesterday',
-            'date_end' => 'required|integer|min:1|digits_between: 1,30',
-            'price' => 'required|numeric|min:0|max:99999999',
-            'area' => 'required|numeric|min:0|max:99999999',            
-            'unit' => 'required|in:mkw,ar,hektar',
-            'market' => 'required|in:pierwotny,wtórny',
+            'country_registration' => 'required|min:5|max:55',  
+            'cars_brands_id' => 'required|integer|min:1',      
+            'cars_models_id' => 'required|integer|min:1',   
+            'cars_body_id' => 'required|integer|min:1',   
+            'date_production' => 'required',
+            'date_registration' => 'required',
+            'country_registration' => 'required',
+            'poland_registration' =>'nullable',
+            'power' =>'nullable',
+            'fuel_type' =>'required|in:"Benzyna","Olej napędowy","Gaz LPG","Gaz CNG","Elektryczny","Hybryda,Wodór"',
+            'capacity' =>'required|integer|min:0',
+            'doors_number' =>'required|integer|min:0',
+            'seats' =>'required|integer|min:0',
+            'condition'=> 'required|in:nowy,używany',
+            'demaged'=> 'nullable',
+            'accident'=> 'nullable',            
+            'price' => 'required|numeric|min:0|max:99999999',              
             'contact_phone' =>  'nullable',
             'contact_email' =>  'nullable', 'email:rfc',function($attribute, $value, $fail) {
-            if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-               $fail($attribute . ' is invalid.');
-            }
-         } 
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    $fail($attribute . ' is invalid.');
+                }
+            },
+            'invoice' => 'required|in:Nie wystawiam faktury,Faktura VAT,Faktura Vat-marża,Faktura bez VAT',
+            'date_start' => 'required|date|date_format:Y-m-d|after:yesterday',
+            'date_end' => 'required|integer|min:1|digits_between: 1,30',            
+           
+            
+         
         ];
     }
 
@@ -52,27 +66,27 @@ class CarsContentRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'pole <b>nazwa</b> jest wymagane!<br>',
-            'name.min' => 'pole <b>nazwa</b> musi zawierać wiecej niż 10 znaków (i mniej niż 255!)<br>',
-            'name.max' => 'pole <b>nazwa</b> musi zawierać mniej niż 255 znaków (i więcej niż 10!)<br>',
+   
             'lead.required' => 'pole <b>lid</b> jest wymagane!<br>',
             'lead.min' => 'pole <b>lid</b> musi zawierać wiecej niż 30 znaków (i mniej niż 255!)<br>',
             'lead.max' => 'pole <b>lid</b> musi zawierać mniej niż 255 znaków (i więcej niż 30!)<br>',
             'description.required' => 'pole <b>opis</b> jest wymagane!<br>',
             'description.min' => 'pole <b>opis</b> musi zawierać wiecej niż 30 znaków (i mniej niż 250!)<br>',
             'description.max' => 'pole <b>opis</b> musi zawierać mniej niż 3000 znaków (i więcej niż 30!)<br>',
+            'country_registration.required' => 'pole <b>pierwsza rejestracja</b> jest wymagane<br>',
+            'poland_registration.required' => 'pole <b>rejestracja w Polsce</b> jest wymagane<br>',            
             'date_start.required' => 'Pole <b>data start</b> jest niepoprawne<br>',
             'date_start.date_format' => 'niepoprawny format <b>data start</b>',
             'date_start.after' => 'Pole  <b>data startowa</b> ogłoszenia nie może być z datą wsteczną!',
             'date_end.required' => 'Pole <b>data end</b> musi być późniejsza niż data start',            
-            'cars_brands:required' => 'nie wybrałeś podkategorii',
-            'cars_brands:min:1' => 'nie wybrałeś podkategorii',
-            'cars_models:required' => 'nie wybrałeś podkategorii',
-            'cars_models:min:1' => 'nie wybrałeś podkategorii',
+            'cars_brands_id:required' => 'nie wybrałeś podkategorii',
+            'cars_brands_id:min:1' => 'nie wybrałeś podkategorii',
+            'cars_models_id:required' => 'nie wybrałeś podkategorii',
+            'cars_models_id:min:1' => 'nie wybrałeś podkategorii',
             'area' => 'niepoprawnie wybrana powierzchnia',
             'price:required' => 'pole <b>cena</b> jest wymagane',
             'price:max' => 'Chyba troche przesadziłeś z <b>ceną</b> ',          
-            'estates_type:in' => 'rodzaj ogłoszenia'
+         
        
         ];
     }
@@ -86,7 +100,7 @@ class CarsContentRequest extends FormRequest
     {
         return [
             'email' => 'trim|lowercase',
-            'name' => 'trim|capitalize|escape'
+            'lead' => 'trim|capitalize|escape'
         ];
     }
 }

@@ -16,8 +16,7 @@ class CarsContent extends Model
      */
     protected $fillable = [
         'id',
-        'user_id',
-        'name', 
+        'user_id',   
         'lead', 
         'description', 
         'cars_brands_id', 
@@ -29,6 +28,7 @@ class CarsContent extends Model
         'date_production',
         'date_registration' ,
         'country_registration',
+        'poland_registration',
         'power',
         'capacity',
         'dors_number',
@@ -74,6 +74,12 @@ class CarsContent extends Model
     {
         
         return $this->belongsTo(CarsBrand::class, 'cars_brands_id');
+    }
+
+    public function carsBody()
+    {
+        
+        return $this->belongsTo(carsBody::class, 'cars_body_id');
     }
 
     public function photos()
@@ -123,11 +129,7 @@ class CarsContent extends Model
         return $this->users_id;
     }   
 
-    public function get_name(): int
-    {
-        return $this->name;
-    }
-
+ 
      public function get_lead(): string
     {
         return $this->lead;
@@ -138,6 +140,20 @@ class CarsContent extends Model
         return $this->description;
     }
 
+    public function get_condition(): string
+    {
+        return $this->condition;
+    }
+
+    public function get_country_registration(): string
+    {
+        return $this->country_registration;
+    }
+    
+    public function get_poland_registration(): string
+    {
+        return $this->poland_registration;
+    }
 
     public function get_cars_type(): int
     {
@@ -149,7 +165,19 @@ class CarsContent extends Model
         return $this->cars_brands_id;
     }
 
-    public function get_area(): int
+    
+    public function get_cars_models_id(): int
+    {
+        return $this->cars_models_id;
+    }
+
+    public function get_cars_body_id(): int
+    {
+        return $this->get_cars_body_id;
+    }
+
+
+public function get_area(): int
     {
         return $this->area;
     }
@@ -176,15 +204,9 @@ class CarsContent extends Model
         return $this->date_end;
     }
 
-
-    public function get_cars_user_group_id(): int
+    public function get_date_production(): string
     {
-        return $this->cars_user_group_id;
-    }
-
-    public function get_cars_classified_enum(): string
-    {
-        return $this->cars_classified_enum;
+        return $this->date_production;
     }
 
     public function get_views(): string
@@ -207,6 +229,7 @@ class CarsContent extends Model
         return $this->adresses_id;
     }
 
+    
   
     public function get_top(): int
     {
@@ -281,11 +304,7 @@ class CarsContent extends Model
         $this->users_id = $value;
     }
 
-    public function set_name(?string $value): void
-    {
-        $this->name  = $value;
-    }
-
+    
     public function set_cars_type(?string $value): void
     {
         $this->cars_type  = $value;
@@ -296,10 +315,28 @@ class CarsContent extends Model
         $this->lead  = $value;
     }
 
-        public function set_description(?string $value): void
+    public function set_description(?string $value): void
     {
         $this->description  = $value;
     }
+
+
+    public function set_condition(?string $value): void
+    {
+        $this->condition  = $value;
+    }
+
+
+    public function set_country_registration(?string $value): void
+    {
+        $this->country_registration  = $value;
+    }
+
+    public function set_poland_registration(?int $value): void
+    {
+        $this->poland_registration  = $value;
+    }
+
 
     public function set_unit(?string $value): void
     {
@@ -337,20 +374,30 @@ class CarsContent extends Model
         $this->cars_brands_id = $value;
     }
 
-    public function set_cars_user_group_id(int $value): void
-    {
-        $this->cars_user_group_id = $value;
-    }
 
+    
     public function set_cars_models_id(int $value): void
     {
         $this->cars_models_id = $value;
     }
 
-    public function set_cars_classified_enum(?string $value): void
+
+    public function set_cars_body_id(int $value): void
     {
-        $this->cars_classified_enum = $value;
+        $this->cars_body_id = $value;
     }
+
+    public function set_date_production(?string $value): void
+    {
+        $this->date_production = $value;
+    }
+
+
+    public function set_date_registration(?string $value): void
+    {
+        $this->date_registration = $value;
+    }
+
 
     public function set_views(?int $value): void
     {

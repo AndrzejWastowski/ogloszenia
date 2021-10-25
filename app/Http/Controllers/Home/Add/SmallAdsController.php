@@ -132,13 +132,14 @@ final class SmallAdsController extends Controller
     {
 
         $data = $request->validated();          
-        //dd($data);
+        $ID = intval($data['id']);
+
          //sprawdzamy czy to nowe ogłoszenie, czy może aktualizacja rozpoczętego dodawania
-        if ($data['id']>0) {
+        if (is_numeric($ID) and ($ID>0)) {
             
             //aktualizacja wczesniej dodawanego ogłoszenia
 
-            $small_ads_contents = $this->smallAdsRepository->get($data['id']);
+            $small_ads_contents = $this->smallAdsRepository->get($ID);
             
             // pobieramy istniejacy rekord 
             // sprawdzamy czy aktualny uzytkownik jest faktycznym właścicielem ogłoszenia

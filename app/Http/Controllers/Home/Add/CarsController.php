@@ -166,29 +166,36 @@ final class CarsController extends Controller
             $cars_contents = new \App\Models\CarsContent();
         }
 
+
+        if (!isset($data['poland_registration'])) $data['poland_registration']=0;
         
         //$cars_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
-        $cars_contents->users_id = Auth::id();
-        $cars_contents->set_name($data['name']);
+        $cars_contents->users_id = Auth::id();        
         $cars_contents->set_lead($data['lead']);
         $cars_contents->set_description($data['description']);
-        $cars_contents->set_condition($data['condition']);
-        $cars_contents->set_items((int)$data['items']);
+        $cars_contents->set_condition($data['condition']);       
         $cars_contents->set_price((float)$data['price']);
+        $cars_contents->set_power((int)$data['power']);
+        $cars_contents->set_seats((int)$data['seats']);
         $cars_contents->set_date_start($data['date_start']);
         $data['date_end'] = (date('Y-m-d', strtotime($data['date_start']. ' + '.$data['date_end'].' days')));
+        $cars_contents->set_country_registration($data['country_registration']);
+        $cars_contents->set_poland_registration((int)$data['poland_registration']);
+        $cars_contents->set_date_registration($data['date_registration']);
+        $cars_contents->set_date_production($data['date_production']);
 
       //  dd($data['date_end']);
         $cars_contents->set_date_end($data['date_end']);
         $cars_contents->set_cars_brands_id((int)$data['cars_brands_id']);
         $cars_contents->set_cars_models_id((int)$data['cars_models_id']);
-        $cars_contents->set_cars_classified_enum($data['cars_classified_enum']);
+        $cars_contents->set_cars_body_id((int)$data['cars_body_id']);        
         $cars_contents->set_contact_email($data['contact_email']);
         $cars_contents->set_contact_phone($data['contact_phone']);
         $cars_contents->set_users_id(Auth::id());
 
         $cars_contents->set_portal_id((int)(env('PORTAL_ID')));
+        
 
         //logi przy ogloszeniu
 
@@ -211,10 +218,10 @@ final class CarsController extends Controller
             $user['longitude'] = $location->longitude;        
         }
 
-
+        //dd((int)$user['port']);
         $cars_contents->set_adress_ip($user['ip']);
         $cars_contents->set_host($user['host']);
-        $cars_contents->set_port($user['port']);
+        $cars_contents->set_port((int)$user['port']);
         $cars_contents->set_browser($user['browser']);
 
         $cars_contents->save();
@@ -227,8 +234,6 @@ final class CarsController extends Controller
     {
         $cars_contents = $request->session()->get('cars_contents'); 
         $photos = $this->carsPhotosRepository->getAllPhotosByCars($cars_contents->get_id());   
-
-        $contents = Storage::url('public/cars/601aaab35cbdb_kw.jpg');
 
        // dd($contents);
 
@@ -387,6 +392,8 @@ final class CarsController extends Controller
         $models = $this->carsModelsRepository->getModelsByBrandsId($content['cars_brands_id'] );  
 
         $bodies = $this->carsBodiesRepository->getBodiesById($content['cars_bodies_id'] ); 
+
+
        // dd($models);
 
        //zliczanie płatności po stronie serwera
