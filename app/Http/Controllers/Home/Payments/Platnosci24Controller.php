@@ -79,8 +79,42 @@ class Platnosci24Controller extends Controller
 
 
 
-    public function select()
+    public function status(Request $request)
     {
-        return view('home/select');
+
+        $data = $request->value(); 
+        
+        $data['p24_merchant']; //ID Sprzedawcy
+        
+        $data['p24_pos_id']; //  ID Sklepu Sprzedawcy)
+        
+        $data['p24_session_id']; // (STRING(100)Unikalny identyfikator z systemu sprzedawcy)
+
+        $data['p24_amount']; // INTKwota transakcji wyrażona WALUTA/100 (1.23 PLN = 123)
+        $data['p24_currency']; // STRING(3)PLN, EUR, GBP, CZK
+        $data['p24_order_id']; // INTNumer transakcji nadany przez Przelewy24
+        $data['p24_method']; // INTMetoda klienta
+        $data['p24_statement']; // STRINGTytuł przelewu
+        $data['p24_sign']; // STRING Suma kontrolna wyliczana wg opisu poniżej (patrz pkt. 7.1) z pól: p24_session_id,p24_order_id,p24_amount ,p24_currency,„Klucz CRC”
+        return view('home/payments/status');
     }
+
+
+
+    public function verify(Request $request)
+    {
+        $data = $request;
+        dd($data);
+
+        return view('home/payments/verify',[
+
+         
+            'data' => $data,
+         
+        ]);
+    }
+
+
+    
+
 }
