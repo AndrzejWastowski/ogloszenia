@@ -23,8 +23,8 @@ class CreateCarsContentsTable extends Migration
             $table->integer('cars_brands_id')->unsigned()->comment('marka pojazdu');
             $table->integer('cars_models_id')->unsigned()->comment('model pojazdu');
             $table->integer('cars_body_id')->unsigned()->comment('nadwozie sedan kombi itd.. zróżnicowane od modelu');            
-            $table->dateTime('date_production')->comment('data produkcji');
-            $table->dateTime('date_registration')->comment('data prodpierwszej rejestracji');
+            $table->year('date_production')->comment('data produkcji');
+            $table->year('date_registration')->comment('data pierwszej rejestracji');
             $table->string('country_registration',50)->comment('kraj rejestracji - z którego pochodzi auto');
             $table->integer('power')->unsigned()->comment('moc silnika (Konie mechaniczne)');
             $table->enum('fuel_type',['Benzyna','Olej napędowy','Gaz LPG','Gaz CNG','Elektryczny','Hybryda','Wodór'])->comment('rodzaj paliwa');
@@ -32,8 +32,8 @@ class CreateCarsContentsTable extends Migration
             $table->unsignedTinyInteger('doors_number')->comment('liczba drzwi');
             $table->unsignedTinyInteger('seats')->comment('liczba miejsc siedzących');
             $table->enum('condition', ['nowy','używany'])->comment('stan pojazdu - nowy / używany');
-            $table->unsignedTinyInteger('demaged')->comment('Czy pojazd jest uszkodzony');
-            $table->unsignedTinyInteger('accident')->comment('czy miał wypadek?');
+            $table->integer('technical_condition')->unsigned()->comment('uszkodzony / sprawny');
+            $table->integer('accident')->unsigned()->comment('bezywpadkowy');
             $table->decimal('price', 11, 2)->comment('Cena?');
             $table->string('contact_phone',100)->nullable()->comment('kontakt tel do sprzedawcy');  
             $table->string('contact_email',200)->nullable()->comment('kontakt e-mail do sprzedawcy');  

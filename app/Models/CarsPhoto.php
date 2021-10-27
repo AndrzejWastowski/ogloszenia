@@ -15,7 +15,7 @@ class CarsPhoto extends Model
      */
     protected $guarded = [];
     public $timestamps = false;
-    protected $fillable = ['id', 'estates_contents_id', 'name', 'sort',];
+    protected $fillable = ['id', 'cars_contents_id', 'name', 'sort',];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -70,9 +70,9 @@ class CarsPhoto extends Model
         $this->name = $value;
     }
 
-    public function set_estates_contents_id(?int $value): void
+    public function set_cars_contents_id(?int $value): void
     {
-        $this->estates_contents_id = $value;
+        $this->cars_contents_id = $value;
     }
 
     

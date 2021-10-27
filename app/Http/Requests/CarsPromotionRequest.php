@@ -26,9 +26,6 @@ class CarsPromotionRequest extends FormRequest
 
             'inscription' => 'required|in:none,Promocja!,Bestseller,Wyprzedaż',           
             'highlighted' => 'required|in:#ffffff,#c8cdff,#ffc8dd,#c8ffdf,#eac8ff,#fff7c8',
-           
-
-
             
         ];
     }

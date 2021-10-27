@@ -38,9 +38,10 @@
 </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Nieruchomości</li> 
-            <li class="breadcrumb-item">{{ $categories->name }}</li>          
-            <li class="breadcrumb-item active">{{ $content->name }}</li>                   
+     
+            <li class="breadcrumb-item">Samochody Osobowe</li> 
+            <li class="breadcrumb-item">{{ $brands[0]->name }}</li>          
+            <li class="breadcrumb-item active">{{ $models[0]->name }}</li>                   
         </ol>
     </nav>  
     <div class="card m-1">
@@ -72,7 +73,7 @@
 
                             @if ($active==null) @php($active = 'active') @else @php($active = ' ') @endif                            
                                 
-                            @php ($HTML_PHOTO .= '<div class="carousel-item '.$active.'"><img class="d-block w-100 "  src="'.$storage->url('public/estates/'.$photo->name.'_kw.jpg').'" alt="'.$content->name.'" width="200"></div>')
+                            @php ($HTML_PHOTO .= '<div class="carousel-item '.$active.'"><img class="d-block w-100 "  src="'.$storage->url('public/cars/'.$photo->name.'_kw.jpg').'" alt="'.$content->name.'" width="200"></div>')
                                     
                         @endforeach                            
                         
@@ -151,7 +152,7 @@
                 </form>
                 @else
 
-                <form action="{{ route('estates_success_post') }}"  class="p-5" method="POST" role="form" >
+                <form action="{{ route('cars_success_post') }}"  class="p-5" method="POST" role="form" >
                     @csrf
                     
                     <input type="hidden" name="payment_id" value="{{ $payments }}">

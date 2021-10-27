@@ -117,6 +117,15 @@ Route::group(['prefix' => 'motoryzacja'], function () {
 
 Auth::routes();
 #group route to task of adding services
+
+Route::group(['prefix' => 'payments'], function () {
+    Route::get('/', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'index'])->name('payments');
+    Route::get('/callback', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'callback'])->name('payments_callback');
+    
+});
+
+
+
 Route::group(['prefix' => 'home'], function () {
     
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

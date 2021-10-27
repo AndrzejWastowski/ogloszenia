@@ -39,9 +39,8 @@ class CarsContentRequest extends FormRequest
             'capacity' =>'required|integer|min:0',
             'doors_number' =>'required|integer|min:0',
             'seats' =>'required|integer|min:0',
-            'condition'=> 'required|in:nowy,używany',
-            'demaged'=> 'nullable',
-            'accident'=> 'nullable',            
+            'condition'=> 'required|in:nowy,używany',            
+            'technical_condition' => 'required',            
             'price' => 'required|numeric|min:0|max:99999999',              
             'contact_phone' =>  'nullable',
             'contact_email' =>  'nullable', 'email:rfc',function($attribute, $value, $fail) {

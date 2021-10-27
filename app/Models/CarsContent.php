@@ -29,13 +29,13 @@ class CarsContent extends Model
         'date_registration' ,
         'country_registration',
         'poland_registration',
-        'power',
+        'power',        
         'capacity',
-        'dors_number',
+        'doors_number',
         'seats',
-        'condition',
-        'demaged',
-        'accident',
+        'condition',  
+        'technical_condition',    
+        'accident',  
         'price',
         'mileage',
         'fuel_type',        
@@ -144,6 +144,17 @@ class CarsContent extends Model
     {
         return $this->condition;
     }
+    public function get_technical_condition(): int
+    {
+        return $this->technical_condition;
+    }
+    
+    public function get_accident(): int
+    {
+        return $this->get_accident;
+    }
+    
+    
 
     public function get_country_registration(): string
     {
@@ -196,9 +207,28 @@ public function get_area(): int
     {
         return $this->price;
     }
-
+    
+    public function get_power(): int
+    {
+        return $this->price;
+    }
  
+    public function get_seats(): int
+    {
+        return $this->seats;
+    }
 
+    public function get_capacity(): int
+    {
+        return $this->capacity;
+    }
+    
+    public function get_doors_number(): int
+    {
+        return $this->doors_number;
+    }
+    
+   
     public function get_date_end(): int
     {
         return $this->date_end;
@@ -327,6 +357,17 @@ public function get_area(): int
     }
 
 
+    public function set_technical_condition(?int $value): void
+    {
+        $this->technical_condition  = $value;
+    }
+
+    public function set_accident(?int $value): void
+    {
+        $this->accident  = $value;
+    }
+
+    
     public function set_country_registration(?string $value): void
     {
         $this->country_registration  = $value;
@@ -352,6 +393,28 @@ public function get_area(): int
     {
         $this->price  = $value;
     }
+
+
+    public function set_power(?int $value): void
+    {
+        $this->power  = $value;
+    }
+
+    public function set_seats(?int $value): void
+    {
+        $this->seats  = $value;
+    }
+
+    public function set_capacity(?int $value): void
+    {
+        $this->capacity  = $value;
+    }
+    
+    public function set_doors_number(?int $value): void
+    {
+        $this->doors_number  = $value;
+    }
+
 
     public function set_market(?string $value): void
     {

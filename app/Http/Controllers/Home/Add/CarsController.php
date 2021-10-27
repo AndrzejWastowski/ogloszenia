@@ -168,9 +168,10 @@ final class CarsController extends Controller
 
 
         if (!isset($data['poland_registration'])) $data['poland_registration']=0;
+        if (!isset($data['accident'])) $data['accident']=0;
         
         //$cars_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
-        
+       // dd($data);
         $cars_contents->users_id = Auth::id();        
         $cars_contents->set_lead($data['lead']);
         $cars_contents->set_description($data['description']);
@@ -178,6 +179,10 @@ final class CarsController extends Controller
         $cars_contents->set_price((float)$data['price']);
         $cars_contents->set_power((int)$data['power']);
         $cars_contents->set_seats((int)$data['seats']);
+        $cars_contents->set_doors_number((int)$data['doors_number']);
+        $cars_contents->set_capacity((int)$data['capacity']);      
+        $cars_contents->set_accident((int)$data['accident']);      
+        $cars_contents->set_technical_condition((int)$data['technical_condition']);                
         $cars_contents->set_date_start($data['date_start']);
         $data['date_end'] = (date('Y-m-d', strtotime($data['date_start']. ' + '.$data['date_end'].' days')));
         $cars_contents->set_country_registration($data['country_registration']);
@@ -308,8 +313,32 @@ final class CarsController extends Controller
 
     public function promotion(Request $request)
     {
+      
+        $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('cars','master_portal_7'); 
+        $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('cars','master_portal_14'); 
+        $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('cars','master_portal_30');
+                
+        $price['promotion_7']=$this->priceRepository->getAllFromSectionAndName('cars','promotion_7'); 
+        $price['promotion_14']=$this->priceRepository->getAllFromSectionAndName('cars','promotion_14'); 
+        $price['promotion_30']=$this->priceRepository->getAllFromSectionAndName('cars','promotion_30');
+
+        $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('cars','highlighted_7'); 
+        $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('cars','highlighted_14');         
+        $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('cars','highlighted_30'); 
+
+        $price['inscription_7']=$this->priceRepository->getAllFromSectionAndName('cars','inscription_7'); 
+        $price['inscription_14']=$this->priceRepository->getAllFromSectionAndName('cars','inscription_14'); 
+        $price['inscription_30']=$this->priceRepository->getAllFromSectionAndName('cars','inscription_30'); 
+        
+        $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('cars','newspaper_advertisement'); 
+        $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('cars','newspaper_frame'); 
+        $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('cars','newspaper_background'); 
+
+
+       
         return view('home.add.automotive.cars.promotion', [
-            'request'=>$request
+            'request'=>$request,
+            'price'=>$price
         ]);
     }
 
@@ -387,14 +416,10 @@ final class CarsController extends Controller
         }
       // dd($content);
         $brands = $this->carsBrandsRepository->getBrandsById($content['cars_brands_id']);  
-
-       // dd($brands);
+       
         $models = $this->carsModelsRepository->getModelsByBrandsId($content['cars_brands_id'] );  
 
         $bodies = $this->carsBodiesRepository->getBodiesById($content['cars_bodies_id'] ); 
-
-
-       // dd($models);
 
        //zliczanie płatności po stronie serwera
 

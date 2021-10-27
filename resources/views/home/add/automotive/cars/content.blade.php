@@ -71,14 +71,11 @@
       
                 <div class="col-md-4 mb-4">    
                     <label class="brand"><strong>Stan techniczny:</strong></label>            
-                    <select class="form-select" id="technical_condition">
-                        <option value="1">Bezwypadkowy</option>
-                        <option value="2">Po wypadku - sprawny</option>
-                        <option value="3">Uszkodzony - do naprawy</option>
-                    </select>
-                        
+                    <select class="form-select" id="technical_condition" name="technical_condition">
+                        <option value="1">Sprawny</option>
+                        <option value="2">Uszkodzony</option>
+                    </select>                        
                 </div>
-                        
 
                 
                 <div class="col-md-3 mb-4">                
@@ -89,7 +86,13 @@
                                 <option value="{{$body->id}}" {{ ($body->id == $content->cars_body_id ? 'selected' : '') }} >{{$body->name}}</option>
                             @endforeach                            
                     </select>                        
-                </div>       
+                </div>   
+                
+                <div class="col-md-3 mb-4">                
+                    <label class="brand"><strong>Bezwypadkowy:</strong></label>
+                    <input class="form-check-input" type="checkbox" value="1" id="accident" name="accident">
+                </div>   
+
 
             </div> 
             <div class="row">   
