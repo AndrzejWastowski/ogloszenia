@@ -189,10 +189,8 @@
                             <div id="opcje_publikacji_w_gazecie" class="row mb-5">
                                     <div class="col-3 p-0"></div>
                                     <div class="col-9 p-0"><strong>DOSTĘPNE WYDANIA</strong>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="wydanie_gazety">
-                                                <label class="form-check-label" for="wydanie_gazety"><span class="text-success"> [2021-12-01]</span> <strong>Magazyn KCI</strong> - wydanie standardowe</label>
-                                            </div>
+
+                                     
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" id="wydanie_gazety">
                                                 <label class="form-check-label" for="wydanie_gazety"><span class="text-success"> [2021-12-01]</span> <strong>Magazyn KCI</strong> - wydanie standardowe</label>

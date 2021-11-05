@@ -115,16 +115,17 @@ Route::group(['prefix' => 'motoryzacja'], function () {
 
 
 
+Route::get('/payments/callback', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'callback'])->name('payments_callback');
+Route::get('/payments/status', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'status'])->name('payments_status');
+Route::get('/payments/veryfi', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'veryfi'])->name('payments_veryfi');
+
 Auth::routes();
-#group route to task of adding services
 
 Route::group(['prefix' => 'payments'], function () {
+ 
     Route::get('/', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'index'])->name('payments');
-    Route::get('/callback', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'callback'])->name('payments_callback');
-    
+    Route::get('/form', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'form'])->name('payments_form');
 });
-
-
 
 Route::group(['prefix' => 'home'], function () {
     

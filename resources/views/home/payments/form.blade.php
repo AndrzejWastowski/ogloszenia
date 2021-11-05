@@ -3,7 +3,7 @@
 @section('content')
  {{-- <form action="https://secure.przelewy24.pl/trnRegister" method="post" class="form">  --}}
     
-    
+    Przygotowywanie płatności
    <form action="https://sandbox.przelewy24.pl/trnDirect" method="post" class="form">
 
     <input type="text"   name="p24_session_id" value="{{ $payment['p24_session_id'] }}" /> 

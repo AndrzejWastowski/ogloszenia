@@ -310,13 +310,11 @@ final class SmallAdsController extends Controller
     public function promotion_post(SmallAdsPromotionRequest $request)
     {
         // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
-
-
-
-        
         //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
         $data = $request->validated(); 
+
+        dd($data);
 
         if (isset($data['promoted']))
         {
@@ -344,9 +342,7 @@ final class SmallAdsController extends Controller
         else 
         {
             $master_portal = false;
-        }
-
-        
+        }        
 
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $small_ads_contents->set_highlighted($data['highlighted']);        
@@ -360,15 +356,15 @@ final class SmallAdsController extends Controller
 
     }
 
-    public function summary(Request $request)
+    public function summary()
     {
-        
+     
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $data = strtotime($content['date_start']);
         $teraz = strtotime(now()->format('Y-m-d'));
 
        // dd($content);
-        $price = $this->priceRepository->getAll();  
+        $price = $this->priceRepository->getAllFromSection('small_ads');  
 
         if (($data - $teraz)<0)
         { 
@@ -392,20 +388,23 @@ final class SmallAdsController extends Controller
         $highlighted_price = 0;
         $inscription_price = 0;
 
-        if ($content['date_end_promotion']>0) {
+       dd($content['date_end']);
 
+        if ($content['date_end']>0) {
+    
+        
             
-            if ($content['promoted']!=0) {
-                $promoted_price = $price['promoted_'.$content['date_end_promotion']];
+            if ($content['promotion']!=0) {
+                $promoted_price = $price['promotion_'.$content['date_end']];
             }
             if ($content['master_portal']!=0) {
-                $top_price = $price['master_portal_'.$content['date_end_promotion']];
+                $top_price = $price['master_portal_'.$content['date_end']];
             }
             if ($content['highlighted']!='#ffffff') {
-                $highlighted_price = $price['highlighted_'.$content['date_end_promotion']];
+                $highlighted_price = $price['highlighted_'.$content['date_end']];
             }
             if ($content['inscription']!='none') {
-                $inscription_price = $price['inscription_'.$content['date_end_promotion']];
+                $inscription_price = $price['inscription_'.$content['date_end']];
             }
         }
 
@@ -440,79 +439,10 @@ final class SmallAdsController extends Controller
         $content->save();
 
 
-        return view('/home/add/small_ads/payments');
+        return view('/payments/form');
     }
 
-    public function createStep1(Request $request)
-    {
-        $register = $request->session()->get('register');
 
-        return view('register.step1',compact('register'));
-    }
-
-    public function PostcreateStep1(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:registers',
-        ]);
-        if(empty($request->session()->get('register'))){
-            $register = new \App\Register();
-            $register->fill($validatedData);
-            $request->session()->put('register', $register);
-        }else{
-            $register = $request->session()->get('register');
-            $register->fill($validatedData);
-            $request->session()->put('register', $register);
-        }
-        return redirect('/register2');
-    }
-
-    public function createStep2(Request $request)
-    {
-        $register = $request->session()->get('register');
-
-        return view('register.step2',compact('register'));
-    }
-
-    public function PostcreateStep2(Request $request)
-    {
-        $validatedData = $request->validate([
-            'description' => 'required|unique:registers',
-        ]);
-        if(empty($request->session()->get('register'))){
-            $register = new \App\Register();
-            $register->fill($validatedData);
-            $request->session()->put('register', $register);
-        }else{
-            $register = $request->session()->get('register');
-            $register->fill($validatedData);
-            $request->session()->put('register', $register);
-        }
-        return redirect('/register3');
-    }
-    
-    public function createStep3(Request $request)
-    {  
-        $register = $request->session()->get('register');
-        return view('register.step3',compact('register'));
-    }
-
-    public function PostcreateStep3(Request $request)
-    {
-        $register = $request->session()->get('register');
-
-        if(!isset($register->productImg)) {
-            $request->validate([
-                'productimg' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-            $fileName = "productImage-" . time() . '.' . request()->productimg->getClientOriginalExtension();
-            $request->productimg->storeAs('productimg', $fileName);
-            $register = $request->session()->get('register');
-            $register->productImg = $fileName;
-            $request->session()->put('register', $register);
-        }
-        return view('register.step4',compact('register'));
-    }
 
     public function removeImage(Request $request)
     {
