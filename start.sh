@@ -21,7 +21,7 @@ php artisan db:seed --class AutoBrandModelSeeds
 echo 'uzupełniam dane w tabeli nadwozia'
 php artisan db:seed --class CarsBodySeeds
 
-echo 'uzupełniam dane w tabeli nadwozia'
+echo 'uzupełniam dane w tabeli samochody tresc'
 php artisan db:seed --class CarsContentSeeds
 
 echo 'uzupełniam dane w tabeli cars photos'
@@ -49,3 +49,9 @@ php artisan db:seed --class PricesSeeds
 
 echo 'dodaje sekcje'
 php artisan db:seed --class SectionSeeds
+
+echo 'dodaje gazety'
+php artisan db:seed --class NewspaperSeeder
+
+echo 'dodaje wydania gazet'
+php artisan db:seed --class NewspaperEditionSeeder

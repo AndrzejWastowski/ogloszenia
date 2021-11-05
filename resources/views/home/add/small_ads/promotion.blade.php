@@ -188,8 +188,15 @@
 
                             <div id="opcje_publikacji_w_gazecie" class="row mb-5">
                                     <div class="col-3 p-0"></div>
-                                    <div class="col-9 p-0"><strong>DOSTĘPNE WYDANIA</strong>
-
+                                    <div class="col-9 p-0"><strong>DOSTĘPNE WYDANIA GAZET</strong>
+                                        
+                                        @foreach ($newspapers as $newspaper)
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="wydanie_gazety">
+                                                <label class="form-check-label" for="wydanie_gazety"><span class="text-success"> [{{ $newspaper->date }}]</span> <strong>{{ $newspaper->name }}</strong>- {{ $newspaper->description }}</label>
+                                            </div>                                        
+                                        @endforeach
+                                    
                                      
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" id="wydanie_gazety">
