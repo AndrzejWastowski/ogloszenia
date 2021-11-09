@@ -13,9 +13,9 @@ class NewspaperEdition extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'name', 'newspaper_id', 'date','status'];
+    protected $fillable = ['id' , 'newspaper_id', 'date','description', 'status'];
 
-    protected $table = 'prices';
+    protected $table = 'newspaper_edition';
 
 
 }

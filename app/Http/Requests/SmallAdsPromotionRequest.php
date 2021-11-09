@@ -27,8 +27,9 @@ class SmallAdsPromotionRequest extends FormRequest
 
             'inscription' => 'required|in:none,Promocja!,Wyprzedaż,Przecena,Bestseller',
             'highlighted' => 'required|in:#ffffff,#c8cdff,#ffc8dd,#c8ffdf,#eac8ff,#fff7c8',
-            'promotion' => 'nullable',
+            'promoted' => 'nullable',
             'master_portal' => 'nullable',
+            'newspaper_edition' => 'nullable',
         ];
     }
 

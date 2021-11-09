@@ -12,6 +12,7 @@ use App\Repositories\Eloquent\SmallAdsRepository;
 use App\Repositories\Eloquent\SmallAdsCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsPhotosRepository;
+use App\Repositories\Eloquent\NewspaperRepository;
 use App\Repositories\Eloquent\PriceRepository;
 use App\Repositories\Eloquent\PaymentRepository;
 
@@ -40,6 +41,7 @@ final class SmallAdsController extends Controller
     private $smallAdsCategoriesRepository;
     private $smallAdsSubCategoriesRepository;
     private $smallAdsPhotosRepository;
+    private $newspaperRepository;
     private $priceRepository;
     private $storage;
 
@@ -49,6 +51,7 @@ final class SmallAdsController extends Controller
         SmallAdsCategoriesRepository $smallAdsCategoriesRepository,
         SmallAdsSubCategoriesRepository $smallAdsSubCategoriesRepository,
         SmallAdsPhotosRepository $smallAdsPhotosRepository,
+        NewspaperRepository $newspaperRepository,
         PriceRepository $priceRepository,
         Storage $storage
 
@@ -67,6 +70,7 @@ final class SmallAdsController extends Controller
             $this->smallAdsCategoriesRepository = $smallAdsCategoriesRepository;
             $this->smallAdsSubCategoriesRepository = $smallAdsSubCategoriesRepository;
             $this->smallAdsPhotosRepository = $smallAdsPhotosRepository;
+            $this->newspaperRepository = $newspaperRepository;
             $this->priceRepository = $priceRepository;
             $this->storage = $storage::disk('local');
         }
@@ -84,6 +88,8 @@ final class SmallAdsController extends Controller
     {
  
         //$request->session()->forget('small_ads_contents');
+
+     
 
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         //$content = $this->smallAdsRepository->getNonUnfinishedSmallAds(55);  
@@ -299,10 +305,38 @@ final class SmallAdsController extends Controller
 
     }
 
-    public function promotion(Request $request)
+    public function promotion()
     {
-        return view('home.add.small_ads.promotion', [
-            'request'=>$request
+        $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();
+       
+
+        $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','master_portal_7'); 
+        $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','master_portal_14'); 
+        $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','master_portal_30');
+                
+        $price['promoted_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','promoted_7'); 
+        $price['promoted_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','promoted_14'); 
+        $price['promoted_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','promoted_30');
+
+        $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','highlighted_7'); 
+        $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','highlighted_14');         
+        $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','highlighted_30'); 
+
+        $price['inscription_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','inscription_7'); 
+        $price['inscription_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','inscription_14'); 
+        $price['inscription_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','inscription_30'); 
+        
+        $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_advertisement'); 
+        $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_frame'); 
+        $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_background'); 
+        $price['newspaper_photo']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_photo'); 
+
+        //dd($price);
+
+        return view('home.add.small_ads.promotion', [     
+            
+            'newspapers'=>$newspapers,
+            'price'=>$price,
         ]);
     }
 
@@ -314,43 +348,32 @@ final class SmallAdsController extends Controller
         
         $data = $request->validated(); 
 
-        dd($data);
+       // dd($data['newspaper_edition'][7]);
 
-        if (isset($data['promoted']))
-        {
-            $data['promoted'] = true;
-        }
-        else 
-        {
-            $data['promoted'] = false;
-        }
-
-        if (isset($data['topp']))
-        {
-            $top = true;
-        }
-        else 
-        {
-            $top = false;
-        }
-
+        if (!isset($data['promoted'])) $data['promoted'] = false;
+        if (!isset($data['master_portal'])) $data['master_portal']= false;        
         
-        if (isset($data['master_portal']))
-        {
-            $master_portal = true;
-        }
-        else 
-        {
-            $master_portal = false;
-        }        
-
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         $small_ads_contents->set_highlighted($data['highlighted']);        
-        $small_ads_contents->set_promoted($data['promoted']);
+        $small_ads_contents->set_promoted((bool)$data['promoted']);
         $small_ads_contents->set_inscription($data['inscription']);
-        $small_ads_contents->set_master_portal($master_portal);
-        $small_ads_contents->set_top($top); 
+        $small_ads_contents->set_master_portal((bool)$data['master_portal']);        
         $small_ads_contents->save();
+
+        $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();
+
+        foreach ($newspapers as $editions )
+        {
+            foreach ($editions->AvaibleEditions as $edition);
+            {
+                
+                if (isset($data['newspaper_edition'][$edition->id])) {
+                    dd ($data['newspaper_edition'][$edition->id]);
+                }
+                
+
+            }
+        }
 
         return redirect('/home/add/small_ads/summary');
 
@@ -388,7 +411,7 @@ final class SmallAdsController extends Controller
         $highlighted_price = 0;
         $inscription_price = 0;
 
-       dd($content['date_end']);
+     //  dd($content['date_end']);
 
         if ($content['date_end']>0) {
     
