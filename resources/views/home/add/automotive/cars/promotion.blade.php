@@ -327,9 +327,9 @@ function summary()
             highligted = this.value;
             summary();
         });
+    }
 
-}
-var promotion_object = document.formPromotion.promotion;
+    var promotion_object = document.formPromotion.promotion;
     var master_portal_object = document.formPromotion.master_portal;
   
 });

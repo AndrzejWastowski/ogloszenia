@@ -39,8 +39,7 @@
         </div>
     </div>
                     
-                    <form action="{{ route('small_ads_promotion_post') }}"  method="POST" enctype="multipart/form-data" role="form" name="formpromoted">
-                            @csrf
+                    <form id="form_promoted"  name="form_promoted" action="{{ route('small_ads_promotion_post') }}"  method="POST" enctype="multipart/form-data" role="form" >
                             @csrf
                             @if ($errors->any())
                                 <label for="category"><strong>Uwaga - błędy w formularzu</strong></label>
@@ -82,7 +81,9 @@
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie będzie się pojawiać na głównym portalu <strong>{{ env('APP_NAME_MASTER_WWW') }}</strong> w ramce "ogłoszenia". Ogłoszenia które się tam znajdują są rotujące. Czyli zmieniają przy każdym wejściu na stronę oraz gdy użytkownik przegląda stronę. Dzięki tej opcji masz dużo większe szanse trafić do dużego grona odbiorców, nawet jeśli nie wejdą na portal ogłoszeniowy. </p>
                                         
-                                        Koszt <b>ogłoszenia na głównym portalu</b> to:<br> <b>{{ $price['master_portal_7']->price }} zł</b> / tydzień | <b>{{ $price['master_portal_14']->price }}zł</b> / 2 tygodnie | <b>{{ $price['master_portal_30']->price }}zł</b> / miesiąc
+                                        
+                                        Koszt <b>ogłoszenia na głównym portalu</b> 
+                                        to: <b>{{ $price['master_portal_7'] }} zł</b> / tydzień | <b>{{ $price['master_portal_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['master_portal_30'] }}zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +102,8 @@
                                         <p class="text-justify">Ogłoszenie <b>promowane</b> sprawi że Twoje ogłoszenie będzie się wyświetlało na początku listy ogłoszeń 
                                         <b>między innymi promowanymi</b>. Na kolejność wyświetlania będzie wpływała data dodania ogłoszenia, te najbliżej wygaśnięcia będą na początku listy.
                                         Jednak ci co nie wykupią promocji znajdą się na dalszych stronach portalu ogłoszeniowego.</p>
-                                        Koszt <b>ogłoszenia promowanego</b> <br> <b>{{ $price['promoted_7']->price }} zł</b> / tydzień | <b>{{ $price['promoted_14']->price }}zł</b> / 2 tygodnie | <b>{{ $price['promoted_30']->price }}zł</b> / miesiąc
+                                        Koszt <b>ogłoszenia promowanego</b> <br>
+                                        to: <b>{{ $price['promoted_7'] }} zł</b> / tydzień | <b>{{ $price['promoted_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['promoted_30'] }}zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -144,10 +146,13 @@
                                                 </div>
                                     </div>
                                 </div>
+
+                                
                                 <div class="col-9">                                       
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie <b>wyróżnienie</b> jak sama nazwa wskazuje - pozwoli Ci <strong>wyróżnić się z tłumu!</strong> nieważne czy będziesz na liście promowanych, czy rekomendowanych, twoje ogłoszenie będzie miało wybrane przez Ciebie tło.</p>
-                                        Koszt <b>wyróżnienia kolorem</b> <br> <b>{{ $price['highlighted_7']->price }} zł</b> / tydzień | <b>{{ $price['highlighted_14']->price }}zł</b> / 2 tygodnie | <b>{{ $price['highlighted_30']->price }}zł</b> / miesiąc
+                                        Koszt <b>wyróżnienia kolorem</b> <br>
+                                        <b>{{ $price['highlighted_7'] }} zł</b> / tydzień | <b>{{ $price['highlighted_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['highlighted_30'] }}zł</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +173,7 @@
                                 <div class="col-9">                                       
                                     <div class="form-check">
                                         <p class="text-justify"><strong>Wyróżniający napis</strong> Przyciągnij wzrok kupujących dodatkową informacją, przy każdym ogłoszeniu pojawi sie jeden wybrany przez ciebie napis: </p>
-                                        Koszt <b>wyróżniony napis</b> <br> <b>{{ $price['inscription_7']->price }} zł</b> / tydzień | <b>{{ $price['inscription_14']->price }}zł</b> / 2 tygodnie | <b>{{ $price['inscription_30']->price }}zł</b> / miesiąc
+                                        Koszt <b>wyróżniony napis</b> <br> <b>{{ $price['inscription_7'] }} zł</b> / tydzień | <b>{{ $price['inscription_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['inscription_30'] }}zł</b> / miesiąc
                                         <span class="badge badge-danger mb-2">Promocja!</span>
                                         <span class="badge badge-secondary mb-2">Bestseller</span>
                                         <span class="badge badge-success mb-2">Wyprzedaż!</span></p>
@@ -183,12 +188,24 @@
                                     <div class="col-9 p-0">
                                         <p><strong>CENNIK OGŁOSZEŃ NA JEDNO WYDANIE</strong> <br>
                                             <ul>
-                                                <li><strong> {{ $price['newspaper_advertisement']->price }} zł</strong> za ogłoszenie do 300znaków (publikujemy zawartość <strong>lidu</strong>)</li>
+                                                <li><strong> {{ $price['newspaper_advertisement'] }} zł</strong> za ogłoszenie do 300znaków (publikujemy zawartość <strong>lidu</strong>)</li>
                                                 <strong> Dodatki: </strong>
                                                 <ul>
-                                                    <li><strong> {{ $price['newspaper_background']->price }} zł</strong> Szare tło</li>
-                                                    <li><strong> {{ $price['newspaper_frame']->price }} zł</strong> Ramka wokół ogłoszenia</li>
-                                                    <li><strong> {{ $price['newspaper_photo']->price }} zł</strong> Dodaj zdjęcie do ogłoszenia</li>
+                                                    <li> 
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_background" name="newspaper_background" value="on"> <strong> {{ $price['newspaper_background'] }} zł</strong> Szare tło
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_frame" name="newspaper_frame" value="on"> <strong> {{ $price['newspaper_frame'] }} zł</strong> Ramka wokół ogłoszenia
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_photo" name="newspaper_photo" value="{on}"> <strong> {{ $price['newspaper_photo'] }} zł</strong> Dodaj zdjęcie do ogłoszenia
+                                                        </div>
+                                                    </li>
                                                 </ul>
                                             </ul>
                                 
@@ -204,11 +221,13 @@
                                         <div class="form-check form-switch">
                                             <strong>{{ $newspaper->name }}</strong>
                                         </div>
+                                        <div id="newspaper_list" name="newspaper_list">
                                             @foreach ($newspaper->AvaibleEditions as $edition)
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="newspaper_edition[{{ $edition->id }}]" name="id="newspaper_edition[{{ $edition->id }}]">
-                                                    <label class="form-check-label" for="newspaper_edition[{{ $edition->id }}">
-                                                        <span class="text-success"> [{{ $edition->date }}]</span> <strong>{{ $newspaper->name }}</strong> {{ $edition->description }}</label>
+                                                    <input class="form-check-input" type="checkbox" id="newspaper_edition" name="newspaper_edition" value="{{ $edition->id }}">
+                                                    <label class="form-check-label" for="newspaper_edition">
+                                                        <span class="text-success"> [{{ $edition->date }}]</span> <strong>{{ $newspaper->name }}</strong> {{ $edition->description }}
+                                                    </label>
                                                 </div>                                        
                                             @endforeach
                                             
@@ -251,6 +270,24 @@ $( document ).ready(function() {
     
     const date = new Date();
 
+
+    $('#form_promoted :checkbox').click(function() {
+	summary();
+  
+});
+
+    newspaper_frame = false;
+    newspaper_background = false;
+    newspaper_photo = false;
+
+    newspaper_frame_price = {{ $price['newspaper_frame'] }};
+    newspaper_background_price = {{ $price['newspaper_background'] }};
+    newspaper_photo_price = {{ $price['newspaper_photo'] }};
+
+    newspaper_price = {{ $price['newspaper_advertisement']; }};
+
+
+
 function summary()
 {
 
@@ -273,37 +310,60 @@ function summary()
     master_portal_price = 0;    
     highlighted_price = 0;
 
+
+    newspaper_sum_price = 0;
+
+   
+
+
     switch (date_end_promoted)
-    {
-        
+    {        
         case '7':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_7']->price }};
-            if (promoted)      promoted_price = {{ $price['promoted_7']->price }};
-            if (highlighted)    highlighted_price = {{ $price['highlighted_7']->price }};
-            if (inscription)     inscription_price = {{ $price['inscription_7']->price }};
+            if (master_portal)  master_portal_price = {{ $price['master_portal_7'] }};
+            if (promoted)      promoted_price = {{ $price['promoted_7'] }};
+            if (highlighted)    highlighted_price = {{ $price['highlighted_7'] }};
+            if (inscription)     inscription_price = {{ $price['inscription_7'] }};
         break;
         case '14':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_14']->price }};
-            if (promoted)      promoted_price = {{ $price['promoted_14']->price }};            
-            if (highlighted)    highlighted_price = {{ $price['highlighted_14']->price }};;
-            if (inscription)     inscription_price = {{ $price['inscription_14']->price }};            
+            if (master_portal)  master_portal_price = {{ $price['master_portal_14'] }};
+            if (promoted)      promoted_price = {{ $price['promoted_14'] }};            
+            if (highlighted)    highlighted_price = {{ $price['highlighted_14'] }};
+            if (inscription)     inscription_price = {{ $price['inscription_14'] }};            
         break;
         case '30':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_30']->price }};
-            if (promoted)      promoted_price = {{ $price['promoted_30']->price }};            
-            if (highlighted)    highlighted_price = {{ $price['highlighted_30']->price }}; 
-            if (inscription)     inscription_price = {{ $price['inscription_30']->price }};            
+            if (master_portal)  master_portal_price = {{ $price['master_portal_30'] }};
+            if (promoted)      promoted_price = {{ $price['promoted_30'] }};            
+            if (highlighted)    highlighted_price = {{ $price['highlighted_30'] }}; 
+            if (inscription)     inscription_price = {{ $price['inscription_30'] }};            
             
         break;
     }
 
-    var summary = inscription_price+master_portal_price+highlighted_price+promoted_price;
-    console.log('znaczniki - inscription: '+ inscription + ', master_portal: ' + master_portal + ', highlighted: ' + highlighted + ', promoted '+ promoted + ' :suma ' + summary + ' + na ile czasu: '+date_end_promoted);
-    console.log('ceny - inscription: '+ inscription_price + ', master_portal: ' + master_portal_price + ', highlighted: ' + highlighted_price + ', promoted '+ promoted_price + ' suma ' + summary + ' + na ile czasu: '+date_end_promoted);
 
-    document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary + '</strong> pln'
+    const checkboxes = document.querySelectorAll("input[name='newspaper_edition']:checked");
+  
+    let values = [];
+    checkboxes.forEach((checkbox) => {
+      	
+        newspaper_sum_price = newspaper_sum_price + newspaper_price;
+        console.log('newspaper_photo:' + newspaper_photo);
+        console.log('newspaper_frame:' + newspaper_frame);
+        console.log('newspaper_background:' + newspaper_background);
+
+        if (newspaper_photo) newspaper_sum_price = newspaper_sum_price + newspaper_photo_price;
+        if (newspaper_frame) newspaper_sum_price = newspaper_sum_price + newspaper_frame_price;
+        if (newspaper_background) newspaper_sum_price = newspaper_sum_price + newspaper_background_price;
+
+        
+    });
+
+
+    var summary = inscription_price + master_portal_price + highlighted_price + promoted_price + newspaper_sum_price;
+    
+    
+
+    document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary + '</strong> pln';
 }
-
 
 
     $(document).on('change', '#date_end_promoted', function (e) {    
@@ -327,6 +387,7 @@ function summary()
         summary();
     });     
 
+
     $(document).on('change', '#promoted', function (e) {    
         
         if($(this).prop("checked") == true){
@@ -341,8 +402,48 @@ function summary()
     });     
 
 
+    $(document).on('change', '#newspaper_background', function (e) {    
+        
+        if($(this).prop("checked") == true){
+                console.log(" newspaper_background is checked.");
+                newspaper_background = true;
+            }
+            else if($(this).prop("checked") == false){
+                console.log(" newspaper_background is unchecked.");
+                newspaper_background = false;
+            }
+        summary();
+    });    
 
-    var radius = document.formpromoted.highlighted;
+    $(document).on('change', '#newspaper_frame', function (e) {    
+        
+        if($(this).prop("checked") == true){
+                console.log(" newspaper_frame is checked.");
+                newspaper_frame = true;
+            }
+            else if($(this).prop("checked") == false){
+                console.log(" newspaper_frame is unchecked.");
+                newspaper_frame = false;
+            }
+        summary();
+    });     
+ 
+
+    $(document).on('change', '#newspaper_photo', function (e) {    
+        
+        if($(this).prop("checked") == true){
+                console.log(" newspaper_photo is checked.");
+                newspaper_photo = true;
+            }
+            else if($(this).prop("checked") == false){
+                console.log(" newspaper_photo is unchecked.");
+                newspaper_photo = false;
+            }
+        summary();
+    });     
+
+
+    var radius = document.form_promoted.highlighted;
     var prev = null;
     for (var i = 0; i < radius.length; i++) {
         radius[i].addEventListener('change', function() {
@@ -353,10 +454,9 @@ function summary()
             highligted = this.value;
             summary();
         });
-
 }
-var promoted_object = document.formpromoted.promoted;
-    var master_portal_object = document.formpromoted.master_portal;
+    var promoted_object = document.form_promoted.promoted;
+    var master_portal_object = document.form_promoted.master_portal;
   
 });
 </script>
