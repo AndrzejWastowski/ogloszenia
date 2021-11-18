@@ -203,7 +203,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox" id="newspaper_photo" name="newspaper_photo" value="{on}"> <strong> {{ $price['newspaper_photo'] }} zł</strong> Dodaj zdjęcie do ogłoszenia
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_photo" name="newspaper_photo" value="on"> <strong> {{ $price['newspaper_photo'] }} zł</strong> Dodaj zdjęcie do ogłoszenia
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -224,7 +224,7 @@
                                         <div id="newspaper_list" name="newspaper_list">
                                             @foreach ($newspaper->AvaibleEditions as $edition)
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="newspaper_edition" name="newspaper_edition" value="{{ $edition->id }}">
+                                                    <input class="form-check-input" type="checkbox" id="newspaper_edition" name="newspaper_edition[]" value="{{ $edition->id }}">
                                                     <label class="form-check-label" for="newspaper_edition">
                                                         <span class="text-success"> [{{ $edition->date }}]</span> <strong>{{ $newspaper->name }}</strong> {{ $edition->description }}
                                                     </label>
@@ -340,7 +340,7 @@ function summary()
     }
 
 
-    const checkboxes = document.querySelectorAll("input[name='newspaper_edition']:checked");
+    const checkboxes = document.querySelectorAll("input[name='newspaper_edition[]']:checked");
   
     let values = [];
     checkboxes.forEach((checkbox) => {

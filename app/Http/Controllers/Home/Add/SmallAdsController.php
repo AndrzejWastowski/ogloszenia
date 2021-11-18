@@ -318,32 +318,6 @@ final class SmallAdsController extends Controller
             $price[$row->name] = $row['price'];
         }
 
-        
-    
-        
-            // $price['master_portal_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','master_portal_7'); 
-            // $price['master_portal_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','master_portal_14'); 
-            // $price['master_portal_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','master_portal_30');
-                    
-            // $price['promoted_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','promoted_7'); 
-            // $price['promoted_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','promoted_14'); 
-            // $price['promoted_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','promoted_30');
-
-            // $price['highlighted_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','highlighted_7'); 
-            // $price['highlighted_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','highlighted_14');         
-            // $price['highlighted_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','highlighted_30'); 
-
-            // $price['inscription_7']=$this->priceRepository->getAllFromSectionAndName('small_ads','inscription_7'); 
-            // $price['inscription_14']=$this->priceRepository->getAllFromSectionAndName('small_ads','inscription_14'); 
-            // $price['inscription_30']=$this->priceRepository->getAllFromSectionAndName('small_ads','inscription_30'); 
-            
-            // $price['newspaper_advertisement']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_advertisement'); 
-            // $price['newspaper_frame']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_frame'); 
-            // $price['newspaper_background']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_background'); 
-            // $price['newspaper_photo']=$this->priceRepository->getAllFromSectionAndName('small_ads','newspaper_photo'); 
-
-        //dd($price);
-
         return view('home.add.small_ads.promotion', [     
             
             'newspapers'=>$newspapers,
@@ -357,9 +331,12 @@ final class SmallAdsController extends Controller
         // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
         //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
+
+       // dd($request);
+
         $data = $request->validated(); 
 
-       // dd($data['newspaper_edition'][7]);
+        dd($data);
 
         if (!isset($data['promoted'])) $data['promoted'] = false;
         if (!isset($data['master_portal'])) $data['master_portal']= false;        
@@ -372,6 +349,7 @@ final class SmallAdsController extends Controller
         $small_ads_contents->save();
 
         $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();
+
 
         foreach ($newspapers as $editions )
         {
@@ -424,21 +402,21 @@ final class SmallAdsController extends Controller
 
      //  dd($content['date_end']);
 
-        if ($content['date_end']>0) {
+        if ($content['date_end_promoted']>0) {
     
         
             
             if ($content['promotion']!=0) {
-                $promoted_price = $price['promotion_'.$content['date_end']];
+                $promoted_price = $price['promotion_'.$content['date_end_promoted']];
             }
             if ($content['master_portal']!=0) {
-                $top_price = $price['master_portal_'.$content['date_end']];
+                $top_price = $price['master_portal_'.$content['date_end_promoted']];
             }
             if ($content['highlighted']!='#ffffff') {
-                $highlighted_price = $price['highlighted_'.$content['date_end']];
+                $highlighted_price = $price['highlighted_'.$content['date_end_promoted']];
             }
             if ($content['inscription']!='none') {
-                $inscription_price = $price['inscription_'.$content['date_end']];
+                $inscription_price = $price['inscription_'.$content['date_end_promoted']];
             }
         }
 
