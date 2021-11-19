@@ -18,4 +18,26 @@ class NewspaperEdition extends Model
     protected $table = 'newspaper_edition';
 
 
+
+    public function get_id(): int
+    {
+        return $this->id;
+    }   
+    
+    public function ge_date(): string
+    {
+        return $this->date;
+    }   
+
+    public function get_description(): string
+    {
+        return $this->description;
+    }   
+
+
+    public function get_status(): string
+    {
+        return $this->status;
+    }   
+
 }

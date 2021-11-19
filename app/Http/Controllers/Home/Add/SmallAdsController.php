@@ -13,6 +13,7 @@ use App\Repositories\Eloquent\SmallAdsCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsPhotosRepository;
 use App\Repositories\Eloquent\NewspaperRepository;
+use App\Repositories\Eloquent\NewspaperEditionRepository;
 use App\Repositories\Eloquent\PriceRepository;
 use App\Repositories\Eloquent\PaymentRepository;
 
@@ -42,6 +43,7 @@ final class SmallAdsController extends Controller
     private $smallAdsSubCategoriesRepository;
     private $smallAdsPhotosRepository;
     private $newspaperRepository;
+    private $newspaperEditionReposistory;
     private $priceRepository;
     private $storage;
 
@@ -52,6 +54,7 @@ final class SmallAdsController extends Controller
         SmallAdsSubCategoriesRepository $smallAdsSubCategoriesRepository,
         SmallAdsPhotosRepository $smallAdsPhotosRepository,
         NewspaperRepository $newspaperRepository,
+        NewspaperEditionRepository $newspaperEditionRepository,
         PriceRepository $priceRepository,
         Storage $storage
 
@@ -71,6 +74,7 @@ final class SmallAdsController extends Controller
             $this->smallAdsSubCategoriesRepository = $smallAdsSubCategoriesRepository;
             $this->smallAdsPhotosRepository = $smallAdsPhotosRepository;
             $this->newspaperRepository = $newspaperRepository;
+            $this->newspaperEditionRepository = $newspaperEditionRepository;
             $this->priceRepository = $priceRepository;
             $this->storage = $storage::disk('local');
         }
@@ -331,14 +335,73 @@ final class SmallAdsController extends Controller
         // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
         //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
-
        // dd($request);
-
+      
         $data = $request->validated(); 
 
-        dd($data);
+        $prices_collection = $this->priceRepository->getAllFromSection('small_ads');
+        $price = [];
+        
+        foreach ($prices_collection as $row) {
+            
+            $price[$row->name] = $row['price'];
+        }
 
-        if (!isset($data['promoted'])) $data['promoted'] = false;
+
+        $SUMA = 0;
+
+        if ($data['inscription']!='none') {
+        
+            $price_detal = $price['inscription_'.$data['date_end_promoted']];
+            $SUMA = $SUMA + $price_detal;
+        }
+
+        if ($data['highlighted']!="#ffffff") {
+            
+            $price_detal = $price['highlighted_'.$data['date_end_promoted']];
+            $SUMA = $SUMA + $price_detal;
+        }
+
+        if (isset($data['promoted']) and ($data['promoted']=="true")) {
+            
+            $price_detal = $price['promoted_'.$data['date_end_promoted']];
+            $SUMA = $SUMA + $price_detal;
+
+        }
+
+        if (isset($data['master_portal']) and $data['master_portal']=="true") {
+            $price_detal = $price['master_portal_'.$data['date_end_promoted']];
+            $SUMA = $SUMA + $price_detal;
+        }
+        
+
+        $price_newspaper_background = 0;
+        $price_newspaper_photo = 0;
+        $price_newspaper_frame = 0;
+
+        $price_newspaper_advertisement = $price['newspaper_advertisement'];
+
+        if (isset($data['newspaper_background']) and  $data['newspaper_background']=="on") $price_newspaper_background = $price['newspaper_background'];
+        if (isset($data['newspaper_photo']) and  $data['newspaper_photo']=="on") $price_newspaper_photo = $price['newspaper_photo'];
+        if (isset($data['newspaper_frame']) and  $data['newspaper_frame']=="on") $price_newspaper_frame = $price['newspaper_frame'];
+        
+        $price_newspaper_frame = $price['newspaper_frame'];
+
+        if (isset($data['newspaper_edition'])) {
+            foreach ($data['newspaper_edition'] as $newspaper_edition) {
+                foreach ($this->newspaperEditionRepository->getNewspaperEditionById($newspaper_edition) as $edition) {
+                    $SUMA = $SUMA + $price_newspaper_advertisement + $price_newspaper_background + $price_newspaper_photo + $price_newspaper_frame;
+                }
+            }
+        }
+
+        dd('suma : '.$SUMA);
+       
+
+        if (!isset($data['promoted'])) $data['promoted'] = false; 
+        else {
+
+        }
         if (!isset($data['master_portal'])) $data['master_portal']= false;        
         
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  

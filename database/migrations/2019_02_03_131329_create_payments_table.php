@@ -15,8 +15,10 @@ class CreatePaymentsTable extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
+            
             $table->increments('id');
-                   
+            $table->int('users_id');  
+            $table->integer('orders_id')->comment('id zamowienia');
             $table->string('p24_session_id',100);
             $table->integer('p24_amount');
             $table->string('p24_description',1024);
@@ -28,10 +30,7 @@ class CreatePaymentsTable extends Migration
             $table->string('p24_country',2);
             $table->string('p24_phone',12);
             $table->string('p24_language');
-            $table->string('p24_transfer_label',20);  
-          
-            $table->enum('section',['small_ads','cars','estates','job','services','truck'])->comment('sekcja której dotyczy płatność');
-            $table->integer('addons_id')->comment('id ogłoszenia');            
+            $table->string('p24_transfer_label',20); 
             
             $table->timestamps();
         });
