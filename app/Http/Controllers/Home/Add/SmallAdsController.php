@@ -15,8 +15,8 @@ use App\Repositories\Eloquent\SmallAdsPhotosRepository;
 use App\Repositories\Eloquent\NewspaperRepository;
 use App\Repositories\Eloquent\NewspaperEditionRepository;
 use App\Repositories\Eloquent\PriceRepository;
+use App\Repositories\Eloquent\OrdersRepository;
 use App\Repositories\Eloquent\PaymentRepository;
-
 
 use Stevebauman\Location\Facades\Location;
 
@@ -25,7 +25,7 @@ use App\Http\Requests\SmallAdsCreatePhotoRequest;
 use App\Http\Requests\SmallAdsPromotionRequest;
 use App\Http\Requests\SmallAdsPhotoRequest;
 use App\Http\Requests\SmallAdsPaymentRequest;
-
+use App\Models\OrderList;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +33,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 //use App\Repositories\AdPhotosRepository;
-
 
 final class SmallAdsController extends Controller
 {   
@@ -45,6 +44,7 @@ final class SmallAdsController extends Controller
     private $newspaperRepository;
     private $newspaperEditionReposistory;
     private $priceRepository;
+    private $ordersRepository;
     private $storage;
 
     public function __construct(
@@ -56,6 +56,7 @@ final class SmallAdsController extends Controller
         NewspaperRepository $newspaperRepository,
         NewspaperEditionRepository $newspaperEditionRepository,
         PriceRepository $priceRepository,
+        OrdersRepository $ordersRepository,
         Storage $storage
 
         /*AdPhotosRepository $photoRepository,         
@@ -76,6 +77,7 @@ final class SmallAdsController extends Controller
             $this->newspaperRepository = $newspaperRepository;
             $this->newspaperEditionRepository = $newspaperEditionRepository;
             $this->priceRepository = $priceRepository;
+            $this->ordersRepository = $ordersRepository;
             $this->storage = $storage::disk('local');
         }
 
@@ -92,7 +94,6 @@ final class SmallAdsController extends Controller
     {
  
         //$request->session()->forget('small_ads_contents');
-
      
 
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
@@ -103,11 +104,9 @@ final class SmallAdsController extends Controller
             $content->setConnection('mysql');
             $content->set_date_start(now()->format('Y-m-d'));
 
-        }
-      
+        }      
 
-        $data = strtotime($content['date_start']);
-       
+        $data = strtotime($content['date_start']);       
     
         $teraz = strtotime(now()->format('Y-m-d'));
 
@@ -336,30 +335,59 @@ final class SmallAdsController extends Controller
         //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
        // dd($request);
-      
+     
         $data = $request->validated(); 
+
+        $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
 
         $prices_collection = $this->priceRepository->getAllFromSection('small_ads');
         $price = [];
-        
+        $order_list = [];
+
         foreach ($prices_collection as $row) {
             
             $price[$row->name] = $row['price'];
         }
 
-
         $SUMA = 0;
+
+        if (isset($data['master_portal']) and $data['master_portal']=="true") {
+            $price_detal = $price['master_portal_'.$data['date_end_promoted']];
+            $SUMA = $SUMA + $price_detal;
+
+            $order_list[] = new OrderList([
+                'name' => 'ramka na głownym portalu',
+                'quantity' => 1,
+                'price' => $price_detal,
+            ]); 
+
+        } else 
+        {
+            $data['master_portal'] = "false";
+        }
+
 
         if ($data['inscription']!='none') {
         
             $price_detal = $price['inscription_'.$data['date_end_promoted']];
             $SUMA = $SUMA + $price_detal;
+            $order_list[] = new OrderList([
+                'name' => 'Wyróżniający napis',
+                'quantity' => 1,
+                'price' => $price_detal,
+            ]); 
         }
 
         if ($data['highlighted']!="#ffffff") {
             
             $price_detal = $price['highlighted_'.$data['date_end_promoted']];
             $SUMA = $SUMA + $price_detal;
+
+            $order_list[] = new OrderList([
+                'name' => 'Kolorowe tło',
+                'quantity' => 1,
+                'price' => $price_detal,
+            ]); 
         }
 
         if (isset($data['promoted']) and ($data['promoted']=="true")) {
@@ -367,12 +395,15 @@ final class SmallAdsController extends Controller
             $price_detal = $price['promoted_'.$data['date_end_promoted']];
             $SUMA = $SUMA + $price_detal;
 
-        }
+            $order_list[] = new OrderList([
+                'name' => 'Wyświetlaj się nad zwykłymi...',
+                'quantity' => 1,
+                'price' => $price_detal,
+            ]); 
 
-        if (isset($data['master_portal']) and $data['master_portal']=="true") {
-            $price_detal = $price['master_portal_'.$data['date_end_promoted']];
-            $SUMA = $SUMA + $price_detal;
-        }
+        } else {
+            $data['promoted'] = false; 
+        }      
         
 
         $price_newspaper_background = 0;
@@ -380,10 +411,21 @@ final class SmallAdsController extends Controller
         $price_newspaper_frame = 0;
 
         $price_newspaper_advertisement = $price['newspaper_advertisement'];
+        $short = '';
 
-        if (isset($data['newspaper_background']) and  $data['newspaper_background']=="on") $price_newspaper_background = $price['newspaper_background'];
-        if (isset($data['newspaper_photo']) and  $data['newspaper_photo']=="on") $price_newspaper_photo = $price['newspaper_photo'];
-        if (isset($data['newspaper_frame']) and  $data['newspaper_frame']=="on") $price_newspaper_frame = $price['newspaper_frame'];
+        if (isset($data['newspaper_background']) and  $data['newspaper_background']=="on") {
+            $price_newspaper_background = $price['newspaper_background'];
+            $short .= "/tło";
+ 
+        }
+        if (isset($data['newspaper_photo']) and  $data['newspaper_photo']=="on") {
+            $price_newspaper_photo = $price['newspaper_photo'];
+            $short .= "/zdjęcie";
+        }
+        if (isset($data['newspaper_frame']) and  $data['newspaper_frame']=="on") {
+            $price_newspaper_frame = $price['newspaper_frame'];
+            $short .= "/ramka";
+        }
         
         $price_newspaper_frame = $price['newspaper_frame'];
 
@@ -391,25 +433,41 @@ final class SmallAdsController extends Controller
             foreach ($data['newspaper_edition'] as $newspaper_edition) {
                 foreach ($this->newspaperEditionRepository->getNewspaperEditionById($newspaper_edition) as $edition) {
                     $SUMA = $SUMA + $price_newspaper_advertisement + $price_newspaper_background + $price_newspaper_photo + $price_newspaper_frame;
+                    $EDITION_PRICE = $price_newspaper_advertisement + $price_newspaper_background + $price_newspaper_photo + $price_newspaper_frame;
+                    //dd($newspaper_edition);
+                    $order_list[] = new OrderList([
+                        'name' => 'Gazeta:  '.$short,
+                        'quantity' => 1,
+                        'price' => $EDITION_PRICE,
+                    ]); 
+                    
                 }
             }
         }
 
-        dd('suma : '.$SUMA);
-       
-
-        if (!isset($data['promoted'])) $data['promoted'] = false; 
-        else {
-
-        }
-        if (!isset($data['master_portal'])) $data['master_portal']= false;        
-        
-        $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
+      // dd($order_list);
         $small_ads_contents->set_highlighted($data['highlighted']);        
         $small_ads_contents->set_promoted((bool)$data['promoted']);
         $small_ads_contents->set_inscription($data['inscription']);
         $small_ads_contents->set_master_portal((bool)$data['master_portal']);        
         $small_ads_contents->save();
+
+        $order = $this->ordersRepository->getOrderById($small_ads_contents->get_id(),'small_ads');
+       // dd($order);
+        
+        $order = new \App\Models\Order();
+     
+        $order = $this->ordersRepository->getOrderByAdsId($small_ads_contents->get_id(),'small_ads');  
+        $order = $order[0];
+  
+        $order->set_name('D/'.$small_ads_contents->get_id().'/'.date("Y"));
+        $order->set_payments_id(0);
+        $order->set_addons_id($small_ads_contents->get_id());
+        $order->set_section('small_ads');
+        $order->set_users_id(Auth::id());
+        $order->save();
+   //dd($order_list);
+        $order->OrderList()->saveMany($order_list);
 
         $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();
 

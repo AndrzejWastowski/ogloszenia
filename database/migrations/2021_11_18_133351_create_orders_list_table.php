@@ -15,6 +15,14 @@ class CreateOrdersListTable extends Migration
     {
         Schema::create('orders_list', function (Blueprint $table) {
             $table->id();
+            $table->integer('order_id')->comment('id zamówienia');
+            $table->string('name')->comment('nazwa towaru');
+            $table->string('description')->nullable()->comment('dodatkowy opis towaru (opcjonalnie)');
+            $table->integer('quantity')->comment('Ilość sztuk');
+            $table->double('price',10,2)->comment('Cena jednostkowa');
+            $table->integer('number')->comment('/ID towaru w systemie sprzedawcy (opcjonalnie)]');
+            
+       
             $table->timestamps();
         });
     }

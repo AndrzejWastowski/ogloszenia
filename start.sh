@@ -55,3 +55,4 @@ php artisan db:seed --class NewspaperSeeder
 
 echo 'dodaje wydania gazet'
 php artisan db:seed --class NewspaperEditionSeeder
+

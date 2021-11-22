@@ -16,12 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();            
             $table->string('name');
-            $table->string('payments_id');
-            
+            $table->string('payments_id');            
             $table->integer('addons_id')->comment('id ogłoszenia');            
             $table->enum('section',['small_ads','cars','estates','job','services','truck'])->comment('sekcja której dotyczy płatność');
-
-
             $table->string('users_id');
             $table->enum('status',['paid','in progres','unpaid','canceled'])->default('unpaid')->comment('unpaid');
             

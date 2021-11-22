@@ -20,9 +20,9 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'master_portal_14','description'=>'Wyświetl na głownym portalu 14dni', 'price'=>38,'section'=>'small_ads' ]);
         DB::table('prices')->insert(['name' => 'master_portal_30','description'=>'Wyświetl na głownym portalu 30 dni', 'price'=>54,'section'=>'small_ads' ]);
 
-        DB::table('prices')->insert(['name' => 'promotion_7', 'description'=>'Wyświetl nad innymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'small_ads' ]);
-        DB::table('prices')->insert(['name' => 'promotion_14','description'=>'Wyświetl nad innymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'small_ads' ]);
-        DB::table('prices')->insert(['name' => 'promotion_30', 'description'=>'Wyświetl nad innymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'small_ads' ]);;
+        DB::table('prices')->insert(['name' => 'promoted_7', 'description'=>'Wyświetl nad innymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'promoted_14','description'=>'Wyświetl nad innymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'promoted_30', 'description'=>'Wyświetl nad innymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'small_ads' ]);;
 
         DB::table('prices')->insert(['name' => 'highlighted_7',  'description'=>'Kolorowe tło 7 dni', 'price'=>8,'section'=>'small_ads' ]);
         DB::table('prices')->insert(['name' => 'highlighted_14', 'description'=>'Kolorowe tło 14 dni', 'price'=>14, 'section'=>'small_ads' ]);
@@ -35,6 +35,7 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'newspaper_advertisement', 'description'=>'Ogłoszenie w gazecie', 'price'=>9,'section'=>'small_ads' ]);
         DB::table('prices')->insert(['name' => 'newspaper_frame', 'description'=>'Ramka wokół ogłoszenia', 'price'=>3,'section'=>'small_ads' ]);
         DB::table('prices')->insert(['name' => 'newspaper_background', 'description'=>'Wydrkuj naszarym tle', 'price'=>3,'section'=>'small_ads' ]);
+        DB::table('prices')->insert(['name' => 'newspaper_photo', 'description'=>'Ogłoszenie w gazecie', 'price'=>10,'section'=>'small_ads' ]);
 
         //usługi
 
@@ -42,9 +43,9 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'master_portal_14','description'=>'Wyświetl na głownym portalu 14 dni', 'price'=>38,'section'=>'services' ]);
         DB::table('prices')->insert(['name' => 'master_portal_30','description'=>'Wyświetl  na głownym portalu 30 dni', 'price'=>54,'section'=>'services' ]);
 
-        DB::table('prices')->insert(['name' => 'promotion_7', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'services' ]);
-        DB::table('prices')->insert(['name' => 'promotion_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'services' ]);
-        DB::table('prices')->insert(['name' => 'promotion_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'services' ]);;
+        DB::table('prices')->insert(['name' => 'promoted_7', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'services' ]);
+        DB::table('prices')->insert(['name' => 'promoted_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'services' ]);
+        DB::table('prices')->insert(['name' => 'promoted_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'services' ]);;
 
         DB::table('prices')->insert(['name' => 'highlighted_7',  'description'=>'Kolorowe tło 7 dni', 'price'=>8,'section'=>'services' ]);
         DB::table('prices')->insert(['name' => 'highlighted_14', 'description'=>'Kolorowe tło 14 dni', 'price'=>14, 'section'=>'services' ]);
@@ -57,6 +58,7 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'newspaper_advertisement', 'description'=>'Ogłoszenie w gazecie', 'price'=>9,'section'=>'services' ]);
         DB::table('prices')->insert(['name' => 'newspaper_frame', 'description'=>'Ramka wokół ogłoszenia', 'price'=>3,'section'=>'services' ]);
         DB::table('prices')->insert(['name' => 'newspaper_background', 'description'=>'Wydrkuj na szarym tle', 'price'=>3,'section'=>'services' ]);
+        DB::table('prices')->insert(['name' => 'newspaper_photo', 'description'=>'Ogłoszenie w gazecie', 'price'=>10,'section'=>'services' ]);
 
         //praca
 
@@ -64,9 +66,9 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'master_portal_14','description'=>'Wyświetl na głownym portalu 14dni', 'price'=>38,'section'=>'job' ]);
         DB::table('prices')->insert(['name' => 'master_portal_30','description'=>'Wyświetl na głownym portalu 30 dni', 'price'=>54,'section'=>'job' ]);
 
-        DB::table('prices')->insert(['name' => 'promotion_7', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'job' ]);
-        DB::table('prices')->insert(['name' => 'promotion_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'job' ]);
-        DB::table('prices')->insert(['name' => 'promotion_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'job' ]);;
+        DB::table('prices')->insert(['name' => 'promoted_7', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'job' ]);
+        DB::table('prices')->insert(['name' => 'promoted_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'job' ]);
+        DB::table('prices')->insert(['name' => 'promoted_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'job' ]);;
 
         DB::table('prices')->insert(['name' => 'highlighted_7',  'description'=>'Kolorowe tło 7 dni', 'price'=>8,'section'=>'job' ]);
         DB::table('prices')->insert(['name' => 'highlighted_14', 'description'=>'Kolorowe tło 14 dni', 'price'=>14, 'section'=>'job' ]);
@@ -79,6 +81,7 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'newspaper_advertisement', 'description'=>'Ogłoszenie w gazecie', 'price'=>9,'section'=>'job' ]);
         DB::table('prices')->insert(['name' => 'newspaper_frame', 'description'=>'Ramka wokół ogłoszenia', 'price'=>3,'section'=>'job' ]);
         DB::table('prices')->insert(['name' => 'newspaper_background', 'description'=>'Wydrkuj naszarym tle', 'price'=>3,'section'=>'job' ]);
+        DB::table('prices')->insert(['name' => 'newspaper_photo', 'description'=>'Ogłoszenie w gazecie', 'price'=>10,'section'=>'job' ]);
 
         //nieruchomości
         
@@ -86,9 +89,9 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'master_portal_14','description'=>'Wyświetl na głownym portalu 14dni', 'price'=>38,'section'=>'estates' ]);
         DB::table('prices')->insert(['name' => 'master_portal_30','description'=>'Wyświetl na głownym portalu 30 dni', 'price'=>54,'section'=>'estates' ]);
 
-        DB::table('prices')->insert(['name' => 'promotion_7', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'estates' ]);
-        DB::table('prices')->insert(['name' => 'promotion_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'estates' ]);
-        DB::table('prices')->insert(['name' => 'promotion_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'estates' ]);;
+        DB::table('prices')->insert(['name' => 'promoted_7', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 7 dni', 'price'=>10,'section'=>'estates' ]);
+        DB::table('prices')->insert(['name' => 'promoted_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'estates' ]);
+        DB::table('prices')->insert(['name' => 'promoted_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'estates' ]);;
 
         DB::table('prices')->insert(['name' => 'highlighted_7',  'description'=>'Kolorowe tło 7 dni', 'price'=>8,'section'=>'estates' ]);
         DB::table('prices')->insert(['name' => 'highlighted_14', 'description'=>'Kolorowe tło 14 dni', 'price'=>14, 'section'=>'estates' ]);
@@ -101,6 +104,7 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'newspaper_advertisement', 'description'=>'Ogłoszenie w gazecie', 'price'=>9,'section'=>'estates' ]);
         DB::table('prices')->insert(['name' => 'newspaper_frame', 'description'=>'Ramka wokół ogłoszenia', 'price'=>3,'section'=>'estates' ]);
         DB::table('prices')->insert(['name' => 'newspaper_background', 'description'=>'Wydrkuj naszarym tle', 'price'=>3,'section'=>'estates' ]);
+        DB::table('prices')->insert(['name' => 'newspaper_photo', 'description'=>'Ogłoszenie w gazecie', 'price'=>10,'section'=>'estates' ]);
 
         // motoryzacja
 
@@ -108,9 +112,9 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'master_portal_14','description'=>'Wyświetl na głownym portalu 14dni', 'price'=>38,'section'=>'cars' ]);
         DB::table('prices')->insert(['name' => 'master_portal_30','description'=>'Wyświetl na głownym portalu 30 dni', 'price'=>54,'section'=>'cars' ]);
 
-        DB::table('prices')->insert(['name' => 'promotion_7', 'description'=>'Wyświetl nad zwykłymi  ogłoszeniami 7 dni', 'price'=>10,'section'=>'cars' ]);
-        DB::table('prices')->insert(['name' => 'promotion_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'cars' ]);
-        DB::table('prices')->insert(['name' => 'promotion_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'cars' ]);;
+        DB::table('prices')->insert(['name' => 'promoted_7', 'description'=>'Wyświetl nad zwykłymi  ogłoszeniami 7 dni', 'price'=>10,'section'=>'cars' ]);
+        DB::table('prices')->insert(['name' => 'promoted_14','description'=>'Wyświetl nad zwykłymi ogłoszeniami 14 dni', 'price'=>15,'section'=>'cars' ]);
+        DB::table('prices')->insert(['name' => 'promoted_30', 'description'=>'Wyświetl nad zwykłymi ogłoszeniami 30 dni', 'price'=>30,'section'=>'cars' ]);;
 
         DB::table('prices')->insert(['name' => 'highlighted_7',  'description'=>'Kolorowe tło 7 dni', 'price'=>8,'section'=>'cars' ]);
         DB::table('prices')->insert(['name' => 'highlighted_14', 'description'=>'Kolorowe tło 14 dni', 'price'=>14, 'section'=>'cars' ]);
@@ -123,8 +127,8 @@ class PricesSeeds extends Seeder
         DB::table('prices')->insert(['name' => 'newspaper_advertisement', 'description'=>'Ogłoszenie w gazecie', 'price'=>9,'section'=>'cars' ]);
         DB::table('prices')->insert(['name' => 'newspaper_frame', 'description'=>'Ramka wokół ogłoszenia', 'price'=>3,'section'=>'cars' ]);
         DB::table('prices')->insert(['name' => 'newspaper_background', 'description'=>'Wydrkuj naszarym tle', 'price'=>3,'section'=>'cars' ]);
-
-
-
+        DB::table('prices')->insert(['name' => 'newspaper_photo', 'description'=>'Ogłoszenie w gazecie', 'price'=>10,'section'=>'cars' ]);
+        
+        
     }
 }
