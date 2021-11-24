@@ -23,9 +23,12 @@ class NewspaperEditionRepository extends BaseRepository
         return $data;
     }
 
-    public function getNewspaperEditionById($id) : Collection
+    public function getNewspaperEditionById($id) : NewspaperEdition
     {
-        $data = $this->model->where('id', '=', $id)->get();
+        $data = 
+        $this->model->where('id', '=', $id)
+        ->with('Newspaper')
+        ->first();
       //  dd($data);
         return $data;
     }

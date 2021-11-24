@@ -17,7 +17,10 @@ class NewspaperEdition extends Model
 
     protected $table = 'newspaper_edition';
 
-
+    public function Newspaper()
+    {
+        return $this->belongsTo(Newspaper::class, 'newspaper_id');
+    }
 
     public function get_id(): int
     {

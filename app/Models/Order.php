@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Type\Decimal;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -14,22 +15,37 @@ class Order extends Model
      *
      * @var array
      */
+
+
     protected $fillable = [
-    'id', 
-    'name', //Nazwa - indywidualny numer zamowienia
-    'payments_id', 
-    'addons_id', //id ogłoszenia
-    'section', //sekcja do której należy dane ogłoszenie (drobne, samochody, nieruchomosci itd..) 
-    'users_id', //id użytkownika którego dotyczy zamowienie
+        'id', 
+        'name', //Nazwa - indywidualny numer zamowienia
+        'payments_id', 
+        'addons_id', //id ogłoszenia
+        'section', //sekcja do której należy dane ogłoszenie (drobne, samochody, nieruchomosci itd..) 
+        'users_id', //id użytkownika którego dotyczy zamowienie
+        'date_add', //data utworzenia zamówienia   
+        'price_summary', //Cena całkowita    
+        'invoice', //czy faktura
+        'status', // czy zapłacone, aktywne, anulowane
+    ];
+
+/*     protected $attributes = [
+    'id' => 0, 
+    'name' => null, //Nazwa - indywidualny numer zamowienia
+    'payments_id' => 0, 
+    'addons_id' =>0, //id ogłoszenia
+    'section' => null, //sekcja do której należy dane ogłoszenie (drobne, samochody, nieruchomosci itd..) 
+    'users_id' => 0, //id użytkownika którego dotyczy zamowienie
     'date_add', //data utworzenia zamówienia   
-    'price_summary', //Cena całkowita    
+    'price_summary' => 0, //Cena całkowita    
     'invoice', //czy faktura
     'status', // czy zapłacone, aktywne, anulowane
-];
+]; */
 
     protected $table = 'orders';
-
-
+    
+   
     public function OrderList()
     {
         $result = $this->hasMany(OrderList::class, 'order_id');
@@ -37,6 +53,11 @@ class Order extends Model
         return $result;
     }
 
+    public function deleteOrderList()
+    {
+       // dd($this->id);
+        DB::table('orders_list')->where('order_id', '=', $this->id)->delete(); 
+    }
 
   /*
     |--------------------------------------------------------------------------
@@ -79,9 +100,9 @@ class Order extends Model
         return $this->date_add;
     }
 
-    public function get_price_summary(): Decimal
+    public function get_price_summary(): ?float
     {
-        return $this->price_summary;
+        return (float)$this->price_summary;
     }
 
     public function get_invoice(): string
@@ -133,7 +154,7 @@ class Order extends Model
         $this->date_add  = $value;
     }
 
-    public function set_price_summary(?string $value): void
+    public function set_price_summary(?float $value): void
     {
         $this->price_summary  = $value;
     }

@@ -122,39 +122,46 @@
                 <p>Sprzedawca: <a><strong>{{ $content->User->name }} </strong></a>,
                 <p> Wystawiono od: <strong>{{  $content->date_start  }}</strong> do <strong>{{  $content->date_end  }}</strong></p>
                 
-                <label ><strong>OPCJE PROMOWANE</strong></label>
-                <ul class="list-unstyled"> 
-                    <li>Napis przy ogłoszeniu: <strong>{{ $content->recomended }}</strong></li>
-                    <li>Tło ogłoszenia: <span class="color-block" style="background-color: {{ $content->highlighted }}"> text ogłoszenia</span></li>
-                    <li>Ogłoszenie będzie wyświetlane od: <strong>{{ $content->date_start }}</strong> do <strong>{{ $content->date_end }}</strong></li>
-                    <li>Kwota do zapłaty: <strong>{{ $payments }}</strong> pln</li>
+                <label ><strong>ZAMÓWIENIE {{ $order->get_name() }} </strong></label>
+                
+                <ul class=""> 
+                    @foreach ($order->OrderList as $order_list)
+                    
+                    <li>  {{ $order_list->get_name(); }}:   {{ $order_list->get_description(); }}: <strong> {{ $order_list->get_price(); }} </strong>pln</li>
+                        
+                        
+                    @endforeach
+
+                    
                 </ul>
+
+                <h4>Kwota do zapłaty: <strong>{{ $order->get_price_summary(); }}</strong> pln</h4>
             </div>
         </div>
     </div>
     <div class="container">
 
-                @if ($payments > 0)
-                <form action="{{  route('AddPayments') }}"  class="p-5" method="POST" role="form" >
+                @if ($order->get_price_summary() > 0)
+                <form action="{{  route('payments_form') }}"  class="p-5" method="POST" role="form" >
                     @csrf                    
                     <input type="hidden" name="section" value="{{ $section }}">
-                    <input type="hidden" name="payment_id" value="{{ $payments->id }}">
+                    <input type="hidden" name="payment_id" value="{{ $order->id }}">
                     <div class="row">  
                             <div class="col-12 col-lg-9">Przejdź do płatności</div>
                             <div class="col-12 col-lg-3">                                       
                                 <div class="form-check">
                                     <button class="btn btn-info btn-block my-4 text-white" type="submit"><strong>do płatności</strong></button>
                                 </div>
-                            </div>                                      
-                                                    </div>   
+                            </div>
+                    </div>   
                 </form>
                 @else
 
                 <form action="{{ route('small_ads_success_post') }}"  class="p-5" method="POST" role="form" >
                     @csrf
                     
-                    <input type="hidden" name="payment_id" value="{{ $payments }}">
-                    <input type="hidden" name="section" value="{{ $section }}">
+                    <input type="hidden" name="payment_id" value="{{ $order->id }}">
+                  
                     <div class="mb-3">
                                 <div class="offset-lg-9 offset-sm-4">
                                     <button type="submit" class="btn btn-primary">

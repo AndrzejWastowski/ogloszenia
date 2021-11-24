@@ -6,6 +6,7 @@ namespace  App\Repositories\Eloquent;
 
 use App\Repositories\Eloquent\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Order;
 
@@ -30,18 +31,23 @@ class OrdersRepository extends BaseRepository
         return $results;
     }
 
-    public function getOrderByAdsId($id,$section) :?Collection
+    public function getOrderByAdsId($id,$section) :?Order
     {
         $results = $this->model
         ->select(
             'orders.*'           
         )
-        
         ->with('OrderList')
         ->where('orders.addons_id','=',$id)        
         ->where('orders.section','=',$section)        
-        ->get();
-        //dd($results);
+        ->first();
+        
         return $results;
+    }
+
+    public function deleteOrderList()
+    {
+        dd($this->id);
+        DB::table('order_list')->where('order_id', '=', $this->id)->delete(); 
     }
 }

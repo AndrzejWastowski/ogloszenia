@@ -266,9 +266,14 @@ var highligted="#ffffff";
 var master_portal = false;
 var promoted = false;
 
+if(performance.navigation.type == 2){
+   location.reload(true);
+}
+
 $( document ).ready(function() {
     
     const date = new Date();
+    summary();
 
 
     $('#form_promoted :checkbox').click(function() {
@@ -290,6 +295,21 @@ $( document ).ready(function() {
 
 function summary()
 {
+    
+
+
+        newspaper_photoX = document.getElementById('newspaper_photo');
+    
+        if($(newspaper_photoX).prop("checked") == true){
+                console.log(" w summary newspaper_photo is checked.");
+                newspaper_photo = true;
+            }
+            else {
+                console.log(" w summary newspaper_photo is unchecked.");
+                newspaper_photo = false;
+            }
+    
+        
 
 
     var date_end_promoted=document.getElementById('date_end_promoted').value;
@@ -431,15 +451,7 @@ function summary()
 
     $(document).on('change', '#newspaper_photo', function (e) {    
         
-        if($(this).prop("checked") == true){
-                console.log(" newspaper_photo is checked.");
-                newspaper_photo = true;
-            }
-            else if($(this).prop("checked") == false){
-                console.log(" newspaper_photo is unchecked.");
-                newspaper_photo = false;
-            }
-        summary();
+       summary();
     });     
 
 

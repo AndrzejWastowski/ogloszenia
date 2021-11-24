@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Home\Add;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
 use App\Repositories\Eloquent\SmallAdsRepository;
 use App\Repositories\Eloquent\SmallAdsCategoriesRepository;
 use App\Repositories\Eloquent\SmallAdsSubCategoriesRepository;
@@ -81,8 +80,6 @@ final class SmallAdsController extends Controller
             $this->storage = $storage::disk('local');
         }
 
-
-
     public function index(Request $request)
     {
      //   $request->session()->forget('small_ads');
@@ -93,8 +90,7 @@ final class SmallAdsController extends Controller
     public function content(Request $request)
     {
  
-        //$request->session()->forget('small_ads_contents');
-     
+        //$request->session()->forget('small_ads_contents');     
 
         $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
         //$content = $this->smallAdsRepository->getNonUnfinishedSmallAds(55);  
@@ -103,7 +99,6 @@ final class SmallAdsController extends Controller
             $content->setTable('small_ads_contents');
             $content->setConnection('mysql');
             $content->set_date_start(now()->format('Y-m-d'));
-
         }      
 
         $data = strtotime($content['date_start']);       
@@ -125,7 +120,6 @@ final class SmallAdsController extends Controller
         $user = Auth::user();
         // dd($user);
 
-
         return view('home.add.small_ads.content',[
             'content' => $content,
             'categories' => $categories,
@@ -133,7 +127,6 @@ final class SmallAdsController extends Controller
             'user' => $user
         
         ]);
-
     }
 
 
@@ -167,7 +160,6 @@ final class SmallAdsController extends Controller
             //dodanie całkiem nowego ogłoszenia
             $small_ads_contents = new \App\Models\SmallAdsContent();
         }
-
         
         //$small_ads_contents->fill($data);  // wyłączyłem automatyczne wypełnianie obiektu
         
@@ -218,10 +210,6 @@ final class SmallAdsController extends Controller
 
        // dd(($location_serialize));
 
-
-
-
-
         $small_ads_contents->set_adress_ip($user['ip']);
         $small_ads_contents->set_host($user['host']);
         $small_ads_contents->set_port((int)$user['port']);
@@ -246,7 +234,6 @@ final class SmallAdsController extends Controller
         ]);
     }
 
-
     public function photo_post(SmallAdsPhotoRequest $request)
     {
         //$validatedData = $request->validate(['photos[]' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']);
@@ -256,13 +243,11 @@ final class SmallAdsController extends Controller
 
         $small_ads_contents = $request->session()->get('small_ads_contents');
 
-      //  dd($small_ads_contents);
 
         if ($request->hasFile('photos')) 
         {
 
             $sort = 0;
-
 
             foreach ($request->file('photos') as $image) {
 
@@ -310,8 +295,7 @@ final class SmallAdsController extends Controller
 
     public function promotion()
     {
-        $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();
-       
+        $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();       
 
         $prices_collection = $this->priceRepository->getAllFromSection('small_ads');
         $price = [];
@@ -328,7 +312,6 @@ final class SmallAdsController extends Controller
         ]);
     }
 
-
     public function promotion_post(SmallAdsPromotionRequest $request)
     {
         // tutaj dodajemy informacje o promocjach do edytowanego ogłoszenia 
@@ -337,67 +320,77 @@ final class SmallAdsController extends Controller
        // dd($request);
      
         $data = $request->validated(); 
-
+       // dd($data);
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
 
+       // dd($small_ads_contents);
         $prices_collection = $this->priceRepository->getAllFromSection('small_ads');
         $price = [];
         $order_list = [];
 
         foreach ($prices_collection as $row) {
             
-            $price[$row->name] = $row['price'];
+            $price[$row->name]['price'] = $row['price'];
+            $price[$row->name]['description'] = $row['description'];
         }
 
         $SUMA = 0;
 
         if (isset($data['master_portal']) and $data['master_portal']=="true") {
-            $price_detal = $price['master_portal_'.$data['date_end_promoted']];
+            $price_detal = $price['master_portal_'.$data['date_end_promoted']]['price'];
+            $description = $price['master_portal_'.$data['date_end_promoted']]['description'];
             $SUMA = $SUMA + $price_detal;
 
             $order_list[] = new OrderList([
                 'name' => 'ramka na głownym portalu',
                 'quantity' => 1,
+                'description' => $description,
                 'price' => $price_detal,
             ]); 
 
-        } else 
-        {
+        } else {
             $data['master_portal'] = "false";
         }
 
-
         if ($data['inscription']!='none') {
-        
-            $price_detal = $price['inscription_'.$data['date_end_promoted']];
+            $price_detal = $price['inscription_'.$data['date_end_promoted']]['price'];
+            $description = $price['inscription_'.$data['date_end_promoted']]['description'];
             $SUMA = $SUMA + $price_detal;
+          
             $order_list[] = new OrderList([
                 'name' => 'Wyróżniający napis',
                 'quantity' => 1,
+                'description' => $description,
                 'price' => $price_detal,
             ]); 
         }
 
         if ($data['highlighted']!="#ffffff") {
-            
-            $price_detal = $price['highlighted_'.$data['date_end_promoted']];
+          
+            $price_detal = $price['highlighted_'.$data['date_end_promoted']]['price'];
+            $description = $price['highlighted_'.$data['date_end_promoted']]['description'];
             $SUMA = $SUMA + $price_detal;
+
 
             $order_list[] = new OrderList([
                 'name' => 'Kolorowe tło',
                 'quantity' => 1,
+                'description' => $description,
                 'price' => $price_detal,
             ]); 
         }
 
         if (isset($data['promoted']) and ($data['promoted']=="true")) {
             
-            $price_detal = $price['promoted_'.$data['date_end_promoted']];
+         
+            $price_detal = $price['promoted_'.$data['date_end_promoted']]['price'];
+            $description = $price['promoted_'.$data['date_end_promoted']]['description'];
             $SUMA = $SUMA + $price_detal;
 
             $order_list[] = new OrderList([
                 'name' => 'Wyświetlaj się nad zwykłymi...',
                 'quantity' => 1,
+                'description' => $description,
                 'price' => $price_detal,
             ]); 
 
@@ -409,81 +402,71 @@ final class SmallAdsController extends Controller
         $price_newspaper_background = 0;
         $price_newspaper_photo = 0;
         $price_newspaper_frame = 0;
+        $price_newspaper_advertisement = $price['newspaper_advertisement']['price'];
 
-        $price_newspaper_advertisement = $price['newspaper_advertisement'];
-        $short = '';
-
+        $description = '';
+       
         if (isset($data['newspaper_background']) and  $data['newspaper_background']=="on") {
-            $price_newspaper_background = $price['newspaper_background'];
-            $short .= "/tło";
- 
+            $price_newspaper_background = $price['newspaper_background']['price'];
+            $description .= "/tło"; 
         }
         if (isset($data['newspaper_photo']) and  $data['newspaper_photo']=="on") {
-            $price_newspaper_photo = $price['newspaper_photo'];
-            $short .= "/zdjęcie";
+            $price_newspaper_photo = $price['newspaper_photo']['price'];
+            $description .= "/zdjęcie";
         }
         if (isset($data['newspaper_frame']) and  $data['newspaper_frame']=="on") {
-            $price_newspaper_frame = $price['newspaper_frame'];
-            $short .= "/ramka";
+            $price_newspaper_frame = $price['newspaper_frame']['price'];
+            $description .= "/ramka";
         }
         
-        $price_newspaper_frame = $price['newspaper_frame'];
-
+      
         if (isset($data['newspaper_edition'])) {
+          
             foreach ($data['newspaper_edition'] as $newspaper_edition) {
-                foreach ($this->newspaperEditionRepository->getNewspaperEditionById($newspaper_edition) as $edition) {
-                    $SUMA = $SUMA + $price_newspaper_advertisement + $price_newspaper_background + $price_newspaper_photo + $price_newspaper_frame;
+                $edition = $this->newspaperEditionRepository->getNewspaperEditionById($newspaper_edition);              
+
                     $EDITION_PRICE = $price_newspaper_advertisement + $price_newspaper_background + $price_newspaper_photo + $price_newspaper_frame;
-                    //dd($newspaper_edition);
+                    $SUMA = $SUMA + $EDITION_PRICE;
+                   
                     $order_list[] = new OrderList([
-                        'name' => 'Gazeta:  '.$short,
+                        'name' => $edition['Newspaper']['name'].' '.$edition['date'],
                         'quantity' => 1,
                         'price' => $EDITION_PRICE,
+                        'description' => $description,
                     ]); 
                     
-                }
+               
             }
         }
 
-      // dd($order_list);
+     //  dd($small_ads_contents);
         $small_ads_contents->set_highlighted($data['highlighted']);        
         $small_ads_contents->set_promoted((bool)$data['promoted']);
         $small_ads_contents->set_inscription($data['inscription']);
         $small_ads_contents->set_master_portal((bool)$data['master_portal']);        
         $small_ads_contents->save();
-
-        $order = $this->ordersRepository->getOrderById($small_ads_contents->get_id(),'small_ads');
-       // dd($order);
         
-        $order = new \App\Models\Order();
+        
      
         $order = $this->ordersRepository->getOrderByAdsId($small_ads_contents->get_id(),'small_ads');  
-        $order = $order[0];
-  
+        
+        
+        if ($order==null) 
+        {
+            $order = new \App\Models\Order();
+        }
+
+       // dd($order);
+        $order->deleteOrderList();        
         $order->set_name('D/'.$small_ads_contents->get_id().'/'.date("Y"));
         $order->set_payments_id(0);
         $order->set_addons_id($small_ads_contents->get_id());
         $order->set_section('small_ads');
-        $order->set_users_id(Auth::id());
+        $order->set_price_summary($SUMA);
+        $order->set_users_id(Auth::id());        
         $order->save();
-   //dd($order_list);
         $order->OrderList()->saveMany($order_list);
-
-        $newspapers = $this->newspaperRepository->getAvaibleNewspaperEdition();
-
-
-        foreach ($newspapers as $editions )
-        {
-            foreach ($editions->AvaibleEditions as $edition);
-            {
-                
-                if (isset($data['newspaper_edition'][$edition->id])) {
-                    dd ($data['newspaper_edition'][$edition->id]);
-                }
-                
-
-            }
-        }
+        
 
         return redirect('/home/add/small_ads/summary');
 
@@ -492,59 +475,10 @@ final class SmallAdsController extends Controller
     public function summary()
     {
      
-        $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
-        $data = strtotime($content['date_start']);
-        $teraz = strtotime(now()->format('Y-m-d'));
-
-       // dd($content);
-        $price = $this->priceRepository->getAllFromSection('small_ads');  
-
-        if (($data - $teraz)<0)
-        { 
-            $content['date_start'] = date('Y-m-d'); 
-        }
-        else
-        {
-            $content['date_start'] = date('Y-m-d',$data);
-        }
-      // dd($content);
+        $content = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());       
+        $order = $this->ordersRepository->getOrderByAdsId($content->get_id(),'small_ads');
         $categories = $this->smallAdsCategoriesRepository->getCategoriesById($content['small_ads_categories_id']);  
-
-       // dd($categories);
         $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($content['small_ads_categories_id'] );  
-       // dd($subcategories);
-
-       //zliczanie płatności po stronie serwera
-
-        $promoted_price = 0;
-        $top_price = 0;
-        $highlighted_price = 0;
-        $inscription_price = 0;
-
-     //  dd($content['date_end']);
-
-        if ($content['date_end_promoted']>0) {
-    
-        
-            
-            if ($content['promotion']!=0) {
-                $promoted_price = $price['promotion_'.$content['date_end_promoted']];
-            }
-            if ($content['master_portal']!=0) {
-                $top_price = $price['master_portal_'.$content['date_end_promoted']];
-            }
-            if ($content['highlighted']!='#ffffff') {
-                $highlighted_price = $price['highlighted_'.$content['date_end_promoted']];
-            }
-            if ($content['inscription']!='none') {
-                $inscription_price = $price['inscription_'.$content['date_end_promoted']];
-            }
-        }
-
-        $payments = $promoted_price + $highlighted_price + $top_price + $inscription_price;
-
-//        dd($payments);
-
         $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($content->get_id());   
 
         $user = Auth::user();
@@ -555,7 +489,7 @@ final class SmallAdsController extends Controller
             'subcategories' => $subcategories,
             'photos' => $photos,
             'storage' => $this->storage,
-            'payments' => $payments,
+            'order' => $order,
             'section' => 'small_ads',
             'user' => $user
         
