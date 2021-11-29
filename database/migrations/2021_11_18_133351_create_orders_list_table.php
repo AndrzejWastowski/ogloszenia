@@ -19,7 +19,7 @@ class CreateOrdersListTable extends Migration
             $table->string('name')->comment('nazwa towaru');
             $table->string('description')->nullable()->comment('dodatkowy opis towaru (opcjonalnie)');
             $table->integer('quantity')->comment('Ilość sztuk');
-            $table->double('price',10,2)->comment('Cena jednostkowa');
+            $table->integer('price')->comment('Cena jednostkowa w groszach');
             $table->integer('number')->comment('/ID towaru w systemie sprzedawcy (opcjonalnie)]');
             
        
