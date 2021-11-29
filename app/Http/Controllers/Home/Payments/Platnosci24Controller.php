@@ -11,6 +11,19 @@ use App\Repositories\Eloquent\PriceRepository;
 use App\Repositories\Eloquent\OrdersRepository;
 use App\Http\Requests\PaymentFormRequest;
 
+use Money\Currencies\AggregateCurrencies;
+use Money\Currencies\BitcoinCurrencies;
+use Money\Currencies\ISOCurrencies;
+use Money\Converter;
+use Money\Currency;
+use Money\Exchange\FixedExchange;
+use Money\Formatter\AggregateMoneyFormatter;
+use Money\Formatter\BitcoinMoneyFormatter;
+use Money\Formatter\IntlMoneyFormatter;
+use Money\Money; 
+// int is accepted
+
+
 class Platnosci24Controller extends Controller
 {
     /**
@@ -82,11 +95,18 @@ class Platnosci24Controller extends Controller
 
     public function form(PaymentFormRequest $request)    
     {
-        
-        
+
         $data = $request->validated();        
         //dd($data);
         $order = $this->ordersRepository->getOrderById($data['order_id']);
+
+        $currencies = new AggregateCurrencies([new ISOCurrencies()]);          
+        $numberFormatter = new \NumberFormatter('pl_PL', \NumberFormatter::CURRENCY); 
+        $intlFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
+        $moneyFormatter = new AggregateMoneyFormatter(['*' => $intlFormatter]); 
+        $money = new Money($order->price_summary*100, new Currency('PLN'));
+
+               
        // dd($order->OrderList);
        // dd($order->price_summary*100);
         
@@ -96,6 +116,7 @@ class Platnosci24Controller extends Controller
         $payments['p24_merchant_id'] =  env('PLATNOSCI24_MARSHANT_ID');
         $payments['p24_pos_id'] =  env('PLATNOSCI24_POS_ID');
         $payments['p24_amount'] = ($order->price_summary*100);
+        $payments['view_amount'] = $moneyFormatter->format($money);
         $payments['p24_currency'] = 'PLN';
         $payments['p24_description'] = 
         $payments['p24_client'] = $order->User->name;
@@ -133,12 +154,12 @@ class Platnosci24Controller extends Controller
             $payments['p24_quantity_'.$i]  = $OrderList['quantity']; //INT T Ilość sztuk towaru
             $payments['p24_price_'.$i]  = ($OrderList['price']*100);  // INT T Cena jednostkowatowaru
            // $payments['p24_number_'.$i];  = $OrderList['name'];  //INTNID towaru w systemiesprzedawcy //id ceny
-}
-
+        }
 
         return view('home/payments/form',[
 
-         
+            'order' => $order,
+            'moneyFormatter' => $moneyFormatter,
             'payment' => $payments,
          
         ]);
