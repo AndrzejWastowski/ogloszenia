@@ -19,6 +19,7 @@
         "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.1",
+        "moneyphp/money": "^3.3",
         "stevebauman/location": "^6.1"
     },
     "require-dev": {

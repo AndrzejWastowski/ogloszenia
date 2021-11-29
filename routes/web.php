@@ -114,7 +114,7 @@ Route::group(['prefix' => 'motoryzacja'], function () {
 
 
 
-
+Route::post('/payments/form', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'form'])->name('payments_form');
 Route::get('/payments/callback', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'callback'])->name('payments_callback');
 Route::get('/payments/status', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'status'])->name('payments_status');
 Route::get('/payments/veryfi', [App\Http\Controllers\Home\Payments\Platnosci24Controller::class, 'veryfi'])->name('payments_veryfi');

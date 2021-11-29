@@ -18,4 +18,11 @@ class PaymentRepository extends BaseRepository
         $data = $this->model->orderBy('name', 'asc')->get();
         return $data;
     }
+
+    public function getById($id = 0) 
+    {
+        $data = $this->model->where('id','=',$id)->first();
+
+        return $data;
+    }
 }

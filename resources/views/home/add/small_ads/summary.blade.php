@@ -143,9 +143,8 @@
 
                 @if ($order->get_price_summary() > 0)
                 <form action="{{  route('payments_form') }}"  class="p-5" method="POST" role="form" >
-                    @csrf                    
-                    <input type="hidden" name="section" value="{{ $section }}">
-                    <input type="hidden" name="payment_id" value="{{ $order->id }}">
+                    @csrf 
+                    <input type="hidden" name="order_id" value="{{ $order->id }}">
                     <div class="row">  
                             <div class="col-12 col-lg-9">Przejdź do płatności</div>
                             <div class="col-12 col-lg-3">                                       

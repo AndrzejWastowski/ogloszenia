@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Home\Payments;
 
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+
+use App\Repositories\Eloquent\PriceRepository;
+use App\Repositories\Eloquent\OrdersRepository;
+use App\Http\Requests\PaymentFormRequest;
 
 class Platnosci24Controller extends Controller
 {
@@ -13,8 +18,18 @@ class Platnosci24Controller extends Controller
      *
      * @return void
      */
-    public function __construct()
+    
+     private $priceRepository;
+    private $ordersRepository;
+
+    public function __construct(
+        PriceRepository $priceRepository,
+        OrdersRepository $ordersRepository
+    )
     {
+        $this->middleware('auth');
+        $this->priceRepository = $priceRepository;
+        $this->ordersRepository = $ordersRepository;
        
     }
 
@@ -65,26 +80,30 @@ class Platnosci24Controller extends Controller
     }
 
 
-    public function form(Request $request)    
+    public function form(PaymentFormRequest $request)    
     {
-        $data = $request->capture();
-        dd($data);
-
-        $transactions[] = ''; //tablica z danymi powiązanymi z daną transakcją
-        $TRANSACTION_LABEL = 'nazwa transakcji';
+        
+        
+        $data = $request->validated();        
+        //dd($data);
+        $order = $this->ordersRepository->getOrderById($data['order_id']);
+       // dd($order->OrderList);
+       // dd($order->price_summary*100);
+        
+        $TRANSACTION_LABEL = 'Zamówienie: '.$order->name;
 
         $payments['p24_session_id'] = uniqid();   
         $payments['p24_merchant_id'] =  env('PLATNOSCI24_MARSHANT_ID');
         $payments['p24_pos_id'] =  env('PLATNOSCI24_POS_ID');
-        $payments['p24_amount'] = '1234';
+        $payments['p24_amount'] = ($order->price_summary*100);
         $payments['p24_currency'] = 'PLN';
-        $payments['p24_description'] = 'T1D1';
-        $payments['p24_client'] = 'Jan Kowalski';
-        $payments['p24_address'] = 'ul. Polska 33/33';
-        $payments['p24_zip'] = '99-300';
-        $payments['p24_city'] = 'Kutno';
-        $payments['p24_country'] = 'PL';
-        $payments['p24_email'] = 'email@host.pl';
+        $payments['p24_description'] = 
+        $payments['p24_client'] = $order->User->name;
+        $payments['p24_address'] = $order->User->adress;
+        $payments['p24_zip'] = $order->User->zip;
+        $payments['p24_city'] = $order->User->city;
+        $payments['p24_country'] = $order->User->country;
+        $payments['p24_email'] = $order->User->email;
         $payments['p24_language'] = 'pl';
         $payments['p24_url_return'] =  env('PLATNOSCI24_URL_RETURN');
         $payments['p24_url_status'] =  env('PLATNOSCI24_URL_STATUS');
@@ -105,15 +124,16 @@ class Platnosci24Controller extends Controller
 
         //tutaj tworzymy listę transakcji - co zostało zakupione
 
-        foreach ($transactions as $row)
+        $i=(int)0;
+        foreach ($order->OrderList as $OrderList)
         {
-            $payments['p24_name_X'] = $row['id']; //STRING(127)T Nazwa towaru id ogłoszenia
-            //$payments['p24_description_X']; //STRING(127) N Dodatkowy opis towaru
-            $payments['p24_quantity_X']; //INT T Ilość sztuk towaru
-            $payments['p24_price_X']; // INT T Cena jednostkowatowaru
-            $payments['p24_number_X']; //INTNID towaru w systemiesprzedawcy //id ceny
+            $i++;
+            $payments['p24_name_'.$i] = $OrderList['name']; //STRING(127)T Nazwa towaru id ogłoszenia
+            $payments['p24_description_'.$i]  = $OrderList['description'];  //STRING(127) N Dodatkowy opis towaru
+            $payments['p24_quantity_'.$i]  = $OrderList['quantity']; //INT T Ilość sztuk towaru
+            $payments['p24_price_'.$i]  = ($OrderList['price']*100);  // INT T Cena jednostkowatowaru
+           // $payments['p24_number_'.$i];  = $OrderList['name'];  //INTNID towaru w systemiesprzedawcy //id ceny
 }
-      
 
 
         return view('home/payments/form',[

@@ -44,7 +44,11 @@ class Order extends Model
 ]; */
 
     protected $table = 'orders';
-    
+  
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
    
     public function OrderList()
     {

@@ -17,16 +17,16 @@ class OrdersRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function getOrderById($id) :?Collection
+    public function getOrderById($id) :?Order
     {
         $results = $this->model
         ->select(
             'orders.*'           
         )
-        ->with('user')
-        ->with('OrdersList')
+        ->with('User')
+        ->with('OrderList')
         ->where('orders.id','=',$id)        
-        ->get();
+        ->first();
     
         return $results;
     }
