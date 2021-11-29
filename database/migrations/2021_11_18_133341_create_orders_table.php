@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->enum('section',['small_ads','cars','estates','job','services','truck'])->comment('sekcja której dotyczy płatność');
             $table->string('users_id');
             $table->enum('status',['paid','in progres','unpaid','canceled'])->default('unpaid')->comment('unpaid');
-            $table->integer('summary_price')->comment('unpaid');
+            $table->integer('price_summary')->comment('unpaid');
             
             $table->timestamps();
             

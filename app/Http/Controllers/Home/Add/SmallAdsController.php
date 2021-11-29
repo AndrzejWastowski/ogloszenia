@@ -33,6 +33,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 //use App\Repositories\AdPhotosRepository;
 
+use Money\Currencies\ISOCurrencies;
+use Money\Currency;
+use Money\Formatter\IntlMoneyFormatter;
+use Money\Money;
+
 final class SmallAdsController extends Controller
 {   
 
@@ -45,6 +50,10 @@ final class SmallAdsController extends Controller
     private $priceRepository;
     private $ordersRepository;
     private $storage;
+
+    private $currencies;
+    private $numberFormatter;
+    private $moneyFormatter;
 
     public function __construct(
     
@@ -78,6 +87,10 @@ final class SmallAdsController extends Controller
             $this->priceRepository = $priceRepository;
             $this->ordersRepository = $ordersRepository;
             $this->storage = $storage::disk('local');
+
+            $this->currencies = new ISOCurrencies();
+            $this->numberFormatter = new \NumberFormatter('pl_PL', \NumberFormatter::CURRENCY);
+            $this->moneyFormatter = new IntlMoneyFormatter($this->numberFormatter, $this->currencies);
         }
 
     public function index(Request $request)
@@ -299,10 +312,16 @@ final class SmallAdsController extends Controller
 
         $prices_collection = $this->priceRepository->getAllFromSection('small_ads');
         $price = [];
+
+
+        
         
         foreach ($prices_collection as $row) {
+            $money = new Money($row['price'], new Currency('PLN'));            
+            $price_view = $this->moneyFormatter->format($money); // outputs $1.00
             
-            $price[$row->name] = $row['price'];
+            $price[$row->name]['amount'] = $row['price']; //kwota w groszach
+            $price[$row->name]['price_view'] = $price_view; //wyswietlana cena
         }
 
         return view('home.add.small_ads.promotion', [     
@@ -320,7 +339,7 @@ final class SmallAdsController extends Controller
        // dd($request);
      
         $data = $request->validated(); 
-       // dd($data);
+        //dd($data);
         $small_ads_contents = $this->smallAdsRepository->getNonUnfinishedSmallAds(Auth::id());  
 
        // dd($small_ads_contents);
@@ -439,7 +458,7 @@ final class SmallAdsController extends Controller
             }
         }
 
-     //  dd($small_ads_contents);
+      // dd($SUMA);
         $small_ads_contents->set_highlighted($data['highlighted']);        
         $small_ads_contents->set_promoted((bool)$data['promoted']);
         $small_ads_contents->set_inscription($data['inscription']);
@@ -480,7 +499,8 @@ final class SmallAdsController extends Controller
         $categories = $this->smallAdsCategoriesRepository->getCategoriesById($content['small_ads_categories_id']);  
         $subcategories = $this->smallAdsSubCategoriesRepository->getSubcategoriesByCategoriesId($content['small_ads_categories_id'] );  
         $photos = $this->smallAdsPhotosRepository->getAllPhotosByAd($content->get_id());   
-
+        
+        
         $user = Auth::user();
         return view('home.add.small_ads.summary',[
 

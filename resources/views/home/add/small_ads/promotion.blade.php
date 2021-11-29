@@ -83,7 +83,7 @@
                                         
                                         
                                         Koszt <b>ogłoszenia na głównym portalu</b> 
-                                        to: <b>{{ $price['master_portal_7'] }} zł</b> / tydzień | <b>{{ $price['master_portal_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['master_portal_30'] }}zł</b> / miesiąc
+                                        to: <b>{{ $price['master_portal_7']['price_view'] }} </b> / tydzień | <b>{{ $price['master_portal_14']['price_view'] }}</b> / 2 tygodnie | <b>{{ $price['master_portal_30']['price_view'] }}</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                         <b>między innymi promowanymi</b>. Na kolejność wyświetlania będzie wpływała data dodania ogłoszenia, te najbliżej wygaśnięcia będą na początku listy.
                                         Jednak ci co nie wykupią promocji znajdą się na dalszych stronach portalu ogłoszeniowego.</p>
                                         Koszt <b>ogłoszenia promowanego</b> <br>
-                                        to: <b>{{ $price['promoted_7'] }} zł</b> / tydzień | <b>{{ $price['promoted_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['promoted_30'] }}zł</b> / miesiąc
+                                        to: <b>{{ $price['promoted_7']['price_view'] }} </b> / tydzień | <b>{{ $price['promoted_14']['price_view'] }}</b> / 2 tygodnie | <b>{{ $price['promoted_30']['price_view'] }}</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                     <div class="form-check">
                                         <p class="text-justify">Ogłoszenie <b>wyróżnienie</b> jak sama nazwa wskazuje - pozwoli Ci <strong>wyróżnić się z tłumu!</strong> nieważne czy będziesz na liście promowanych, czy rekomendowanych, twoje ogłoszenie będzie miało wybrane przez Ciebie tło.</p>
                                         Koszt <b>wyróżnienia kolorem</b> <br>
-                                        <b>{{ $price['highlighted_7'] }} zł</b> / tydzień | <b>{{ $price['highlighted_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['highlighted_30'] }}zł</b> / miesiąc
+                                        <b>{{ $price['highlighted_7']['price_view'] }} </b> / tydzień | <b>{{ $price['highlighted_14']['price_view'] }}</b> / 2 tygodnie | <b>{{ $price['highlighted_30']['price_view'] }}</b> / miesiąc
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                                 <div class="col-9">                                       
                                     <div class="form-check">
                                         <p class="text-justify"><strong>Wyróżniający napis</strong> Przyciągnij wzrok kupujących dodatkową informacją, przy każdym ogłoszeniu pojawi sie jeden wybrany przez ciebie napis: </p>
-                                        Koszt <b>wyróżniony napis</b> <br> <b>{{ $price['inscription_7'] }} zł</b> / tydzień | <b>{{ $price['inscription_14'] }}zł</b> / 2 tygodnie | <b>{{ $price['inscription_30'] }}zł</b> / miesiąc
+                                        Koszt <b>wyróżniony napis</b> <br> <b>{{ $price['inscription_7']['price_view'] }} </b> / tydzień | <b>{{ $price['inscription_14']['price_view'] }}</b> / 2 tygodnie | <b>{{ $price['inscription_30']['price_view'] }}</b> / miesiąc
                                         <span class="badge badge-danger mb-2">Promocja!</span>
                                         <span class="badge badge-secondary mb-2">Bestseller</span>
                                         <span class="badge badge-success mb-2">Wyprzedaż!</span></p>
@@ -188,22 +188,22 @@
                                     <div class="col-9 p-0">
                                         <p><strong>CENNIK OGŁOSZEŃ NA JEDNO WYDANIE</strong> <br>
                                             <ul>
-                                                <li><strong> {{ $price['newspaper_advertisement'] }} zł</strong> za ogłoszenie do 300znaków (publikujemy zawartość <strong>lidu</strong>)</li>
+                                                <li><strong> {{ $price['newspaper_advertisement']['price_view'] }} </strong> za ogłoszenie do 300znaków (publikujemy zawartość <strong>lidu</strong>)</li>
                                                 <strong> Dodatki: </strong>
                                                 <ul>
                                                     <li> 
                                                         <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox" id="newspaper_background" name="newspaper_background" value="on"> <strong> {{ $price['newspaper_background'] }} zł</strong> Szare tło
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_background" name="newspaper_background" value="on"> <strong> {{ $price['newspaper_background']['price_view']}} </strong> Szare tło
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox" id="newspaper_frame" name="newspaper_frame" value="on"> <strong> {{ $price['newspaper_frame'] }} zł</strong> Ramka wokół ogłoszenia
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_frame" name="newspaper_frame" value="on"> <strong> {{ $price['newspaper_frame']['price_view'] }} </strong> Ramka wokół ogłoszenia
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox" id="newspaper_photo" name="newspaper_photo" value="on"> <strong> {{ $price['newspaper_photo'] }} zł</strong> Dodaj zdjęcie do ogłoszenia
+                                                            <input class="form-check-input" type="checkbox" id="newspaper_photo" name="newspaper_photo" value="on"> <strong> {{ $price['newspaper_photo']['price_view'] }} </strong> Dodaj zdjęcie do ogłoszenia
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -239,7 +239,7 @@
 
                             <div class="row">  
                                 <div class="col-9 mb-3">
-                                    <h3> <div id="suma"> Suma promocji: <strong>0.00</strong> pln</div> </h3>
+                                    <h3> <div id="suma"> Suma promocji: <strong>0.00</strong>zł</div> </h3>
                                 </div>
 
 
@@ -285,13 +285,10 @@ $( document ).ready(function() {
     newspaper_background = false;
     newspaper_photo = false;
 
-    newspaper_frame_price = {{ $price['newspaper_frame'] }};
-    newspaper_background_price = {{ $price['newspaper_background'] }};
-    newspaper_photo_price = {{ $price['newspaper_photo'] }};
-
-    newspaper_price = {{ $price['newspaper_advertisement']; }};
-
-
+    newspaper_frame_price = {{ $price['newspaper_frame']['amount'] }};
+    newspaper_background_price = {{ $price['newspaper_background']['amount'] }};
+    newspaper_photo_price = {{ $price['newspaper_photo']['amount'] }};
+    newspaper_price = {{ $price['newspaper_advertisement']['amount']; }};
 
 function summary()
 {
@@ -334,27 +331,27 @@ function summary()
     newspaper_sum_price = 0;
 
    
-
+console.log('date_end_promoted:'+ date_end_promoted);
 
     switch (date_end_promoted)
     {        
         case '7':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_7'] }};
-            if (promoted)      promoted_price = {{ $price['promoted_7'] }};
-            if (highlighted)    highlighted_price = {{ $price['highlighted_7'] }};
-            if (inscription)     inscription_price = {{ $price['inscription_7'] }};
+            if (master_portal)  master_portal_price = {{ $price['master_portal_7']['amount'] }};
+            if (promoted)      promoted_price = {{ $price['promoted_7']['amount'] }};
+            if (highlighted)    highlighted_price = {{ $price['highlighted_7']['amount'] }};
+            if (inscription)     inscription_price = {{ $price['inscription_7']['amount'] }};
         break;
         case '14':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_14'] }};
-            if (promoted)      promoted_price = {{ $price['promoted_14'] }};            
-            if (highlighted)    highlighted_price = {{ $price['highlighted_14'] }};
-            if (inscription)     inscription_price = {{ $price['inscription_14'] }};            
+            if (master_portal)  master_portal_price = {{ $price['master_portal_14']['amount'] }};
+            if (promoted)      promoted_price = {{ $price['promoted_14']['amount'] }};            
+            if (highlighted)    highlighted_price = {{ $price['highlighted_14']['amount'] }};
+            if (inscription)     inscription_price = {{ $price['inscription_14']['amount'] }};            
         break;
         case '30':
-            if (master_portal)  master_portal_price = {{ $price['master_portal_30'] }};
-            if (promoted)      promoted_price = {{ $price['promoted_30'] }};            
-            if (highlighted)    highlighted_price = {{ $price['highlighted_30'] }}; 
-            if (inscription)     inscription_price = {{ $price['inscription_30'] }};            
+            if (master_portal)  master_portal_price = {{ $price['master_portal_30']['amount'] }};
+            if (promoted)      promoted_price = {{ $price['promoted_30']['amount'] }};            
+            if (highlighted)    highlighted_price = {{ $price['highlighted_30']['amount'] }}; 
+            if (inscription)     inscription_price = {{ $price['inscription_30']['amount'] }};            
             
         break;
     }
@@ -378,11 +375,11 @@ function summary()
     });
 
 
-    var summary = inscription_price + master_portal_price + highlighted_price + promoted_price + newspaper_sum_price;
+    var summary = (inscription_price + master_portal_price + highlighted_price + promoted_price + newspaper_sum_price)/100;
     
     
 
-    document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary + '</strong> pln';
+    document.getElementById('suma').innerHTML = ' Suma promocji: <strong> ' + summary.toFixed(2) + '</strong> zł';
 }
 
 

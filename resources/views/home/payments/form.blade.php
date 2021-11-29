@@ -304,7 +304,7 @@
                 
                 <td scope="row" >{{ $OrderList->name }} </td>
                 <td>{{ $OrderList->description }} </td>
-                <td>{{ $OrderList->price }} </td>
+                <td>{{ $OrderList->price/100 }} zł </td>
             </tr>
 
             <input type="hidden" name="p24_name_{{ $i }}" value="{{ $OrderList['name']; }}" /> 

@@ -100,7 +100,7 @@
                     <!--Grid column-->
                     <div class="col-9">
                             <!--Excerpt-->                        
-                            <h4 class="text-right">Cena: <strong>{{ $content->price }} </strong> pln</h4>
+                            <h4 class="text-right">Cena: <strong>{{ $content->price/100 }} </strong> zł</h4>
                             <p class="lead"><strong>{{ $content->lead }}.</strong></p>                            
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                 <ul class=""> 
                     @foreach ($order->OrderList as $order_list)
                     
-                    <li>  {{ $order_list->get_name(); }}:   {{ $order_list->get_description(); }}: <strong> {{ $order_list->get_price(); }} </strong>pln</li>
+                    <li>  {{ $order_list->get_name(); }}:   {{ $order_list->get_description(); }}: <strong> {{ $order_list->get_price()/100; }},00 </strong>zł</li>
                         
                         
                     @endforeach
@@ -135,7 +135,7 @@
                     
                 </ul>
 
-                <h4>Kwota do zapłaty: <strong>{{ $order->get_price_summary(); }}</strong> pln</h4>
+                <h4>Kwota do zapłaty: <strong>{{ $order->get_price_summary()/100 }},00</strong> zł</h4>
             </div>
         </div>
     </div>

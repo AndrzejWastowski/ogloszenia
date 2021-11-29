@@ -104,9 +104,9 @@ class Order extends Model
         return $this->date_add;
     }
 
-    public function get_price_summary(): ?float
+    public function get_price_summary(): int
     {
-        return (float)$this->price_summary;
+        return (int)$this->price_summary;
     }
 
     public function get_invoice(): string
@@ -158,7 +158,7 @@ class Order extends Model
         $this->date_add  = $value;
     }
 
-    public function set_price_summary(?float $value): void
+    public function set_price_summary(?int $value): void
     {
         $this->price_summary  = $value;
     }

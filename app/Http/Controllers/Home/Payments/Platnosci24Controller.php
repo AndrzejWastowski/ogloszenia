@@ -104,7 +104,7 @@ class Platnosci24Controller extends Controller
         $numberFormatter = new \NumberFormatter('pl_PL', \NumberFormatter::CURRENCY); 
         $intlFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
         $moneyFormatter = new AggregateMoneyFormatter(['*' => $intlFormatter]); 
-        $money = new Money($order->price_summary*100, new Currency('PLN'));
+        $money = new Money($order->price_summary, new Currency('PLN'));
 
                
        // dd($order->OrderList);
