@@ -193,12 +193,12 @@ final class SmallAdsController extends Controller
         //logi przy ogloszeniu
 
         $user['browser'] = $request->server->get('HTTP_USER_AGENT');
-        dd($user['browser']);
-        $user['ip'] = Arr::get($_SERVER, 'REMOTE_ADDR');
-        $user['port'] = Arr::get($_SERVER, 'REMOTE_PORT');
-        $user['host'] = Arr::get($_SERVER, 'REMOTE_HOST');
+       // dd($user['browser']);
+        $user['ip'] = $request->server->get('REMOTE_ADDR');
+        $user['port'] = $request->server->get('REMOTE_PORT');
+        $user['host'] = $request->server->get('REMOTE_HOST');
 
-        //dd($user);
+ 
         $ip = '91.228.136.201';
         $location = Location::get($ip);
         // dd($location);
@@ -212,6 +212,8 @@ final class SmallAdsController extends Controller
             $user['lat'] = $location->latitude;
             $user['lng'] = $location->longitude;
         }
+
+       // dd($user);
         // $location_serialize = (serialize($location));
 
         // dd(($user));
