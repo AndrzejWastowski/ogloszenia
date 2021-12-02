@@ -115,7 +115,7 @@ class Platnosci24Controller extends Controller
         $payments['p24_session_id'] = uniqid();   
         $payments['p24_merchant_id'] =  env('PLATNOSCI24_MARSHANT_ID');
         $payments['p24_pos_id'] =  env('PLATNOSCI24_POS_ID');
-        $payments['p24_amount'] = ($order->price_summary*100);
+        $payments['p24_amount'] = $order->price_summary;
         $payments['view_amount'] = $moneyFormatter->format($money);
         $payments['p24_currency'] = 'PLN';
         $payments['p24_description'] = 
