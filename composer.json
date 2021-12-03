@@ -20,7 +20,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.1",
         "moneyphp/money": "^3.3",
-        "stevebauman/location": "^6.1"
+        "stevebauman/location": "^6.1",
+        "symfony/mailer": "^5.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
